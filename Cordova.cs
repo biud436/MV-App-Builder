@@ -123,8 +123,9 @@ namespace Cordova_Builder
                 Make(filename =>
                 {
                     AddAndroidPlatform();
-                    writeConfig();
+                    WriteConfig();
                     mainForm.CreateKeyStore();
+                    ModifyHtmlFiles();
                 });
             }
         }
@@ -221,7 +222,7 @@ namespace Cordova_Builder
             return this;
         }
 
-        private void writeConfig()
+        private void WriteConfig()
         {
             try
             {
@@ -230,11 +231,11 @@ namespace Cordova_Builder
                 xmlDoc.Load("config.xml");
 
                 this
-                    .CreateElement(xmlDoc, "Orientation", "landscape")
-                    .CreateElement(xmlDoc, "Fullscreen", "true")
+                    .CreateElement(xmlDoc, "Orientation", list.orientation.SelectedItem.ToString())
+                    .CreateElement(xmlDoc, "Fullscreen", list.fullscreen.SelectedItem.ToString())
                     .CreateElement(xmlDoc, "AllowInlineMediaPlayback", "true")
-                    .CreateElement(xmlDoc, "android-minSdkVersion", "19")
-                    .CreateElement(xmlDoc, "android-targetSdkVersion", "27");
+                    .CreateElement(xmlDoc, "android-minSdkVersion", list.minSdkVersion.SelectedItem.ToString())
+                    .CreateElement(xmlDoc, "android-targetSdkVersion", list.targetSdkVersion.SelectedItem.ToString());
 
                 xmlDoc.Save("config.xml");
 
@@ -245,6 +246,40 @@ namespace Cordova_Builder
                 AppendText(ex.Message);
             }
 
+
+        }
+
+        /// <summary>
+        /// index.html 파일을 수정합니다.
+        /// </summary>
+        private void ModifyHtmlFiles()
+        {
+            var filename = @"../index.html";
+            var lines = System.IO.File.ReadAllLines(filename, Encoding.UTF8).ToList();
+            string matchLine = null;
+            bool isValid = false;
+
+            foreach (var line in lines)
+            {
+                if(line.Contains("<script "))
+                {
+                    matchLine = line;
+                    isValid = true;
+                    break;
+                }
+            }
+
+            if(isValid)
+            {
+                var index = lines.IndexOf(matchLine);
+                if(index != -1)
+                {
+                    lines.Insert(index, "        <script type=\"text/javascript\" src=\"cordova.js\"></script>");
+                    System.IO.File.WriteAllLines(filename, lines);
+
+                    AppendText("index.html 파일을 수정하였습니다.");
+                }
+            }
 
         }
 

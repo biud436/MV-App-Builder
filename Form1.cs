@@ -139,6 +139,10 @@ namespace Cordova_Builder
             textBoxList.Add(textBox_keyL);
             textBoxList.Add(textBox_keyS);
             textBoxList.Add(textBox_keyC);
+            textBoxList.Add(comboBoxOrientation);
+            textBoxList.Add(comboBoxFullscreen);
+            textBoxList.Add(comboBoxMinSdkVersion);
+            textBoxList.Add(comboBoxTargetSdkVersion);
         }
 
         /// <summary>
@@ -149,7 +153,7 @@ namespace Cordova_Builder
             var backColor = Color.FromArgb(255, 26, 41, 62);
             var foreColor = Color.White;
 
-            foreach (TextBox tb in textBoxList)
+            foreach (var tb in textBoxList)
             {
                 tb.BackColor = backColor;
                 tb.ForeColor = foreColor;
