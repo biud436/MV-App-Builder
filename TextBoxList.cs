@@ -100,5 +100,10 @@ namespace Cordova_Builder
             get { return this[14] as ComboBox; }
         }
 
+        public TextBox settingGameFolder
+        {
+            get { return this[15] as TextBox; }
+        }
+
     }
 }

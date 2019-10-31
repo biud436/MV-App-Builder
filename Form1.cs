@@ -165,6 +165,7 @@ namespace Cordova_Builder
             textBoxList.Add(comboBoxFullscreen);
             textBoxList.Add(comboBoxMinSdkVersion);
             textBoxList.Add(comboBoxTargetSdkVersion);
+            textBoxList.Add(textBoxSettingGameFolder);
         }
 
         /// <summary>
@@ -293,6 +294,17 @@ namespace Cordova_Builder
             {
                 comboBoxMinSdkVersion.SelectedIndex = comboBoxMinSdkVersion.Items.IndexOf("19");
             }
+        }
+
+        private void buttonFolderBrowser_Click(object sender, EventArgs e)
+        {
+            var folderBrowserDialog = new FolderBrowserDialog();
+
+            if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxSettingGameFolder.Text = folderBrowserDialog.SelectedPath;
+            }
+
         }
     }
 }

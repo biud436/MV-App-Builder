@@ -62,6 +62,9 @@
             this.comboBoxFullscreen = new System.Windows.Forms.ComboBox();
             this.comboBoxMinSdkVersion = new System.Windows.Forms.ComboBox();
             this.comboBoxTargetSdkVersion = new System.Windows.Forms.ComboBox();
+            this.labelSettingGameFolder = new System.Windows.Forms.Label();
+            this.textBoxSettingGameFolder = new System.Windows.Forms.TextBox();
+            this.buttonOpenFileBrowser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -464,6 +467,35 @@
             this.comboBoxTargetSdkVersion.TabIndex = 32;
             this.comboBoxTargetSdkVersion.ValueMember = " ";
             // 
+            // labelSettingGameFolder
+            // 
+            this.labelSettingGameFolder.AutoSize = true;
+            this.labelSettingGameFolder.BackColor = System.Drawing.Color.Transparent;
+            this.labelSettingGameFolder.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelSettingGameFolder.Location = new System.Drawing.Point(500, 191);
+            this.labelSettingGameFolder.Name = "labelSettingGameFolder";
+            this.labelSettingGameFolder.Size = new System.Drawing.Size(85, 12);
+            this.labelSettingGameFolder.TabIndex = 33;
+            this.labelSettingGameFolder.Text = "게임 폴더 설정";
+            // 
+            // textBoxSettingGameFolder
+            // 
+            this.textBoxSettingGameFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxSettingGameFolder.Location = new System.Drawing.Point(598, 187);
+            this.textBoxSettingGameFolder.Name = "textBoxSettingGameFolder";
+            this.textBoxSettingGameFolder.Size = new System.Drawing.Size(260, 21);
+            this.textBoxSettingGameFolder.TabIndex = 34;
+            // 
+            // buttonOpenFileBrowser
+            // 
+            this.buttonOpenFileBrowser.Location = new System.Drawing.Point(863, 187);
+            this.buttonOpenFileBrowser.Name = "buttonOpenFileBrowser";
+            this.buttonOpenFileBrowser.Size = new System.Drawing.Size(65, 21);
+            this.buttonOpenFileBrowser.TabIndex = 35;
+            this.buttonOpenFileBrowser.Text = "Browse";
+            this.buttonOpenFileBrowser.UseVisualStyleBackColor = true;
+            this.buttonOpenFileBrowser.Click += new System.EventHandler(this.buttonFolderBrowser_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -471,6 +503,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(960, 601);
+            this.Controls.Add(this.buttonOpenFileBrowser);
+            this.Controls.Add(this.textBoxSettingGameFolder);
+            this.Controls.Add(this.labelSettingGameFolder);
             this.Controls.Add(this.comboBoxTargetSdkVersion);
             this.Controls.Add(this.comboBoxMinSdkVersion);
             this.Controls.Add(this.comboBoxFullscreen);
@@ -550,6 +585,9 @@
         private System.Windows.Forms.ComboBox comboBoxFullscreen;
         private System.Windows.Forms.ComboBox comboBoxMinSdkVersion;
         private System.Windows.Forms.ComboBox comboBoxTargetSdkVersion;
+        private System.Windows.Forms.Label labelSettingGameFolder;
+        private System.Windows.Forms.TextBox textBoxSettingGameFolder;
+        private System.Windows.Forms.Button buttonOpenFileBrowser;
     }
 }
 
