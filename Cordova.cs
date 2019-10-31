@@ -254,7 +254,7 @@ namespace Cordova_Builder
         /// </summary>
         private void ModifyHtmlFiles()
         {
-            var filename = @"../index.html";
+            var filename = @"www/index.html";
             var lines = System.IO.File.ReadAllLines(filename, Encoding.UTF8).ToList();
             string matchLine = null;
             bool isValid = false;
