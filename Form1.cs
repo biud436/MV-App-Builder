@@ -76,6 +76,28 @@ namespace Cordova_Builder
             } else
             {
                 AppendText("--- [ERROR] 필요한 프로그램이 설치되어있지 않습니다.");
+
+                if(!status[0] || !status[1])
+                {
+                    AppendText("자바를 설치해주세요.");
+                    AppendText("https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html");
+                }
+
+                if (!status[2])
+                {
+                    AppendText("Node.js와 cordova를 설치해야 합니다.");
+                    AppendText("https://nodejs.org/ko/download/");
+                    AppendText("https://www.npmjs.com/package/cordova");
+                }
+
+                if (!status[3])
+                {
+                    AppendText("안드로이드 SDK가 설치되어있지 않습니다");
+                    AppendText("안드로이드 SDK를 설치해주십시오.");
+                    AppendText("https://developer.android.com/studio/?hl=ko");
+                }
+
+
             }
 
         }

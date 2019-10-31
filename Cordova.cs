@@ -176,7 +176,7 @@ namespace Cordova_Builder
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("cordova create {0} {1} {2}", folderName, packageName, gameName);
 
-            HostData process = new HostData(sb.ToString(), true, "", "echo 코르도바 프로젝트를 생성하였습니다", "echo 코르도바 프로젝트 생성에 실패하였습니다");
+            HostData process = new HostData(sb.ToString(), true, "", "echo 코르도바 프로젝트를 생성하였습니다", "echo 코르도바 프로젝트 생성에 실패하였습니다. https://www.npmjs.com/package/cordova");
             Append append = AppendText;
 
             return process.Run(append);
@@ -222,6 +222,9 @@ namespace Cordova_Builder
             return this;
         }
 
+        /// <summary>
+        /// config.xml 파일에 화면 방향과 같은 추가 사항을 기록합니다.
+        /// </summary>
         private void WriteConfig()
         {
             try
