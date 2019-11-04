@@ -190,46 +190,43 @@ namespace Cordova_Builder
         {
             bool isOK = textBoxList.All(text => !String.IsNullOrEmpty(text.Text));
 
-            cordova.Make(filename =>
+            if (isOK)
             {
-                if (isOK)
+                string cmd = String.Format("keytool -genkey -v -keystore {0} -alias {1} -keyalg RSA -keysize 2048 -validity 10000 -keypass {2} -storepass {3} -dname \"CN={4},OU={5},O={6},L={7},S={8},C={9}\" 2>&1",
+                        textBoxKeyPath.Text,
+                        textBoxKeyAlias.Text,
+                        textBoxPassWord.Text,
+                        textBoxPassWord.Text,
+                        textBoxPackageName.Text,
+                        textBox_keyOU.Text,
+                        textBox_keyO.Text,
+                        textBox_keyL.Text,
+                        textBox_keyS.Text,
+                        textBox_keyC.Text
+                    );
+
+                Append append = AppendText;
+
+                Debug.WriteLine(cmd);
+
+                HostData hostData = new HostData(cmd, false, "", "키스토어 파일이 생성되었습니다", "키스토어 파일 생성에 실패하였습니다");
+
+                bool status = hostData.Run(append);
+
+                if (status)
                 {
-                    string cmd = String.Format("keytool -genkey -v -keystore {0} -alias {1} -keyalg RSA -keysize 2048 -validity 10000 -keypass {2} -storepass {3} -dname \"CN={4},OU={5},O={6},L={7},S={8},C={9}\" 2>&1",
-                            textBoxKeyPath.Text,
-                            textBoxKeyAlias.Text,
-                            textBoxPassWord.Text,
-                            textBoxPassWord.Text,
-                            textBoxPackageName.Text,
-                            textBox_keyOU.Text,
-                            textBox_keyO.Text,
-                            textBox_keyL.Text,
-                            textBox_keyS.Text,
-                            textBox_keyC.Text
-                        );
-
-                    Append append = AppendText;
-
-                    Debug.WriteLine(cmd);
-
-                    HostData hostData = new HostData(cmd, false, "", "키스토어 파일이 생성되었습니다", "키스토어 파일 생성에 실패하였습니다");
-
-                    bool status = hostData.Run(append);
-
-                    if (status)
-                    {
-                        AppendText("키스토어 파일이 생성되었습니다.");
-                    }
-                    else
-                    {
-                        AppendText("이미 파일이 존재하거나. 유효하지 않은 매개변수를 입력하였습니다. 키스토어 파일 생성에 실패하였습니다.");
-                    }
-
+                    AppendText("키스토어 파일이 생성되었습니다.");
                 }
                 else
                 {
-                    AppendText("비어있는 칸이 있어서 키스토어 파일을 생성할 수 없습니다.");
+                    AppendText("이미 파일이 존재하거나. 유효하지 않은 매개변수를 입력하였습니다. 키스토어 파일 생성에 실패하였습니다.");
                 }
-            });
+
+            }
+            else
+            {
+                AppendText("비어있는 칸이 있어서 키스토어 파일을 생성할 수 없습니다.");
+            }
 
         }
 
@@ -271,13 +268,12 @@ namespace Cordova_Builder
 
         private void buttonCreateKeyStore_Click(object sender, EventArgs e)
         {
-            CreateKeyStore();
+            
         }
 
         private void textBoxPassWord_TextChanged(object sender, EventArgs e)
         {
             bool isValid = isValidCreateKeyStoreButton();
-            buttonCreateKeyStore.Enabled = isValid;
             buttonBuild.Enabled = isValid;
         }
 

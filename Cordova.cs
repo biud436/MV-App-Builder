@@ -8,6 +8,7 @@ using System.Xml;
 
 namespace Cordova_Builder
 {
+
     public class Cordova
     {
 
@@ -51,7 +52,7 @@ namespace Cordova_Builder
             this.list = list;
         }
 
-        public void ExportBuildJson()
+        public void ExportBuildJson(string filename)
         {
             StringBuilder output = new StringBuilder();
 
@@ -79,9 +80,7 @@ namespace Cordova_Builder
             output.Append("  }\r\n");
             output.Append("}\r\n");
 
-            Make(filename => {
-                System.IO.File.WriteAllText(filename, output.ToString());
-            });
+            System.IO.File.WriteAllText(filename, output.ToString());
 
         }
 
@@ -116,16 +115,21 @@ namespace Cordova_Builder
 
         public void Build()
         {
+            // 폴더를 생성합니다
             bool isValid = Create();
 
-            if(isValid)
+            if (isValid)
             {
                 Make(filename =>
                 {
-                    AddAndroidPlatform();
-                    WriteConfig();
-                    mainForm.CreateKeyStore();
-                    ModifyHtmlFiles();
+                    AddAndroidPlatform(); // 안드로이드 플랫폼 추가합니다
+                    WriteConfig(); // config.xml 파일을 수정합니다
+                    AddPlugins(); // 플러그인을 추가합니다.
+                    mainForm.CreateKeyStore(); // 키스토어 파일을 생성합니다
+                    CopyProjectFiles(); // 파일을 복사합니다.
+                    ModifyHtmlFiles(); // HTML 파일에 cordova 바인드 용 스크립트 문을 추가합니다.
+                    ExportBuildJson(filename); // build.config 파일을 배포합니다.
+                    Flush(); // 빌드를 시작합니다.
                 });
             }
         }
@@ -163,12 +167,13 @@ namespace Cordova_Builder
 
             try
             {
-                if(System.IO.Directory.Exists(folderName))
+                if (System.IO.Directory.Exists(folderName))
                 {
                     clearFolder(folderName);
                 }
-                
-            } catch(System.Exception ex)
+
+            }
+            catch (System.Exception ex)
             {
                 AppendText(ex.Message);
             }
@@ -182,6 +187,9 @@ namespace Cordova_Builder
             return process.Run(append);
         }
 
+        /// <summary>
+        /// Adds the Android platform
+        /// </summary>
         private void AddAndroidPlatform()
         {
             HostData process = new HostData("cordova platform add android", true, "", "echo 안드로이드 프로젝트가 추가되었습니다", "echo 안드로이드 프로젝트 추가에 실패하였습니다");
@@ -192,9 +200,10 @@ namespace Cordova_Builder
 
         }
 
-        // cordova plugin add cordova-plugin-insomnia
-        // cordova build android --release --buildConfig=build.json
-
+        /// <summary>
+        /// Shows up the requiements information to Build Log
+        /// </summary>
+        /// <returns></returns>
         private bool Requirements()
         {
             var process = new HostData("cordova requirements", true, "", "echo ...", "echo ...");
@@ -244,7 +253,8 @@ namespace Cordova_Builder
 
                 AppendText("config.xml 파일을 수정하였습니다");
 
-            } catch (System.Exception ex)
+            }
+            catch (System.Exception ex)
             {
                 AppendText(ex.Message);
             }
@@ -264,7 +274,7 @@ namespace Cordova_Builder
 
             foreach (var line in lines)
             {
-                if(line.Contains("<script "))
+                if (line.Contains("<script "))
                 {
                     matchLine = line;
                     isValid = true;
@@ -272,10 +282,10 @@ namespace Cordova_Builder
                 }
             }
 
-            if(isValid)
+            if (isValid)
             {
                 var index = lines.IndexOf(matchLine);
-                if(index != -1)
+                if (index != -1)
                 {
                     lines.Insert(index, "        <script type=\"text/javascript\" src=\"cordova.js\"></script>");
                     System.IO.File.WriteAllLines(filename, lines);
@@ -286,5 +296,62 @@ namespace Cordova_Builder
 
         }
 
+        /// <summary>
+        /// 프로젝트 파일을 복사합니다.
+        /// </summary>
+        private void CopyProjectFiles()
+        {
+            string srcPath = list.settingGameFolder.Text.ToString();
+            string dstPath = ".\\www";
+
+            AppendText("게임 폴더 복사를 시작합니다 [robocopy 사용]");
+
+            if (System.IO.Directory.Exists(srcPath))
+            {
+                string robocopy = String.Format("robocopy \"{0}\" \"{1}\" /E /R:1 /W:1", srcPath, dstPath);
+
+                HostData process = new HostData(robocopy, true, "", "echo 폴더를 www 폴더로 복사하였습니다.", "echo 폴더 복사에 실패하였습니다.");
+
+                Append append = AppendText;
+
+                process.Run(append);
+            } else
+            {
+                AppendText("복사 할 폴더가 존재하지 않아 파일을 복사할 수 없습니다.");
+            }
+
+        }
+
+        /// <summary>
+        /// Add new plugin.
+        /// </summary>
+        private void AddPlugins()
+        {
+            HostData process = new HostData("cordova plugin add cordova-plugin-insomnia", true, "", "echo cordova-plugin-insomnia 플러그인이 추가되었습니다", "echo cordova-plugin-insomnia 플러그인 추가에 실패하였습니다.");
+
+            Append append = AppendText;
+
+            process.Run(append);
+        }
+
+        /// <summary>
+        /// Build current project after adding plugins
+        /// </summary>
+        private void Flush()
+        {
+            if(System.IO.File.Exists("build.json"))
+            {
+                AppendText("build.json 파일을 찾았습니다");
+            }
+
+            HostData process = new HostData("cordova build android --release --buildConfig=build.json 2>&1", true, "", "echo 빌드가 완료되었습니다.", "echo 빌드 중에 오류가 발생하였습니다.");
+
+            Append append = AppendText;
+
+            process.Run(append);
+
+        }
+
     }
+
 }

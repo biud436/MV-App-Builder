@@ -52,7 +52,6 @@
             this.textBox_keyS = new System.Windows.Forms.TextBox();
             this.textBox_keyC = new System.Windows.Forms.TextBox();
             this.label_keyC = new System.Windows.Forms.Label();
-            this.buttonCreateKeyStore = new System.Windows.Forms.Button();
             this.buttonBuild = new System.Windows.Forms.Button();
             this.labelOrientation = new System.Windows.Forms.Label();
             this.labelFullscreen = new System.Windows.Forms.Label();
@@ -305,17 +304,6 @@
             this.label_keyC.TabIndex = 21;
             this.label_keyC.Text = "국가/지역 코드";
             // 
-            // buttonCreateKeyStore
-            // 
-            this.buttonCreateKeyStore.Enabled = false;
-            this.buttonCreateKeyStore.Location = new System.Drawing.Point(234, 471);
-            this.buttonCreateKeyStore.Name = "buttonCreateKeyStore";
-            this.buttonCreateKeyStore.Size = new System.Drawing.Size(118, 33);
-            this.buttonCreateKeyStore.TabIndex = 23;
-            this.buttonCreateKeyStore.Text = "키스토어 파일 생성";
-            this.buttonCreateKeyStore.UseVisualStyleBackColor = true;
-            this.buttonCreateKeyStore.Click += new System.EventHandler(this.buttonCreateKeyStore_Click);
-            // 
             // buttonBuild
             // 
             this.buttonBuild.Enabled = false;
@@ -485,6 +473,7 @@
             this.textBoxSettingGameFolder.Name = "textBoxSettingGameFolder";
             this.textBoxSettingGameFolder.Size = new System.Drawing.Size(260, 21);
             this.textBoxSettingGameFolder.TabIndex = 34;
+            this.textBoxSettingGameFolder.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // buttonOpenFileBrowser
             // 
@@ -515,7 +504,6 @@
             this.Controls.Add(this.labelFullscreen);
             this.Controls.Add(this.labelOrientation);
             this.Controls.Add(this.buttonBuild);
-            this.Controls.Add(this.buttonCreateKeyStore);
             this.Controls.Add(this.textBox_keyC);
             this.Controls.Add(this.label_keyC);
             this.Controls.Add(this.textBox_keyS);
@@ -575,7 +563,6 @@
         private System.Windows.Forms.TextBox textBox_keyS;
         private System.Windows.Forms.TextBox textBox_keyC;
         private System.Windows.Forms.Label label_keyC;
-        private System.Windows.Forms.Button buttonCreateKeyStore;
         private System.Windows.Forms.Button buttonBuild;
         private System.Windows.Forms.Label labelOrientation;
         private System.Windows.Forms.Label labelFullscreen;
