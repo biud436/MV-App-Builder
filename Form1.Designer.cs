@@ -64,6 +64,8 @@
             this.labelSettingGameFolder = new System.Windows.Forms.Label();
             this.textBoxSettingGameFolder = new System.Windows.Forms.TextBox();
             this.buttonOpenFileBrowser = new System.Windows.Forms.Button();
+            this.labelBuildMode = new System.Windows.Forms.Label();
+            this.comboBoxBuildMode = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -195,6 +197,7 @@
             this.textBoxFolderName.Size = new System.Drawing.Size(342, 14);
             this.textBoxFolderName.TabIndex = 11;
             this.textBoxFolderName.Text = "test";
+            this.textBoxFolderName.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxPackageName
             // 
@@ -213,6 +216,7 @@
             this.textBoxGameName.Name = "textBoxGameName";
             this.textBoxGameName.Size = new System.Drawing.Size(342, 14);
             this.textBoxGameName.TabIndex = 13;
+            this.textBoxGameName.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxKeyPath
             // 
@@ -232,6 +236,7 @@
             this.textBoxKeyAlias.Size = new System.Drawing.Size(342, 14);
             this.textBoxKeyAlias.TabIndex = 15;
             this.textBoxKeyAlias.Text = "biud436";
+            this.textBoxKeyAlias.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxPassWord
             // 
@@ -307,7 +312,7 @@
             // buttonBuild
             // 
             this.buttonBuild.Enabled = false;
-            this.buttonBuild.Location = new System.Drawing.Point(358, 471);
+            this.buttonBuild.Location = new System.Drawing.Point(853, 471);
             this.buttonBuild.Name = "buttonBuild";
             this.buttonBuild.Size = new System.Drawing.Size(100, 33);
             this.buttonBuild.TabIndex = 24;
@@ -373,6 +378,7 @@
             this.comboBoxOrientation.Size = new System.Drawing.Size(331, 20);
             this.comboBoxOrientation.TabIndex = 29;
             this.comboBoxOrientation.ValueMember = " ";
+            this.comboBoxOrientation.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // comboBoxFullscreen
             // 
@@ -387,6 +393,7 @@
             this.comboBoxFullscreen.Size = new System.Drawing.Size(331, 20);
             this.comboBoxFullscreen.TabIndex = 30;
             this.comboBoxFullscreen.ValueMember = " ";
+            this.comboBoxFullscreen.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // comboBoxMinSdkVersion
             // 
@@ -420,6 +427,7 @@
             this.comboBoxMinSdkVersion.Size = new System.Drawing.Size(331, 20);
             this.comboBoxMinSdkVersion.TabIndex = 31;
             this.comboBoxMinSdkVersion.ValueMember = " ";
+            this.comboBoxMinSdkVersion.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             this.comboBoxMinSdkVersion.TextChanged += new System.EventHandler(this.comboBoxMinSdkVersion_TextChanged);
             // 
             // comboBoxTargetSdkVersion
@@ -454,6 +462,7 @@
             this.comboBoxTargetSdkVersion.Size = new System.Drawing.Size(331, 20);
             this.comboBoxTargetSdkVersion.TabIndex = 32;
             this.comboBoxTargetSdkVersion.ValueMember = " ";
+            this.comboBoxTargetSdkVersion.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // labelSettingGameFolder
             // 
@@ -485,6 +494,32 @@
             this.buttonOpenFileBrowser.UseVisualStyleBackColor = true;
             this.buttonOpenFileBrowser.Click += new System.EventHandler(this.buttonFolderBrowser_Click);
             // 
+            // labelBuildMode
+            // 
+            this.labelBuildMode.AutoSize = true;
+            this.labelBuildMode.BackColor = System.Drawing.Color.Transparent;
+            this.labelBuildMode.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelBuildMode.Location = new System.Drawing.Point(527, 234);
+            this.labelBuildMode.Name = "labelBuildMode";
+            this.labelBuildMode.Size = new System.Drawing.Size(57, 12);
+            this.labelBuildMode.TabIndex = 36;
+            this.labelBuildMode.Text = "빌드 모드";
+            // 
+            // comboBoxBuildMode
+            // 
+            this.comboBoxBuildMode.DisplayMember = " ";
+            this.comboBoxBuildMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBuildMode.FormattingEnabled = true;
+            this.comboBoxBuildMode.Items.AddRange(new object[] {
+            "release",
+            "debug"});
+            this.comboBoxBuildMode.Location = new System.Drawing.Point(598, 231);
+            this.comboBoxBuildMode.Name = "comboBoxBuildMode";
+            this.comboBoxBuildMode.Size = new System.Drawing.Size(331, 20);
+            this.comboBoxBuildMode.TabIndex = 37;
+            this.comboBoxBuildMode.ValueMember = " ";
+            this.comboBoxBuildMode.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -492,6 +527,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(960, 601);
+            this.Controls.Add(this.comboBoxBuildMode);
+            this.Controls.Add(this.labelBuildMode);
             this.Controls.Add(this.buttonOpenFileBrowser);
             this.Controls.Add(this.textBoxSettingGameFolder);
             this.Controls.Add(this.labelSettingGameFolder);
@@ -575,6 +612,8 @@
         private System.Windows.Forms.Label labelSettingGameFolder;
         private System.Windows.Forms.TextBox textBoxSettingGameFolder;
         private System.Windows.Forms.Button buttonOpenFileBrowser;
+        private System.Windows.Forms.Label labelBuildMode;
+        private System.Windows.Forms.ComboBox comboBoxBuildMode;
     }
 }
 

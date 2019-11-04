@@ -105,5 +105,10 @@ namespace Cordova_Builder
             get { return this[15] as TextBox; }
         }
 
+        public ComboBox biuldMode
+        {
+            get { return this[16] as ComboBox;  }
+        }
+
     }
 }

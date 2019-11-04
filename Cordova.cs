@@ -232,6 +232,25 @@ namespace Cordova_Builder
         }
 
         /// <summary>
+        /// 아이콘 이미지를 설정합니다.
+        /// </summary>
+        /// <param name="xmlDoc"></param>
+        /// <returns></returns>
+        private Cordova MakeIconElement(XmlDocument xmlDoc)
+        {
+            var element = xmlDoc.CreateNode(XmlNodeType.Element, "icon", null);
+
+            var srcAttr = xmlDoc.CreateAttribute("src");
+            srcAttr.Value = "www/icon/icon.png";
+
+            element.Attributes.Append(srcAttr);
+
+            xmlDoc.DocumentElement.AppendChild(element);
+
+            return this;
+        }
+
+        /// <summary>
         /// config.xml 파일에 화면 방향과 같은 추가 사항을 기록합니다.
         /// </summary>
         private void WriteConfig()
@@ -247,7 +266,8 @@ namespace Cordova_Builder
                     .CreateElement(xmlDoc, "Fullscreen", list.fullscreen.SelectedItem.ToString())
                     .CreateElement(xmlDoc, "AllowInlineMediaPlayback", "true")
                     .CreateElement(xmlDoc, "android-minSdkVersion", list.minSdkVersion.SelectedItem.ToString())
-                    .CreateElement(xmlDoc, "android-targetSdkVersion", list.targetSdkVersion.SelectedItem.ToString());
+                    .CreateElement(xmlDoc, "android-targetSdkVersion", list.targetSdkVersion.SelectedItem.ToString())
+                    .MakeIconElement(xmlDoc);
 
                 xmlDoc.Save("config.xml");
 
@@ -288,6 +308,8 @@ namespace Cordova_Builder
                 if (index != -1)
                 {
                     lines.Insert(index, "        <script type=\"text/javascript\" src=\"cordova.js\"></script>");
+                    lines.Insert(index + 1, "        <script type=\"text/javascript\">(function(){document.addEventListener(\"deviceready\",function(){varmainloopid=setInterval(mainloop,1000);functionmainloop(){window.plugins.insomnia.keepAwake();}},false);})();</script>");
+
                     System.IO.File.WriteAllLines(filename, lines);
 
                     AppendText("index.html 파일을 수정하였습니다.");
@@ -344,7 +366,10 @@ namespace Cordova_Builder
                 AppendText("build.json 파일을 찾았습니다");
             }
 
-            HostData process = new HostData("cordova build android --release --buildConfig=build.json 2>&1", true, "", "echo 빌드가 완료되었습니다.", "echo 빌드 중에 오류가 발생하였습니다.");
+            string mode = (list.biuldMode.SelectedIndex == 0) ? "--release" : "--debug";
+            string cmd = String.Format("cordova build android {0} --buildConfig=build.json 2>&1", mode);
+
+            HostData process = new HostData(cmd, true, "", "echo 빌드가 완료되었습니다.", "echo 빌드 중에 오류가 발생하였습니다.");
 
             Append append = AppendText;
 
