@@ -167,6 +167,8 @@ namespace Cordova_Builder
             textBoxList.Add(comboBoxTargetSdkVersion);
             textBoxList.Add(textBoxSettingGameFolder);
             textBoxList.Add(comboBoxBuildMode);
+
+            textBoxList.plugins = listBoxPlugins;
         }
 
         /// <summary>
@@ -177,11 +179,21 @@ namespace Cordova_Builder
             var backColor = Color.FromArgb(255, 26, 41, 62);
             var foreColor = Color.White;
 
-            foreach (var tb in textBoxList)
+            List<Control> list = new List<Control>();
+            list.AddRange(textBoxList);
+            list.Add(listBoxPlugins);
+            list.Add(textBoxSettingGameFolder);
+            list.Add(textBoxPluginName);
+
+            foreach (var tb in list)
             {
                 tb.BackColor = backColor;
                 tb.ForeColor = foreColor;
             }
+
+            //textBoxList.Remove(listBoxPlugins);
+            //textBoxList.Remove(textBoxSettingGameFolder);
+            //textBoxList.Remove(textBoxPluginName);
         }
 
         /// <summary>
@@ -189,7 +201,22 @@ namespace Cordova_Builder
         /// </summary>
         public void CreateKeyStore()
         {
-            bool isOK = textBoxList.All(text => !String.IsNullOrEmpty(text.Text));
+
+            List<string> validData = new List<string>()
+            {
+                        textBoxKeyPath.Text,
+                        textBoxKeyAlias.Text,
+                        textBoxPassWord.Text,
+                        textBoxPassWord.Text,
+                        textBoxPackageName.Text,
+                        textBox_keyOU.Text,
+                        textBox_keyO.Text,
+                        textBox_keyL.Text,
+                        textBox_keyS.Text,
+                        textBox_keyC.Text
+            };
+
+            bool isOK = validData.All(text => !String.IsNullOrEmpty(text));
 
             if (isOK)
             {
@@ -249,6 +276,8 @@ namespace Cordova_Builder
             comboBoxMinSdkVersion.SelectedIndex = comboBoxMinSdkVersion.Items.IndexOf("19");
             comboBoxTargetSdkVersion.SelectedIndex = comboBoxTargetSdkVersion.Items.IndexOf("29");
             comboBoxBuildMode.SelectedIndex = 0;
+
+            timerBackground.Start();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -275,8 +304,6 @@ namespace Cordova_Builder
 
         private void textBoxPassWord_TextChanged(object sender, EventArgs e)
         {
-            bool isValid = isValidCreateKeyStoreButton();
-            buttonBuild.Enabled = isValid;
         }
 
         private void buttonBuild_Click(object sender, EventArgs e)
@@ -303,6 +330,46 @@ namespace Cordova_Builder
                 textBoxSettingGameFolder.Text = folderBrowserDialog.SelectedPath;
             }
 
+        }
+
+        private void buttonAddPlugin_Click(object sender, EventArgs e)
+        {
+            if(textBoxPluginName.TextLength > 0)
+            {
+                listBoxPlugins.Items.Add(textBoxPluginName.Text);
+                textBoxPluginName.Text = "";
+            }
+        }
+
+        private void timerBackground_Tick(object sender, EventArgs e)
+        {
+            buttonAddPlugin.Enabled = (textBoxPluginName.TextLength > 0);
+            buttonDeletePlugin.Enabled = (listBoxPlugins.SelectedIndex != -1) && (listBoxPlugins.SelectedIndex != 0);
+
+            bool isValid = isValidCreateKeyStoreButton();
+            buttonBuild.Enabled = isValid;
+
+        }
+
+        private void buttonDeletePlugin_Click(object sender, EventArgs e)
+        {
+            int index = listBoxPlugins.SelectedIndex;
+
+            if(index >= 1 && listBoxPlugins.Items.Count > 1)
+            {
+                listBoxPlugins.Items.RemoveAt(index);
+            }
+            
+        }
+
+        private void listBoxPlugins_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = listBoxPlugins.SelectedIndex;
+
+            if (index >= 0 && listBoxPlugins.Items.Count > 0)
+            {
+                textBoxPluginName.Text = listBoxPlugins.SelectedItem.ToString();
+            }
         }
     }
 }

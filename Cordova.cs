@@ -349,11 +349,19 @@ namespace Cordova_Builder
         /// </summary>
         private void AddPlugins()
         {
-            HostData process = new HostData("cordova plugin add cordova-plugin-insomnia", true, "", "echo cordova-plugin-insomnia 플러그인이 추가되었습니다", "echo cordova-plugin-insomnia 플러그인 추가에 실패하였습니다.");
 
-            Append append = AppendText;
+            foreach(string pluginName in list.plugins.Items)
+            {
+                string command = String.Format("cordova plugin add {0}", pluginName);
+                string success = String.Format("echo {0} 플러그인이 추가되었습니다.", pluginName);
+                string fail = String.Format("echo {0} 플러그인을 추가하는 데 실패하였습니다.", pluginName);
+                HostData process = new HostData(command, true, "", success, fail);
 
-            process.Run(append);
+                Append append = AppendText;
+
+                process.Run(append);
+            }
+
         }
 
         /// <summary>

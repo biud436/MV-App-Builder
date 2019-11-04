@@ -10,20 +10,7 @@ namespace Cordova_Builder
     public class TextBoxList : List<Control>
     {
 
-        public enum Type
-        {
-            FOLDER_NAME = 0,
-            KEY_PATH,
-            GAME_NAME,
-            KEY_ALIAS,
-            PASSWORD,
-            PACKAGE_NAME,
-            KEY_OU,
-            KEY_O,
-            KEY_L,
-            KEY_S,
-            KEY_C,
-        };
+        public ListBox _plugins;
 
         public TextBox folderName
         {
@@ -108,6 +95,12 @@ namespace Cordova_Builder
         public ComboBox biuldMode
         {
             get { return this[16] as ComboBox;  }
+        }
+
+        public ListBox plugins
+        {
+            get { return _plugins; }
+            set { _plugins = value; }
         }
 
     }
