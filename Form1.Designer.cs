@@ -74,19 +74,22 @@
             this.buttonDeletePlugin = new System.Windows.Forms.Button();
             this.timerBackground = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelPlugins = new System.Windows.Forms.Panel();
             this.labelCompileSdkVersion = new System.Windows.Forms.Label();
             this.comboBoxCompileSdkVersion = new System.Windows.Forms.ComboBox();
-            this.panel1.SuspendLayout();
+            this.panelBuildLog = new System.Windows.Forms.Panel();
+            this.panelPlugins.SuspendLayout();
+            this.panelBuildLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(0, 507);
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(959, 94);
+            this.textBox1.Size = new System.Drawing.Size(960, 123);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
@@ -323,12 +326,13 @@
             // 
             // buttonBuild
             // 
+            this.buttonBuild.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.buttonBuild.Enabled = false;
             this.buttonBuild.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonBuild.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonBuild.Location = new System.Drawing.Point(842, 471);
+            this.buttonBuild.Location = new System.Drawing.Point(0, 116);
             this.buttonBuild.Name = "buttonBuild";
-            this.buttonBuild.Size = new System.Drawing.Size(100, 33);
+            this.buttonBuild.Size = new System.Drawing.Size(440, 30);
             this.buttonBuild.TabIndex = 24;
             this.buttonBuild.Text = "빌드";
             this.buttonBuild.UseVisualStyleBackColor = true;
@@ -539,7 +543,7 @@
             this.labelPluginName.AutoSize = true;
             this.labelPluginName.BackColor = System.Drawing.Color.Transparent;
             this.labelPluginName.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelPluginName.Location = new System.Drawing.Point(12, 119);
+            this.labelPluginName.Location = new System.Drawing.Point(12, 94);
             this.labelPluginName.Name = "labelPluginName";
             this.labelPluginName.Size = new System.Drawing.Size(53, 12);
             this.labelPluginName.TabIndex = 38;
@@ -547,7 +551,7 @@
             // 
             // buttonAddPlugin
             // 
-            this.buttonAddPlugin.Location = new System.Drawing.Point(328, 115);
+            this.buttonAddPlugin.Location = new System.Drawing.Point(328, 90);
             this.buttonAddPlugin.Name = "buttonAddPlugin";
             this.buttonAddPlugin.Size = new System.Drawing.Size(50, 21);
             this.buttonAddPlugin.TabIndex = 40;
@@ -558,7 +562,7 @@
             // textBoxPluginName
             // 
             this.textBoxPluginName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxPluginName.Location = new System.Drawing.Point(72, 115);
+            this.textBoxPluginName.Location = new System.Drawing.Point(72, 90);
             this.textBoxPluginName.Name = "textBoxPluginName";
             this.textBoxPluginName.Size = new System.Drawing.Size(250, 21);
             this.textBoxPluginName.TabIndex = 39;
@@ -572,13 +576,13 @@
             "cordova-plugin-insomnia"});
             this.listBoxPlugins.Location = new System.Drawing.Point(7, 26);
             this.listBoxPlugins.Name = "listBoxPlugins";
-            this.listBoxPlugins.Size = new System.Drawing.Size(424, 84);
+            this.listBoxPlugins.Size = new System.Drawing.Size(424, 60);
             this.listBoxPlugins.TabIndex = 41;
             this.listBoxPlugins.SelectedIndexChanged += new System.EventHandler(this.listBoxPlugins_SelectedIndexChanged);
             // 
             // buttonDeletePlugin
             // 
-            this.buttonDeletePlugin.Location = new System.Drawing.Point(382, 115);
+            this.buttonDeletePlugin.Location = new System.Drawing.Point(382, 90);
             this.buttonDeletePlugin.Name = "buttonDeletePlugin";
             this.buttonDeletePlugin.Size = new System.Drawing.Size(50, 21);
             this.buttonDeletePlugin.TabIndex = 42;
@@ -601,19 +605,20 @@
             this.label1.TabIndex = 43;
             this.label1.Text = "플러그인 목록";
             // 
-            // panel1
+            // panelPlugins
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.listBoxPlugins);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.labelPluginName);
-            this.panel1.Controls.Add(this.buttonDeletePlugin);
-            this.panel1.Controls.Add(this.textBoxPluginName);
-            this.panel1.Controls.Add(this.buttonAddPlugin);
-            this.panel1.Location = new System.Drawing.Point(487, 316);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(440, 146);
-            this.panel1.TabIndex = 44;
+            this.panelPlugins.BackColor = System.Drawing.Color.Transparent;
+            this.panelPlugins.Controls.Add(this.listBoxPlugins);
+            this.panelPlugins.Controls.Add(this.label1);
+            this.panelPlugins.Controls.Add(this.labelPluginName);
+            this.panelPlugins.Controls.Add(this.buttonDeletePlugin);
+            this.panelPlugins.Controls.Add(this.textBoxPluginName);
+            this.panelPlugins.Controls.Add(this.buttonAddPlugin);
+            this.panelPlugins.Controls.Add(this.buttonBuild);
+            this.panelPlugins.Location = new System.Drawing.Point(487, 316);
+            this.panelPlugins.Name = "panelPlugins";
+            this.panelPlugins.Size = new System.Drawing.Size(440, 146);
+            this.panelPlugins.TabIndex = 44;
             // 
             // labelCompileSdkVersion
             // 
@@ -659,6 +664,16 @@
             this.comboBoxCompileSdkVersion.TabIndex = 46;
             this.comboBoxCompileSdkVersion.ValueMember = " ";
             // 
+            // panelBuildLog
+            // 
+            this.panelBuildLog.BackColor = System.Drawing.Color.Transparent;
+            this.panelBuildLog.Controls.Add(this.textBox1);
+            this.panelBuildLog.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBuildLog.Location = new System.Drawing.Point(0, 478);
+            this.panelBuildLog.Name = "panelBuildLog";
+            this.panelBuildLog.Size = new System.Drawing.Size(960, 123);
+            this.panelBuildLog.TabIndex = 47;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -666,9 +681,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(960, 601);
+            this.Controls.Add(this.panelBuildLog);
             this.Controls.Add(this.comboBoxCompileSdkVersion);
             this.Controls.Add(this.labelCompileSdkVersion);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelPlugins);
             this.Controls.Add(this.comboBoxBuildMode);
             this.Controls.Add(this.labelBuildMode);
             this.Controls.Add(this.buttonOpenFileBrowser);
@@ -682,7 +698,6 @@
             this.Controls.Add(this.labelMinSdkVersion);
             this.Controls.Add(this.labelFullscreen);
             this.Controls.Add(this.labelOrientation);
-            this.Controls.Add(this.buttonBuild);
             this.Controls.Add(this.textBox_keyC);
             this.Controls.Add(this.label_keyC);
             this.Controls.Add(this.textBox_keyS);
@@ -705,15 +720,15 @@
             this.Controls.Add(this.labelGameName);
             this.Controls.Add(this.labelPackageName);
             this.Controls.Add(this.labelFolderName);
-            this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "RPG Maker MV Cordova Builder ";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelPlugins.ResumeLayout(false);
+            this.panelPlugins.PerformLayout();
+            this.panelBuildLog.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -765,9 +780,10 @@
         private System.Windows.Forms.Button buttonDeletePlugin;
         private System.Windows.Forms.Timer timerBackground;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelPlugins;
         private System.Windows.Forms.Label labelCompileSdkVersion;
         private System.Windows.Forms.ComboBox comboBoxCompileSdkVersion;
+        private System.Windows.Forms.Panel panelBuildLog;
     }
 }
 

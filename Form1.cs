@@ -75,7 +75,7 @@ namespace Cordova_Builder
         /// </summary>
         private void Prepare()
         {
-
+            CenterToScreen();
             cordova.SetMainForm(this);
 
             AppendText("--- 준비 ---");
