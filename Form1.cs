@@ -23,6 +23,8 @@ namespace Cordova_Builder
 
         private Cordova cordova = new Cordova();
 
+        private delegate void AppendTextCallback(string output);
+
         public HostData[] hostList = new HostData[]
         {
             new HostData("where java.exe", false, "", @"java.exe -version 2>&1", "echo -- 자바를 찾지 못했습니다"),
@@ -51,12 +53,20 @@ namespace Cordova_Builder
         /// This method adds a text to text box.
         /// </summary>
         /// <param name="output"></param>
+        /// 
         public void AppendText(string output)
         {
-            textBox1.AppendText(output);
-            if (!output.EndsWith(Environment.NewLine))
+            if(InvokeRequired)
             {
-                textBox1.AppendText(Environment.NewLine);
+                AppendTextCallback callback = new AppendTextCallback(AppendText);
+                Invoke(callback, output);
+            } else
+            {
+                textBox1.AppendText(output);
+                if (!output.EndsWith(Environment.NewLine))
+                {
+                    textBox1.AppendText(Environment.NewLine);
+                }
             }
         }
 
@@ -167,6 +177,7 @@ namespace Cordova_Builder
             textBoxList.Add(comboBoxTargetSdkVersion);
             textBoxList.Add(textBoxSettingGameFolder);
             textBoxList.Add(comboBoxBuildMode);
+            textBoxList.Add(comboBoxCompileSdkVersion);
 
             textBoxList.plugins = listBoxPlugins;
         }
@@ -275,6 +286,7 @@ namespace Cordova_Builder
             comboBoxFullscreen.SelectedIndex = 0;
             comboBoxMinSdkVersion.SelectedIndex = comboBoxMinSdkVersion.Items.IndexOf("19");
             comboBoxTargetSdkVersion.SelectedIndex = comboBoxTargetSdkVersion.Items.IndexOf("29");
+            comboBoxCompileSdkVersion.SelectedIndex = comboBoxCompileSdkVersion.Items.IndexOf("29");
             comboBoxBuildMode.SelectedIndex = 0;
 
             timerBackground.Start();

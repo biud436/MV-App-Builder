@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -115,23 +116,29 @@ namespace Cordova_Builder
 
         public void Build()
         {
-            // 폴더를 생성합니다
-            bool isValid = Create();
 
-            if (isValid)
+            Thread worker = new Thread(new ThreadStart(() =>
             {
-                Make(filename =>
+                // 폴더를 생성합니다
+                bool isValid = Create();
+
+                if (isValid)
                 {
-                    AddAndroidPlatform(); // 안드로이드 플랫폼 추가합니다
-                    WriteConfig(); // config.xml 파일을 수정합니다
-                    AddPlugins(); // 플러그인을 추가합니다.
-                    mainForm.CreateKeyStore(); // 키스토어 파일을 생성합니다
-                    CopyProjectFiles(); // 파일을 복사합니다.
-                    ModifyHtmlFiles(); // HTML 파일에 cordova 바인드 용 스크립트 문을 추가합니다.
-                    ExportBuildJson(filename); // build.config 파일을 배포합니다.
-                    Flush(); // 빌드를 시작합니다.
-                });
-            }
+                    Make(filename =>
+                    {
+                        AddAndroidPlatform(); // 안드로이드 플랫폼 추가합니다
+                        WriteConfig(); // config.xml 파일을 수정합니다
+                        AddPlugins(); // 플러그인을 추가합니다.
+                        mainForm.CreateKeyStore(); // 키스토어 파일을 생성합니다
+                        CopyProjectFiles(); // 파일을 복사합니다.
+                        ModifyHtmlFiles(); // HTML 파일에 cordova 바인드 용 스크립트 문을 추가합니다.
+                        ExportBuildJson(filename); // build.config 파일을 배포합니다.
+                        Flush(); // 빌드를 시작합니다.
+                    });
+                }
+            }));
+
+            worker.Start();
         }
 
         public void AppendText(string output)
@@ -267,6 +274,7 @@ namespace Cordova_Builder
                     .CreateElement(xmlDoc, "AllowInlineMediaPlayback", "true")
                     .CreateElement(xmlDoc, "android-minSdkVersion", list.minSdkVersion.SelectedItem.ToString())
                     .CreateElement(xmlDoc, "android-targetSdkVersion", list.targetSdkVersion.SelectedItem.ToString())
+                    .CreateElement(xmlDoc, "android-compileSdkVersion", list.compileSdkVersion.SelectedItem.ToString())
                     .MakeIconElement(xmlDoc);
 
                 xmlDoc.Save("config.xml");

@@ -73,6 +73,11 @@
             this.listBoxPlugins = new System.Windows.Forms.ListBox();
             this.buttonDeletePlugin = new System.Windows.Forms.Button();
             this.timerBackground = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelCompileSdkVersion = new System.Windows.Forms.Label();
+            this.comboBoxCompileSdkVersion = new System.Windows.Forms.ComboBox();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -478,7 +483,7 @@
             this.labelSettingGameFolder.AutoSize = true;
             this.labelSettingGameFolder.BackColor = System.Drawing.Color.Transparent;
             this.labelSettingGameFolder.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelSettingGameFolder.Location = new System.Drawing.Point(500, 191);
+            this.labelSettingGameFolder.Location = new System.Drawing.Point(499, 234);
             this.labelSettingGameFolder.Name = "labelSettingGameFolder";
             this.labelSettingGameFolder.Size = new System.Drawing.Size(85, 12);
             this.labelSettingGameFolder.TabIndex = 33;
@@ -486,16 +491,16 @@
             // 
             // textBoxSettingGameFolder
             // 
-            this.textBoxSettingGameFolder.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSettingGameFolder.Location = new System.Drawing.Point(598, 190);
+            this.textBoxSettingGameFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxSettingGameFolder.Location = new System.Drawing.Point(599, 229);
             this.textBoxSettingGameFolder.Name = "textBoxSettingGameFolder";
-            this.textBoxSettingGameFolder.Size = new System.Drawing.Size(260, 14);
+            this.textBoxSettingGameFolder.Size = new System.Drawing.Size(260, 21);
             this.textBoxSettingGameFolder.TabIndex = 34;
             this.textBoxSettingGameFolder.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // buttonOpenFileBrowser
             // 
-            this.buttonOpenFileBrowser.Location = new System.Drawing.Point(863, 187);
+            this.buttonOpenFileBrowser.Location = new System.Drawing.Point(863, 229);
             this.buttonOpenFileBrowser.Name = "buttonOpenFileBrowser";
             this.buttonOpenFileBrowser.Size = new System.Drawing.Size(65, 21);
             this.buttonOpenFileBrowser.TabIndex = 35;
@@ -508,7 +513,7 @@
             this.labelBuildMode.AutoSize = true;
             this.labelBuildMode.BackColor = System.Drawing.Color.Transparent;
             this.labelBuildMode.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelBuildMode.Location = new System.Drawing.Point(527, 234);
+            this.labelBuildMode.Location = new System.Drawing.Point(526, 277);
             this.labelBuildMode.Name = "labelBuildMode";
             this.labelBuildMode.Size = new System.Drawing.Size(57, 12);
             this.labelBuildMode.TabIndex = 36;
@@ -522,7 +527,7 @@
             this.comboBoxBuildMode.Items.AddRange(new object[] {
             "release",
             "debug"});
-            this.comboBoxBuildMode.Location = new System.Drawing.Point(598, 231);
+            this.comboBoxBuildMode.Location = new System.Drawing.Point(597, 274);
             this.comboBoxBuildMode.Name = "comboBoxBuildMode";
             this.comboBoxBuildMode.Size = new System.Drawing.Size(331, 20);
             this.comboBoxBuildMode.TabIndex = 37;
@@ -534,7 +539,7 @@
             this.labelPluginName.AutoSize = true;
             this.labelPluginName.BackColor = System.Drawing.Color.Transparent;
             this.labelPluginName.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelPluginName.Location = new System.Drawing.Point(532, 277);
+            this.labelPluginName.Location = new System.Drawing.Point(12, 119);
             this.labelPluginName.Name = "labelPluginName";
             this.labelPluginName.Size = new System.Drawing.Size(53, 12);
             this.labelPluginName.TabIndex = 38;
@@ -542,20 +547,20 @@
             // 
             // buttonAddPlugin
             // 
-            this.buttonAddPlugin.Location = new System.Drawing.Point(806, 273);
+            this.buttonAddPlugin.Location = new System.Drawing.Point(328, 115);
             this.buttonAddPlugin.Name = "buttonAddPlugin";
-            this.buttonAddPlugin.Size = new System.Drawing.Size(53, 21);
+            this.buttonAddPlugin.Size = new System.Drawing.Size(50, 21);
             this.buttonAddPlugin.TabIndex = 40;
-            this.buttonAddPlugin.Text = "추가";
+            this.buttonAddPlugin.Text = "+";
             this.buttonAddPlugin.UseVisualStyleBackColor = true;
             this.buttonAddPlugin.Click += new System.EventHandler(this.buttonAddPlugin_Click);
             // 
             // textBoxPluginName
             // 
-            this.textBoxPluginName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPluginName.Location = new System.Drawing.Point(598, 276);
+            this.textBoxPluginName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxPluginName.Location = new System.Drawing.Point(72, 115);
             this.textBoxPluginName.Name = "textBoxPluginName";
-            this.textBoxPluginName.Size = new System.Drawing.Size(203, 14);
+            this.textBoxPluginName.Size = new System.Drawing.Size(250, 21);
             this.textBoxPluginName.TabIndex = 39;
             // 
             // listBoxPlugins
@@ -565,25 +570,94 @@
             this.listBoxPlugins.ItemHeight = 12;
             this.listBoxPlugins.Items.AddRange(new object[] {
             "cordova-plugin-insomnia"});
-            this.listBoxPlugins.Location = new System.Drawing.Point(489, 316);
+            this.listBoxPlugins.Location = new System.Drawing.Point(7, 26);
             this.listBoxPlugins.Name = "listBoxPlugins";
-            this.listBoxPlugins.Size = new System.Drawing.Size(439, 144);
+            this.listBoxPlugins.Size = new System.Drawing.Size(424, 84);
             this.listBoxPlugins.TabIndex = 41;
             this.listBoxPlugins.SelectedIndexChanged += new System.EventHandler(this.listBoxPlugins_SelectedIndexChanged);
             // 
             // buttonDeletePlugin
             // 
-            this.buttonDeletePlugin.Location = new System.Drawing.Point(864, 273);
+            this.buttonDeletePlugin.Location = new System.Drawing.Point(382, 115);
             this.buttonDeletePlugin.Name = "buttonDeletePlugin";
-            this.buttonDeletePlugin.Size = new System.Drawing.Size(65, 21);
+            this.buttonDeletePlugin.Size = new System.Drawing.Size(50, 21);
             this.buttonDeletePlugin.TabIndex = 42;
-            this.buttonDeletePlugin.Text = "삭제";
+            this.buttonDeletePlugin.Text = "-";
             this.buttonDeletePlugin.UseVisualStyleBackColor = true;
             this.buttonDeletePlugin.Click += new System.EventHandler(this.buttonDeletePlugin_Click);
             // 
             // timerBackground
             // 
             this.timerBackground.Tick += new System.EventHandler(this.timerBackground_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 12);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "플러그인 목록";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.listBoxPlugins);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.labelPluginName);
+            this.panel1.Controls.Add(this.buttonDeletePlugin);
+            this.panel1.Controls.Add(this.textBoxPluginName);
+            this.panel1.Controls.Add(this.buttonAddPlugin);
+            this.panel1.Location = new System.Drawing.Point(487, 316);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(440, 146);
+            this.panel1.TabIndex = 44;
+            // 
+            // labelCompileSdkVersion
+            // 
+            this.labelCompileSdkVersion.AutoSize = true;
+            this.labelCompileSdkVersion.BackColor = System.Drawing.Color.Transparent;
+            this.labelCompileSdkVersion.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelCompileSdkVersion.Location = new System.Drawing.Point(492, 191);
+            this.labelCompileSdkVersion.Name = "labelCompileSdkVersion";
+            this.labelCompileSdkVersion.Size = new System.Drawing.Size(92, 12);
+            this.labelCompileSdkVersion.TabIndex = 45;
+            this.labelCompileSdkVersion.Text = "컴파일 API 버전";
+            // 
+            // comboBoxCompileSdkVersion
+            // 
+            this.comboBoxCompileSdkVersion.DisplayMember = " ";
+            this.comboBoxCompileSdkVersion.FormattingEnabled = true;
+            this.comboBoxCompileSdkVersion.Items.AddRange(new object[] {
+            "29",
+            "28",
+            "27",
+            "26",
+            "25",
+            "24",
+            "23",
+            "22",
+            "21",
+            "20",
+            "19",
+            "18",
+            "17",
+            "16",
+            "15",
+            "14",
+            "13",
+            "12",
+            "11",
+            "10",
+            "9",
+            "8"});
+            this.comboBoxCompileSdkVersion.Location = new System.Drawing.Point(599, 187);
+            this.comboBoxCompileSdkVersion.Name = "comboBoxCompileSdkVersion";
+            this.comboBoxCompileSdkVersion.Size = new System.Drawing.Size(331, 20);
+            this.comboBoxCompileSdkVersion.TabIndex = 46;
+            this.comboBoxCompileSdkVersion.ValueMember = " ";
             // 
             // Form1
             // 
@@ -592,11 +666,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(960, 601);
-            this.Controls.Add(this.buttonDeletePlugin);
-            this.Controls.Add(this.listBoxPlugins);
-            this.Controls.Add(this.buttonAddPlugin);
-            this.Controls.Add(this.textBoxPluginName);
-            this.Controls.Add(this.labelPluginName);
+            this.Controls.Add(this.comboBoxCompileSdkVersion);
+            this.Controls.Add(this.labelCompileSdkVersion);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.comboBoxBuildMode);
             this.Controls.Add(this.labelBuildMode);
             this.Controls.Add(this.buttonOpenFileBrowser);
@@ -640,6 +712,8 @@
             this.Name = "Form1";
             this.Text = "RPG Maker MV Cordova Builder ";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -690,6 +764,10 @@
         private System.Windows.Forms.ListBox listBoxPlugins;
         private System.Windows.Forms.Button buttonDeletePlugin;
         private System.Windows.Forms.Timer timerBackground;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelCompileSdkVersion;
+        private System.Windows.Forms.ComboBox comboBoxCompileSdkVersion;
     }
 }
 

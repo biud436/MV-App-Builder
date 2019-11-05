@@ -97,6 +97,11 @@ namespace Cordova_Builder
             get { return this[16] as ComboBox;  }
         }
 
+        public ComboBox compileSdkVersion
+        {
+            get { return this[17] as ComboBox; }
+        }
+
         public ListBox plugins
         {
             get { return _plugins; }

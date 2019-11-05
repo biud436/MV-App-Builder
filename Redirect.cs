@@ -53,8 +53,6 @@ namespace Cordova_Builder
 
             bool isNull = false;
 
-            //ret.Add(process.StandardOutput.ReadToEnd());
-
             var reader = process.StandardOutput;
             while (!reader.EndOfStream)
             {
@@ -65,13 +63,14 @@ namespace Cordova_Builder
                     break;
                 }
 
-                AppendText(nextLine);            
+                Task.Delay(10);
+                AppendText(nextLine);
 
             }
 
             isNull = String.IsNullOrEmpty(process.StandardError.ReadToEnd() ?? "");
 
-            process.WaitForExit();
+            //process.WaitForExit();
             process.Close();
 
             return (isNull != false);
@@ -102,7 +101,6 @@ namespace Cordova_Builder
 
         public bool Run(Append Append)
         {
-
             bool isSuccessMessage = Output(Append);
 
             //bool isSuccessMessage = true;
@@ -116,40 +114,6 @@ namespace Cordova_Builder
                 outputLine(fail, (msg) => { Append(msg); });
                 return false;
             }
-
-            //var ret = Output();
-            //string temp = "";
-
-            //// 실패 시 출력할 메시지
-            //if (!String.IsNullOrEmpty(ret[1]))
-            //{
-            //    temp = name;
-
-            //    name = fail;
-
-            //    Append(Output()[0]);
-
-            //    name = temp;
-
-            //    return false;
-            //}
-
-            //if (isValid)
-            //{
-            //    Append(ret[0]);
-            //}
-
-            //// 성공 시 출력할 메시지
-            //temp = name;
-            //name = success;
-
-            //string routput = Output()[0];
-
-            //Append(routput);
-
-            //name = temp;
-
-            //return true;
 
         }
 
