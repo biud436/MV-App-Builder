@@ -5,8 +5,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+using System.Reflection;
+using System.Resources;
 using System.Xml;
 
+[assembly: NeutralResourcesLanguageAttribute("en-US")]
 namespace Cordova_Builder
 {
 
@@ -17,10 +21,12 @@ namespace Cordova_Builder
         private string currentDirectory;
         private List<string> buildConfig = new List<string>();
         private TextBoxList list;
+        private ResourceManager rm;
 
         public Cordova()
         {
             currentDirectory = System.IO.Directory.GetCurrentDirectory();
+            rm = new ResourceManager("ko-KR", Assembly.GetExecutingAssembly());
         }
 
         /// <summary>
@@ -187,10 +193,11 @@ namespace Cordova_Builder
 
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("cordova create {0} {1} {2}", folderName, packageName, gameName);
-
-            HostData process = new HostData(sb.ToString(), true, "", "echo 코르도바 프로젝트를 생성하였습니다", "echo 코르도바 프로젝트 생성에 실패하였습니다. https://www.npmjs.com/package/cordova");
+            HostData process = new HostData(sb.ToString(), true, "",
+                rm.GetString("ProjectCreatedSuccessfully", CultureInfo.CurrentUICulture),
+                rm.GetString("CreateProjectFailed", CultureInfo.CurrentUICulture));
             Append append = AppendText;
-
+            
             return process.Run(append);
         }
 

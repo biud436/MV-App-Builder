@@ -6817,4 +6817,10 @@
         //////////////////////////////////8=
 </value>
   </data>
+  <data name="CreateProjectFailed" xml:space="preserve">
+    <value>echo Create Project Failed : https://www.npmjs.com/package/cordova</value>
+  </data>
+  <data name="ProjectCreatedSuccessfully" xml:space="preserve">
+    <value>echo Project created successfully!</value>
+  </data>
 </root>
