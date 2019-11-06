@@ -316,7 +316,7 @@ namespace Cordova_Builder
                 if (index != -1)
                 {
                     lines.Insert(index, "        <script type=\"text/javascript\" src=\"cordova.js\"></script>");
-                    lines.Insert(index + 1, "        <script type=\"text/javascript\">(function(){document.addEventListener(\"deviceready\",function(){varmainloopid=setInterval(mainloop,1000);functionmainloop(){window.plugins.insomnia.keepAwake();}},false);})();</script>");
+                    lines.Insert(index + 1, "        <script type=\"text/javascript\">(function(){document.addEventListener(\"deviceready\",function(){var mainloopid = setInterval(mainloop,1000); function mainloop(){ window.plugins.insomnia.keepAwake();} },false);})();</script>");
 
                     System.IO.File.WriteAllLines(filename, lines);
 
