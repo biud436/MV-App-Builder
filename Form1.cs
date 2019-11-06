@@ -292,6 +292,77 @@ namespace Cordova_Builder
             timerBackground.Start();
         }
 
+        /// <summary>
+        /// 코르도바 플러그인을 자동으로 취득합니다.
+        /// </summary>
+        /// <param name="mainPath"></param>
+        public void ReadCordovaPlugins(string mainPath)
+        {
+            System.Threading.Thread worker = new System.Threading.Thread(() =>
+            {
+                string path = System.IO.Path.Combine(mainPath, "js", "plugins");
+
+                if (System.IO.Directory.Exists(path))
+                {
+                    System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(path);
+
+                    foreach (System.IO.FileInfo fi in dir.GetFiles())
+                    {
+                        using (System.IO.StreamReader sr = fi.OpenText())
+                        {
+                            var s = "";
+                            int lineCount = 0;
+                            const int maxLine = 50;
+                            string matchLine = "";
+                            string matchString = "@cordova_plugin ";
+
+                            while ((s = sr.ReadLine()) != null)
+                            {
+                                lineCount++;
+
+                                if (s.Contains(matchString))
+                                {
+                                    matchLine = s;
+                                    break;
+                                }
+
+                                if (lineCount >= maxLine)
+                                {
+                                    break;
+                                }
+                            }
+
+                            if (!String.IsNullOrEmpty(matchLine))
+                            {
+                                int index = matchLine.IndexOf(matchString);
+
+                                string pluginName = matchLine.Substring(index + matchString.Length).Trim();
+
+                                if (InvokeRequired)
+                                {
+                                    Action action = () => {
+                                        listBoxPlugins.Items.Add(pluginName);
+                                    };
+
+                                    Invoke(action);
+                                }
+                                else
+                                {
+                                    listBoxPlugins.Items.Add(pluginName);
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+
+            });
+
+            worker.Start();
+
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             
@@ -340,6 +411,7 @@ namespace Cordova_Builder
             if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 textBoxSettingGameFolder.Text = folderBrowserDialog.SelectedPath;
+                ReadCordovaPlugins(folderBrowserDialog.SelectedPath);
             }
 
         }
