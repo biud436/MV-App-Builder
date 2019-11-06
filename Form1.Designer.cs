@@ -78,309 +78,211 @@
             this.labelCompileSdkVersion = new System.Windows.Forms.Label();
             this.comboBoxCompileSdkVersion = new System.Windows.Forms.ComboBox();
             this.panelBuildLog = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panelPlugins.SuspendLayout();
             this.panelBuildLog.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(960, 123);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // labelFolderName
             // 
-            this.labelFolderName.AutoSize = true;
+            resources.ApplyResources(this.labelFolderName, "labelFolderName");
             this.labelFolderName.BackColor = System.Drawing.Color.Transparent;
             this.labelFolderName.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelFolderName.Location = new System.Drawing.Point(70, 24);
             this.labelFolderName.Name = "labelFolderName";
-            this.labelFolderName.Size = new System.Drawing.Size(41, 12);
-            this.labelFolderName.TabIndex = 1;
-            this.labelFolderName.Text = "폴더명";
             // 
             // labelPackageName
             // 
-            this.labelPackageName.AutoSize = true;
+            resources.ApplyResources(this.labelPackageName, "labelPackageName");
             this.labelPackageName.BackColor = System.Drawing.Color.Transparent;
             this.labelPackageName.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelPackageName.Location = new System.Drawing.Point(54, 65);
             this.labelPackageName.Name = "labelPackageName";
-            this.labelPackageName.Size = new System.Drawing.Size(57, 12);
-            this.labelPackageName.TabIndex = 2;
-            this.labelPackageName.Text = "패키지 명";
             // 
             // labelGameName
             // 
-            this.labelGameName.AutoSize = true;
+            resources.ApplyResources(this.labelGameName, "labelGameName");
             this.labelGameName.BackColor = System.Drawing.Color.Transparent;
             this.labelGameName.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelGameName.Location = new System.Drawing.Point(70, 106);
             this.labelGameName.Name = "labelGameName";
-            this.labelGameName.Size = new System.Drawing.Size(41, 12);
-            this.labelGameName.TabIndex = 3;
-            this.labelGameName.Text = "게임명";
             // 
             // labelKeyPath
             // 
-            this.labelKeyPath.AutoSize = true;
+            resources.ApplyResources(this.labelKeyPath, "labelKeyPath");
             this.labelKeyPath.BackColor = System.Drawing.Color.Transparent;
             this.labelKeyPath.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelKeyPath.Location = new System.Drawing.Point(15, 149);
             this.labelKeyPath.Name = "labelKeyPath";
-            this.labelKeyPath.Size = new System.Drawing.Size(97, 12);
-            this.labelKeyPath.TabIndex = 4;
-            this.labelKeyPath.Text = "키스토어 파일 명";
             // 
             // labelKeyAlias
             // 
-            this.labelKeyAlias.AutoSize = true;
+            resources.ApplyResources(this.labelKeyAlias, "labelKeyAlias");
             this.labelKeyAlias.BackColor = System.Drawing.Color.Transparent;
             this.labelKeyAlias.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelKeyAlias.Location = new System.Drawing.Point(30, 190);
             this.labelKeyAlias.Name = "labelKeyAlias";
-            this.labelKeyAlias.Size = new System.Drawing.Size(81, 12);
-            this.labelKeyAlias.TabIndex = 5;
-            this.labelKeyAlias.Text = "키스토어 별칭";
             // 
             // labelKeyPassword
             // 
-            this.labelKeyPassword.AutoSize = true;
+            resources.ApplyResources(this.labelKeyPassword, "labelKeyPassword");
             this.labelKeyPassword.BackColor = System.Drawing.Color.Transparent;
             this.labelKeyPassword.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelKeyPassword.Location = new System.Drawing.Point(9, 234);
             this.labelKeyPassword.Name = "labelKeyPassword";
-            this.labelKeyPassword.Size = new System.Drawing.Size(105, 12);
-            this.labelKeyPassword.TabIndex = 6;
-            this.labelKeyPassword.Text = "키스토어 비밀번호";
             // 
             // label_keyOU
             // 
-            this.label_keyOU.AutoSize = true;
+            resources.ApplyResources(this.label_keyOU, "label_keyOU");
             this.label_keyOU.BackColor = System.Drawing.Color.Transparent;
             this.label_keyOU.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_keyOU.Location = new System.Drawing.Point(38, 276);
             this.label_keyOU.Name = "label_keyOU";
-            this.label_keyOU.Size = new System.Drawing.Size(73, 12);
-            this.label_keyOU.TabIndex = 7;
-            this.label_keyOU.Text = "조직 단위 명";
             // 
             // label_keyO
             // 
-            this.label_keyO.AutoSize = true;
+            resources.ApplyResources(this.label_keyO, "label_keyO");
             this.label_keyO.BackColor = System.Drawing.Color.Transparent;
             this.label_keyO.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_keyO.Location = new System.Drawing.Point(54, 318);
             this.label_keyO.Name = "label_keyO";
-            this.label_keyO.Size = new System.Drawing.Size(57, 12);
-            this.label_keyO.TabIndex = 8;
-            this.label_keyO.Text = "조직 이름";
             // 
             // label_keyL
             // 
-            this.label_keyL.AutoSize = true;
+            resources.ApplyResources(this.label_keyL, "label_keyL");
             this.label_keyL.BackColor = System.Drawing.Color.Transparent;
             this.label_keyL.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_keyL.Location = new System.Drawing.Point(24, 362);
             this.label_keyL.Name = "label_keyL";
-            this.label_keyL.Size = new System.Drawing.Size(87, 12);
-            this.label_keyL.TabIndex = 9;
-            this.label_keyL.Text = "구/군/시/ 이름";
             // 
             // label_keyS
             // 
-            this.label_keyS.AutoSize = true;
+            resources.ApplyResources(this.label_keyS, "label_keyS");
             this.label_keyS.BackColor = System.Drawing.Color.Transparent;
             this.label_keyS.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_keyS.Location = new System.Drawing.Point(48, 403);
             this.label_keyS.Name = "label_keyS";
-            this.label_keyS.Size = new System.Drawing.Size(63, 12);
-            this.label_keyS.TabIndex = 10;
-            this.label_keyS.Text = "시/도 이름";
             // 
             // textBoxFolderName
             // 
             this.textBoxFolderName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxFolderName.Location = new System.Drawing.Point(119, 22);
+            resources.ApplyResources(this.textBoxFolderName, "textBoxFolderName");
             this.textBoxFolderName.Name = "textBoxFolderName";
-            this.textBoxFolderName.Size = new System.Drawing.Size(342, 14);
-            this.textBoxFolderName.TabIndex = 11;
-            this.textBoxFolderName.Text = "test";
             this.textBoxFolderName.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxPackageName
             // 
             this.textBoxPackageName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPackageName.Location = new System.Drawing.Point(119, 63);
+            resources.ApplyResources(this.textBoxPackageName, "textBoxPackageName");
             this.textBoxPackageName.Name = "textBoxPackageName";
-            this.textBoxPackageName.Size = new System.Drawing.Size(342, 14);
-            this.textBoxPackageName.TabIndex = 12;
-            this.textBoxPackageName.Text = "me.biud436.testgame";
             this.textBoxPackageName.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxGameName
             // 
             this.textBoxGameName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxGameName.Location = new System.Drawing.Point(118, 105);
+            resources.ApplyResources(this.textBoxGameName, "textBoxGameName");
             this.textBoxGameName.Name = "textBoxGameName";
-            this.textBoxGameName.Size = new System.Drawing.Size(342, 14);
-            this.textBoxGameName.TabIndex = 13;
             this.textBoxGameName.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxKeyPath
             // 
             this.textBoxKeyPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxKeyPath.Location = new System.Drawing.Point(117, 146);
+            resources.ApplyResources(this.textBoxKeyPath, "textBoxKeyPath");
             this.textBoxKeyPath.Name = "textBoxKeyPath";
-            this.textBoxKeyPath.Size = new System.Drawing.Size(342, 14);
-            this.textBoxKeyPath.TabIndex = 14;
-            this.textBoxKeyPath.Text = "android.keystore";
             this.textBoxKeyPath.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxKeyAlias
             // 
             this.textBoxKeyAlias.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxKeyAlias.Location = new System.Drawing.Point(117, 189);
+            resources.ApplyResources(this.textBoxKeyAlias, "textBoxKeyAlias");
             this.textBoxKeyAlias.Name = "textBoxKeyAlias";
-            this.textBoxKeyAlias.Size = new System.Drawing.Size(342, 14);
-            this.textBoxKeyAlias.TabIndex = 15;
-            this.textBoxKeyAlias.Text = "biud436";
             this.textBoxKeyAlias.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxPassWord
             // 
             this.textBoxPassWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPassWord.Location = new System.Drawing.Point(117, 232);
+            resources.ApplyResources(this.textBoxPassWord, "textBoxPassWord");
             this.textBoxPassWord.Name = "textBoxPassWord";
-            this.textBoxPassWord.PasswordChar = '*';
-            this.textBoxPassWord.Size = new System.Drawing.Size(342, 14);
-            this.textBoxPassWord.TabIndex = 16;
             this.textBoxPassWord.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyOU
             // 
             this.textBox_keyOU.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_keyOU.Location = new System.Drawing.Point(117, 275);
+            resources.ApplyResources(this.textBox_keyOU, "textBox_keyOU");
             this.textBox_keyOU.Name = "textBox_keyOU";
-            this.textBox_keyOU.Size = new System.Drawing.Size(342, 14);
-            this.textBox_keyOU.TabIndex = 17;
-            this.textBox_keyOU.Text = "biud436";
             this.textBox_keyOU.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyO
             // 
             this.textBox_keyO.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_keyO.Location = new System.Drawing.Point(117, 318);
+            resources.ApplyResources(this.textBox_keyO, "textBox_keyO");
             this.textBox_keyO.Name = "textBox_keyO";
-            this.textBox_keyO.Size = new System.Drawing.Size(342, 14);
-            this.textBox_keyO.TabIndex = 18;
-            this.textBox_keyO.Text = "biud436";
             this.textBox_keyO.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyL
             // 
             this.textBox_keyL.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_keyL.Location = new System.Drawing.Point(117, 360);
+            resources.ApplyResources(this.textBox_keyL, "textBox_keyL");
             this.textBox_keyL.Name = "textBox_keyL";
-            this.textBox_keyL.Size = new System.Drawing.Size(342, 14);
-            this.textBox_keyL.TabIndex = 19;
-            this.textBox_keyL.Text = "Siheung";
             this.textBox_keyL.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyS
             // 
             this.textBox_keyS.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_keyS.Location = new System.Drawing.Point(116, 402);
+            resources.ApplyResources(this.textBox_keyS, "textBox_keyS");
             this.textBox_keyS.Name = "textBox_keyS";
-            this.textBox_keyS.Size = new System.Drawing.Size(342, 14);
-            this.textBox_keyS.TabIndex = 20;
-            this.textBox_keyS.Text = "Gyeonggi";
             this.textBox_keyS.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyC
             // 
             this.textBox_keyC.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_keyC.Location = new System.Drawing.Point(116, 445);
+            resources.ApplyResources(this.textBox_keyC, "textBox_keyC");
             this.textBox_keyC.Name = "textBox_keyC";
-            this.textBox_keyC.Size = new System.Drawing.Size(342, 14);
-            this.textBox_keyC.TabIndex = 22;
-            this.textBox_keyC.Text = "ko";
             this.textBox_keyC.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // label_keyC
             // 
-            this.label_keyC.AutoSize = true;
+            resources.ApplyResources(this.label_keyC, "label_keyC");
             this.label_keyC.BackColor = System.Drawing.Color.Transparent;
             this.label_keyC.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_keyC.Location = new System.Drawing.Point(24, 445);
             this.label_keyC.Name = "label_keyC";
-            this.label_keyC.Size = new System.Drawing.Size(87, 12);
-            this.label_keyC.TabIndex = 21;
-            this.label_keyC.Text = "국가/지역 코드";
             // 
             // buttonBuild
             // 
-            this.buttonBuild.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonBuild.Enabled = false;
-            this.buttonBuild.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.buttonBuild, "buttonBuild");
             this.buttonBuild.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonBuild.Location = new System.Drawing.Point(0, 116);
             this.buttonBuild.Name = "buttonBuild";
-            this.buttonBuild.Size = new System.Drawing.Size(440, 30);
-            this.buttonBuild.TabIndex = 24;
-            this.buttonBuild.Text = "빌드";
             this.buttonBuild.UseVisualStyleBackColor = true;
             this.buttonBuild.Click += new System.EventHandler(this.buttonBuild_Click);
             // 
             // labelOrientation
             // 
-            this.labelOrientation.AutoSize = true;
+            resources.ApplyResources(this.labelOrientation, "labelOrientation");
             this.labelOrientation.BackColor = System.Drawing.Color.Transparent;
             this.labelOrientation.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelOrientation.Location = new System.Drawing.Point(527, 22);
             this.labelOrientation.Name = "labelOrientation";
-            this.labelOrientation.Size = new System.Drawing.Size(57, 12);
-            this.labelOrientation.TabIndex = 25;
-            this.labelOrientation.Text = "화면 방향";
             // 
             // labelFullscreen
             // 
-            this.labelFullscreen.AutoSize = true;
+            resources.ApplyResources(this.labelFullscreen, "labelFullscreen");
             this.labelFullscreen.BackColor = System.Drawing.Color.Transparent;
             this.labelFullscreen.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelFullscreen.Location = new System.Drawing.Point(527, 63);
             this.labelFullscreen.Name = "labelFullscreen";
-            this.labelFullscreen.Size = new System.Drawing.Size(57, 12);
-            this.labelFullscreen.TabIndex = 26;
-            this.labelFullscreen.Text = "전체 화면";
             // 
             // labelMinSdkVersion
             // 
-            this.labelMinSdkVersion.AutoSize = true;
+            resources.ApplyResources(this.labelMinSdkVersion, "labelMinSdkVersion");
             this.labelMinSdkVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelMinSdkVersion.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelMinSdkVersion.Location = new System.Drawing.Point(504, 107);
             this.labelMinSdkVersion.Name = "labelMinSdkVersion";
-            this.labelMinSdkVersion.Size = new System.Drawing.Size(80, 12);
-            this.labelMinSdkVersion.TabIndex = 27;
-            this.labelMinSdkVersion.Text = "최소 API 버전";
             // 
             // labelTargetSdkVersion
             // 
-            this.labelTargetSdkVersion.AutoSize = true;
+            resources.ApplyResources(this.labelTargetSdkVersion, "labelTargetSdkVersion");
             this.labelTargetSdkVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelTargetSdkVersion.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelTargetSdkVersion.Location = new System.Drawing.Point(504, 148);
             this.labelTargetSdkVersion.Name = "labelTargetSdkVersion";
-            this.labelTargetSdkVersion.Size = new System.Drawing.Size(80, 12);
-            this.labelTargetSdkVersion.TabIndex = 28;
-            this.labelTargetSdkVersion.Text = "타겟 API 버전";
             // 
             // comboBoxOrientation
             // 
@@ -388,13 +290,11 @@
             this.comboBoxOrientation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOrientation.FormattingEnabled = true;
             this.comboBoxOrientation.Items.AddRange(new object[] {
-            "any",
-            "portrait",
-            "landscape"});
-            this.comboBoxOrientation.Location = new System.Drawing.Point(598, 19);
+            resources.GetString("comboBoxOrientation.Items"),
+            resources.GetString("comboBoxOrientation.Items1"),
+            resources.GetString("comboBoxOrientation.Items2")});
+            resources.ApplyResources(this.comboBoxOrientation, "comboBoxOrientation");
             this.comboBoxOrientation.Name = "comboBoxOrientation";
-            this.comboBoxOrientation.Size = new System.Drawing.Size(331, 20);
-            this.comboBoxOrientation.TabIndex = 29;
             this.comboBoxOrientation.ValueMember = " ";
             this.comboBoxOrientation.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
@@ -404,12 +304,10 @@
             this.comboBoxFullscreen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFullscreen.FormattingEnabled = true;
             this.comboBoxFullscreen.Items.AddRange(new object[] {
-            "true",
-            "false"});
-            this.comboBoxFullscreen.Location = new System.Drawing.Point(598, 60);
+            resources.GetString("comboBoxFullscreen.Items"),
+            resources.GetString("comboBoxFullscreen.Items1")});
+            resources.ApplyResources(this.comboBoxFullscreen, "comboBoxFullscreen");
             this.comboBoxFullscreen.Name = "comboBoxFullscreen";
-            this.comboBoxFullscreen.Size = new System.Drawing.Size(331, 20);
-            this.comboBoxFullscreen.TabIndex = 30;
             this.comboBoxFullscreen.ValueMember = " ";
             this.comboBoxFullscreen.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
@@ -418,32 +316,30 @@
             this.comboBoxMinSdkVersion.DisplayMember = " ";
             this.comboBoxMinSdkVersion.FormattingEnabled = true;
             this.comboBoxMinSdkVersion.Items.AddRange(new object[] {
-            "29",
-            "28",
-            "27",
-            "26",
-            "25",
-            "24",
-            "23",
-            "22",
-            "21",
-            "20",
-            "19",
-            "18",
-            "17",
-            "16",
-            "15",
-            "14",
-            "13",
-            "12",
-            "11",
-            "10",
-            "9",
-            "8"});
-            this.comboBoxMinSdkVersion.Location = new System.Drawing.Point(598, 103);
+            resources.GetString("comboBoxMinSdkVersion.Items"),
+            resources.GetString("comboBoxMinSdkVersion.Items1"),
+            resources.GetString("comboBoxMinSdkVersion.Items2"),
+            resources.GetString("comboBoxMinSdkVersion.Items3"),
+            resources.GetString("comboBoxMinSdkVersion.Items4"),
+            resources.GetString("comboBoxMinSdkVersion.Items5"),
+            resources.GetString("comboBoxMinSdkVersion.Items6"),
+            resources.GetString("comboBoxMinSdkVersion.Items7"),
+            resources.GetString("comboBoxMinSdkVersion.Items8"),
+            resources.GetString("comboBoxMinSdkVersion.Items9"),
+            resources.GetString("comboBoxMinSdkVersion.Items10"),
+            resources.GetString("comboBoxMinSdkVersion.Items11"),
+            resources.GetString("comboBoxMinSdkVersion.Items12"),
+            resources.GetString("comboBoxMinSdkVersion.Items13"),
+            resources.GetString("comboBoxMinSdkVersion.Items14"),
+            resources.GetString("comboBoxMinSdkVersion.Items15"),
+            resources.GetString("comboBoxMinSdkVersion.Items16"),
+            resources.GetString("comboBoxMinSdkVersion.Items17"),
+            resources.GetString("comboBoxMinSdkVersion.Items18"),
+            resources.GetString("comboBoxMinSdkVersion.Items19"),
+            resources.GetString("comboBoxMinSdkVersion.Items20"),
+            resources.GetString("comboBoxMinSdkVersion.Items21")});
+            resources.ApplyResources(this.comboBoxMinSdkVersion, "comboBoxMinSdkVersion");
             this.comboBoxMinSdkVersion.Name = "comboBoxMinSdkVersion";
-            this.comboBoxMinSdkVersion.Size = new System.Drawing.Size(331, 20);
-            this.comboBoxMinSdkVersion.TabIndex = 31;
             this.comboBoxMinSdkVersion.ValueMember = " ";
             this.comboBoxMinSdkVersion.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             this.comboBoxMinSdkVersion.TextChanged += new System.EventHandler(this.comboBoxMinSdkVersion_TextChanged);
@@ -453,75 +349,60 @@
             this.comboBoxTargetSdkVersion.DisplayMember = " ";
             this.comboBoxTargetSdkVersion.FormattingEnabled = true;
             this.comboBoxTargetSdkVersion.Items.AddRange(new object[] {
-            "29",
-            "28",
-            "27",
-            "26",
-            "25",
-            "24",
-            "23",
-            "22",
-            "21",
-            "20",
-            "19",
-            "18",
-            "17",
-            "16",
-            "15",
-            "14",
-            "13",
-            "12",
-            "11",
-            "10",
-            "9",
-            "8"});
-            this.comboBoxTargetSdkVersion.Location = new System.Drawing.Point(598, 143);
+            resources.GetString("comboBoxTargetSdkVersion.Items"),
+            resources.GetString("comboBoxTargetSdkVersion.Items1"),
+            resources.GetString("comboBoxTargetSdkVersion.Items2"),
+            resources.GetString("comboBoxTargetSdkVersion.Items3"),
+            resources.GetString("comboBoxTargetSdkVersion.Items4"),
+            resources.GetString("comboBoxTargetSdkVersion.Items5"),
+            resources.GetString("comboBoxTargetSdkVersion.Items6"),
+            resources.GetString("comboBoxTargetSdkVersion.Items7"),
+            resources.GetString("comboBoxTargetSdkVersion.Items8"),
+            resources.GetString("comboBoxTargetSdkVersion.Items9"),
+            resources.GetString("comboBoxTargetSdkVersion.Items10"),
+            resources.GetString("comboBoxTargetSdkVersion.Items11"),
+            resources.GetString("comboBoxTargetSdkVersion.Items12"),
+            resources.GetString("comboBoxTargetSdkVersion.Items13"),
+            resources.GetString("comboBoxTargetSdkVersion.Items14"),
+            resources.GetString("comboBoxTargetSdkVersion.Items15"),
+            resources.GetString("comboBoxTargetSdkVersion.Items16"),
+            resources.GetString("comboBoxTargetSdkVersion.Items17"),
+            resources.GetString("comboBoxTargetSdkVersion.Items18"),
+            resources.GetString("comboBoxTargetSdkVersion.Items19"),
+            resources.GetString("comboBoxTargetSdkVersion.Items20"),
+            resources.GetString("comboBoxTargetSdkVersion.Items21")});
+            resources.ApplyResources(this.comboBoxTargetSdkVersion, "comboBoxTargetSdkVersion");
             this.comboBoxTargetSdkVersion.Name = "comboBoxTargetSdkVersion";
-            this.comboBoxTargetSdkVersion.Size = new System.Drawing.Size(331, 20);
-            this.comboBoxTargetSdkVersion.TabIndex = 32;
             this.comboBoxTargetSdkVersion.ValueMember = " ";
             this.comboBoxTargetSdkVersion.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // labelSettingGameFolder
             // 
-            this.labelSettingGameFolder.AutoSize = true;
+            resources.ApplyResources(this.labelSettingGameFolder, "labelSettingGameFolder");
             this.labelSettingGameFolder.BackColor = System.Drawing.Color.Transparent;
             this.labelSettingGameFolder.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelSettingGameFolder.Location = new System.Drawing.Point(499, 234);
             this.labelSettingGameFolder.Name = "labelSettingGameFolder";
-            this.labelSettingGameFolder.Size = new System.Drawing.Size(85, 12);
-            this.labelSettingGameFolder.TabIndex = 33;
-            this.labelSettingGameFolder.Text = "게임 폴더 설정";
             // 
             // textBoxSettingGameFolder
             // 
             this.textBoxSettingGameFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxSettingGameFolder.Location = new System.Drawing.Point(599, 229);
+            resources.ApplyResources(this.textBoxSettingGameFolder, "textBoxSettingGameFolder");
             this.textBoxSettingGameFolder.Name = "textBoxSettingGameFolder";
-            this.textBoxSettingGameFolder.Size = new System.Drawing.Size(260, 21);
-            this.textBoxSettingGameFolder.TabIndex = 34;
             this.textBoxSettingGameFolder.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // buttonOpenFileBrowser
             // 
-            this.buttonOpenFileBrowser.Location = new System.Drawing.Point(863, 229);
+            resources.ApplyResources(this.buttonOpenFileBrowser, "buttonOpenFileBrowser");
             this.buttonOpenFileBrowser.Name = "buttonOpenFileBrowser";
-            this.buttonOpenFileBrowser.Size = new System.Drawing.Size(65, 21);
-            this.buttonOpenFileBrowser.TabIndex = 35;
-            this.buttonOpenFileBrowser.Text = "Browse";
             this.buttonOpenFileBrowser.UseVisualStyleBackColor = true;
             this.buttonOpenFileBrowser.Click += new System.EventHandler(this.buttonFolderBrowser_Click);
             // 
             // labelBuildMode
             // 
-            this.labelBuildMode.AutoSize = true;
+            resources.ApplyResources(this.labelBuildMode, "labelBuildMode");
             this.labelBuildMode.BackColor = System.Drawing.Color.Transparent;
             this.labelBuildMode.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelBuildMode.Location = new System.Drawing.Point(526, 277);
             this.labelBuildMode.Name = "labelBuildMode";
-            this.labelBuildMode.Size = new System.Drawing.Size(57, 12);
-            this.labelBuildMode.TabIndex = 36;
-            this.labelBuildMode.Text = "빌드 모드";
             // 
             // comboBoxBuildMode
             // 
@@ -529,64 +410,47 @@
             this.comboBoxBuildMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBuildMode.FormattingEnabled = true;
             this.comboBoxBuildMode.Items.AddRange(new object[] {
-            "release",
-            "debug"});
-            this.comboBoxBuildMode.Location = new System.Drawing.Point(597, 274);
+            resources.GetString("comboBoxBuildMode.Items"),
+            resources.GetString("comboBoxBuildMode.Items1")});
+            resources.ApplyResources(this.comboBoxBuildMode, "comboBoxBuildMode");
             this.comboBoxBuildMode.Name = "comboBoxBuildMode";
-            this.comboBoxBuildMode.Size = new System.Drawing.Size(331, 20);
-            this.comboBoxBuildMode.TabIndex = 37;
             this.comboBoxBuildMode.ValueMember = " ";
             this.comboBoxBuildMode.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // labelPluginName
             // 
-            this.labelPluginName.AutoSize = true;
+            resources.ApplyResources(this.labelPluginName, "labelPluginName");
             this.labelPluginName.BackColor = System.Drawing.Color.Transparent;
             this.labelPluginName.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelPluginName.Location = new System.Drawing.Point(12, 94);
             this.labelPluginName.Name = "labelPluginName";
-            this.labelPluginName.Size = new System.Drawing.Size(53, 12);
-            this.labelPluginName.TabIndex = 38;
-            this.labelPluginName.Text = "플러그인";
             // 
             // buttonAddPlugin
             // 
-            this.buttonAddPlugin.Location = new System.Drawing.Point(328, 90);
+            resources.ApplyResources(this.buttonAddPlugin, "buttonAddPlugin");
             this.buttonAddPlugin.Name = "buttonAddPlugin";
-            this.buttonAddPlugin.Size = new System.Drawing.Size(50, 21);
-            this.buttonAddPlugin.TabIndex = 40;
-            this.buttonAddPlugin.Text = "+";
             this.buttonAddPlugin.UseVisualStyleBackColor = true;
             this.buttonAddPlugin.Click += new System.EventHandler(this.buttonAddPlugin_Click);
             // 
             // textBoxPluginName
             // 
             this.textBoxPluginName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxPluginName.Location = new System.Drawing.Point(72, 90);
+            resources.ApplyResources(this.textBoxPluginName, "textBoxPluginName");
             this.textBoxPluginName.Name = "textBoxPluginName";
-            this.textBoxPluginName.Size = new System.Drawing.Size(250, 21);
-            this.textBoxPluginName.TabIndex = 39;
             // 
             // listBoxPlugins
             // 
             this.listBoxPlugins.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBoxPlugins.FormattingEnabled = true;
-            this.listBoxPlugins.ItemHeight = 12;
+            resources.ApplyResources(this.listBoxPlugins, "listBoxPlugins");
             this.listBoxPlugins.Items.AddRange(new object[] {
-            "cordova-plugin-insomnia"});
-            this.listBoxPlugins.Location = new System.Drawing.Point(7, 26);
+            resources.GetString("listBoxPlugins.Items")});
             this.listBoxPlugins.Name = "listBoxPlugins";
-            this.listBoxPlugins.Size = new System.Drawing.Size(424, 60);
-            this.listBoxPlugins.TabIndex = 41;
             this.listBoxPlugins.SelectedIndexChanged += new System.EventHandler(this.listBoxPlugins_SelectedIndexChanged);
             // 
             // buttonDeletePlugin
             // 
-            this.buttonDeletePlugin.Location = new System.Drawing.Point(382, 90);
+            resources.ApplyResources(this.buttonDeletePlugin, "buttonDeletePlugin");
             this.buttonDeletePlugin.Name = "buttonDeletePlugin";
-            this.buttonDeletePlugin.Size = new System.Drawing.Size(50, 21);
-            this.buttonDeletePlugin.TabIndex = 42;
-            this.buttonDeletePlugin.Text = "-";
             this.buttonDeletePlugin.UseVisualStyleBackColor = true;
             this.buttonDeletePlugin.Click += new System.EventHandler(this.buttonDeletePlugin_Click);
             // 
@@ -596,14 +460,10 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
+            resources.ApplyResources(this.label1, "label1");
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(3, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 12);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "플러그인 목록";
             // 
             // panelPlugins
             // 
@@ -615,91 +475,101 @@
             this.panelPlugins.Controls.Add(this.textBoxPluginName);
             this.panelPlugins.Controls.Add(this.buttonAddPlugin);
             this.panelPlugins.Controls.Add(this.buttonBuild);
-            this.panelPlugins.Location = new System.Drawing.Point(487, 316);
+            resources.ApplyResources(this.panelPlugins, "panelPlugins");
             this.panelPlugins.Name = "panelPlugins";
-            this.panelPlugins.Size = new System.Drawing.Size(440, 146);
-            this.panelPlugins.TabIndex = 44;
             // 
             // labelCompileSdkVersion
             // 
-            this.labelCompileSdkVersion.AutoSize = true;
+            resources.ApplyResources(this.labelCompileSdkVersion, "labelCompileSdkVersion");
             this.labelCompileSdkVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelCompileSdkVersion.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelCompileSdkVersion.Location = new System.Drawing.Point(492, 191);
             this.labelCompileSdkVersion.Name = "labelCompileSdkVersion";
-            this.labelCompileSdkVersion.Size = new System.Drawing.Size(92, 12);
-            this.labelCompileSdkVersion.TabIndex = 45;
-            this.labelCompileSdkVersion.Text = "컴파일 API 버전";
             // 
             // comboBoxCompileSdkVersion
             // 
             this.comboBoxCompileSdkVersion.DisplayMember = " ";
             this.comboBoxCompileSdkVersion.FormattingEnabled = true;
             this.comboBoxCompileSdkVersion.Items.AddRange(new object[] {
-            "29",
-            "28",
-            "27",
-            "26",
-            "25",
-            "24",
-            "23",
-            "22",
-            "21",
-            "20",
-            "19",
-            "18",
-            "17",
-            "16",
-            "15",
-            "14",
-            "13",
-            "12",
-            "11",
-            "10",
-            "9",
-            "8"});
-            this.comboBoxCompileSdkVersion.Location = new System.Drawing.Point(599, 187);
+            resources.GetString("comboBoxCompileSdkVersion.Items"),
+            resources.GetString("comboBoxCompileSdkVersion.Items1"),
+            resources.GetString("comboBoxCompileSdkVersion.Items2"),
+            resources.GetString("comboBoxCompileSdkVersion.Items3"),
+            resources.GetString("comboBoxCompileSdkVersion.Items4"),
+            resources.GetString("comboBoxCompileSdkVersion.Items5"),
+            resources.GetString("comboBoxCompileSdkVersion.Items6"),
+            resources.GetString("comboBoxCompileSdkVersion.Items7"),
+            resources.GetString("comboBoxCompileSdkVersion.Items8"),
+            resources.GetString("comboBoxCompileSdkVersion.Items9"),
+            resources.GetString("comboBoxCompileSdkVersion.Items10"),
+            resources.GetString("comboBoxCompileSdkVersion.Items11"),
+            resources.GetString("comboBoxCompileSdkVersion.Items12"),
+            resources.GetString("comboBoxCompileSdkVersion.Items13"),
+            resources.GetString("comboBoxCompileSdkVersion.Items14"),
+            resources.GetString("comboBoxCompileSdkVersion.Items15"),
+            resources.GetString("comboBoxCompileSdkVersion.Items16"),
+            resources.GetString("comboBoxCompileSdkVersion.Items17"),
+            resources.GetString("comboBoxCompileSdkVersion.Items18"),
+            resources.GetString("comboBoxCompileSdkVersion.Items19"),
+            resources.GetString("comboBoxCompileSdkVersion.Items20"),
+            resources.GetString("comboBoxCompileSdkVersion.Items21")});
+            resources.ApplyResources(this.comboBoxCompileSdkVersion, "comboBoxCompileSdkVersion");
             this.comboBoxCompileSdkVersion.Name = "comboBoxCompileSdkVersion";
-            this.comboBoxCompileSdkVersion.Size = new System.Drawing.Size(331, 20);
-            this.comboBoxCompileSdkVersion.TabIndex = 46;
             this.comboBoxCompileSdkVersion.ValueMember = " ";
             // 
             // panelBuildLog
             // 
             this.panelBuildLog.BackColor = System.Drawing.Color.Transparent;
             this.panelBuildLog.Controls.Add(this.textBox1);
-            this.panelBuildLog.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBuildLog.Location = new System.Drawing.Point(0, 478);
+            resources.ApplyResources(this.panelBuildLog, "panelBuildLog");
             this.panelBuildLog.Name = "panelBuildLog";
-            this.panelBuildLog.Size = new System.Drawing.Size(960, 123);
-            this.panelBuildLog.TabIndex = 47;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.labelFolderName);
+            this.panel1.Controls.Add(this.labelPackageName);
+            this.panel1.Controls.Add(this.labelGameName);
+            this.panel1.Controls.Add(this.labelKeyPath);
+            this.panel1.Controls.Add(this.labelKeyAlias);
+            this.panel1.Controls.Add(this.labelKeyPassword);
+            this.panel1.Controls.Add(this.label_keyOU);
+            this.panel1.Controls.Add(this.label_keyO);
+            this.panel1.Controls.Add(this.label_keyL);
+            this.panel1.Controls.Add(this.label_keyS);
+            this.panel1.Controls.Add(this.label_keyC);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.labelOrientation);
+            this.panel2.Controls.Add(this.labelFullscreen);
+            this.panel2.Controls.Add(this.labelMinSdkVersion);
+            this.panel2.Controls.Add(this.labelTargetSdkVersion);
+            this.panel2.Controls.Add(this.labelCompileSdkVersion);
+            this.panel2.Controls.Add(this.labelSettingGameFolder);
+            this.panel2.Controls.Add(this.labelBuildMode);
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(960, 601);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelBuildLog);
             this.Controls.Add(this.comboBoxCompileSdkVersion);
-            this.Controls.Add(this.labelCompileSdkVersion);
             this.Controls.Add(this.panelPlugins);
             this.Controls.Add(this.comboBoxBuildMode);
-            this.Controls.Add(this.labelBuildMode);
             this.Controls.Add(this.buttonOpenFileBrowser);
             this.Controls.Add(this.textBoxSettingGameFolder);
-            this.Controls.Add(this.labelSettingGameFolder);
             this.Controls.Add(this.comboBoxTargetSdkVersion);
             this.Controls.Add(this.comboBoxMinSdkVersion);
             this.Controls.Add(this.comboBoxFullscreen);
             this.Controls.Add(this.comboBoxOrientation);
-            this.Controls.Add(this.labelTargetSdkVersion);
-            this.Controls.Add(this.labelMinSdkVersion);
-            this.Controls.Add(this.labelFullscreen);
-            this.Controls.Add(this.labelOrientation);
             this.Controls.Add(this.textBox_keyC);
-            this.Controls.Add(this.label_keyC);
             this.Controls.Add(this.textBox_keyS);
             this.Controls.Add(this.textBox_keyL);
             this.Controls.Add(this.textBox_keyO);
@@ -710,25 +580,17 @@
             this.Controls.Add(this.textBoxGameName);
             this.Controls.Add(this.textBoxPackageName);
             this.Controls.Add(this.textBoxFolderName);
-            this.Controls.Add(this.label_keyS);
-            this.Controls.Add(this.label_keyL);
-            this.Controls.Add(this.label_keyO);
-            this.Controls.Add(this.label_keyOU);
-            this.Controls.Add(this.labelKeyPassword);
-            this.Controls.Add(this.labelKeyAlias);
-            this.Controls.Add(this.labelKeyPath);
-            this.Controls.Add(this.labelGameName);
-            this.Controls.Add(this.labelPackageName);
-            this.Controls.Add(this.labelFolderName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "RPG Maker MV Cordova Builder ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelPlugins.ResumeLayout(false);
             this.panelPlugins.PerformLayout();
             this.panelBuildLog.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -784,6 +646,8 @@
         private System.Windows.Forms.Label labelCompileSdkVersion;
         private System.Windows.Forms.ComboBox comboBoxCompileSdkVersion;
         private System.Windows.Forms.Panel panelBuildLog;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

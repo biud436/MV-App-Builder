@@ -117,1451 +117,241 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="textBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>960, 123</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
-    <value>panelBuildLog</value>
-  </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelFolderName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="labelFolderName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 10</value>
+    <value>36, 9</value>
   </data>
   <data name="labelFolderName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
-  </data>
-  <data name="labelFolderName.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>69, 12</value>
   </data>
   <data name="labelFolderName.Text" xml:space="preserve">
-    <value>폴더명</value>
-  </data>
-  <data name="&gt;&gt;labelFolderName.Name" xml:space="preserve">
-    <value>labelFolderName</value>
-  </data>
-  <data name="&gt;&gt;labelFolderName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelFolderName.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;labelFolderName.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelPackageName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>Root Folder</value>
   </data>
   <data name="labelPackageName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 51</value>
+    <value>18, 50</value>
   </data>
   <data name="labelPackageName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 12</value>
-  </data>
-  <data name="labelPackageName.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="labelPackageName.Text" xml:space="preserve">
-    <value>패키지 명</value>
-  </data>
-  <data name="&gt;&gt;labelPackageName.Name" xml:space="preserve">
-    <value>labelPackageName</value>
-  </data>
-  <data name="&gt;&gt;labelPackageName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelPackageName.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;labelPackageName.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labelGameName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelGameName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 92</value>
-  </data>
-  <data name="labelGameName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
-  </data>
-  <data name="labelGameName.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="labelGameName.Text" xml:space="preserve">
-    <value>게임명</value>
-  </data>
-  <data name="&gt;&gt;labelGameName.Name" xml:space="preserve">
-    <value>labelGameName</value>
-  </data>
-  <data name="&gt;&gt;labelGameName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelGameName.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;labelGameName.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelKeyPath.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelKeyPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 135</value>
-  </data>
-  <data name="labelKeyPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 12</value>
-  </data>
-  <data name="labelKeyPath.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="labelKeyPath.Text" xml:space="preserve">
-    <value>키스토어 파일 명</value>
-  </data>
-  <data name="&gt;&gt;labelKeyPath.Name" xml:space="preserve">
-    <value>labelKeyPath</value>
-  </data>
-  <data name="&gt;&gt;labelKeyPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelKeyPath.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;labelKeyPath.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="labelKeyAlias.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelKeyAlias.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 176</value>
-  </data>
-  <data name="labelKeyAlias.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 12</value>
-  </data>
-  <data name="labelKeyAlias.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="labelKeyAlias.Text" xml:space="preserve">
-    <value>키스토어 별칭</value>
-  </data>
-  <data name="&gt;&gt;labelKeyAlias.Name" xml:space="preserve">
-    <value>labelKeyAlias</value>
-  </data>
-  <data name="&gt;&gt;labelKeyAlias.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelKeyAlias.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;labelKeyAlias.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="labelKeyPassword.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelKeyPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 220</value>
-  </data>
-  <data name="labelKeyPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 12</value>
-  </data>
-  <data name="labelKeyPassword.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="labelKeyPassword.Text" xml:space="preserve">
-    <value>키스토어 비밀번호</value>
-  </data>
-  <data name="&gt;&gt;labelKeyPassword.Name" xml:space="preserve">
-    <value>labelKeyPassword</value>
-  </data>
-  <data name="&gt;&gt;labelKeyPassword.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelKeyPassword.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;labelKeyPassword.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label_keyOU.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_keyOU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 262</value>
-  </data>
-  <data name="label_keyOU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 12</value>
-  </data>
-  <data name="label_keyOU.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label_keyOU.Text" xml:space="preserve">
-    <value>조직 단위 명</value>
-  </data>
-  <data name="&gt;&gt;label_keyOU.Name" xml:space="preserve">
-    <value>label_keyOU</value>
-  </data>
-  <data name="&gt;&gt;label_keyOU.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_keyOU.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;label_keyOU.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label_keyO.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_keyO.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 304</value>
-  </data>
-  <data name="label_keyO.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 12</value>
-  </data>
-  <data name="label_keyO.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="label_keyO.Text" xml:space="preserve">
-    <value>조직 이름</value>
-  </data>
-  <data name="&gt;&gt;label_keyO.Name" xml:space="preserve">
-    <value>label_keyO</value>
-  </data>
-  <data name="&gt;&gt;label_keyO.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_keyO.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;label_keyO.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label_keyL.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_keyL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 348</value>
-  </data>
-  <data name="label_keyL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 12</value>
-  </data>
-  <data name="label_keyL.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="label_keyL.Text" xml:space="preserve">
-    <value>구/군/시/ 이름</value>
-  </data>
-  <data name="&gt;&gt;label_keyL.Name" xml:space="preserve">
-    <value>label_keyL</value>
-  </data>
-  <data name="&gt;&gt;label_keyL.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_keyL.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;label_keyL.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="label_keyS.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_keyS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 389</value>
-  </data>
-  <data name="label_keyS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 12</value>
-  </data>
-  <data name="label_keyS.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="label_keyS.Text" xml:space="preserve">
-    <value>시/도 이름</value>
-  </data>
-  <data name="&gt;&gt;label_keyS.Name" xml:space="preserve">
-    <value>label_keyS</value>
-  </data>
-  <data name="&gt;&gt;label_keyS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_keyS.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;label_keyS.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="textBoxFolderName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 22</value>
-  </data>
-  <data name="textBoxFolderName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 14</value>
-  </data>
-  <data name="textBoxFolderName.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="textBoxFolderName.Text" xml:space="preserve">
-    <value>test</value>
-  </data>
-  <data name="&gt;&gt;textBoxFolderName.Name" xml:space="preserve">
-    <value>textBoxFolderName</value>
-  </data>
-  <data name="&gt;&gt;textBoxFolderName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxFolderName.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxFolderName.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="textBoxPackageName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 63</value>
-  </data>
-  <data name="textBoxPackageName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 14</value>
-  </data>
-  <data name="textBoxPackageName.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="textBoxPackageName.Text" xml:space="preserve">
-    <value>me.biud436.testgame</value>
-  </data>
-  <data name="&gt;&gt;textBoxPackageName.Name" xml:space="preserve">
-    <value>textBoxPackageName</value>
-  </data>
-  <data name="&gt;&gt;textBoxPackageName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxPackageName.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxPackageName.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="textBoxGameName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 105</value>
-  </data>
-  <data name="textBoxGameName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 14</value>
-  </data>
-  <data name="textBoxGameName.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;textBoxGameName.Name" xml:space="preserve">
-    <value>textBoxGameName</value>
-  </data>
-  <data name="&gt;&gt;textBoxGameName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxGameName.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxGameName.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="textBoxKeyPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 146</value>
-  </data>
-  <data name="textBoxKeyPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 14</value>
-  </data>
-  <data name="textBoxKeyPath.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="textBoxKeyPath.Text" xml:space="preserve">
-    <value>android.keystore</value>
-  </data>
-  <data name="&gt;&gt;textBoxKeyPath.Name" xml:space="preserve">
-    <value>textBoxKeyPath</value>
-  </data>
-  <data name="&gt;&gt;textBoxKeyPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxKeyPath.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxKeyPath.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="textBoxKeyAlias.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 189</value>
-  </data>
-  <data name="textBoxKeyAlias.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 14</value>
-  </data>
-  <data name="textBoxKeyAlias.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="textBoxKeyAlias.Text" xml:space="preserve">
-    <value>biud436</value>
-  </data>
-  <data name="&gt;&gt;textBoxKeyAlias.Name" xml:space="preserve">
-    <value>textBoxKeyAlias</value>
-  </data>
-  <data name="&gt;&gt;textBoxKeyAlias.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxKeyAlias.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxKeyAlias.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="textBoxPassWord.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 232</value>
-  </data>
-  <data name="textBoxPassWord.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
-    <value>*</value>
-  </data>
-  <data name="textBoxPassWord.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 14</value>
-  </data>
-  <data name="textBoxPassWord.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;textBoxPassWord.Name" xml:space="preserve">
-    <value>textBoxPassWord</value>
-  </data>
-  <data name="&gt;&gt;textBoxPassWord.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxPassWord.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxPassWord.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="textBox_keyOU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 275</value>
-  </data>
-  <data name="textBox_keyOU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 14</value>
-  </data>
-  <data name="textBox_keyOU.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="textBox_keyOU.Text" xml:space="preserve">
-    <value>biud436</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyOU.Name" xml:space="preserve">
-    <value>textBox_keyOU</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyOU.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyOU.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyOU.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="textBox_keyO.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 318</value>
-  </data>
-  <data name="textBox_keyO.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 14</value>
-  </data>
-  <data name="textBox_keyO.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="textBox_keyO.Text" xml:space="preserve">
-    <value>biud436</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyO.Name" xml:space="preserve">
-    <value>textBox_keyO</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyO.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyO.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyO.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="textBox_keyL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 360</value>
-  </data>
-  <data name="textBox_keyL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 14</value>
-  </data>
-  <data name="textBox_keyL.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="textBox_keyL.Text" xml:space="preserve">
-    <value>Siheung</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyL.Name" xml:space="preserve">
-    <value>textBox_keyL</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyL.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyL.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyL.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="textBox_keyS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 402</value>
-  </data>
-  <data name="textBox_keyS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 14</value>
-  </data>
-  <data name="textBox_keyS.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="textBox_keyS.Text" xml:space="preserve">
-    <value>Gyeonggi</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyS.Name" xml:space="preserve">
-    <value>textBox_keyS</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyS.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyS.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="textBox_keyC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 445</value>
-  </data>
-  <data name="textBox_keyC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 14</value>
-  </data>
-  <data name="textBox_keyC.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="textBox_keyC.Text" xml:space="preserve">
-    <value>ko</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyC.Name" xml:space="preserve">
-    <value>textBox_keyC</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyC.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBox_keyC.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="label_keyC.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_keyC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 431</value>
-  </data>
-  <data name="label_keyC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 12</value>
-  </data>
-  <data name="label_keyC.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="label_keyC.Text" xml:space="preserve">
-    <value>국가/지역 코드</value>
-  </data>
-  <data name="&gt;&gt;label_keyC.Name" xml:space="preserve">
-    <value>label_keyC</value>
-  </data>
-  <data name="&gt;&gt;label_keyC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_keyC.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;label_keyC.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="buttonBuild.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="buttonBuild.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonBuild.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="buttonBuild.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 116</value>
-  </data>
-  <data name="buttonBuild.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 30</value>
-  </data>
-  <data name="buttonBuild.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="buttonBuild.Text" xml:space="preserve">
-    <value>빌드</value>
-  </data>
-  <data name="&gt;&gt;buttonBuild.Name" xml:space="preserve">
-    <value>buttonBuild</value>
-  </data>
-  <data name="&gt;&gt;buttonBuild.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBuild.Parent" xml:space="preserve">
-    <value>panelPlugins</value>
-  </data>
-  <data name="&gt;&gt;buttonBuild.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="labelOrientation.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelOrientation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 10</value>
-  </data>
-  <data name="labelOrientation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 12</value>
-  </data>
-  <data name="labelOrientation.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="labelOrientation.Text" xml:space="preserve">
-    <value>화면 방향</value>
-  </data>
-  <data name="&gt;&gt;labelOrientation.Name" xml:space="preserve">
-    <value>labelOrientation</value>
-  </data>
-  <data name="&gt;&gt;labelOrientation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelOrientation.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;labelOrientation.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelFullscreen.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelFullscreen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 51</value>
-  </data>
-  <data name="labelFullscreen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 12</value>
-  </data>
-  <data name="labelFullscreen.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="labelFullscreen.Text" xml:space="preserve">
-    <value>전체 화면</value>
-  </data>
-  <data name="&gt;&gt;labelFullscreen.Name" xml:space="preserve">
-    <value>labelFullscreen</value>
-  </data>
-  <data name="&gt;&gt;labelFullscreen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelFullscreen.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;labelFullscreen.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labelMinSdkVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelMinSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 95</value>
-  </data>
-  <data name="labelMinSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 12</value>
-  </data>
-  <data name="labelMinSdkVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="labelMinSdkVersion.Text" xml:space="preserve">
-    <value>최소 API 버전</value>
-  </data>
-  <data name="&gt;&gt;labelMinSdkVersion.Name" xml:space="preserve">
-    <value>labelMinSdkVersion</value>
-  </data>
-  <data name="&gt;&gt;labelMinSdkVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelMinSdkVersion.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;labelMinSdkVersion.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelTargetSdkVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelTargetSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 136</value>
-  </data>
-  <data name="labelTargetSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 12</value>
-  </data>
-  <data name="labelTargetSdkVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="labelTargetSdkVersion.Text" xml:space="preserve">
-    <value>대상 API 버전</value>
-  </data>
-  <data name="&gt;&gt;labelTargetSdkVersion.Name" xml:space="preserve">
-    <value>labelTargetSdkVersion</value>
-  </data>
-  <data name="&gt;&gt;labelTargetSdkVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelTargetSdkVersion.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;labelTargetSdkVersion.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="comboBoxOrientation.Items" xml:space="preserve">
-    <value>any</value>
-  </data>
-  <data name="comboBoxOrientation.Items1" xml:space="preserve">
-    <value>portrait</value>
-  </data>
-  <data name="comboBoxOrientation.Items2" xml:space="preserve">
-    <value>landscape</value>
-  </data>
-  <data name="comboBoxOrientation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>598, 19</value>
-  </data>
-  <data name="comboBoxOrientation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 20</value>
-  </data>
-  <data name="comboBoxOrientation.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;comboBoxOrientation.Name" xml:space="preserve">
-    <value>comboBoxOrientation</value>
-  </data>
-  <data name="&gt;&gt;comboBoxOrientation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxOrientation.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;comboBoxOrientation.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="comboBoxFullscreen.Items" xml:space="preserve">
-    <value>true</value>
-  </data>
-  <data name="comboBoxFullscreen.Items1" xml:space="preserve">
-    <value>false</value>
-  </data>
-  <data name="comboBoxFullscreen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>598, 60</value>
-  </data>
-  <data name="comboBoxFullscreen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 20</value>
-  </data>
-  <data name="comboBoxFullscreen.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;comboBoxFullscreen.Name" xml:space="preserve">
-    <value>comboBoxFullscreen</value>
-  </data>
-  <data name="&gt;&gt;comboBoxFullscreen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxFullscreen.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;comboBoxFullscreen.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items" xml:space="preserve">
-    <value>29</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items1" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items2" xml:space="preserve">
-    <value>27</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items3" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items4" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items5" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items6" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items7" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items8" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items9" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items10" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items11" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items12" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items13" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items14" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items15" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items16" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items17" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items18" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items19" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items20" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Items21" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>598, 103</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 20</value>
-  </data>
-  <data name="comboBoxMinSdkVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;comboBoxMinSdkVersion.Name" xml:space="preserve">
-    <value>comboBoxMinSdkVersion</value>
-  </data>
-  <data name="&gt;&gt;comboBoxMinSdkVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxMinSdkVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;comboBoxMinSdkVersion.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items" xml:space="preserve">
-    <value>29</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items1" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items2" xml:space="preserve">
-    <value>27</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items3" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items4" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items5" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items6" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items7" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items8" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items9" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items10" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items11" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items12" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items13" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items14" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items15" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items16" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items17" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items18" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items19" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items20" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Items21" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>598, 143</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 20</value>
-  </data>
-  <data name="comboBoxTargetSdkVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="&gt;&gt;comboBoxTargetSdkVersion.Name" xml:space="preserve">
-    <value>comboBoxTargetSdkVersion</value>
-  </data>
-  <data name="&gt;&gt;comboBoxTargetSdkVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxTargetSdkVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;comboBoxTargetSdkVersion.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="labelSettingGameFolder.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelSettingGameFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 222</value>
-  </data>
-  <data name="labelSettingGameFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 12</value>
-  </data>
-  <data name="labelSettingGameFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="labelSettingGameFolder.Text" xml:space="preserve">
-    <value>게임 폴더 설정</value>
-  </data>
-  <data name="&gt;&gt;labelSettingGameFolder.Name" xml:space="preserve">
-    <value>labelSettingGameFolder</value>
-  </data>
-  <data name="&gt;&gt;labelSettingGameFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelSettingGameFolder.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;labelSettingGameFolder.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="textBoxSettingGameFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>599, 229</value>
-  </data>
-  <data name="textBoxSettingGameFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 21</value>
-  </data>
-  <data name="textBoxSettingGameFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="&gt;&gt;textBoxSettingGameFolder.Name" xml:space="preserve">
-    <value>textBoxSettingGameFolder</value>
-  </data>
-  <data name="&gt;&gt;textBoxSettingGameFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxSettingGameFolder.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxSettingGameFolder.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="buttonOpenFileBrowser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>863, 229</value>
-  </data>
-  <data name="buttonOpenFileBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 21</value>
-  </data>
-  <data name="buttonOpenFileBrowser.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="buttonOpenFileBrowser.Text" xml:space="preserve">
-    <value>Browse</value>
-  </data>
-  <data name="&gt;&gt;buttonOpenFileBrowser.Name" xml:space="preserve">
-    <value>buttonOpenFileBrowser</value>
-  </data>
-  <data name="&gt;&gt;buttonOpenFileBrowser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonOpenFileBrowser.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;buttonOpenFileBrowser.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="labelBuildMode.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelBuildMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 265</value>
-  </data>
-  <data name="labelBuildMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 12</value>
-  </data>
-  <data name="labelBuildMode.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
-  </data>
-  <data name="labelBuildMode.Text" xml:space="preserve">
-    <value>출력 모드</value>
-  </data>
-  <data name="&gt;&gt;labelBuildMode.Name" xml:space="preserve">
-    <value>labelBuildMode</value>
-  </data>
-  <data name="&gt;&gt;labelBuildMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelBuildMode.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;labelBuildMode.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="comboBoxBuildMode.Items" xml:space="preserve">
-    <value>release</value>
-  </data>
-  <data name="comboBoxBuildMode.Items1" xml:space="preserve">
-    <value>debug</value>
-  </data>
-  <data name="comboBoxBuildMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>597, 274</value>
-  </data>
-  <data name="comboBoxBuildMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 20</value>
-  </data>
-  <data name="comboBoxBuildMode.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
-  </data>
-  <data name="&gt;&gt;comboBoxBuildMode.Name" xml:space="preserve">
-    <value>comboBoxBuildMode</value>
-  </data>
-  <data name="&gt;&gt;comboBoxBuildMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxBuildMode.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;comboBoxBuildMode.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="labelPluginName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelPluginName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 94</value>
-  </data>
-  <data name="labelPluginName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="labelPluginName.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
-  </data>
-  <data name="labelPluginName.Text" xml:space="preserve">
-    <value>플러그인</value>
-  </data>
-  <data name="&gt;&gt;labelPluginName.Name" xml:space="preserve">
-    <value>labelPluginName</value>
-  </data>
-  <data name="&gt;&gt;labelPluginName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelPluginName.Parent" xml:space="preserve">
-    <value>panelPlugins</value>
-  </data>
-  <data name="&gt;&gt;labelPluginName.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="buttonAddPlugin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>328, 90</value>
-  </data>
-  <data name="buttonAddPlugin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 21</value>
-  </data>
-  <data name="buttonAddPlugin.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="buttonAddPlugin.Text" xml:space="preserve">
-    <value>+</value>
-  </data>
-  <data name="&gt;&gt;buttonAddPlugin.Name" xml:space="preserve">
-    <value>buttonAddPlugin</value>
-  </data>
-  <data name="&gt;&gt;buttonAddPlugin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAddPlugin.Parent" xml:space="preserve">
-    <value>panelPlugins</value>
-  </data>
-  <data name="&gt;&gt;buttonAddPlugin.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="textBoxPluginName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>72, 90</value>
-  </data>
-  <data name="textBoxPluginName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 21</value>
-  </data>
-  <data name="textBoxPluginName.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="&gt;&gt;textBoxPluginName.Name" xml:space="preserve">
-    <value>textBoxPluginName</value>
-  </data>
-  <data name="&gt;&gt;textBoxPluginName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxPluginName.Parent" xml:space="preserve">
-    <value>panelPlugins</value>
-  </data>
-  <data name="&gt;&gt;textBoxPluginName.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="listBoxPlugins.ItemHeight" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="listBoxPlugins.Items" xml:space="preserve">
-    <value>cordova-plugin-insomnia</value>
-  </data>
-  <data name="listBoxPlugins.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 26</value>
-  </data>
-  <data name="listBoxPlugins.Size" type="System.Drawing.Size, System.Drawing">
-    <value>424, 60</value>
-  </data>
-  <data name="listBoxPlugins.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="&gt;&gt;listBoxPlugins.Name" xml:space="preserve">
-    <value>listBoxPlugins</value>
-  </data>
-  <data name="&gt;&gt;listBoxPlugins.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listBoxPlugins.Parent" xml:space="preserve">
-    <value>panelPlugins</value>
-  </data>
-  <data name="&gt;&gt;listBoxPlugins.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonDeletePlugin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>382, 90</value>
-  </data>
-  <data name="buttonDeletePlugin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 21</value>
-  </data>
-  <data name="buttonDeletePlugin.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
-  </data>
-  <data name="buttonDeletePlugin.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="&gt;&gt;buttonDeletePlugin.Name" xml:space="preserve">
-    <value>buttonDeletePlugin</value>
-  </data>
-  <data name="&gt;&gt;buttonDeletePlugin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonDeletePlugin.Parent" xml:space="preserve">
-    <value>panelPlugins</value>
-  </data>
-  <data name="&gt;&gt;buttonDeletePlugin.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <metadata name="timerBackground.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 8</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 12</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>플러그인 목록</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>panelPlugins</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panelPlugins.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 316</value>
-  </data>
-  <data name="panelPlugins.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 146</value>
-  </data>
-  <data name="panelPlugins.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="&gt;&gt;panelPlugins.Name" xml:space="preserve">
-    <value>panelPlugins</value>
-  </data>
-  <data name="&gt;&gt;panelPlugins.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelPlugins.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panelPlugins.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="labelCompileSdkVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelCompileSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 179</value>
-  </data>
-  <data name="labelCompileSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 12</value>
   </data>
-  <data name="labelCompileSdkVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
+  <data name="labelPackageName.Text" xml:space="preserve">
+    <value>Package Name</value>
+  </data>
+  <data name="labelGameName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 92</value>
+  </data>
+  <data name="labelGameName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 12</value>
+  </data>
+  <data name="labelGameName.Text" xml:space="preserve">
+    <value>App Name</value>
+  </data>
+  <data name="labelKeyPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 12</value>
+  </data>
+  <data name="labelKeyPath.Text" xml:space="preserve">
+    <value>Key Store Name</value>
+  </data>
+  <data name="labelKeyAlias.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 177</value>
+  </data>
+  <data name="labelKeyAlias.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 12</value>
+  </data>
+  <data name="labelKeyAlias.Text" xml:space="preserve">
+    <value>Key Alias</value>
+  </data>
+  <data name="labelKeyPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 220</value>
+  </data>
+  <data name="labelKeyPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 12</value>
+  </data>
+  <data name="labelKeyPassword.Text" xml:space="preserve">
+    <value>Key Password</value>
+  </data>
+  <data name="label_keyOU.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 263</value>
+  </data>
+  <data name="label_keyOU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 12</value>
+  </data>
+  <data name="label_keyOU.Text" xml:space="preserve">
+    <value>Organization Units</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label_keyO.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label_keyO.Font" type="System.Drawing.Font, System.Drawing">
+    <value>굴림, 8pt</value>
+  </data>
+  <data name="label_keyO.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 294</value>
+  </data>
+  <data name="label_keyO.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 36</value>
+  </data>
+  <data name="label_keyO.Text" xml:space="preserve">
+    <value>Organization name</value>
+  </data>
+  <data name="label_keyO.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="label_keyL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 347</value>
+  </data>
+  <data name="label_keyL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 12</value>
+  </data>
+  <data name="label_keyL.Text" xml:space="preserve">
+    <value>City name</value>
+  </data>
+  <data name="label_keyS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 389</value>
+  </data>
+  <data name="label_keyS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 12</value>
+  </data>
+  <data name="label_keyS.Text" xml:space="preserve">
+    <value>State name</value>
+  </data>
+  <data name="label_keyC.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label_keyC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 424</value>
+  </data>
+  <data name="label_keyC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 33</value>
+  </data>
+  <data name="label_keyC.Text" xml:space="preserve">
+    <value>Country/Region code</value>
+  </data>
+  <data name="label_keyC.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="buttonBuild.Text" xml:space="preserve">
+    <value>Build</value>
+  </data>
+  <data name="labelOrientation.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelOrientation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 4</value>
+  </data>
+  <data name="labelOrientation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 24</value>
+  </data>
+  <data name="labelOrientation.Text" xml:space="preserve">
+    <value>Screen Orientation</value>
+  </data>
+  <data name="labelOrientation.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="labelFullscreen.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelFullscreen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 45</value>
+  </data>
+  <data name="labelFullscreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 31</value>
+  </data>
+  <data name="labelFullscreen.Text" xml:space="preserve">
+    <value>full-screen mode</value>
+  </data>
+  <data name="labelFullscreen.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="labelMinSdkVersion.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelMinSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 87</value>
+  </data>
+  <data name="labelMinSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 33</value>
+  </data>
+  <data name="labelMinSdkVersion.Text" xml:space="preserve">
+    <value>Minimum API level</value>
+  </data>
+  <data name="labelMinSdkVersion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="labelTargetSdkVersion.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelTargetSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 129</value>
+  </data>
+  <data name="labelTargetSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 30</value>
+  </data>
+  <data name="labelTargetSdkVersion.Text" xml:space="preserve">
+    <value>Target API Level</value>
+  </data>
+  <data name="labelTargetSdkVersion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="labelSettingGameFolder.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelSettingGameFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 214</value>
+  </data>
+  <data name="labelSettingGameFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 33</value>
+  </data>
+  <data name="labelSettingGameFolder.Text" xml:space="preserve">
+    <value>Set Working Folder (www)</value>
+  </data>
+  <data name="labelSettingGameFolder.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="labelBuildMode.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelBuildMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 260</value>
+  </data>
+  <data name="labelBuildMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 19</value>
+  </data>
+  <data name="labelBuildMode.Text" xml:space="preserve">
+    <value>output mode</value>
+  </data>
+  <data name="labelBuildMode.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="labelPluginName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 94</value>
+  </data>
+  <data name="labelPluginName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 12</value>
+  </data>
+  <data name="labelPluginName.Text" xml:space="preserve">
+    <value>plugin:</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 12</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Cordova Plugins</value>
+  </data>
+  <data name="labelCompileSdkVersion.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelCompileSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 172</value>
+  </data>
+  <data name="labelCompileSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 30</value>
   </data>
   <data name="labelCompileSdkVersion.Text" xml:space="preserve">
-    <value>컴파일 API 버전</value>
+    <value>Compile API level</value>
   </data>
-  <data name="&gt;&gt;labelCompileSdkVersion.Name" xml:space="preserve">
-    <value>labelCompileSdkVersion</value>
-  </data>
-  <data name="&gt;&gt;labelCompileSdkVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelCompileSdkVersion.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;labelCompileSdkVersion.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items" xml:space="preserve">
-    <value>29</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items1" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items2" xml:space="preserve">
-    <value>27</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items3" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items4" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items5" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items6" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items7" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items8" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items9" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items10" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items11" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items12" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items13" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items14" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items15" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items16" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items17" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items18" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items19" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items20" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Items21" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>599, 187</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 20</value>
-  </data>
-  <data name="comboBoxCompileSdkVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="&gt;&gt;comboBoxCompileSdkVersion.Name" xml:space="preserve">
-    <value>comboBoxCompileSdkVersion</value>
-  </data>
-  <data name="&gt;&gt;comboBoxCompileSdkVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxCompileSdkVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;comboBoxCompileSdkVersion.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="panelBuildLog.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="panelBuildLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 478</value>
-  </data>
-  <data name="panelBuildLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>960, 123</value>
-  </data>
-  <data name="panelBuildLog.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="&gt;&gt;panelBuildLog.Name" xml:space="preserve">
-    <value>panelBuildLog</value>
-  </data>
-  <data name="&gt;&gt;panelBuildLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelBuildLog.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panelBuildLog.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 15</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 460</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 13</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 290</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 12</value>
+  <data name="labelCompileSdkVersion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5487,12 +4277,6 @@
         L168ePHixYsXv0T85d/9D3///wME6oIRmPMhfQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>960, 601</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAwMAAAAEAIAAoUgIAFgAAACgAAADAAAAAgAEAAAEAIAAAAAAAAFICABMLAAATCwAAAAAAAAAA
@@ -8032,20 +6816,5 @@
         /wP//////////////////////////////4P//////////////////////////////8f/////////////
         //////////////////////////////////8=
 </value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>RPG Maker MV Cordova Builder </value>
-  </data>
-  <data name="&gt;&gt;timerBackground.Name" xml:space="preserve">
-    <value>timerBackground</value>
-  </data>
-  <data name="&gt;&gt;timerBackground.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Form1</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

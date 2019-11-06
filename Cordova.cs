@@ -383,7 +383,7 @@ namespace Cordova_Builder
             }
 
             string mode = (list.biuldMode.SelectedIndex == 0) ? "--release" : "--debug";
-            string cmd = String.Format("cordova build android {0} --buildConfig=build.json 2>&1", mode);
+            string cmd = String.Format("cordova build android {0} --buildConfig=build.json", mode);
 
             HostData process = new HostData(cmd, true, "", "echo 빌드가 완료되었습니다.", "echo 빌드 중에 오류가 발생하였습니다.");
 

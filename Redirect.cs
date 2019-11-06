@@ -70,7 +70,7 @@ namespace Cordova_Builder
 
             isNull = String.IsNullOrEmpty(process.StandardError.ReadToEnd() ?? "");
 
-            //process.WaitForExit();
+            process.WaitForExit();
             process.Close();
 
             return (isNull != false);
