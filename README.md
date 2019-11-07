@@ -1,7 +1,7 @@
 # Introduction
 This tool allows you to easy to build the app for RPG Maker MV using cordova.
 
-![IMAGE](./screenshot.png)
+[![Preview](https://img.youtube.com/vi/hokPkHpq7xA/0.jpg)](https://www.youtube.com/watch?v=hokPkHpq7xA)
 
 # Setup
 This program didn't contain auto-installer and updater, so you need to install required programs manually. 
