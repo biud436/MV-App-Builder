@@ -10,7 +10,6 @@ using System.Reflection;
 using System.Resources;
 using System.Xml;
 
-[assembly: NeutralResourcesLanguageAttribute("ko-KR")]
 namespace Cordova_Builder
 {
 
@@ -392,7 +391,7 @@ namespace Cordova_Builder
             }
 
             string mode = (list.biuldMode.SelectedIndex == 0) ? "--release" : "--debug";
-            string cmd = String.Format("cordova build android {0} --buildConfig=build.json", mode);
+            string cmd = String.Format("cordova build android {0} --buildConfig=build.json 2>&1", mode);
 
             HostData process = new HostData(cmd, true, "",
                 rm.GetString("Flush2"),
