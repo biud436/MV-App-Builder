@@ -78,12 +78,12 @@
             this.labelCompileSdkVersion = new System.Windows.Forms.Label();
             this.comboBoxCompileSdkVersion = new System.Windows.Forms.ComboBox();
             this.panelBuildLog = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panelPlugins.SuspendLayout();
             this.panelBuildLog.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -523,42 +523,42 @@
             resources.ApplyResources(this.panelBuildLog, "panelBuildLog");
             this.panelBuildLog.Name = "panelBuildLog";
             // 
-            // panel1
+            // tableLayoutPanel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.labelFolderName);
-            this.panel1.Controls.Add(this.labelPackageName);
-            this.panel1.Controls.Add(this.labelGameName);
-            this.panel1.Controls.Add(this.labelKeyPath);
-            this.panel1.Controls.Add(this.labelKeyAlias);
-            this.panel1.Controls.Add(this.labelKeyPassword);
-            this.panel1.Controls.Add(this.label_keyOU);
-            this.panel1.Controls.Add(this.label_keyO);
-            this.panel1.Controls.Add(this.label_keyL);
-            this.panel1.Controls.Add(this.label_keyS);
-            this.panel1.Controls.Add(this.label_keyC);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.label_keyC, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.label_keyS, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label_keyL, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label_keyO, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label_keyOU, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.labelKeyPassword, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.labelKeyAlias, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.labelKeyPath, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.labelGameName, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.labelPackageName, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelFolderName, 0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
-            // panel2
+            // tableLayoutPanel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.labelOrientation);
-            this.panel2.Controls.Add(this.labelFullscreen);
-            this.panel2.Controls.Add(this.labelMinSdkVersion);
-            this.panel2.Controls.Add(this.labelTargetSdkVersion);
-            this.panel2.Controls.Add(this.labelCompileSdkVersion);
-            this.panel2.Controls.Add(this.labelSettingGameFolder);
-            this.panel2.Controls.Add(this.labelBuildMode);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.labelBuildMode, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.labelSettingGameFolder, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.labelCompileSdkVersion, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.labelTargetSdkVersion, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.labelMinSdkVersion, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.labelFullscreen, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.labelOrientation, 0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panelBuildLog);
             this.Controls.Add(this.comboBoxCompileSdkVersion);
             this.Controls.Add(this.panelPlugins);
@@ -587,10 +587,10 @@
             this.panelPlugins.ResumeLayout(false);
             this.panelPlugins.PerformLayout();
             this.panelBuildLog.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -646,8 +646,8 @@
         private System.Windows.Forms.Label labelCompileSdkVersion;
         private System.Windows.Forms.ComboBox comboBoxCompileSdkVersion;
         private System.Windows.Forms.Panel panelBuildLog;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }
 

@@ -147,11 +147,14 @@
   <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="labelFolderName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
   <data name="labelFolderName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelFolderName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 10</value>
+    <value>59, 15</value>
   </data>
   <data name="labelFolderName.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 12</value>
@@ -169,16 +172,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelFolderName.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;labelFolderName.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>10</value>
+  </data>
+  <data name="labelPackageName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="labelPackageName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelPackageName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 51</value>
+    <value>43, 57</value>
   </data>
   <data name="labelPackageName.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 12</value>
@@ -196,16 +202,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelPackageName.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;labelPackageName.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>9</value>
+  </data>
+  <data name="labelGameName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="labelGameName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelGameName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 92</value>
+    <value>59, 99</value>
   </data>
   <data name="labelGameName.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 12</value>
@@ -223,16 +232,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelGameName.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;labelGameName.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>8</value>
+  </data>
+  <data name="labelKeyPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="labelKeyPath.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelKeyPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 135</value>
+    <value>3, 141</value>
   </data>
   <data name="labelKeyPath.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 12</value>
@@ -250,16 +262,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelKeyPath.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;labelKeyPath.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
+  </data>
+  <data name="labelKeyAlias.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="labelKeyAlias.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelKeyAlias.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 176</value>
+    <value>19, 183</value>
   </data>
   <data name="labelKeyAlias.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 12</value>
@@ -277,19 +292,22 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelKeyAlias.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;labelKeyAlias.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
+  </data>
+  <data name="labelKeyPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="labelKeyPassword.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelKeyPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 220</value>
+    <value>7, 219</value>
   </data>
   <data name="labelKeyPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 12</value>
+    <value>93, 24</value>
   </data>
   <data name="labelKeyPassword.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -304,16 +322,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelKeyPassword.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;labelKeyPassword.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="label_keyOU.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="label_keyOU.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label_keyOU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 262</value>
+    <value>27, 267</value>
   </data>
   <data name="label_keyOU.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 12</value>
@@ -331,16 +352,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label_keyOU.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label_keyOU.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
+  </data>
+  <data name="label_keyO.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="label_keyO.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label_keyO.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 304</value>
+    <value>43, 309</value>
   </data>
   <data name="label_keyO.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 12</value>
@@ -358,16 +382,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label_keyO.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label_keyO.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>3</value>
+  </data>
+  <data name="label_keyL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="label_keyL.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label_keyL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 348</value>
+    <value>13, 351</value>
   </data>
   <data name="label_keyL.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 12</value>
@@ -385,16 +412,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label_keyL.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label_keyL.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>2</value>
+  </data>
+  <data name="label_keyS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="label_keyS.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label_keyS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 389</value>
+    <value>37, 393</value>
   </data>
   <data name="label_keyS.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 12</value>
@@ -412,10 +442,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label_keyS.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label_keyS.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>1</value>
   </data>
   <data name="textBoxFolderName.Location" type="System.Drawing.Point, System.Drawing">
     <value>119, 22</value>
@@ -678,11 +708,14 @@
   <data name="&gt;&gt;textBox_keyC.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <data name="label_keyC.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
   <data name="label_keyC.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label_keyC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 431</value>
+    <value>13, 435</value>
   </data>
   <data name="label_keyC.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 12</value>
@@ -700,10 +733,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label_keyC.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label_keyC.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>0</value>
   </data>
   <data name="buttonBuild.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -738,11 +771,14 @@
   <data name="&gt;&gt;buttonBuild.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="labelOrientation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
   <data name="labelOrientation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelOrientation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 10</value>
+    <value>48, 15</value>
   </data>
   <data name="labelOrientation.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 12</value>
@@ -760,16 +796,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelOrientation.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelOrientation.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>6</value>
+  </data>
+  <data name="labelFullscreen.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="labelFullscreen.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelFullscreen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 51</value>
+    <value>48, 57</value>
   </data>
   <data name="labelFullscreen.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 12</value>
@@ -787,16 +826,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelFullscreen.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelFullscreen.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
+  </data>
+  <data name="labelMinSdkVersion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="labelMinSdkVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelMinSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 95</value>
+    <value>25, 99</value>
   </data>
   <data name="labelMinSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 12</value>
@@ -814,16 +856,19 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelMinSdkVersion.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelMinSdkVersion.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
+  </data>
+  <data name="labelTargetSdkVersion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="labelTargetSdkVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelTargetSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 136</value>
+    <value>25, 141</value>
   </data>
   <data name="labelTargetSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 12</value>
@@ -841,7 +886,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelTargetSdkVersion.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelTargetSdkVersion.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1077,11 +1122,14 @@
   <data name="&gt;&gt;comboBoxTargetSdkVersion.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="labelSettingGameFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
   <data name="labelSettingGameFolder.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelSettingGameFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 222</value>
+    <value>20, 225</value>
   </data>
   <data name="labelSettingGameFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 12</value>
@@ -1099,10 +1147,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelSettingGameFolder.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelSettingGameFolder.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="textBoxSettingGameFolder.Location" type="System.Drawing.Point, System.Drawing">
     <value>599, 229</value>
@@ -1149,11 +1197,14 @@
   <data name="&gt;&gt;buttonOpenFileBrowser.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="labelBuildMode.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
   <data name="labelBuildMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelBuildMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 265</value>
+    <value>48, 267</value>
   </data>
   <data name="labelBuildMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 12</value>
@@ -1171,10 +1222,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelBuildMode.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelBuildMode.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="comboBoxBuildMode.Items" xml:space="preserve">
     <value>release</value>
@@ -1326,9 +1377,9 @@
   <data name="&gt;&gt;buttonDeletePlugin.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="timerBackground.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="timerBackground.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </data>
+  </metadata>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1377,11 +1428,14 @@
   <data name="&gt;&gt;panelPlugins.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="labelCompileSdkVersion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
   <data name="labelCompileSdkVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelCompileSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 179</value>
+    <value>13, 183</value>
   </data>
   <data name="labelCompileSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 12</value>
@@ -1399,10 +1453,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelCompileSdkVersion.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelCompileSdkVersion.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="comboBoxCompileSdkVersion.Items" xml:space="preserve">
     <value>29</value>
@@ -1515,51 +1569,69 @@
   <data name="&gt;&gt;panelBuildLog.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 15</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 460</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 13</value>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 13</value>
   </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 290</value>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 463</value>
   </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
   </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label_keyC" Row="10" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label_keyS" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label_keyL" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label_keyO" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label_keyOU" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelKeyPassword" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelKeyAlias" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelKeyPath" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelGameName" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelPackageName" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelFolderName" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,103" /&gt;&lt;Rows Styles="Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>482, 12</value>
+  </data>
+  <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 288</value>
+  </data>
+  <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="labelBuildMode" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelSettingGameFolder" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelCompileSdkVersion" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelTargetSdkVersion" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelMinSdkVersion" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelFullscreen" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelOrientation" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,108" /&gt;&lt;Rows Styles="Absolute,42,Absolute,42,Absolute,42,Absolute,42,Absolute,42,Absolute,42,Absolute,42" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 12</value>
   </data>
@@ -8047,11 +8119,5 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CreateProjectFailed" xml:space="preserve">
-    <value>echo 프로젝트 생성에 실패하였습니다. https://www.npmjs.com/package/cordova</value>
-  </data>
-  <data name="ProjectCreatedSuccessfully" xml:space="preserve">
-    <value>echo 프로젝트를 생성하였습니다.</value>
   </data>
 </root>

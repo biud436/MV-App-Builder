@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Globalization;
+using System.Reflection;
+using System.Resources;
 
 namespace Cordova_Builder
 {
@@ -16,28 +19,27 @@ namespace Cordova_Builder
     {
 
         private bool[] status = new bool[4];
-
         private bool isValid = false;
-
         private TextBoxList textBoxList = new TextBoxList();
-
         private Cordova cordova = new Cordova();
-
         private delegate void AppendTextCallback(string output);
+        private ResourceManager rm;
 
-        public HostData[] hostList = new HostData[]
-        {
-            new HostData("where java.exe", false, "", @"java.exe -version 2>&1", "echo -- 자바를 찾지 못했습니다"),
-            new HostData("where keytool.exe", false, "", "echo -- keytool을 찾았습니다.", "echo -- keytool을 찾지 못했습니다"),
-            new HostData("where cordova", false, "", "cordova -v", "echo -- cordova를 찾지 못했습니다")
-        };
+        public List<HostData> hostList = new List<HostData>();
 
         /// <summary>
         /// Form1's constructor.
         /// </summary>
         public Form1()
         {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             InitializeComponent();
+
+            rm = new ResourceManager("Cordova_Builder.locale", Assembly.GetExecutingAssembly());
+            hostList.Add(new HostData("where java.exe", false, "", rm.GetString("FOUND_JAVA"), rm.GetString("NOT_FOUND_JAVA")));
+            hostList.Add(new HostData("where keytool.exe", false, "", rm.GetString("FOUND_KEYTOOL"), rm.GetString("NOT_FOUND_KEYTOOL")));
+            hostList.Add(new HostData("where cordova", false, "", rm.GetString("FOUND_CORDOVA"), rm.GetString("NOT_FOUND_CORDOVA")));
+
         }
 
         /// <summary>
@@ -78,33 +80,38 @@ namespace Cordova_Builder
             CenterToScreen();
             cordova.SetMainForm(this);
 
-            AppendText("--- 준비 ---");
+            // 준비 메시지
+            AppendText(rm.GetString("Ready"));
 
             if(CheckRequirements())
             {
-                AppendText("--- 필요한 모든 프로그램이 설치되어있습니다.");
+                // 필요한 프로그램이 모두 있음
+                AppendText(rm.GetString("Done"));
             } else
             {
-                AppendText("--- [ERROR] 필요한 프로그램이 설치되어있지 않습니다.");
+                AppendText(rm.GetString("NotInstalled"));
 
                 if(!status[0] || !status[1])
                 {
-                    AppendText("자바를 설치해주세요.");
-                    AppendText("https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html");
+                    // 자바 미설치
+                    AppendText(rm.GetString("NotInstalledJava1"));
+                    AppendText(rm.GetString("NotInstalledJava2"));
                 }
 
                 if (!status[2])
                 {
-                    AppendText("Node.js와 cordova를 설치해야 합니다.");
-                    AppendText("https://nodejs.org/ko/download/");
-                    AppendText("https://www.npmjs.com/package/cordova");
+                    // 코르도바 미설치
+                    AppendText(rm.GetString("NotInstalledCordova1"));
+                    AppendText(rm.GetString("NotInstalledCordova2"));
+                    AppendText(rm.GetString("NotInstalledCordova3"));
                 }
 
                 if (!status[3])
                 {
-                    AppendText("안드로이드 SDK가 설치되어있지 않습니다");
-                    AppendText("안드로이드 SDK를 설치해주십시오.");
-                    AppendText("https://developer.android.com/studio/?hl=ko");
+                    // 안드로이드 SDK
+                    AppendText(rm.GetString("NotInstalledAndroidSDK1"));
+                    AppendText(rm.GetString("NotInstalledAndroidSDK2"));
+                    AppendText(rm.GetString("NotInstalledAndroidSDK3"));
                 }
 
 
@@ -129,7 +136,7 @@ namespace Cordova_Builder
         public bool CheckRequirements()
         {
 
-            for (var i = 0; i < hostList.Length; i++)
+            for (var i = 0; i < hostList.Count; i++)
             {
                 Append append = AppendText;
 
@@ -141,12 +148,12 @@ namespace Cordova_Builder
 
             if (!String.IsNullOrEmpty(ANDROID_HOME))
             {
-                AppendText(String.Format("안드로이드 SDK / ANDROID_HOME를 찾았습니다 : {0}", ANDROID_HOME));
+                AppendText(String.Format(rm.GetString("FOUND_ANDROID_HOME"), ANDROID_HOME));
                 status[3] = true;
             }
             else if (!String.IsNullOrEmpty(ANDROID_SDK_ROOT))
             {
-                AppendText(String.Format("안드로이드 SDK / ANDROID_SDK_ROOT를 찾았습니다 : {0}", ANDROID_SDK_ROOT));
+                AppendText(String.Format(rm.GetString("FOUND_ANDROID_SDK_ROOT"), ANDROID_SDK_ROOT));
                 status[3] = true;
             }
 
@@ -248,17 +255,19 @@ namespace Cordova_Builder
 
                 Debug.WriteLine(cmd);
 
-                HostData hostData = new HostData(cmd, false, "", "키스토어 파일이 생성되었습니다", "키스토어 파일 생성에 실패하였습니다");
+                
+
+                HostData hostData = new HostData(cmd, false, "", rm.GetString("CreateKeyStore1"), rm.GetString("CreateKeyStore2"));
 
                 bool status = hostData.Run(append);
 
                 if (status)
                 {
-                    AppendText("키스토어 파일이 생성되었습니다.");
+                    AppendText(rm.GetString("CreateKeyStore3"));
                 }
                 else
                 {
-                    AppendText("이미 파일이 존재하거나. 유효하지 않은 매개변수를 입력하였습니다. 키스토어 파일 생성에 실패하였습니다.");
+                    AppendText(rm.GetString("CreateKeyStore4"));
                 }
 
             }

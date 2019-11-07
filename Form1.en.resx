@@ -117,9 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelFolderName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labelFolderName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 9</value>
+    <value>31, 15</value>
   </data>
   <data name="labelFolderName.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 12</value>
@@ -127,8 +131,11 @@
   <data name="labelFolderName.Text" xml:space="preserve">
     <value>Root Folder</value>
   </data>
+  <data name="labelPackageName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="labelPackageName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 50</value>
+    <value>8, 57</value>
   </data>
   <data name="labelPackageName.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 12</value>
@@ -137,7 +144,7 @@
     <value>Package Name</value>
   </data>
   <data name="labelGameName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 92</value>
+    <value>35, 99</value>
   </data>
   <data name="labelGameName.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 12</value>
@@ -145,14 +152,20 @@
   <data name="labelGameName.Text" xml:space="preserve">
     <value>App Name</value>
   </data>
+  <data name="labelKeyPath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelKeyPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 135</value>
+  </data>
   <data name="labelKeyPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 12</value>
+    <value>64, 24</value>
   </data>
   <data name="labelKeyPath.Text" xml:space="preserve">
     <value>Key Store Name</value>
   </data>
   <data name="labelKeyAlias.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 177</value>
+    <value>41, 183</value>
   </data>
   <data name="labelKeyAlias.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 12</value>
@@ -161,7 +174,7 @@
     <value>Key Alias</value>
   </data>
   <data name="labelKeyPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 220</value>
+    <value>12, 225</value>
   </data>
   <data name="labelKeyPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 12</value>
@@ -169,27 +182,29 @@
   <data name="labelKeyPassword.Text" xml:space="preserve">
     <value>Key Password</value>
   </data>
+  <data name="label_keyOU.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="label_keyOU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 263</value>
+    <value>20, 261</value>
   </data>
   <data name="label_keyOU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 12</value>
+    <value>80, 24</value>
   </data>
   <data name="label_keyOU.Text" xml:space="preserve">
     <value>Organization Units</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label_keyO.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>True</value>
   </data>
   <data name="label_keyO.Font" type="System.Drawing.Font, System.Drawing">
     <value>굴림, 8pt</value>
   </data>
   <data name="label_keyO.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 294</value>
+    <value>24, 304</value>
   </data>
   <data name="label_keyO.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 36</value>
+    <value>76, 22</value>
   </data>
   <data name="label_keyO.Text" xml:space="preserve">
     <value>Organization name</value>
@@ -198,7 +213,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="label_keyL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 347</value>
+    <value>37, 351</value>
   </data>
   <data name="label_keyL.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 12</value>
@@ -206,8 +221,11 @@
   <data name="label_keyL.Text" xml:space="preserve">
     <value>City name</value>
   </data>
+  <data name="label_keyS.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="label_keyS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 389</value>
+    <value>31, 393</value>
   </data>
   <data name="label_keyS.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 12</value>
@@ -216,13 +234,13 @@
     <value>State name</value>
   </data>
   <data name="label_keyC.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>True</value>
   </data>
   <data name="label_keyC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 424</value>
+    <value>6, 429</value>
   </data>
   <data name="label_keyC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 33</value>
+    <value>94, 24</value>
   </data>
   <data name="label_keyC.Text" xml:space="preserve">
     <value>Country/Region code</value>
@@ -233,14 +251,11 @@
   <data name="buttonBuild.Text" xml:space="preserve">
     <value>Build</value>
   </data>
-  <data name="labelOrientation.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="labelOrientation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 4</value>
+    <value>40, 9</value>
   </data>
   <data name="labelOrientation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 24</value>
+    <value>65, 24</value>
   </data>
   <data name="labelOrientation.Text" xml:space="preserve">
     <value>Screen Orientation</value>
@@ -248,14 +263,11 @@
   <data name="labelOrientation.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="labelFullscreen.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="labelFullscreen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 45</value>
+    <value>3, 57</value>
   </data>
   <data name="labelFullscreen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 31</value>
+    <value>102, 12</value>
   </data>
   <data name="labelFullscreen.Text" xml:space="preserve">
     <value>full-screen mode</value>
@@ -263,14 +275,11 @@
   <data name="labelFullscreen.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="labelMinSdkVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="labelMinSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 87</value>
+    <value>24, 93</value>
   </data>
   <data name="labelMinSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 33</value>
+    <value>81, 24</value>
   </data>
   <data name="labelMinSdkVersion.Text" xml:space="preserve">
     <value>Minimum API level</value>
@@ -278,14 +287,11 @@
   <data name="labelMinSdkVersion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="labelTargetSdkVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="labelTargetSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 129</value>
+    <value>7, 141</value>
   </data>
   <data name="labelTargetSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 30</value>
+    <value>98, 12</value>
   </data>
   <data name="labelTargetSdkVersion.Text" xml:space="preserve">
     <value>Target API Level</value>
@@ -293,14 +299,11 @@
   <data name="labelTargetSdkVersion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="labelSettingGameFolder.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="labelSettingGameFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 214</value>
+    <value>21, 219</value>
   </data>
   <data name="labelSettingGameFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 33</value>
+    <value>84, 24</value>
   </data>
   <data name="labelSettingGameFolder.Text" xml:space="preserve">
     <value>Set Working Folder (www)</value>
@@ -308,14 +311,11 @@
   <data name="labelSettingGameFolder.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="labelBuildMode.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="labelBuildMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 260</value>
+    <value>30, 267</value>
   </data>
   <data name="labelBuildMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 19</value>
+    <value>75, 12</value>
   </data>
   <data name="labelBuildMode.Text" xml:space="preserve">
     <value>output mode</value>
@@ -338,14 +338,11 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Cordova Plugins</value>
   </data>
-  <data name="labelCompileSdkVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="labelCompileSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 172</value>
+    <value>30, 177</value>
   </data>
   <data name="labelCompileSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 30</value>
+    <value>75, 24</value>
   </data>
   <data name="labelCompileSdkVersion.Text" xml:space="preserve">
     <value>Compile API level</value>
@@ -6816,11 +6813,5 @@
         /wP//////////////////////////////4P//////////////////////////////8f/////////////
         //////////////////////////////////8=
 </value>
-  </data>
-  <data name="CreateProjectFailed" xml:space="preserve">
-    <value>echo Create Project Failed : https://www.npmjs.com/package/cordova</value>
-  </data>
-  <data name="ProjectCreatedSuccessfully" xml:space="preserve">
-    <value>echo Project created successfully!</value>
   </data>
 </root>

@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Resources;
 using System.Xml;
 
-[assembly: NeutralResourcesLanguageAttribute("en-US")]
+[assembly: NeutralResourcesLanguageAttribute("ko-KR")]
 namespace Cordova_Builder
 {
 
@@ -26,7 +26,7 @@ namespace Cordova_Builder
         public Cordova()
         {
             currentDirectory = System.IO.Directory.GetCurrentDirectory();
-            rm = new ResourceManager("ko-KR", Assembly.GetExecutingAssembly());
+            rm = new ResourceManager("Cordova_Builder.locale", Assembly.GetExecutingAssembly());
         }
 
         /// <summary>
@@ -194,8 +194,8 @@ namespace Cordova_Builder
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("cordova create {0} {1} {2}", folderName, packageName, gameName);
             HostData process = new HostData(sb.ToString(), true, "",
-                rm.GetString("ProjectCreatedSuccessfully", CultureInfo.CurrentUICulture),
-                rm.GetString("CreateProjectFailed", CultureInfo.CurrentUICulture));
+                rm.GetString("Create1"),
+                rm.GetString("Create2"));
             Append append = AppendText;
             
             return process.Run(append);
@@ -206,7 +206,7 @@ namespace Cordova_Builder
         /// </summary>
         private void AddAndroidPlatform()
         {
-            HostData process = new HostData("cordova platform add android", true, "", "echo 안드로이드 프로젝트가 추가되었습니다", "echo 안드로이드 프로젝트 추가에 실패하였습니다");
+            HostData process = new HostData("cordova platform add android", true, "", rm.GetString("AddAndroidPlatform1"), rm.GetString("AddAndroidPlatform2"));
 
             Append append = AppendText;
 
@@ -220,7 +220,7 @@ namespace Cordova_Builder
         /// <returns></returns>
         private bool Requirements()
         {
-            var process = new HostData("cordova requirements", true, "", "echo ...", "echo ...");
+            var process = new HostData("cordova requirements", true, "", rm.GetString("Requirements1"), rm.GetString("Requirements2"));
 
             Append append = AppendText;
 
@@ -286,7 +286,7 @@ namespace Cordova_Builder
 
                 xmlDoc.Save("config.xml");
 
-                AppendText("config.xml 파일을 수정하였습니다");
+                AppendText(rm.GetString("WriteConfig"));
 
             }
             catch (System.Exception ex)
@@ -327,7 +327,7 @@ namespace Cordova_Builder
 
                     System.IO.File.WriteAllLines(filename, lines);
 
-                    AppendText("index.html 파일을 수정하였습니다.");
+                    AppendText(rm.GetString("ModifyHtmlFiles"));
                 }
             }
 
@@ -341,20 +341,22 @@ namespace Cordova_Builder
             string srcPath = list.settingGameFolder.Text.ToString();
             string dstPath = ".\\www";
 
-            AppendText("게임 폴더 복사를 시작합니다 [robocopy 사용]");
+            AppendText(rm.GetString("CopyProjectFiles1"));
 
             if (System.IO.Directory.Exists(srcPath))
             {
                 string robocopy = String.Format("robocopy \"{0}\" \"{1}\" /E /R:1 /W:1", srcPath, dstPath);
 
-                HostData process = new HostData(robocopy, true, "", "echo 폴더를 www 폴더로 복사하였습니다.", "echo 폴더 복사에 실패하였습니다.");
+                HostData process = new HostData(robocopy, true, "",
+                    rm.GetString("CopyProjectFiles2"),
+                    rm.GetString("CopyProjectFiles3"));
 
                 Append append = AppendText;
 
                 process.Run(append);
             } else
             {
-                AppendText("복사 할 폴더가 존재하지 않아 파일을 복사할 수 없습니다.");
+                AppendText(rm.GetString("CopyProjectFiles4"));
             }
 
         }
@@ -368,8 +370,8 @@ namespace Cordova_Builder
             foreach(string pluginName in list.plugins.Items)
             {
                 string command = String.Format("cordova plugin add {0}", pluginName);
-                string success = String.Format("echo {0} 플러그인이 추가되었습니다.", pluginName);
-                string fail = String.Format("echo {0} 플러그인을 추가하는 데 실패하였습니다.", pluginName);
+                string success = String.Format(rm.GetString("AddPlugins1"), pluginName);
+                string fail = String.Format(rm.GetString("AddPlugins2"), pluginName);
                 HostData process = new HostData(command, true, "", success, fail);
 
                 Append append = AppendText;
@@ -386,13 +388,15 @@ namespace Cordova_Builder
         {
             if(System.IO.File.Exists("build.json"))
             {
-                AppendText("build.json 파일을 찾았습니다");
+                AppendText(rm.GetString("Flush1"));
             }
 
             string mode = (list.biuldMode.SelectedIndex == 0) ? "--release" : "--debug";
             string cmd = String.Format("cordova build android {0} --buildConfig=build.json", mode);
 
-            HostData process = new HostData(cmd, true, "", "echo 빌드가 완료되었습니다.", "echo 빌드 중에 오류가 발생하였습니다.");
+            HostData process = new HostData(cmd, true, "",
+                rm.GetString("Flush2"),
+                rm.GetString("Flush3"));
 
             Append append = AppendText;
 
