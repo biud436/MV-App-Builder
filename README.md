@@ -1,5 +1,5 @@
 # Introduction
-Cordova(코르도바)를 사용하여 RPG Maker MV용 안드로이드 앱을 빌드할 수 있게 하는 코르도바 용 GUI 빌드 프로그램입니다.
+This tool allows you to easy to build the app for RPG Maker MV using cordova.
 
 ![IMAGE](./screenshot.png)
 
@@ -13,4 +13,5 @@ This program didn't contain auto-installer and updater, so you need to install r
 - Android Studio & Android SDK 27 or more.
 - Windows 7 or more.
 
+# Download
 [DOWNLOAD](https://github.com/biud436/MV-App-Builder/releases)
