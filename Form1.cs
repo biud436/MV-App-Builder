@@ -32,6 +32,7 @@ namespace Cordova_Builder
         /// </summary>
         public Form1()
         {
+            
             InitializeComponent();
 
             rm = new ResourceManager("Cordova_Builder.locale", Assembly.GetExecutingAssembly());
