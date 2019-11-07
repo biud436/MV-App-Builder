@@ -403,6 +403,21 @@ namespace Cordova_Builder
 
         }
 
+        /// <summary>
+        /// Add new plugin.
+        /// </summary>
+        private void Install()
+        {
+            AppendText("Installing cordova...");
+
+            HostData process = new HostData("npm install -g cordova", true, "", "echo ...", "echo ...");
+
+            Append append = AppendText;
+
+            process.Run(append);
+
+        }
+
     }
 
 }
