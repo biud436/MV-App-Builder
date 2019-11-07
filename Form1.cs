@@ -32,7 +32,8 @@ namespace Cordova_Builder
         /// </summary>
         public Form1()
         {
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+
             InitializeComponent();
 
             rm = new ResourceManager("Cordova_Builder.locale", Assembly.GetExecutingAssembly());
