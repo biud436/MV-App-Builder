@@ -226,9 +226,20 @@ namespace Cordova_Builder
             return process.Run(append);
         }
 
-        private Cordova CreateElement(XmlDocument xmlDoc, string name, string value)
+        private Cordova SetPreference(XmlDocument xmlDoc, string name, string value)
         {
             var element = xmlDoc.CreateNode(XmlNodeType.Element, "preference", null);
+
+            var parentNode = xmlDoc.SelectSingleNode("/widget/platform[@name='android']");
+
+            if (parentNode == null)
+            {
+                parentNode = xmlDoc.CreateNode(XmlNodeType.Element, "platform", null);
+                var platformName = xmlDoc.CreateAttribute("name");
+                platformName.Value = "android";
+
+                parentNode.Attributes.Append(platformName);
+            }
 
             var nameAttr = xmlDoc.CreateAttribute("name");
             nameAttr.Value = name;
@@ -239,7 +250,8 @@ namespace Cordova_Builder
             element.Attributes.Append(nameAttr);
             element.Attributes.Append(valueAttr);
 
-            xmlDoc.DocumentElement.AppendChild(element);
+            //xmlDoc.DocumentElement.AppendChild(element);
+            parentNode.AppendChild(element);
 
             return this;
         }
@@ -249,7 +261,7 @@ namespace Cordova_Builder
         /// </summary>
         /// <param name="xmlDoc"></param>
         /// <returns></returns>
-        private Cordova MakeIconElement(XmlDocument xmlDoc)
+        private Cordova SetIcon(XmlDocument xmlDoc)
         {
             var element = xmlDoc.CreateNode(XmlNodeType.Element, "icon", null);
 
@@ -263,8 +275,32 @@ namespace Cordova_Builder
             return this;
         }
 
+        private Cordova SetStartPage(XmlDocument xmlDoc, string startHtmlFile)
+        {
+            XmlNode node = xmlDoc.SelectSingleNode("/widget/content");
+
+            if(node is XmlNode)
+            {
+                node.Attributes["src"].Value = startHtmlFile;
+            } else
+            {
+                var element = xmlDoc.CreateNode(XmlNodeType.Element, "content", null);
+                var srcAttr = xmlDoc.CreateAttribute("src");
+
+                srcAttr.Value = startHtmlFile;
+
+                element.Attributes.Append(srcAttr);
+
+                xmlDoc.DocumentElement.AppendChild(element);
+            }
+
+            return this;
+                
+        }
+
         /// <summary>
         /// config.xml 파일에 화면 방향과 같은 추가 사항을 기록합니다.
+        /// <see cref="https://cordova.apache.org/docs/en/latest/config_ref/#preference"/>
         /// </summary>
         private void WriteConfig()
         {
@@ -275,13 +311,15 @@ namespace Cordova_Builder
                 xmlDoc.Load("config.xml");
 
                 this
-                    .CreateElement(xmlDoc, "Orientation", list.orientation.SelectedItem.ToString())
-                    .CreateElement(xmlDoc, "Fullscreen", list.fullscreen.SelectedItem.ToString())
-                    .CreateElement(xmlDoc, "AllowInlineMediaPlayback", "true")
-                    .CreateElement(xmlDoc, "android-minSdkVersion", list.minSdkVersion.SelectedItem.ToString())
-                    .CreateElement(xmlDoc, "android-targetSdkVersion", list.targetSdkVersion.SelectedItem.ToString())
-                    .CreateElement(xmlDoc, "android-compileSdkVersion", list.compileSdkVersion.SelectedItem.ToString())
-                    .MakeIconElement(xmlDoc);
+                    .SetPreference(xmlDoc, "Orientation", list.orientation.SelectedItem.ToString())
+                    .SetPreference(xmlDoc, "FullScreen", list.fullscreen.SelectedItem.ToString())
+                    .SetPreference(xmlDoc, "android-minSdkVersion", list.minSdkVersion.SelectedItem.ToString())
+                    .SetPreference(xmlDoc, "android-targetSdkVersion", list.targetSdkVersion.SelectedItem.ToString())
+                    .SetPreference(xmlDoc, "android-compileSdkVersion", list.compileSdkVersion.SelectedItem.ToString()) // it didn't exist property.
+                    .SetPreference(xmlDoc, "BackgroundColor", "0xff000000") // black color
+                    .SetPreference(xmlDoc, "ShowTitle", "false")
+                    .SetIcon(xmlDoc)
+                    .SetStartPage(xmlDoc, "index.html"); // window.open("update.html", "_self"); -> window.open("index.html, "_self");
 
                 xmlDoc.Save("config.xml");
 
@@ -404,16 +442,14 @@ namespace Cordova_Builder
         }
 
         /// <summary>
-        /// Add new plugin.
+        /// Install cordova to user computer on Windows
         /// </summary>
         private void Install()
         {
             AppendText("Installing cordova...");
 
             HostData process = new HostData("npm install -g cordova", true, "", "echo ...", "echo ...");
-
             Append append = AppendText;
-
             process.Run(append);
 
         }
