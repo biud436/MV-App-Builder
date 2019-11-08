@@ -132,8 +132,8 @@ namespace Cordova_Builder
                     Make(filename =>
                     {
                         AddAndroidPlatform(); // 안드로이드 플랫폼 추가합니다
-                        WriteConfig(); // config.xml 파일을 수정합니다
                         AddPlugins(); // 플러그인을 추가합니다.
+                        WriteConfig(); // config.xml 파일을 수정합니다
                         mainForm.CreateKeyStore(); // 키스토어 파일을 생성합니다
                         CopyProjectFiles(); // 파일을 복사합니다.
                         ModifyHtmlFiles(); // HTML 파일에 cordova 바인드 용 스크립트 문을 추가합니다.
@@ -230,17 +230,6 @@ namespace Cordova_Builder
         {
             var element = xmlDoc.CreateNode(XmlNodeType.Element, "preference", null);
 
-            var parentNode = xmlDoc.SelectSingleNode("/widget/platform[@name='android']");
-
-            if (parentNode == null)
-            {
-                parentNode = xmlDoc.CreateNode(XmlNodeType.Element, "platform", null);
-                var platformName = xmlDoc.CreateAttribute("name");
-                platformName.Value = "android";
-
-                parentNode.Attributes.Append(platformName);
-            }
-
             var nameAttr = xmlDoc.CreateAttribute("name");
             nameAttr.Value = name;
 
@@ -250,8 +239,7 @@ namespace Cordova_Builder
             element.Attributes.Append(nameAttr);
             element.Attributes.Append(valueAttr);
 
-            //xmlDoc.DocumentElement.AppendChild(element);
-            parentNode.AppendChild(element);
+            xmlDoc.DocumentElement.AppendChild(element);
 
             return this;
         }
@@ -275,29 +263,6 @@ namespace Cordova_Builder
             return this;
         }
 
-        private Cordova SetStartPage(XmlDocument xmlDoc, string startHtmlFile)
-        {
-            XmlNode node = xmlDoc.SelectSingleNode("/widget/content");
-
-            if(node is XmlNode)
-            {
-                node.Attributes["src"].Value = startHtmlFile;
-            } else
-            {
-                var element = xmlDoc.CreateNode(XmlNodeType.Element, "content", null);
-                var srcAttr = xmlDoc.CreateAttribute("src");
-
-                srcAttr.Value = startHtmlFile;
-
-                element.Attributes.Append(srcAttr);
-
-                xmlDoc.DocumentElement.AppendChild(element);
-            }
-
-            return this;
-                
-        }
-
         /// <summary>
         /// config.xml 파일에 화면 방향과 같은 추가 사항을 기록합니다.
         /// <see cref="https://cordova.apache.org/docs/en/latest/config_ref/#preference"/>
@@ -318,8 +283,7 @@ namespace Cordova_Builder
                     .SetPreference(xmlDoc, "android-compileSdkVersion", list.compileSdkVersion.SelectedItem.ToString()) // it didn't exist property.
                     .SetPreference(xmlDoc, "BackgroundColor", "0xff000000") // black color
                     .SetPreference(xmlDoc, "ShowTitle", "false")
-                    .SetIcon(xmlDoc)
-                    .SetStartPage(xmlDoc, "index.html"); // window.open("update.html", "_self"); -> window.open("index.html, "_self");
+                    .SetIcon(xmlDoc);
 
                 xmlDoc.Save("config.xml");
 
