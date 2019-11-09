@@ -187,10 +187,19 @@ namespace Cordova_Builder
                 //          - folderName/res 폴더가 있다.
                 //
                 // 가장 간단한 처리는 폴더가 존재하면 삭제하고 재생성하는 방법
-                //      - 현재 사용 중인 방법
+                // 
                 if (System.IO.Directory.Exists(folderName))
                 {
-                    clearFolder(folderName);
+                    var configPath = System.IO.Path.Combine(folderName, "config.xml");
+                    var resFolderPath = System.IO.Path.Combine(folderName, "res");
+
+                    if(System.IO.File.Exists(configPath) && System.IO.Directory.Exists(resFolderPath))
+                    {
+                        return true;
+                    }
+
+                    //clearFolder(folderName);
+
                 }
 
             }
@@ -413,11 +422,11 @@ namespace Cordova_Builder
             }
 
             string mode = (list.biuldMode.SelectedIndex == 0) ? "--release" : "--debug";
-            string cmd = String.Format("cordova build android {0} --buildConfig=build.json 2>&1", mode);
+            string cmd = String.Format("cordova build android {0} --buildConfig=build.json", mode);
 
             HostData process = new HostData(cmd, true, "",
                 rm.GetString("Flush2"),
-                rm.GetString("Flush3"));
+                rm.GetString("Flush2"));
 
             Append append = AppendText;
 
