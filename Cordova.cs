@@ -219,7 +219,7 @@ namespace Cordova_Builder
             //      - JSON 필요의 경우, folderName/package.json 파일에 cordova.platforms에 "android"가 존재할 때
             //      - JSON이 필요하지 않은 경우, folderName/platforms/android/android.json 파일이 있다
 
-            if(!System.IO.File.Exists(@".\platforms\android\android.json"))
+            if(!System.IO.File.Exists(@"platforms/android/android.json"))
             {
                 HostData process = new HostData("cordova platform add android", true, "", rm.GetString("AddAndroidPlatform1"), rm.GetString("AddAndroidPlatform2"));
 
