@@ -424,6 +424,12 @@ namespace Cordova_Builder
             string mode = (list.biuldMode.SelectedIndex == 0) ? "--release" : "--debug";
             string cmd = String.Format("cordova build android {0} --buildConfig=build.json", mode);
 
+            // 코르도바는 빌드가 완료되면, 정상 출력 루트가 아닌 오류 쪽으로 빌드 완료 메시지를 보낸다.
+            // 따라서, 오류 메시지를 정상인 것처럼 처리할 경우, 프로세스가 종료되지 않고 영원히 남게 된다.
+            // TODO: 
+            // 따라서 빌드 실패 메시지에 빌드 성공 메시지를 넣어야 한다.
+            // 다만, 이 경우 빌드 실패 시에도 빌드가 성공했다고 메시지가 뜨게 된다.
+            // 구분할 수 있는 방법은 아직까지 없다. 리치 텍스트 박스에서 fail 글자를 추출하지 않는한 불가능하다.
             HostData process = new HostData(cmd, true, "",
                 rm.GetString("Flush2"),
                 rm.GetString("Flush2"));
