@@ -9,9 +9,39 @@ using System.Globalization;
 using System.Reflection;
 using System.Resources;
 using System.Xml;
+using Newtonsoft.Json;
 
 namespace Cordova_Builder
 {
+
+    [JsonObject(MemberSerialization.OptOut)]
+    public class ConfigData
+    {
+
+        public ConfigData()
+        {
+
+        }
+
+        public string keystore { get; set; }
+        public string storePassword { get; set; }
+        public string alias { get; set; }
+        public string password { get; set; }
+        public string keystoreType { get; set; }
+    }
+
+    [JsonObject(MemberSerialization.OptOut)]
+    public class AndroidBuildConfig
+    {
+        public ConfigData debug;
+        public ConfigData release;
+    }
+
+    [JsonObject(MemberSerialization.OptOut)]
+    public class BuildConfig
+    {
+        public AndroidBuildConfig android;
+    }
 
     public class Cordova
     {
@@ -62,31 +92,28 @@ namespace Cordova_Builder
         {
             StringBuilder output = new StringBuilder();
 
-            string filePath = String.Format("          \"keystore\": \"{0}\",\r\n", list.keyPath.Text);
-            string storePassword = String.Format("          \"storePassword\": \"{0}\",\r\n", list.passWord.Text);
-            string alias = String.Format("          \"alias\": \"{0}\",\r\n", list.keyAlias.Text);
-            string password = String.Format("          \"password\" : \"{0}\",\r\n", list.passWord.Text);
+            BuildConfig config = new BuildConfig();
+            ConfigData data = new ConfigData()
+            {
+                keystore = list.keyPath.Text,
+                storePassword = list.passWord.Text,
+                alias = list.keyAlias.Text,
+                password = list.passWord.Text,
+                keystoreType = "",
+            };
+            AndroidBuildConfig androidConfig = new AndroidBuildConfig()
+            {
+                debug = data,
+                release = data
+            };
+            config.android = androidConfig;
 
-            output.Append("{ \r\n");
-            output.Append("  \"android\": {\r\n");
-            output.Append("      \"debug\": {\r\n");
-            output.Append(filePath);
-            output.Append(storePassword);
-            output.Append(alias);
-            output.Append(password);
-            output.Append("          \"keystoreType\": \"\"\r\n");
-            output.Append("      },\r\n");
-            output.Append("      \"release\": {\r\n");
-            output.Append(filePath);
-            output.Append(storePassword);
-            output.Append(alias);
-            output.Append(password);
-            output.Append("          \"keystoreType\": \"\"\r\n");
-            output.Append("      }\r\n");
-            output.Append("  }\r\n");
-            output.Append("}\r\n");
+            string json = JsonConvert.SerializeObject(config, new JsonSerializerSettings()
+            {
+                Formatting = Newtonsoft.Json.Formatting.Indented
+            });
 
-            System.IO.File.WriteAllText(filename, output.ToString());
+            System.IO.File.WriteAllText(filename, json.ToString());
 
         }
 
