@@ -119,7 +119,7 @@ namespace Cordova_Builder
             }
         }
 
-        public void Build()
+        public void Build(Action successCallback)
         {
 
             Thread worker = new Thread(new ThreadStart(() =>
@@ -139,6 +139,7 @@ namespace Cordova_Builder
                         ModifyHtmlFiles(); // HTML 파일에 cordova 바인드 용 스크립트 문을 추가합니다.
                         ExportBuildJson(filename); // build.config 파일을 배포합니다.
                         Flush(); // 빌드를 시작합니다.
+                        successCallback();
                     });
                 }
             }));
