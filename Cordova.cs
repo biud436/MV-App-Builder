@@ -180,6 +180,14 @@ namespace Cordova_Builder
 
             try
             {
+                // TODO:
+                // 코르도바 프로젝트가 이미 생성되었다 => true이면 생략 
+                //      - folderName가 존재한다 => true이면 아래를 또 확인
+                //          - folderName/config.xml 파일이 존재한다
+                //          - folderName/res 폴더가 있다.
+                //
+                // 가장 간단한 처리는 폴더가 존재하면 삭제하고 재생성하는 방법
+                //      - 현재 사용 중인 방법
                 if (System.IO.Directory.Exists(folderName))
                 {
                     clearFolder(folderName);
@@ -206,6 +214,11 @@ namespace Cordova_Builder
         /// </summary>
         private void AddAndroidPlatform()
         {
+            // TODO:
+            // 안드로이드 플랫폼이 이미 추가되었다 => true이면 생략
+            //      - JSON 필요의 경우, folderName/package.json 파일에 cordova.platforms에 "android"가 존재할 때
+            //      - JSON이 필요하지 않은 경우, fodlerName/platforms/android/android.json 파일이 있다
+
             HostData process = new HostData("cordova platform add android", true, "", rm.GetString("AddAndroidPlatform1"), rm.GetString("AddAndroidPlatform2"));
 
             Append append = AppendText;
@@ -272,23 +285,26 @@ namespace Cordova_Builder
         {
             try
             {
+                if (System.IO.File.Exists("config.xml"))
+                {
+                    XmlDocument xmlDoc = new XmlDocument();
 
-                XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load("config.xml");
+                    xmlDoc.Load("config.xml");
 
-                this
-                    .SetPreference(xmlDoc, "Orientation", list.orientation.SelectedItem.ToString())
-                    .SetPreference(xmlDoc, "FullScreen", list.fullscreen.SelectedItem.ToString())
-                    .SetPreference(xmlDoc, "android-minSdkVersion", list.minSdkVersion.SelectedItem.ToString())
-                    .SetPreference(xmlDoc, "android-targetSdkVersion", list.targetSdkVersion.SelectedItem.ToString())
-                    .SetPreference(xmlDoc, "android-compileSdkVersion", list.compileSdkVersion.SelectedItem.ToString()) // it didn't exist property.
-                    .SetPreference(xmlDoc, "BackgroundColor", "0xff000000") // black color
-                    .SetPreference(xmlDoc, "ShowTitle", "false")
-                    .SetIcon(xmlDoc);
+                    this
+                        .SetPreference(xmlDoc, "Orientation", list.orientation.SelectedItem.ToString())
+                        .SetPreference(xmlDoc, "FullScreen", list.fullscreen.SelectedItem.ToString())
+                        .SetPreference(xmlDoc, "android-minSdkVersion", list.minSdkVersion.SelectedItem.ToString())
+                        .SetPreference(xmlDoc, "android-targetSdkVersion", list.targetSdkVersion.SelectedItem.ToString())
+                        .SetPreference(xmlDoc, "android-compileSdkVersion", list.compileSdkVersion.SelectedItem.ToString()) // it didn't exist property.
+                        .SetPreference(xmlDoc, "BackgroundColor", "0xff000000") // black color
+                        .SetPreference(xmlDoc, "ShowTitle", "false")
+                        .SetIcon(xmlDoc);
 
-                xmlDoc.Save("config.xml");
+                    xmlDoc.Save("config.xml");
 
-                AppendText(rm.GetString("WriteConfig"));
+                    AppendText(rm.GetString("WriteConfig"));
+                }
 
             }
             catch (System.Exception ex)
