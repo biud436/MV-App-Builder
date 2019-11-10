@@ -58,6 +58,8 @@ namespace Cordova_Builder
             hostList.Add(new HostData("where keytool.exe", false, "", rm.GetString("FOUND_KEYTOOL"), rm.GetString("NOT_FOUND_KEYTOOL")));
             hostList.Add(new HostData("where cordova", false, "", rm.GetString("FOUND_CORDOVA"), rm.GetString("NOT_FOUND_CORDOVA")));
 
+
+
         }
 
         /// <summary>
@@ -319,6 +321,8 @@ namespace Cordova_Builder
             InitWithComboBox();
 
             cordova.Bind(this.textBoxList);
+
+            cordova.InitWithVersion();
 
         }
 

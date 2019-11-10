@@ -12,17 +12,31 @@ using System.Xml;
 using Newtonsoft.Json;
 using System.Data;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
+using System.Net;
 
 namespace Cordova_Builder
 {
     public class Cordova
     {
 
+        // 메인 폼
         private Form1 mainForm;
+
+        // 현재 경로
         private string currentDirectory;
+
+        // UI 컨트롤 목록
         private TextBoxList list;
+
+        // 지역화를 위한 리소스 관리자
         private ResourceManager rm;
-        Dictionary<string, bool> plugins = new Dictionary<string, bool>();
+
+        // 플러그인 목록
+        private Dictionary<string, bool> plugins = new Dictionary<string, bool>();
+
+        // 버전
+        private Version version;
 
         public Cordova()
         {
@@ -445,9 +459,9 @@ namespace Cordova_Builder
         }
 
         /// <summary>
-        /// 프로젝트 폴더에서 js/plugins.js 파일을 읽고 true/false 인지 여부를 확인합니다.
+        /// Reads the plugins.js file and Checks whether the plugin's status is to true in the project folder.
         /// </summary>
-        /// <param name="projectPath"></param>
+        /// <param name="projectPath">The project path that contains the www folder.</param>
         public void ReadProjectPluginsJson(string projectPath)
         {
 
@@ -471,6 +485,11 @@ namespace Cordova_Builder
 
         }
 
+        /// <summary>
+        /// Check whether certain plugin is valid.
+        /// </summary>
+        /// <param name="pluginName">Filename that omitted the file extension</param>
+        /// <returns></returns>
         public bool IsValidPlugin(string pluginName)
         {
             bool isValid = false;
@@ -483,6 +502,52 @@ namespace Cordova_Builder
             return isValid;
         }
 
+        public void InitWithVersion()
+        {
+            // 현재 버전
+            version = new Version("0.1.17");
+
+            using (WebClient wc = new WebClient())
+            {
+                string targetJson = wc.DownloadString("https://raw.githubusercontent.com/biud436/MV-App-Builder/master/version.json");
+                var targetObject = JsonHelper.ToClass<Dictionary<string, string>>(targetJson);
+                    
+                if(targetObject.ContainsKey("version"))
+                {
+                    var targetVersion = new Version(targetObject["version"]);
+                    var result = version.CompareTo(targetVersion);
+
+                    if(result > 0)
+                    {
+                        AppendText("현재 버전은 최신 버전입니다.");
+                    } else if(result < 0)
+                    {
+                        AppendText("새로운 버전이 있습니다.");
+
+                        //TODO : 업데이터 프로그램이 따로 있어야 한다.
+                        // 빌더 프로그램을 강제 종료시킨 후, 인스톨러를 따로 실행해야 한다.
+
+                        //var worker = new BackgroundWorker();
+                        //worker.DoWork += (object sender, DoWorkEventArgs e) =>
+                        //{
+                        //    wc.DownloadFile(new Uri("https://github-production-release-asset-2e65be.s3.amazonaws.com/218708137/09b1cd80-0317-11ea-8d0e-1059dbd4a116?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20191110%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191110T094646Z&X-Amz-Expires=300&X-Amz-Signature=ec70b0adad9787d42a78feee5daab4751bc2a2f47c3e73ccce89ec9aebb0e91d&X-Amz-SignedHeaders=host&actor_id=13586185&response-content-disposition=attachment%3B%20filename%3DMVAppBuilder.exe&response-content-type=application%2Foctet-stream"), "MVAppBuilder.exe");
+                        //};
+                        //worker.RunWorkerCompleted += (object sender, RunWorkerCompletedEventArgs e) =>
+                        //{
+                        //    MessageBox.Show("새로운 버전 다운로드가 완료되었습니다");
+                        //};
+                        //worker.RunWorkerAsync();
+
+                    } else
+                    {
+                        AppendText("최신 버전을 사용 중입니다.");
+                    }
+
+                }
+
+            }
+
+        }
     }
 
 }

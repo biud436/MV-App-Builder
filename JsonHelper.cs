@@ -27,6 +27,13 @@ namespace Cordova_Builder
             return isEmptyToNull ? (ret == "{}" ? "null" : ret) : ret;
         }
 
+        /// <summary>
+        /// JSON 문자열을 T로 변환합니다.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <param name="jsonSettings"></param>
+        /// <returns></returns>
         public static T ToClass<T>(string data, JsonSerializerSettings jsonSettings = null)
         {
             var ret = default(T);
