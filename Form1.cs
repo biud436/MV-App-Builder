@@ -340,7 +340,7 @@ namespace Cordova_Builder
         /// <param name="mainPath"></param>
         public void ReadCordovaPlugins(string mainPath)
         {
-            // Read the file called "www/js/plugins.json"
+            // Read the file called "www/js/plugins.js"
             cordova.ReadProjectPluginsJson(mainPath);
 
             // UI 컨트롤이 멈추지 않도록 새로운 쓰레드에서 작업 수행
