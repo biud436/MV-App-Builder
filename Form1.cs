@@ -340,6 +340,8 @@ namespace Cordova_Builder
         /// <param name="mainPath"></param>
         public void ReadCordovaPlugins(string mainPath)
         {
+            cordova.ReadProjectPluginsJson(mainPath);
+
             // UI 컨트롤이 멈추지 않도록 새로운 쓰레드에서 작업 수행
             System.Threading.Thread worker = new System.Threading.Thread(() =>
             {
@@ -354,54 +356,64 @@ namespace Cordova_Builder
                 {
                     System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(path);
 
+                    #region 플러그인명 추출
                     foreach (System.IO.FileInfo fi in dir.GetFiles())
                     {
-                        using (System.IO.StreamReader sr = fi.OpenText())
+                        
+                        string filename = System.IO.Path.GetFileNameWithoutExtension(fi.FullName);
+
+                        if (cordova.IsValidPlugin(filename))
                         {
-                            var s = "";
-                            int lineCount = 0;
-                            const int maxLine = 50;
-                            string matchLine = "";
-                            string matchString = "@cordova_plugin ";
-
-                            while ((s = sr.ReadLine()) != null)
+                            using (System.IO.StreamReader sr = fi.OpenText())
                             {
-                                lineCount++;
+                                var s = "";
+                                int lineCount = 0;
+                                const int maxLine = 50;
+                                string matchLine = "";
+                                string matchString = "@cordova_plugin ";
 
-                                if (s.Contains(matchString))
+                                while ((s = sr.ReadLine()) != null)
                                 {
-                                    matchLine = s;
-                                    break;
+                                    lineCount++;
+
+                                    if (s.Contains(matchString))
+                                    {
+                                        matchLine = s;
+                                        break;
+                                    }
+
+                                    if (lineCount >= maxLine)
+                                    {
+                                        break;
+                                    }
                                 }
 
-                                if (lineCount >= maxLine)
+                                if (!String.IsNullOrEmpty(matchLine))
                                 {
-                                    break;
-                                }
-                            }
+                                    int index = matchLine.IndexOf(matchString);
 
-                            if (!String.IsNullOrEmpty(matchLine))
-                            {
-                                int index = matchLine.IndexOf(matchString);
+                                    string pluginName = matchLine.Substring(index + matchString.Length).Trim();
 
-                                string pluginName = matchLine.Substring(index + matchString.Length).Trim();
+                                    if (InvokeRequired)
+                                    {
+                                        Action action = () => {
+                                            listBoxPlugins.Items.Add(pluginName);
+                                        };
 
-                                if (InvokeRequired)
-                                {
-                                    Action action = () => {
+                                        Invoke(action);
+                                    }
+                                    else
+                                    {
                                         listBoxPlugins.Items.Add(pluginName);
-                                    };
+                                    }
 
-                                    Invoke(action);
                                 }
-                                else
-                                {
-                                    listBoxPlugins.Items.Add(pluginName);
-                                }
-
                             }
                         }
                     }
+
+                    #endregion
+
                 }
 
 
@@ -503,7 +515,6 @@ namespace Cordova_Builder
             {
                 textBoxSettingGameFolder.Text = folderBrowserDialog.SelectedPath;
                 ReadCordovaPlugins(folderBrowserDialog.SelectedPath);
-                cordova.ReadProjectPluginsJson(folderBrowserDialog.SelectedPath);
             }
 
         }

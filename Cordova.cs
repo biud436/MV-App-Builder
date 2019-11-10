@@ -444,11 +444,21 @@ namespace Cordova_Builder
 
         }
 
+        /// <summary>
+        /// 프로젝트 폴더에서 js/plugins.js 파일을 읽고 true/false 인지 여부를 확인합니다.
+        /// </summary>
+        /// <param name="projectPath"></param>
         public void ReadProjectPluginsJson(string projectPath)
         {
+
+            if(!System.IO.File.Exists(System.IO.Path.Combine(projectPath, "index.html"))) 
+            {
+                return;
+            }
+
             string realPath = System.IO.Path.Combine(projectPath, "js", "plugins.js");
             var fakeLines = System.IO.File.ReadLines(realPath).Skip(4);
-            var length = fakeLines.Count() - 2;
+            var length = fakeLines.Count() - 1;
             var lines = fakeLines.Take(length);
 
             foreach (var json in lines)
@@ -459,6 +469,18 @@ namespace Cordova_Builder
                 plugins[impl.name] = impl.status;
             }
 
+        }
+
+        public bool IsValidPlugin(string pluginName)
+        {
+            bool isValid = false;
+
+            if (plugins.ContainsKey(pluginName))
+            {
+                isValid = plugins[pluginName];
+            }
+
+            return isValid;
         }
 
     }
