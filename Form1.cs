@@ -340,6 +340,7 @@ namespace Cordova_Builder
         /// <param name="mainPath"></param>
         public void ReadCordovaPlugins(string mainPath)
         {
+            // Read the file called "www/js/plugins.json"
             cordova.ReadProjectPluginsJson(mainPath);
 
             // UI 컨트롤이 멈추지 않도록 새로운 쓰레드에서 작업 수행
@@ -347,23 +348,18 @@ namespace Cordova_Builder
             {
                 string path = System.IO.Path.Combine(mainPath, "js", "plugins");
 
-                // TODO : 이 로직은 불필요한 플러그인을 모두 읽기 때문에 성능에 불리하다.
-                // good 방법은 plugins.json 파일을 읽고 활성화된 플러그인의 주석을 처리해야 한다.
-                // 이 경우, JSON 처리가 필요함. 
-
-                // 플러그인 폴더가 존재하면 특정 코멘트를 찾는다 (50줄까지만 읽음)
+                // plugins.json 파일에 플러그인이 ON이라면 해당 플러그인에서 특정 코멘트를 찾는다 (50줄까지만 읽음)
                 if (System.IO.Directory.Exists(path))
                 {
                     System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(path);
 
-                    #region 플러그인명 추출
                     foreach (System.IO.FileInfo fi in dir.GetFiles())
                     {
-                        
                         string filename = System.IO.Path.GetFileNameWithoutExtension(fi.FullName);
 
                         if (cordova.IsValidPlugin(filename))
                         {
+                            #region 플러그인명 추출
                             using (System.IO.StreamReader sr = fi.OpenText())
                             {
                                 var s = "";
@@ -409,11 +405,9 @@ namespace Cordova_Builder
 
                                 }
                             }
+                            #endregion
                         }
                     }
-
-                    #endregion
-
                 }
 
 
