@@ -503,6 +503,7 @@ namespace Cordova_Builder
             {
                 textBoxSettingGameFolder.Text = folderBrowserDialog.SelectedPath;
                 ReadCordovaPlugins(folderBrowserDialog.SelectedPath);
+                cordova.ReadProjectPluginsJson(folderBrowserDialog.SelectedPath);
             }
 
         }

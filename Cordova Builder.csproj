@@ -60,6 +60,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="JsonHelper.cs" />
     <Compile Include="locale.ja.Designer.cs">
       <DependentUpon>locale.ja.resx</DependentUpon>
       <AutoGen>True</AutoGen>

@@ -10,47 +10,19 @@ using System.Reflection;
 using System.Resources;
 using System.Xml;
 using Newtonsoft.Json;
+using System.Data;
+using System.Text.RegularExpressions;
 
 namespace Cordova_Builder
 {
-
-    [JsonObject(MemberSerialization.OptOut)]
-    public class ConfigData
-    {
-
-        public ConfigData()
-        {
-
-        }
-
-        public string keystore { get; set; }
-        public string storePassword { get; set; }
-        public string alias { get; set; }
-        public string password { get; set; }
-        public string keystoreType { get; set; }
-    }
-
-    [JsonObject(MemberSerialization.OptOut)]
-    public class AndroidBuildConfig
-    {
-        public ConfigData debug;
-        public ConfigData release;
-    }
-
-    [JsonObject(MemberSerialization.OptOut)]
-    public class BuildConfig
-    {
-        public AndroidBuildConfig android;
-    }
-
     public class Cordova
     {
 
         private Form1 mainForm;
         private string currentDirectory;
-        private List<string> buildConfig = new List<string>();
         private TextBoxList list;
         private ResourceManager rm;
+        Dictionary<string, bool> plugins = new Dictionary<string, bool>();
 
         public Cordova()
         {
@@ -68,18 +40,6 @@ namespace Cordova_Builder
         }
 
         /// <summary>
-        /// 빌드 구성 문자열에 새로운 cordova command를 추가합니다.
-        /// </summary>
-        /// <param name="config"></param>
-        /// <returns></returns>
-        public Cordova Add(string config)
-        {
-            buildConfig.Add(config);
-
-            return this;
-        }
-
-        /// <summary>
         /// 텍스트 박스 목록을 가져옵니다.
         /// </summary>
         /// <param name="list"></param>
@@ -88,10 +48,12 @@ namespace Cordova_Builder
             this.list = list;
         }
 
+        /// <summary>
+        /// Create the build.json file for Android
+        /// </summary>
+        /// <param name="filename"></param>
         public void ExportBuildJson(string filename)
         {
-            StringBuilder output = new StringBuilder();
-
             BuildConfig config = new BuildConfig();
             ConfigData data = new ConfigData()
             {
@@ -101,11 +63,13 @@ namespace Cordova_Builder
                 password = list.passWord.Text,
                 keystoreType = "",
             };
+
             AndroidBuildConfig androidConfig = new AndroidBuildConfig()
             {
                 debug = data,
                 release = data
             };
+
             config.android = androidConfig;
 
             string json = JsonConvert.SerializeObject(config, new JsonSerializerSettings()
@@ -158,13 +122,13 @@ namespace Cordova_Builder
                 {
                     Make(filename =>
                     {
-                        AddAndroidPlatform(); // 안드로이드 플랫폼 추가합니다
-                        AddPlugins(); // 플러그인을 추가합니다.
+                        AddAndroidPlatform();
+                        AddPlugins();
                         WriteConfig(); // config.xml 파일을 수정합니다
-                        mainForm.CreateKeyStore(); // 키스토어 파일을 생성합니다
-                        CopyProjectFiles(); // 파일을 복사합니다.
+                        mainForm.CreateKeyStore();
+                        CopyProjectFiles();
                         ModifyHtmlFiles(); // HTML 파일에 cordova 바인드 용 스크립트 문을 추가합니다.
-                        ExportBuildJson(filename); // build.config 파일을 배포합니다.
+                        ExportBuildJson(filename); 
                         Flush(); // 빌드를 시작합니다.
                         successCallback();
                     });
@@ -477,6 +441,23 @@ namespace Cordova_Builder
             HostData process = new HostData("npm install -g cordova", true, "", "echo ...", "echo ...");
             Append append = AppendText;
             process.Run(append);
+
+        }
+
+        public void ReadProjectPluginsJson(string projectPath)
+        {
+            string realPath = System.IO.Path.Combine(projectPath, "js", "plugins.js");
+            var fakeLines = System.IO.File.ReadLines(realPath).Skip(4);
+            var length = fakeLines.Count() - 2;
+            var lines = fakeLines.Take(length);
+
+            foreach (var json in lines)
+            {
+                string goodJson = Regex.Replace(json, @"}}\s*,\s*$", "}}");
+
+                PluginConfigImpl impl = JsonHelper.ToClass<PluginConfigImpl>(goodJson);
+                plugins[impl.name] = impl.status;
+            }
 
         }
 
