@@ -322,7 +322,7 @@ namespace Cordova_Builder
 
             cordova.Bind(this.textBoxList);
 
-            cordova.InitWithVersion();
+            //cordova.InitWithVersion();
 
         }
 
