@@ -322,8 +322,6 @@ namespace Cordova_Builder
 
             cordova.Bind(this.textBoxList);
 
-            //cordova.InitWithVersion();
-
         }
 
         public void InitWithComboBox()
@@ -471,6 +469,16 @@ namespace Cordova_Builder
                         // 빌드가 끝이 났으므로 빌드 버튼을 다시 활성화 한다.
                         buttonBuild.Enabled = true;
                         isWorking = false;
+
+                        // 폴더가 있다면 탐색기로 연다.
+                        string myDocumentsPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), this.Text);
+                        string targetPath = System.IO.Path.Combine(myDocumentsPath, textBoxFolderName.Text, "platforms", "android", "app", "build", "outputs", "apk");
+
+                        if(System.IO.Directory.Exists(targetPath))
+                        {
+                            System.Diagnostics.Process.Start(targetPath);
+                        }
+
                     };
 
                     if(InvokeRequired)

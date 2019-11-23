@@ -99,7 +99,9 @@ namespace Cordova_Builder
         {
             try
             {
-                string mkdir = list.folderName.Text;
+                string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string programName = this.mainForm.Text;
+                string mkdir = System.IO.Path.Combine(myDocumentsPath, programName, list.folderName.Text);
 
                 if (!System.IO.Directory.Exists(mkdir))
                 {
@@ -109,7 +111,7 @@ namespace Cordova_Builder
                 string tempDir = System.IO.Directory.GetCurrentDirectory();
                 string filename = "build.json";
 
-                string targetPath = System.IO.Path.Combine(tempDir, mkdir);
+                string targetPath = mkdir;
 
                 System.IO.Directory.SetCurrentDirectory(targetPath);
 
@@ -129,8 +131,26 @@ namespace Cordova_Builder
 
             Thread worker = new Thread(new ThreadStart(() =>
             {
+
+                // 내문서에 APK 파일을 저장합니다.
+                string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string programName = this.mainForm.Text;
+                string targetFolder = System.IO.Path.Combine(myDocumentsPath, programName);
+                string tempDir = System.IO.Directory.GetCurrentDirectory();
+
+                // 내문서에 프로그램 폴더를 생성합니다.
+                if(!System.IO.Directory.Exists(targetFolder)) {
+                    System.IO.Directory.CreateDirectory(targetFolder);
+                }
+
+                // 타겟 폴더를 현재 경로로 설정합니다.
+                System.IO.Directory.SetCurrentDirectory(targetFolder);
+
                 // 폴더를 생성합니다
                 bool isValid = Create();
+
+                // 다시 되돌립니다.
+                System.IO.Directory.SetCurrentDirectory(tempDir);
 
                 if (isValid)
                 {
@@ -193,17 +213,15 @@ namespace Cordova_Builder
                 //
                 // 가장 간단한 처리는 폴더가 존재하면 삭제하고 재생성하는 방법
                 // 
-                if (System.IO.Directory.Exists(folderName))
+                if (System.IO.Directory.Exists(folderName) )
                 {
                     var configPath = System.IO.Path.Combine(folderName, "config.xml");
-                    var resFolderPath = System.IO.Path.Combine(folderName, "res");
+                    var resFolderPath = System.IO.Path.Combine( folderName, "res");
 
                     if(System.IO.File.Exists(configPath) && System.IO.Directory.Exists(resFolderPath))
                     {
                         return true;
                     }
-
-                    //clearFolder(folderName);
 
                 }
 
@@ -502,52 +520,6 @@ namespace Cordova_Builder
             return isValid;
         }
 
-        public void InitWithVersion()
-        {
-            // 현재 버전
-            version = new Version("0.1.17");
-
-            using (WebClient wc = new WebClient())
-            {
-                string targetJson = wc.DownloadString("https://raw.githubusercontent.com/biud436/MV-App-Builder/master/version.json");
-                var targetObject = JsonHelper.ToClass<Dictionary<string, string>>(targetJson);
-                    
-                if(targetObject.ContainsKey("version"))
-                {
-                    var targetVersion = new Version(targetObject["version"]);
-                    var result = version.CompareTo(targetVersion);
-
-                    if(result > 0)
-                    {
-                        AppendText("현재 버전은 최신 버전입니다.");
-                    } else if(result < 0)
-                    {
-                        AppendText("새로운 버전이 있습니다.");
-
-                        //TODO : 업데이터 프로그램이 따로 있어야 한다.
-                        // 빌더 프로그램을 강제 종료시킨 후, 인스톨러를 따로 실행해야 한다.
-
-                        //var worker = new BackgroundWorker();
-                        //worker.DoWork += (object sender, DoWorkEventArgs e) =>
-                        //{
-                        //    wc.DownloadFile(new Uri("https://github-production-release-asset-2e65be.s3.amazonaws.com/218708137/09b1cd80-0317-11ea-8d0e-1059dbd4a116?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20191110%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191110T094646Z&X-Amz-Expires=300&X-Amz-Signature=ec70b0adad9787d42a78feee5daab4751bc2a2f47c3e73ccce89ec9aebb0e91d&X-Amz-SignedHeaders=host&actor_id=13586185&response-content-disposition=attachment%3B%20filename%3DMVAppBuilder.exe&response-content-type=application%2Foctet-stream"), "MVAppBuilder.exe");
-                        //};
-                        //worker.RunWorkerCompleted += (object sender, RunWorkerCompletedEventArgs e) =>
-                        //{
-                        //    MessageBox.Show("새로운 버전 다운로드가 완료되었습니다");
-                        //};
-                        //worker.RunWorkerAsync();
-
-                    } else
-                    {
-                        AppendText("최신 버전을 사용 중입니다.");
-                    }
-
-                }
-
-            }
-
-        }
     }
 
 }
