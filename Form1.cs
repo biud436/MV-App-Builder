@@ -591,5 +591,10 @@ namespace Cordova_Builder
                 textBoxPluginName.Text = listBoxPlugins.SelectedItem.ToString();
             }
         }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            cordova.checkVersion();
+        }
     }
 }

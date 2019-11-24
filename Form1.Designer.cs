@@ -584,6 +584,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panelPlugins.ResumeLayout(false);
             this.panelPlugins.PerformLayout();
             this.panelBuildLog.ResumeLayout(false);

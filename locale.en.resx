@@ -133,6 +133,22 @@
     <value>echo Can’t add {0} plugin to your project.</value>
     <comment>Cordova</comment>
   </data>
+  <data name="CHECK_VERSION_ALPHA" xml:space="preserve">
+    <value>You are using an alpha version of this program.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="CHECK_VERSION_LATEST" xml:space="preserve">
+    <value>You are using the latest version of this program.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="CHECK_VERSION_OLD" xml:space="preserve">
+    <value>Detected a new version of MV App Builder.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="CHECK_VERSION_OLD_ASK" xml:space="preserve">
+    <value>Do you want to open the download page?</value>
+    <comment>Cordova</comment>
+  </data>
   <data name="CopyProjectFiles1" xml:space="preserve">
     <value>Start copying game files.</value>
     <comment>Cordova</comment>

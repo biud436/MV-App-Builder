@@ -36,7 +36,7 @@ namespace Cordova_Builder
         private Dictionary<string, bool> plugins = new Dictionary<string, bool>();
 
         // 버전
-        private Version version;
+        private Version version = new Version("0.1.32");
 
         public Cordova()
         {
@@ -519,6 +519,53 @@ namespace Cordova_Builder
 
             return isValid;
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void checkVersion()
+        {
+            if(version == null)
+            {
+                return;
+            }
+
+            using (WebClient wc = new WebClient())
+            {
+                string targetJson = wc.DownloadString("https://raw.githubusercontent.com/biud436/MV-App-Builder/master/version.json");
+                var targetObject = JsonHelper.ToClass<Dictionary<string, string>>(targetJson);
+
+                if (targetObject.ContainsKey("version"))
+                {
+                    var targetVersion = new Version(targetObject["version"]);
+                    var result = version.CompareTo(targetVersion);
+
+                    if (result > 0)
+                    {
+                        // 알파 버전
+                        AppendText(rm.GetString("CHECK_VERSION_ALPHA"));
+                    }
+                    else if (result < 0)
+                    {
+                        // 구 버전을 사용하고 있습니다.
+                        MessageBox.Show(rm.GetString("CHECK_VERSION_OLD"), mainForm.Text);
+
+                        if(MessageBox.Show(rm.GetString("CHECK_VERSION_OLD_ASK"), mainForm.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            System.Diagnostics.Process.Start("https://github.com/biud436/MV-App-Builder/releases");
+                        }
+                    }
+                    else
+                    {
+                        // 최신 버전을 사용하고 있습니다.
+                        AppendText(rm.GetString("CHECK_VERSION_LATEST"));
+                    }
+
+                }
+            }
+        }
+
 
     }
 

@@ -133,6 +133,22 @@
     <value>echo {0} 플러그인을 추가하는 데 실패하였습니다.</value>
     <comment>Cordova</comment>
   </data>
+  <data name="CHECK_VERSION_ALPHA" xml:space="preserve">
+    <value>알파 버전을 사용하고 있습니다.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="CHECK_VERSION_LATEST" xml:space="preserve">
+    <value>최신 버전을 사용하고 있습니다.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="CHECK_VERSION_OLD" xml:space="preserve">
+    <value>새로운 버전이 있습니다.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="CHECK_VERSION_OLD_ASK" xml:space="preserve">
+    <value>다운로드 페이지를 여시겠습니까?</value>
+    <comment>Cordova</comment>
+  </data>
   <data name="CopyProjectFiles1" xml:space="preserve">
     <value>게임 폴더 복사를 시작합니다 [robocopy 사용]</value>
     <comment>Cordova</comment>
