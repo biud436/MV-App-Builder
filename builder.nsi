@@ -101,14 +101,14 @@ Section "필수설치" SEC01
   File ".\bin\Release\Cordova Builder.exe.config"
   File ".\bin\Release\Cordova Builder.vshost.exe.config"
   SetOutPath "$INSTDIR\en"
-  File ".\bin\Release\\en\Cordova Builder.resources.dll"
+  File ".\bin\Release\en\Cordova Builder.resources.dll"
   SetOutPath "$INSTDIR\ja"
-  File ".\bin\Release\\ja\Cordova Builder.resources.dll"
+  File ".\bin\Release\ja\Cordova Builder.resources.dll"
   SetOutPath "$INSTDIR\ko"
-  File ".\bin\Release\\ko\Cordova Builder.resources.dll"
+  File ".\bin\Release\ko\Cordova Builder.resources.dll"
   SetOutPath "$INSTDIR"
-  File ".\bin\Release\\Newtonsoft.Json.dll"
-  File ".\bin\Release\\Newtonsoft.Json.xml"
+  File ".\bin\Release\Newtonsoft.Json.dll"
+  File ".\bin\Release\Newtonsoft.Json.xml"
 SectionEnd
 
 Section -AdditionalIcons
