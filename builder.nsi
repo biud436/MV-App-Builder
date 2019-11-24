@@ -92,23 +92,23 @@ FunctionEnd
 Section "필수설치" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite try
-  File "C:\Users\U\Desktop\MVAppBuilder\Cordova Builder.exe"
+  File ".\bin\Release\Cordova Builder.exe"
   CreateDirectory "$SMPROGRAMS\MV App Builder"
   # 내 문서에 폴더 생성
   CreateDirectory "$DOCUMENTS\RPG Maker MV Cordova Builder"
   CreateShortCut "$SMPROGRAMS\MV App Builder\MV App Builder.lnk" "$INSTDIR\Cordova Builder.exe"
   CreateShortCut "$DESKTOP\MV App Builder.lnk" "$INSTDIR\Cordova Builder.exe"
-  File "C:\Users\U\Desktop\MVAppBuilder\Cordova Builder.exe.config"
-  File "C:\Users\U\Desktop\MVAppBuilder\Cordova Builder.vshost.exe.config"
+  File ".\bin\Release\Cordova Builder.exe.config"
+  File ".\bin\Release\Cordova Builder.vshost.exe.config"
   SetOutPath "$INSTDIR\en"
-  File "C:\Users\U\Desktop\MVAppBuilder\en\Cordova Builder.resources.dll"
+  File ".\bin\Release\\en\Cordova Builder.resources.dll"
   SetOutPath "$INSTDIR\ja"
-  File "C:\Users\U\Desktop\MVAppBuilder\ja\Cordova Builder.resources.dll"
+  File ".\bin\Release\\ja\Cordova Builder.resources.dll"
   SetOutPath "$INSTDIR\ko"
-  File "C:\Users\U\Desktop\MVAppBuilder\ko\Cordova Builder.resources.dll"
+  File ".\bin\Release\\ko\Cordova Builder.resources.dll"
   SetOutPath "$INSTDIR"
-  File "C:\Users\U\Desktop\MVAppBuilder\Newtonsoft.Json.dll"
-  File "C:\Users\U\Desktop\MVAppBuilder\Newtonsoft.Json.xml"
+  File ".\bin\Release\\Newtonsoft.Json.dll"
+  File ".\bin\Release\\Newtonsoft.Json.xml"
 SectionEnd
 
 Section -AdditionalIcons
