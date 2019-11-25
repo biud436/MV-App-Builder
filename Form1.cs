@@ -91,6 +91,53 @@ namespace Cordova_Builder
         }
 
         /// <summary>
+        /// 설치되어있는 SDK 레벨을 나열합니다.
+        /// </summary>
+        public void GetPlatformsFolders()
+        {
+            string ANDROID_HOME = System.Environment.GetEnvironmentVariable("ANDROID_HOME");
+            string ANDROID_SDK_ROOT = System.Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
+            string defaultPath = "";
+            bool isValid = false;
+
+            if (!String.IsNullOrEmpty(ANDROID_SDK_ROOT))
+            {
+                isValid = true;
+                defaultPath = ANDROID_SDK_ROOT;
+            }
+            else if (!String.IsNullOrEmpty(ANDROID_HOME))
+            {
+                isValid = true;
+                defaultPath = ANDROID_HOME;
+            }
+
+            // sdkmanager "platform-tools" "platforms;android-29"
+            if (System.IO.Directory.Exists(defaultPath) && isValid )
+            {
+                var platformsPath = System.IO.Path.Combine(defaultPath, "platforms");
+
+                if(System.IO.Directory.Exists(platformsPath))
+                {
+                    var sdkIds = System.IO.Directory.GetDirectories(platformsPath);
+
+                    textBox1.SelectionColor = Color.Red;
+                    AppendText("[SDK]==========================================");
+
+                    foreach (var sdk in sdkIds)
+                    {
+                        textBox1.SelectionColor = Color.YellowGreen;
+                        AppendText(System.IO.Path.GetFileNameWithoutExtension(sdk));
+                    }
+
+                    textBox1.SelectionColor = Color.Red;
+                    AppendText("==============================================");
+                    textBox1.SelectionColor = Color.White;
+                }
+
+            }
+        }
+
+        /// <summary>
         /// 프로그램 초기화 함수입니다.
         /// </summary>
         private void Prepare()
@@ -178,6 +225,8 @@ namespace Cordova_Builder
                 AppendText(String.Format(rm.GetString("FOUND_ANDROID_SDK_ROOT"), ANDROID_SDK_ROOT));
                 status[3] = true;
             }
+
+            GetPlatformsFolders();
 
             isValid = status.All(i => true);
 
