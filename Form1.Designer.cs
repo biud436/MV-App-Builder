@@ -80,6 +80,7 @@
             this.panelBuildLog = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panelPlugins.SuspendLayout();
             this.panelBuildLog.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -93,6 +94,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.textBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
             // 
             // labelFolderName
             // 
@@ -553,6 +555,11 @@
             this.tableLayoutPanel2.Controls.Add(this.labelOrientation, 0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -649,6 +656,7 @@
         private System.Windows.Forms.Panel panelBuildLog;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

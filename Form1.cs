@@ -49,15 +49,52 @@ namespace Cordova_Builder
         {
 
             InitializeComponent();
+            InitWithResourceManager();
+            InitWithHostData();
+            InitWithContextMenu();
 
+        }
+
+        public void InitWithResourceManager()
+        {
             rm = new ResourceManager("Cordova_Builder.locale", Assembly.GetExecutingAssembly());
+        }
 
-            // 호스트 데이터는 새로운 프로세스를 생성하여 콘솔 리다이렉션을 수행한다.
-            // 자바, 키스토어, 코르도바가 설치 되어있는 지를 확인한다.
+        /// <summary>
+        /// 호스트 데이터는 새로운 프로세스를 생성하여 콘솔 리다이렉션을 수행한다.
+        /// 자바, 키스토어, 코르도바가 설치 되어있는 지를 확인한다.
+        /// </summary>
+        public void InitWithHostData()
+        {
             hostList.Add(new HostData("where java.exe", false, "", rm.GetString("FOUND_JAVA"), rm.GetString("NOT_FOUND_JAVA")));
             hostList.Add(new HostData("where keytool.exe", false, "", rm.GetString("FOUND_KEYTOOL"), rm.GetString("NOT_FOUND_KEYTOOL")));
             hostList.Add(new HostData("where cordova", false, "", rm.GetString("FOUND_CORDOVA"), rm.GetString("NOT_FOUND_CORDOVA")));
+        }
 
+        /// <summary>
+        /// 메뉴 아이템 추가
+        /// </summary>
+        public void InitWithContextMenu()
+        {
+            ToolStripItem item = contextMenuStrip1.Items.Add("Clear..");
+            item.Click += ClearBuildLog;
+
+            contextMenuStrip1.Items.Add("Save Log").Click += delegate (object sender, EventArgs e)
+            {
+                string filename = "log_" + System.IO.Path.GetRandomFileName() + ".log";
+                string filepath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), filename);
+
+                SaveFileDialog sfg = new SaveFileDialog();
+                sfg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                sfg.DefaultExt = "*.log";
+                sfg.FileName = filename;
+
+                if(sfg.ShowDialog() == DialogResult.OK)
+                {
+                    System.IO.File.WriteAllText(sfg.FileName, textBox1.Text, Encoding.UTF8);
+                }
+
+            };
         }
 
         /// <summary>
@@ -731,5 +768,26 @@ namespace Cordova_Builder
             }
                 
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void ClearBuildLog(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+        }
+
+        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox1.ContextMenuStrip = contextMenuStrip1;
+            if(e.Button == MouseButtons.Right)
+            {
+                Point pt = textBox1.PointToScreen(e.Location);
+                contextMenuStrip1.Show(pt);
+            }
+        }
+
     }
 }

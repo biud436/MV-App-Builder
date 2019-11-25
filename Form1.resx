@@ -469,7 +469,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxFolderName.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="textBoxPackageName.Location" type="System.Drawing.Point, System.Drawing">
     <value>119, 63</value>
@@ -493,7 +493,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxPackageName.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="textBoxGameName.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 105</value>
@@ -514,7 +514,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxGameName.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="textBoxKeyPath.Location" type="System.Drawing.Point, System.Drawing">
     <value>117, 146</value>
@@ -538,7 +538,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxKeyPath.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="textBoxKeyAlias.Location" type="System.Drawing.Point, System.Drawing">
     <value>117, 189</value>
@@ -562,7 +562,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxKeyAlias.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="textBoxPassWord.Location" type="System.Drawing.Point, System.Drawing">
     <value>117, 232</value>
@@ -586,7 +586,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxPassWord.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="textBox_keyOU.Location" type="System.Drawing.Point, System.Drawing">
     <value>117, 275</value>
@@ -610,7 +610,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox_keyOU.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="textBox_keyO.Location" type="System.Drawing.Point, System.Drawing">
     <value>117, 318</value>
@@ -634,7 +634,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox_keyO.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="textBox_keyL.Location" type="System.Drawing.Point, System.Drawing">
     <value>117, 360</value>
@@ -658,7 +658,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox_keyL.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="textBox_keyS.Location" type="System.Drawing.Point, System.Drawing">
     <value>116, 402</value>
@@ -682,7 +682,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox_keyS.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="textBox_keyC.Location" type="System.Drawing.Point, System.Drawing">
     <value>116, 445</value>
@@ -706,7 +706,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox_keyC.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="label_keyC.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Right</value>
@@ -919,7 +919,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboBoxOrientation.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="comboBoxFullscreen.Items" xml:space="preserve">
     <value>true</value>
@@ -946,7 +946,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboBoxFullscreen.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="comboBoxMinSdkVersion.Items" xml:space="preserve">
     <value>29</value>
@@ -1033,7 +1033,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboBoxMinSdkVersion.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="comboBoxTargetSdkVersion.Items" xml:space="preserve">
     <value>29</value>
@@ -1120,7 +1120,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboBoxTargetSdkVersion.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="labelSettingGameFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Right</value>
@@ -1171,7 +1171,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxSettingGameFolder.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="buttonOpenFileBrowser.Location" type="System.Drawing.Point, System.Drawing">
     <value>863, 229</value>
@@ -1195,7 +1195,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonOpenFileBrowser.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="labelBuildMode.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Right</value>
@@ -1252,7 +1252,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboBoxBuildMode.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="labelPluginName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1426,7 +1426,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panelPlugins.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="labelCompileSdkVersion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Right</value>
@@ -1543,7 +1543,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboBoxCompileSdkVersion.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="panelBuildLog.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -1567,7 +1567,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panelBuildLog.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1594,7 +1594,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label_keyC" Row="10" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label_keyS" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label_keyL" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label_keyO" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label_keyOU" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelKeyPassword" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelKeyAlias" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelKeyPath" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelGameName" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelPackageName" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelFolderName" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,103" /&gt;&lt;Rows Styles="Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908,Percent,9.090908" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -1624,16 +1624,28 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="labelBuildMode" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelSettingGameFolder" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelCompileSdkVersion" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelTargetSdkVersion" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelMinSdkVersion" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelFullscreen" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelOrientation" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,108" /&gt;&lt;Rows Styles="Absolute,42,Absolute,42,Absolute,42,Absolute,42,Absolute,42,Absolute,42,Absolute,42" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>164, 17</value>
+  </metadata>
+  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
+    <value>contextMenuStrip1</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>44</value>
+    <value>97</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 12</value>
