@@ -36,7 +36,7 @@ namespace Cordova_Builder
         private Dictionary<string, bool> plugins = new Dictionary<string, bool>();
 
         // 버전
-        private Version version = new Version("0.1.35");
+        private Version version = new Version("0.1.34");
 
         public Cordova()
         {
@@ -553,7 +553,8 @@ namespace Cordova_Builder
 
                         if(MessageBox.Show(rm.GetString("CHECK_VERSION_OLD_ASK"), mainForm.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            System.Diagnostics.Process.Start("https://github.com/biud436/MV-App-Builder/releases");
+                            var uri = String.Format("https://github.com/biud436/MV-App-Builder/releases/download/v{0}/MVAppBuilder.exe", targetVersion);
+                            System.Diagnostics.Process.Start(uri);
                         }
                     }
                     else
