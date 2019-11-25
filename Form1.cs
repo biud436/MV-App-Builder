@@ -58,8 +58,6 @@ namespace Cordova_Builder
             hostList.Add(new HostData("where keytool.exe", false, "", rm.GetString("FOUND_KEYTOOL"), rm.GetString("NOT_FOUND_KEYTOOL")));
             hostList.Add(new HostData("where cordova", false, "", rm.GetString("FOUND_CORDOVA"), rm.GetString("NOT_FOUND_CORDOVA")));
 
-
-
         }
 
         /// <summary>
@@ -105,8 +103,12 @@ namespace Cordova_Builder
 
             if(CheckRequirements())
             {
+                textBox1.SelectionColor = Color.LightSteelBlue;
+
                 // 필요한 프로그램이 모두 있음
                 AppendText(rm.GetString("Done"));
+
+                textBox1.SelectionColor = Color.White;
             } else
             {
                 AppendText(rm.GetString("NotInstalled"));
@@ -592,9 +594,93 @@ namespace Cordova_Builder
             }
         }
 
+        /// <summary>
+        /// <see cref="http://www.csharpstudy.com/Tip/Tip-network-connectivity.aspx"/>
+        /// <seealso cref="https://stackoverflow.com/questions/2031824/what-is-the-best-way-to-check-for-internet-connectivity-using-net"/>
+        /// </summary>
+        /// <returns></returns>
+        public bool IsInternetConnected()
+        {
+            const string NCSI_TEST_URL = "http://www.msftncsi.com/ncsi.txt";
+            const string NCSI_TEST_RESULT = "Microsoft NCSI";
+            const string NCSI_DNS = "dns.msftncsi.com";
+            const string NCSI_DNS_IP_ADDRESS = "131.107.255.255";
+
+            try
+            {
+                // Check NCSI test link
+                var webClient = new System.Net.WebClient();
+                string result = webClient.DownloadString(NCSI_TEST_URL);
+                if (result != NCSI_TEST_RESULT)
+                {
+                    return false;
+                }
+
+                // Check NCSI DNS IP
+                var dnsHost = System.Net.Dns.GetHostEntry(NCSI_DNS);
+                if (dnsHost.AddressList.Count() < 0 || dnsHost.AddressList[0].ToString() != NCSI_DNS_IP_ADDRESS)
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Shown(object sender, EventArgs e)
         {
-            cordova.checkVersion();
+            bool connected = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
+
+            if(connected && IsInternetConnected())
+            {
+                textBox1.SelectionColor = Color.Yellow;
+                AppendText(rm.GetString("PENDING_CHECK_PROGRAM_VER"));
+
+                textBox1.SelectionColor = Color.White;
+
+                cordova.CheckVersion();
+
+                textBox1.SelectionColor = Color.Yellow;
+
+                AppendText(rm.GetString("PENDING_CHECK_CORDOVA_VER"));
+
+                textBox1.SelectionColor = Color.White;
+
+                System.Threading.Thread worker = new System.Threading.Thread(() =>
+                {
+                    Action action = () =>
+                    {
+                        cordova.CheckLatestCordovaVersion();
+                    };
+
+                    if (InvokeRequired)
+                    {
+                        action();
+                    }
+                    else
+                    {
+                        cordova.CheckLatestCordovaVersion();
+                    }
+                });
+
+                worker.Start();
+            } else
+            {
+                textBox1.SelectionColor = Color.Red;
+                AppendText(rm.GetString("NOT_CONNECTED_INTERNET"));
+                textBox1.SelectionColor = Color.White;
+            }
+                
         }
     }
 }

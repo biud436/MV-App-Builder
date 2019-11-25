@@ -197,6 +197,10 @@
     <value>-- All the required programs are found!</value>
     <comment>Form1</comment>
   </data>
+  <data name="FAIL_INSTALLED_CORDOVA" xml:space="preserve">
+    <value>echo The installation of Cordova encountered an error.</value>
+    <comment>Cordova</comment>
+  </data>
   <data name="Flush1" xml:space="preserve">
     <value>Found build.json</value>
     <comment>Cordova</comment>
@@ -228,6 +232,14 @@
   <data name="FOUND_KEYTOOL" xml:space="preserve">
     <value>echo Found keytool</value>
     <comment>HostData</comment>
+  </data>
+  <data name="INSTALLING_CORDOVA" xml:space="preserve">
+    <value>Updating Cordova... Please wait, may take up to 1 minutes.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="LATEST_CORDOVA_READY" xml:space="preserve">
+    <value>Latest stable version is installed.</value>
+    <comment>Cordova</comment>
   </data>
   <data name="ModifyHtmlFiles" xml:space="preserve">
     <value>Modified the index.html</value>
@@ -269,6 +281,10 @@
     <value>https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</value>
     <comment>Form1</comment>
   </data>
+  <data name="NOT_CONNECTED_INTERNET" xml:space="preserve">
+    <value>Not Network Connected. Version check failed.</value>
+    <comment>Form1</comment>
+  </data>
   <data name="NOT_FOUND_CORDOVA" xml:space="preserve">
     <value>echo cordova not found</value>
     <comment>HostData</comment>
@@ -281,9 +297,29 @@
     <value>echo keytool not found</value>
     <comment>HostData</comment>
   </data>
+  <data name="NOT_LATEST_CORDOV_VER" xml:space="preserve">
+    <value>Current Cordova version is out of date.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="PENDING_CHECK_CORDOVA_VER" xml:space="preserve">
+    <value>Checking if Cordova is up to date ... (May take up to 5 seconds)</value>
+    <comment>Form1</comment>
+  </data>
+  <data name="PENDING_CHECK_PROGRAM_VER" xml:space="preserve">
+    <value>Checking if program is up to date ... (Please wait 1 seconds)</value>
+    <comment>Form1</comment>
+  </data>
   <data name="Ready" xml:space="preserve">
     <value>-- Ready</value>
     <comment>Form1</comment>
+  </data>
+  <data name="REQUEST_NPM_INSTALL" xml:space="preserve">
+    <value>The latest stable version is v{0}, you need to update Cordova</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="REQUEST_NPM_INSTALL_ASK" xml:space="preserve">
+    <value>Do you want to update the Cordova?</value>
+    <comment>Cordova</comment>
   </data>
   <data name="Requirements1" xml:space="preserve">
     <value>echo ...</value>
@@ -291,6 +327,10 @@
   </data>
   <data name="Requirements2" xml:space="preserve">
     <value>echo ...</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="SUCCESS_INSTALLED_CORDOVA" xml:space="preserve">
+    <value>echo Job completed!</value>
     <comment>Cordova</comment>
   </data>
   <data name="WriteConfig" xml:space="preserve">

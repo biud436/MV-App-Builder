@@ -36,7 +36,7 @@ namespace Cordova_Builder
         private Dictionary<string, bool> plugins = new Dictionary<string, bool>();
 
         // 버전
-        private Version version = new Version("0.1.32");
+        private Version version = new Version("0.1.35");
 
         public Cordova()
         {
@@ -466,11 +466,11 @@ namespace Cordova_Builder
         /// <summary>
         /// Install cordova to user computer on Windows
         /// </summary>
-        private void Install()
+        private void InstallCordova()
         {
-            AppendText("Installing cordova...");
+            AppendText(rm.GetString("INSTALLING_CORDOVA"));
 
-            HostData process = new HostData("npm install -g cordova", true, "", "echo ...", "echo ...");
+            HostData process = new HostData("npm install -g cordova", true, "", rm.GetString("SUCCESS_INSTALLED_CORDOVA"), rm.GetString("FAIL_INSTALLED_CORDOVA"));
             Append append = AppendText;
             process.Run(append);
 
@@ -524,7 +524,7 @@ namespace Cordova_Builder
         /// <summary>
         /// 
         /// </summary>
-        public void checkVersion()
+        public void CheckVersion()
         {
             if(version == null)
             {
@@ -566,6 +566,102 @@ namespace Cordova_Builder
             }
         }
 
+        /// <summary>
+        /// Checks the latest cordova version from cordova-android.git
+        /// </summary>
+        /// <returns></returns>
+        public void CheckLatestCordovaVersion()
+        {
+            try
+            {
+                Version cordovaVersion = new Version("0.0.0");
+
+                using (WebClient wc = new WebClient())
+                {
+                    string releaseNote = wc.DownloadString(new Uri("https://raw.githubusercontent.com/apache/cordova-cli/master/RELEASENOTES.md"));
+
+                    var regex = new Regex("[\r\n]+", RegexOptions.IgnoreCase);
+                    var lines = regex.Split(releaseNote);
+                    var matchedData = "# Cordova-cli Release Notes";
+                    var findIndex = 0;
+
+                    // 타겟 인덱스 근처를 유연하게 읽도록 한다.
+                    for (var i = 19; i < 28; i++)
+                    {
+                        if (lines[i] == matchedData)
+                        {
+                            findIndex = i;
+                            break;
+                        }
+                    }
+
+                    if (findIndex > 0)
+                    {
+                        findIndex += 1;
+
+                        // 버전 문자열을 뽑아낸다.
+                        regex = new Regex(@"[#]{3}[ ]*(\d+\.\d+\.\d+)", RegexOptions.IgnoreCase);
+                        Match m = regex.Match(lines[findIndex]);
+
+                        if (m.Success)
+                        {
+                            cordovaVersion = new Version(m.Groups[1].Value);
+                        }
+
+                    }
+
+                }
+
+                // 한 줄만 처리하는 경량 명령 프롬프트를 생성한다.
+                var tempCmdProcess = new HostData("", true, "", "");
+                var localCordovaVersion = new Version("0.0.0");
+
+                // 로컬에 설치된 코르도바의 버전을 확인한다. 
+                tempCmdProcess.outputLine("cordova --version", (string output) => {
+
+                    // 버전 문자열을 뽑아낸다.
+                    Regex regex = new Regex(@"(\d+\.\d+\.\d+)[ ]+", RegexOptions.IgnoreCase);
+                    Match m = regex.Match(output);
+
+                    if (m.Success)
+                    {
+                        localCordovaVersion = new Version(m.Groups[1].Value);
+                        var result = cordovaVersion.CompareTo(localCordovaVersion);
+
+                        if (result > 0)
+                        {
+                            // 오래된 버전을 사용 중인 경우, 업데이트 처리를 한다.
+                            AppendText(rm.GetString("NOT_LATEST_CORDOV_VER"));
+                            AppendText(String.Format(rm.GetString("REQUEST_NPM_INSTALL"), cordovaVersion.ToString()));
+
+                            DialogResult dialogResult = MessageBox.Show(rm.GetString("REQUEST_NPM_INSTALL_ASK"), mainForm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                InstallCordova();
+                            }
+
+                        }
+                        else if (result < 0)
+                        {
+                            // Why you use dev version? I don't understand.
+                        }
+                        else
+                        {
+                            // 이미 최신 버전을 쓰고 있는 경우
+                            AppendText(rm.GetString("LATEST_CORDOVA_READY"));
+                        }
+
+                    }
+                });
+
+
+            } catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+            }
+
+        }
 
     }
 

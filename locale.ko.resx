@@ -197,6 +197,10 @@
     <value>--- 필요한 모든 프로그램이 설치되어있습니다.</value>
     <comment>Form1</comment>
   </data>
+  <data name="FAIL_INSTALLED_CORDOVA" xml:space="preserve">
+    <value>echo 코르도바 설치 도중에 오류가 발생했습니다.</value>
+    <comment>Cordova</comment>
+  </data>
   <data name="Flush1" xml:space="preserve">
     <value>build.json 파일을 찾았습니다</value>
     <comment>Cordova</comment>
@@ -228,6 +232,14 @@
   <data name="FOUND_KEYTOOL" xml:space="preserve">
     <value>echo -- keytool을 찾았습니다.</value>
     <comment>HostData</comment>
+  </data>
+  <data name="INSTALLING_CORDOVA" xml:space="preserve">
+    <value>cordova를 설치하고 있습니다. 잠시만 기다려주세요 (1분 이내)</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="LATEST_CORDOVA_READY" xml:space="preserve">
+    <value>현재 최신 버전의 코르도바를 사용하고 있습니다.</value>
+    <comment>Cordova</comment>
   </data>
   <data name="ModifyHtmlFiles" xml:space="preserve">
     <value>index.html 파일을 수정하였습니다.</value>
@@ -269,6 +281,10 @@
     <value>https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</value>
     <comment>Form1</comment>
   </data>
+  <data name="NOT_CONNECTED_INTERNET" xml:space="preserve">
+    <value>인터넷에 연결되어있지 않아 프로그램이 최신 상태인지 확인할 수 없습니다.</value>
+    <comment>Form1</comment>
+  </data>
   <data name="NOT_FOUND_CORDOVA" xml:space="preserve">
     <value>echo -- cordova를 찾지 못했습니다</value>
     <comment>HostData</comment>
@@ -281,9 +297,29 @@
     <value>echo -- keytool을 찾지 못했습니다</value>
     <comment>HostData</comment>
   </data>
+  <data name="NOT_LATEST_CORDOV_VER" xml:space="preserve">
+    <value>현재 사용 중인 코르도바가 최신 버전이 아닙니다.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="PENDING_CHECK_CORDOVA_VER" xml:space="preserve">
+    <value>코르도바가 최신 버전인지 확인 중입니다... (5초 미만)</value>
+    <comment>Form1</comment>
+  </data>
+  <data name="PENDING_CHECK_PROGRAM_VER" xml:space="preserve">
+    <value>프로그램이 최신 버전인지 확인 중입니다... (1초 미만)</value>
+    <comment>Form1</comment>
+  </data>
   <data name="Ready" xml:space="preserve">
     <value>--- 준비 ---</value>
     <comment>Form1</comment>
+  </data>
+  <data name="REQUEST_NPM_INSTALL" xml:space="preserve">
+    <value>최신 버전은 v{0} 버전이며 업데이트가 필요합니다.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="REQUEST_NPM_INSTALL_ASK" xml:space="preserve">
+    <value>코르도바를 최신 버전으로 업데이트 할까요?</value>
+    <comment>Cordova</comment>
   </data>
   <data name="Requirements1" xml:space="preserve">
     <value>echo ...</value>
@@ -291,6 +327,10 @@
   </data>
   <data name="Requirements2" xml:space="preserve">
     <value>echo ...</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="SUCCESS_INSTALLED_CORDOVA" xml:space="preserve">
+    <value>echo 코르도바 설치 및 업데이트가 완료되었습니다.</value>
     <comment>Cordova</comment>
   </data>
   <data name="WriteConfig" xml:space="preserve">
