@@ -76,25 +76,10 @@ namespace Cordova_Builder
         /// </summary>
         public void InitWithContextMenu()
         {
-            ToolStripItem item = contextMenuStrip1.Items.Add("Clear..");
+            ToolStripItem item = contextMenuStrip1.Items.Add(rm.GetString("CLEAR_BUILD_LOG"));
             item.Click += ClearBuildLog;
 
-            contextMenuStrip1.Items.Add("Save Log").Click += delegate (object sender, EventArgs e)
-            {
-                string filename = "log_" + System.IO.Path.GetRandomFileName() + ".log";
-                string filepath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), filename);
-
-                SaveFileDialog sfg = new SaveFileDialog();
-                sfg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                sfg.DefaultExt = "*.log";
-                sfg.FileName = filename;
-
-                if(sfg.ShowDialog() == DialogResult.OK)
-                {
-                    System.IO.File.WriteAllText(sfg.FileName, textBox1.Text, Encoding.UTF8);
-                }
-
-            };
+            contextMenuStrip1.Items.Add(rm.GetString("SAVE_BUILD_LOG")).Click += SaveBuildLog;
         }
 
         /// <summary>
@@ -769,16 +754,42 @@ namespace Cordova_Builder
                 
         }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// 빌드 로드를 초기화합니다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClearBuildLog(object sender, EventArgs e)
         {
             textBox1.Clear();
         }
 
+        /// <summary>
+        /// 빌드 로드를 저장합니다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveBuildLog(object sender, EventArgs e)
+        {
+            string filename = "log_" + System.IO.Path.GetRandomFileName() + ".log";
+            string filepath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), filename);
+
+            SaveFileDialog sfg = new SaveFileDialog();
+            sfg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            sfg.DefaultExt = "*.log";
+            sfg.FileName = filename;
+
+            if (sfg.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.File.WriteAllText(sfg.FileName, textBox1.Text, Encoding.UTF8);
+            }
+        }
+
+        /// <summary>
+        /// 오른쪽 단축 메뉴 표시
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
         {
             textBox1.ContextMenuStrip = contextMenuStrip1;

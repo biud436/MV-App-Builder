@@ -149,6 +149,10 @@
     <value>Do you want to open the download page?</value>
     <comment>Cordova</comment>
   </data>
+  <data name="CLEAR_BUILD_LOG" xml:space="preserve">
+    <value>Clear...</value>
+    <comment>Form1</comment>
+  </data>
   <data name="CopyProjectFiles1" xml:space="preserve">
     <value>Start copying game files.</value>
     <comment>Cordova</comment>
@@ -328,6 +332,10 @@
   <data name="Requirements2" xml:space="preserve">
     <value>echo ...</value>
     <comment>Cordova</comment>
+  </data>
+  <data name="SAVE_BUILD_LOG" xml:space="preserve">
+    <value>Save Log</value>
+    <comment>Form1</comment>
   </data>
   <data name="SUCCESS_INSTALLED_CORDOVA" xml:space="preserve">
     <value>echo Job completed!</value>
