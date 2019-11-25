@@ -36,7 +36,7 @@ namespace Cordova_Builder
         private Dictionary<string, bool> plugins = new Dictionary<string, bool>();
 
         // 버전
-        private Version version = new Version("0.1.34");
+        private Version version = new Version("0.1.35");
 
         public Cordova()
         {
