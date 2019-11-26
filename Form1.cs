@@ -19,28 +19,28 @@ namespace Cordova_Builder
     {
 
         // 필요 프로그램 4개가 컴퓨터에 깔려있는 지 확인하는 bool[]형 변수
-        private bool[] status = new bool[4];
+        private bool[] _status = new bool[4];
 
         // 준비해야 할 프로그램이 모두 깔려있으면 true
-        private bool isValid = false;
+        private bool _isValid = false;
 
         // 화면 상의 모든 UI 컨트롤을 자식으로 지니는 컬렉션
-        private TextBoxList textBoxList = new TextBoxList();
+        private TextBoxList _textBoxList = new TextBoxList();
 
         // 코르도바의 CLI 명령을 처리하는 클래스
-        private Cordova cordova = new Cordova();
+        private Cordova _cordova = new Cordova();
 
         // 콜백 함수 처리를 위한 선언
         private delegate void AppendTextCallback(string output);
 
         // 다국어 처리를 위한 리소스 관리자
-        private ResourceManager rm;
+        private ResourceManager _rm;
 
         // 호스트 데이터 목록;
-        public List<HostData> hostList = new List<HostData>();
+        public List<HostData> _hostList = new List<HostData>();
 
         // 빌드 작업 중임을 판별하는 변수, 처음에는 false
-        public bool isWorking = false;
+        public bool _isWorking = false;
 
         /// <summary>
         /// Form1's constructor.
@@ -57,7 +57,7 @@ namespace Cordova_Builder
 
         public void InitWithResourceManager()
         {
-            rm = new ResourceManager("Cordova_Builder.locale", Assembly.GetExecutingAssembly());
+            _rm = new ResourceManager("Cordova_Builder.locale", Assembly.GetExecutingAssembly());
         }
 
         /// <summary>
@@ -66,9 +66,9 @@ namespace Cordova_Builder
         /// </summary>
         public void InitWithHostData()
         {
-            hostList.Add(new HostData("where java.exe", false, "", rm.GetString("FOUND_JAVA"), rm.GetString("NOT_FOUND_JAVA")));
-            hostList.Add(new HostData("where keytool.exe", false, "", rm.GetString("FOUND_KEYTOOL"), rm.GetString("NOT_FOUND_KEYTOOL")));
-            hostList.Add(new HostData("where cordova", false, "", rm.GetString("FOUND_CORDOVA"), rm.GetString("NOT_FOUND_CORDOVA")));
+            _hostList.Add(new HostData("where java.exe", false, "", _rm.GetString("FOUND_JAVA"), _rm.GetString("NOT_FOUND_JAVA")));
+            _hostList.Add(new HostData("where keytool.exe", false, "", _rm.GetString("FOUND_KEYTOOL"), _rm.GetString("NOT_FOUND_KEYTOOL")));
+            _hostList.Add(new HostData("where cordova", false, "", _rm.GetString("FOUND_CORDOVA"), _rm.GetString("NOT_FOUND_CORDOVA")));
         }
 
         /// <summary>
@@ -76,10 +76,10 @@ namespace Cordova_Builder
         /// </summary>
         public void InitWithContextMenu()
         {
-            ToolStripItem item = contextMenuStrip1.Items.Add(rm.GetString("CLEAR_BUILD_LOG"));
+            ToolStripItem item = contextMenuStrip1.Items.Add(_rm.GetString("CLEAR_BUILD_LOG"));
             item.Click += ClearBuildLog;
 
-            contextMenuStrip1.Items.Add(rm.GetString("SAVE_BUILD_LOG")).Click += SaveBuildLog;
+            contextMenuStrip1.Items.Add(_rm.GetString("SAVE_BUILD_LOG")).Click += SaveBuildLog;
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Cordova_Builder
         /// <returns></returns>
         public TextBoxList GetTextBoxList()
         {
-            return this.textBoxList;
+            return this._textBoxList;
         }
 
         /// <summary>
@@ -165,44 +165,44 @@ namespace Cordova_Builder
         private void Prepare()
         {
             CenterToScreen();
-            cordova.SetMainForm(this);
+            _cordova.SetMainForm(this);
 
             // 준비 메시지
-            AppendText(rm.GetString("Ready"));
+            AppendText(_rm.GetString("Ready"));
 
             if(CheckRequirements())
             {
                 textBox1.SelectionColor = Color.LightSteelBlue;
 
                 // 필요한 프로그램이 모두 있음
-                AppendText(rm.GetString("Done"));
+                AppendText(_rm.GetString("Done"));
 
                 textBox1.SelectionColor = Color.White;
             } else
             {
-                AppendText(rm.GetString("NotInstalled"));
+                AppendText(_rm.GetString("NotInstalled"));
 
-                if(!status[0] || !status[1])
+                if(!_status[0] || !_status[1])
                 {
                     // 자바 미설치
-                    AppendText(rm.GetString("NotInstalledJava1"));
-                    AppendText(rm.GetString("NotInstalledJava2"));
+                    AppendText(_rm.GetString("NotInstalledJava1"));
+                    AppendText(_rm.GetString("NotInstalledJava2"));
                 }
 
-                if (!status[2])
+                if (!_status[2])
                 {
                     // 코르도바 미설치
-                    AppendText(rm.GetString("NotInstalledCordova1"));
-                    AppendText(rm.GetString("NotInstalledCordova2"));
-                    AppendText(rm.GetString("NotInstalledCordova3"));
+                    AppendText(_rm.GetString("NotInstalledCordova1"));
+                    AppendText(_rm.GetString("NotInstalledCordova2"));
+                    AppendText(_rm.GetString("NotInstalledCordova3"));
                 }
 
-                if (!status[3])
+                if (!_status[3])
                 {
                     // 안드로이드 SDK
-                    AppendText(rm.GetString("NotInstalledAndroidSDK1"));
-                    AppendText(rm.GetString("NotInstalledAndroidSDK2"));
-                    AppendText(rm.GetString("NotInstalledAndroidSDK3"));
+                    AppendText(_rm.GetString("NotInstalledAndroidSDK1"));
+                    AppendText(_rm.GetString("NotInstalledAndroidSDK2"));
+                    AppendText(_rm.GetString("NotInstalledAndroidSDK3"));
                 }
 
 
@@ -216,7 +216,7 @@ namespace Cordova_Builder
         /// <returns></returns>
         public bool isValidCreateKeyStoreButton()
         {
-            return textBoxList.All(data => data.Text.Length > 0);
+            return _textBoxList.All(data => data.Text.Length > 0);
         }
 
         /// <summary>
@@ -227,11 +227,11 @@ namespace Cordova_Builder
         public bool CheckRequirements()
         {
 
-            for (var i = 0; i < hostList.Count; i++)
+            for (var i = 0; i < _hostList.Count; i++)
             {
                 Append append = AppendText;
 
-                status[i] = hostList[i].Run(append);
+                _status[i] = _hostList[i].Run(append);
             }
 
             string ANDROID_HOME = System.Environment.GetEnvironmentVariable("ANDROID_HOME");
@@ -239,20 +239,20 @@ namespace Cordova_Builder
 
             if (!String.IsNullOrEmpty(ANDROID_HOME))
             {
-                AppendText(String.Format(rm.GetString("FOUND_ANDROID_HOME"), ANDROID_HOME));
-                status[3] = true;
+                AppendText(String.Format(_rm.GetString("FOUND_ANDROID_HOME"), ANDROID_HOME));
+                _status[3] = true;
             }
             else if (!String.IsNullOrEmpty(ANDROID_SDK_ROOT))
             {
-                AppendText(String.Format(rm.GetString("FOUND_ANDROID_SDK_ROOT"), ANDROID_SDK_ROOT));
-                status[3] = true;
+                AppendText(String.Format(_rm.GetString("FOUND_ANDROID_SDK_ROOT"), ANDROID_SDK_ROOT));
+                _status[3] = true;
             }
 
             GetPlatformsFolders();
 
-            isValid = status.All(i => true);
+            _isValid = _status.All(i => true);
 
-            return isValid;
+            return _isValid;
         }
 
         /// <summary>
@@ -263,26 +263,26 @@ namespace Cordova_Builder
             // TODO : 이렇게 해야만 하는가?
             // 더 간단한 방법은 없을까?
             // 빌더 패턴? 
-            textBoxList.Add(textBoxFolderName);
-            textBoxList.Add(textBoxKeyPath);
-            textBoxList.Add(textBoxGameName);
-            textBoxList.Add(textBoxKeyAlias);
-            textBoxList.Add(textBoxPassWord);
-            textBoxList.Add(textBoxPackageName);
-            textBoxList.Add(textBox_keyOU);
-            textBoxList.Add(textBox_keyO);
-            textBoxList.Add(textBox_keyL);
-            textBoxList.Add(textBox_keyS);
-            textBoxList.Add(textBox_keyC);
-            textBoxList.Add(comboBoxOrientation);
-            textBoxList.Add(comboBoxFullscreen);
-            textBoxList.Add(comboBoxMinSdkVersion);
-            textBoxList.Add(comboBoxTargetSdkVersion);
-            textBoxList.Add(textBoxSettingGameFolder);
-            textBoxList.Add(comboBoxBuildMode);
-            textBoxList.Add(comboBoxCompileSdkVersion);
+            _textBoxList.Add(textBoxFolderName);
+            _textBoxList.Add(textBoxKeyPath);
+            _textBoxList.Add(textBoxGameName);
+            _textBoxList.Add(textBoxKeyAlias);
+            _textBoxList.Add(textBoxPassWord);
+            _textBoxList.Add(textBoxPackageName);
+            _textBoxList.Add(textBox_keyOU);
+            _textBoxList.Add(textBox_keyO);
+            _textBoxList.Add(textBox_keyL);
+            _textBoxList.Add(textBox_keyS);
+            _textBoxList.Add(textBox_keyC);
+            _textBoxList.Add(comboBoxOrientation);
+            _textBoxList.Add(comboBoxFullscreen);
+            _textBoxList.Add(comboBoxMinSdkVersion);
+            _textBoxList.Add(comboBoxTargetSdkVersion);
+            _textBoxList.Add(textBoxSettingGameFolder);
+            _textBoxList.Add(comboBoxBuildMode);
+            _textBoxList.Add(comboBoxCompileSdkVersion);
 
-            textBoxList.plugins = listBoxPlugins;
+            _textBoxList.plugins = listBoxPlugins;
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Cordova_Builder
             var foreColor = Color.White;
 
             List<Control> list = new List<Control>();
-            list.AddRange(textBoxList);
+            list.AddRange(_textBoxList);
             list.Add(listBoxPlugins);
             list.Add(textBoxSettingGameFolder);
             list.Add(textBoxPluginName);
@@ -357,18 +357,18 @@ namespace Cordova_Builder
 
                 Append append = AppendText;
 
-                HostData hostData = new HostData(cmd, false, "", rm.GetString("CreateKeyStore1"), rm.GetString("CreateKeyStore2"));
+                HostData hostData = new HostData(cmd, false, "", _rm.GetString("CreateKeyStore1"), _rm.GetString("CreateKeyStore2"));
 
                 bool status = hostData.Run(append);
 
                 // 키스토어가 정상적으로 생성되었다면 status가 true이다.
                 if (status)
                 {
-                    AppendText(rm.GetString("CreateKeyStore3"));
+                    AppendText(_rm.GetString("CreateKeyStore3"));
                 }
                 else
                 {
-                    AppendText(rm.GetString("CreateKeyStore4"));
+                    AppendText(_rm.GetString("CreateKeyStore4"));
                 }
 
             }
@@ -376,7 +376,7 @@ namespace Cordova_Builder
             {
                 // 텍스트가 비어있을 때의 처리
                 // 정상적으로 실행하였다면 이 부분은 절대 실행될 일이 없다.
-                AppendText(rm.GetString("CreateKeyStore5"));
+                AppendText(_rm.GetString("CreateKeyStore5"));
             }
 
         }
@@ -393,7 +393,7 @@ namespace Cordova_Builder
             InitWithUIBackground();
             InitWithComboBox();
 
-            cordova.Bind(this.textBoxList);
+            _cordova.Bind(this._textBoxList);
 
         }
 
@@ -416,7 +416,7 @@ namespace Cordova_Builder
         public void ReadCordovaPlugins(string mainPath)
         {
             // Read the file called "www/js/plugins.js"
-            cordova.ReadProjectPluginsJson(mainPath);
+            _cordova.ReadProjectPluginsJson(mainPath);
 
             // UI 컨트롤이 멈추지 않도록 새로운 쓰레드에서 작업 수행
             System.Threading.Thread worker = new System.Threading.Thread(() =>
@@ -432,7 +432,7 @@ namespace Cordova_Builder
                     {
                         string filename = System.IO.Path.GetFileNameWithoutExtension(fi.FullName);
 
-                        if (cordova.IsValidPlugin(filename))
+                        if (_cordova.IsValidPlugin(filename))
                         {
                             #region 플러그인명 추출
                             using (System.IO.StreamReader sr = fi.OpenText())
@@ -526,22 +526,22 @@ namespace Cordova_Builder
         private void buttonBuild_Click(object sender, EventArgs e)
         {
             // 빌드 중이 아닐 때에만 빌드가 가능함
-            if (buttonBuild.Enabled && !isWorking)
+            if (buttonBuild.Enabled && !_isWorking)
             {
 
-                isWorking = true;
+                _isWorking = true;
                 buttonBuild.Enabled = false;
 
                 // 빌드 후 일부 프로세스가 정리되지 않는 경우가 있다 (JDK 등)
                 // 그때 워커가 종료되고 다시 버튼이 활성화되는 지 여부를 확인하기 위해 토글 처리를 하였다
-                cordova.Build(() =>
+                _cordova.Build(() =>
                 {
 
                     Action completeBuild = () =>
                     {
                         // 빌드가 끝이 났으므로 빌드 버튼을 다시 활성화 한다.
                         buttonBuild.Enabled = true;
-                        isWorking = false;
+                        _isWorking = false;
 
                         // 폴더가 있다면 탐색기로 연다.
                         string myDocumentsPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), this.Text);
@@ -626,7 +626,7 @@ namespace Cordova_Builder
             bool isValid = isValidCreateKeyStoreButton();
 
             // 빌드 중이 아닐 때에만 동작
-            if(!isWorking)
+            if(!_isWorking)
             {
                 buttonBuild.Enabled = isValid;
             }
@@ -715,15 +715,15 @@ namespace Cordova_Builder
             if(connected && IsInternetConnected())
             {
                 textBox1.SelectionColor = Color.Yellow;
-                AppendText(rm.GetString("PENDING_CHECK_PROGRAM_VER"));
+                AppendText(_rm.GetString("PENDING_CHECK_PROGRAM_VER"));
 
                 textBox1.SelectionColor = Color.White;
 
-                cordova.CheckVersion();
+                _cordova.CheckVersion();
 
                 textBox1.SelectionColor = Color.Yellow;
 
-                AppendText(rm.GetString("PENDING_CHECK_CORDOVA_VER"));
+                AppendText(_rm.GetString("PENDING_CHECK_CORDOVA_VER"));
 
                 textBox1.SelectionColor = Color.White;
 
@@ -731,7 +731,7 @@ namespace Cordova_Builder
                 {
                     Action action = () =>
                     {
-                        cordova.CheckLatestCordovaVersion();
+                        _cordova.CheckLatestCordovaVersion();
                     };
 
                     if (InvokeRequired)
@@ -740,7 +740,7 @@ namespace Cordova_Builder
                     }
                     else
                     {
-                        cordova.CheckLatestCordovaVersion();
+                        _cordova.CheckLatestCordovaVersion();
                     }
                 });
 
@@ -748,7 +748,7 @@ namespace Cordova_Builder
             } else
             {
                 textBox1.SelectionColor = Color.Red;
-                AppendText(rm.GetString("NOT_CONNECTED_INTERNET"));
+                AppendText(_rm.GetString("NOT_CONNECTED_INTERNET"));
                 textBox1.SelectionColor = Color.White;
             }
                 

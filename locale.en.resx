@@ -146,7 +146,7 @@
     <comment>Cordova</comment>
   </data>
   <data name="CHECK_VERSION_OLD_ASK" xml:space="preserve">
-    <value>Do you want to open the download page?</value>
+    <value>Do you want to update to a new version?</value>
     <comment>Cordova</comment>
   </data>
   <data name="CLEAR_BUILD_LOG" xml:space="preserve">
@@ -336,6 +336,10 @@
   <data name="SAVE_BUILD_LOG" xml:space="preserve">
     <value>Save Log</value>
     <comment>Form1</comment>
+  </data>
+  <data name="SUCCESSED_SETUP_FILE" xml:space="preserve">
+    <value>You have successfully downloaded the installer.</value>
+    <comment>Cordova</comment>
   </data>
   <data name="SUCCESS_INSTALLED_CORDOVA" xml:space="preserve">
     <value>echo Job completed!</value>

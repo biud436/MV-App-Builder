@@ -14,6 +14,8 @@ using System.Data;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
 using System.Net;
+using System.IO;
+using System.Net.Http;
 
 namespace Cordova_Builder
 {
@@ -21,27 +23,34 @@ namespace Cordova_Builder
     {
 
         // 메인 폼
-        private Form1 mainForm;
+        private Form1 _mainForm;
 
         // 현재 경로
-        private string currentDirectory;
+        private string _currentDirectory;
 
         // UI 컨트롤 목록
-        private TextBoxList list;
+        private TextBoxList _list;
 
         // 지역화를 위한 리소스 관리자
-        private ResourceManager rm;
+        private ResourceManager _rm;
 
         // 플러그인 목록
-        private Dictionary<string, bool> plugins = new Dictionary<string, bool>();
+        private Dictionary<string, bool> _plugins = new Dictionary<string, bool>();
 
         // 버전
-        private Version version = new Version("0.1.35");
+        private Version _version = new Version("0.1.34");
 
+        private Version _cordovaVersion = new Version("0.0.0");
+
+        private string _titleText;
+
+        /// <summary>
+        /// 생성자
+        /// </summary>
         public Cordova()
         {
-            currentDirectory = System.IO.Directory.GetCurrentDirectory();
-            rm = new ResourceManager("Cordova_Builder.locale", Assembly.GetExecutingAssembly());
+            _currentDirectory = System.IO.Directory.GetCurrentDirectory();
+            _rm = new ResourceManager("Cordova_Builder.locale", Assembly.GetExecutingAssembly());
         }
 
         /// <summary>
@@ -50,7 +59,8 @@ namespace Cordova_Builder
         /// <param name="form"></param>
         public void SetMainForm(Form1 form)
         {
-            this.mainForm = form;
+            _mainForm = form;
+            _titleText = _mainForm.Text;
         }
 
         /// <summary>
@@ -59,7 +69,7 @@ namespace Cordova_Builder
         /// <param name="list"></param>
         public void Bind(TextBoxList list)
         {
-            this.list = list;
+            this._list = list;
         }
 
         /// <summary>
@@ -71,10 +81,10 @@ namespace Cordova_Builder
             BuildConfig config = new BuildConfig();
             ConfigData data = new ConfigData()
             {
-                keystore = list.keyPath.Text,
-                storePassword = list.passWord.Text,
-                alias = list.keyAlias.Text,
-                password = list.passWord.Text,
+                keystore = _list.keyPath.Text,
+                storePassword = _list.passWord.Text,
+                alias = _list.keyAlias.Text,
+                password = _list.passWord.Text,
                 keystoreType = "",
             };
 
@@ -95,13 +105,17 @@ namespace Cordova_Builder
 
         }
 
+        /// <summary>
+        /// 메이크 함수는 작업 폴더를 프로젝트 폴더로 옮기는 역할을 합니다.
+        /// </summary>
+        /// <param name="callback"></param>
         public void Make(Action<string> callback)
         {
             try
             {
                 string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string programName = this.mainForm.Text;
-                string mkdir = System.IO.Path.Combine(myDocumentsPath, programName, list.folderName.Text);
+                string programName = _titleText;
+                string mkdir = System.IO.Path.Combine(myDocumentsPath, programName, _list.folderName.Text);
 
                 if (!System.IO.Directory.Exists(mkdir))
                 {
@@ -126,6 +140,10 @@ namespace Cordova_Builder
             }
         }
 
+        /// <summary>
+        /// 빌드를 진행합니다.
+        /// </summary>
+        /// <param name="successCallback"></param>
         public void Build(Action successCallback)
         {
 
@@ -134,7 +152,7 @@ namespace Cordova_Builder
 
                 // 내문서에 APK 파일을 저장합니다.
                 string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string programName = this.mainForm.Text;
+                string programName = _titleText;
                 string targetFolder = System.IO.Path.Combine(myDocumentsPath, programName);
                 string tempDir = System.IO.Directory.GetCurrentDirectory();
 
@@ -159,7 +177,7 @@ namespace Cordova_Builder
                         AddAndroidPlatform();
                         AddPlugins();
                         WriteConfig(); // config.xml 파일을 수정합니다
-                        mainForm.CreateKeyStore();
+                        _mainForm.CreateKeyStore();
                         CopyProjectFiles();
                         ModifyHtmlFiles(); // HTML 파일에 cordova 바인드 용 스크립트 문을 추가합니다.
                         ExportBuildJson(filename); 
@@ -172,9 +190,13 @@ namespace Cordova_Builder
             worker.Start();
         }
 
+        /// <summary>
+        /// 메인 폼의 빌드 로그에 새로운 로그를 한 줄 추가합니다.
+        /// </summary>
+        /// <param name="output"></param>
         public void AppendText(string output)
         {
-            this.mainForm.AppendText(output);
+            this._mainForm.AppendText(output);
         }
 
         /// <summary>
@@ -197,11 +219,17 @@ namespace Cordova_Builder
             }
         }
 
+        /// <summary>
+        /// 코르도바 프로젝트를 생성합니다.
+        /// 8.1.2 버전에서는 이미 생성되어있을 경우, 시간 절약을 위해 다시 생성하지 않습니다.
+        /// 하지만 9.0.0 버전에서는 오류로 인해 프로젝트를 지웠다가 다시 생성합니다.
+        /// </summary>
+        /// <returns></returns>
         private bool Create()
         {
-            string folderName = list.folderName.Text;
-            string packageName = list.packageName.Text;
-            string gameName = list.gameName.Text;
+            string folderName = _list.folderName.Text;
+            string packageName = _list.packageName.Text;
+            string gameName = _list.gameName.Text;
 
             try
             {
@@ -216,11 +244,26 @@ namespace Cordova_Builder
                 if (System.IO.Directory.Exists(folderName) )
                 {
                     var configPath = System.IO.Path.Combine(folderName, "config.xml");
-                    var resFolderPath = System.IO.Path.Combine( folderName, "res");
 
-                    if(System.IO.File.Exists(configPath) && System.IO.Directory.Exists(resFolderPath))
+                    if(System.IO.File.Exists(configPath))
                     {
-                        return true;
+
+                        var uniqueVersion = new Version("9.0.0");
+                        var result = _cordovaVersion.CompareTo(uniqueVersion);
+
+                        if (result >= 0)
+                        {
+                            
+                            //HostData cleanProcess = new HostData("cordova clean android", true, "", "echo Clean Android Project for rebuilding...", "echo Clean Android Project failed...");
+                            //Append DoAppend = AppendText;
+                            //cleanProcess.Run(DoAppend);
+
+                            clearFolder(configPath);
+                        }
+                        else {
+                            return true;
+                        }
+
                     }
 
                 }
@@ -234,8 +277,8 @@ namespace Cordova_Builder
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("cordova create {0} {1} {2}", folderName, packageName, gameName);
             HostData process = new HostData(sb.ToString(), true, "",
-                rm.GetString("Create1"),
-                rm.GetString("Create2"));
+                _rm.GetString("Create1"),
+                _rm.GetString("Create2"));
             Append append = AppendText;
             
             return process.Run(append);
@@ -253,7 +296,7 @@ namespace Cordova_Builder
 
             if(!System.IO.File.Exists(@"platforms/android/android.json"))
             {
-                HostData process = new HostData("cordova platform add android", true, "", rm.GetString("AddAndroidPlatform1"), rm.GetString("AddAndroidPlatform2"));
+                HostData process = new HostData("cordova platform add android", true, "", _rm.GetString("AddAndroidPlatform1"), _rm.GetString("AddAndroidPlatform2"));
 
                 Append append = AppendText;
 
@@ -268,7 +311,7 @@ namespace Cordova_Builder
         /// <returns></returns>
         private bool Requirements()
         {
-            var process = new HostData("cordova requirements", true, "", rm.GetString("Requirements1"), rm.GetString("Requirements2"));
+            var process = new HostData("cordova requirements", true, "", _rm.GetString("Requirements1"), _rm.GetString("Requirements2"));
 
             Append append = AppendText;
 
@@ -327,18 +370,18 @@ namespace Cordova_Builder
                     xmlDoc.Load("config.xml");
 
                     this
-                        .SetPreference(xmlDoc, "Orientation", list.orientation.SelectedItem.ToString())
-                        .SetPreference(xmlDoc, "FullScreen", list.fullscreen.SelectedItem.ToString())
-                        .SetPreference(xmlDoc, "android-minSdkVersion", list.minSdkVersion.SelectedItem.ToString())
-                        .SetPreference(xmlDoc, "android-targetSdkVersion", list.targetSdkVersion.SelectedItem.ToString())
-                        .SetPreference(xmlDoc, "android-compileSdkVersion", list.compileSdkVersion.SelectedItem.ToString()) // it didn't exist property.
+                        .SetPreference(xmlDoc, "Orientation", _list.orientation.SelectedItem.ToString())
+                        .SetPreference(xmlDoc, "FullScreen", _list.fullscreen.SelectedItem.ToString())
+                        .SetPreference(xmlDoc, "android-minSdkVersion", _list.minSdkVersion.SelectedItem.ToString())
+                        .SetPreference(xmlDoc, "android-targetSdkVersion", _list.targetSdkVersion.SelectedItem.ToString())
+                        .SetPreference(xmlDoc, "android-compileSdkVersion", _list.compileSdkVersion.SelectedItem.ToString()) // it didn't exist property.
                         .SetPreference(xmlDoc, "BackgroundColor", "0xff000000") // black color
                         .SetPreference(xmlDoc, "ShowTitle", "false")
                         .SetIcon(xmlDoc);
 
                     xmlDoc.Save("config.xml");
 
-                    AppendText(rm.GetString("WriteConfig"));
+                    AppendText(_rm.GetString("WriteConfig"));
                 }
 
             }
@@ -380,7 +423,7 @@ namespace Cordova_Builder
 
                     System.IO.File.WriteAllLines(filename, lines);
 
-                    AppendText(rm.GetString("ModifyHtmlFiles"));
+                    AppendText(_rm.GetString("ModifyHtmlFiles"));
                 }
             }
 
@@ -391,25 +434,25 @@ namespace Cordova_Builder
         /// </summary>
         private void CopyProjectFiles()
         {
-            string srcPath = list.settingGameFolder.Text.ToString();
+            string srcPath = _list.settingGameFolder.Text.ToString();
             string dstPath = ".\\www";
 
-            AppendText(rm.GetString("CopyProjectFiles1"));
+            AppendText(_rm.GetString("CopyProjectFiles1"));
 
             if (System.IO.Directory.Exists(srcPath))
             {
                 string robocopy = String.Format("robocopy \"{0}\" \"{1}\" /E /R:1 /W:1", srcPath, dstPath);
 
                 HostData process = new HostData(robocopy, true, "",
-                    rm.GetString("CopyProjectFiles2"),
-                    rm.GetString("CopyProjectFiles3"));
+                    _rm.GetString("CopyProjectFiles2"),
+                    _rm.GetString("CopyProjectFiles3"));
 
                 Append append = AppendText;
 
                 process.Run(append);
             } else
             {
-                AppendText(rm.GetString("CopyProjectFiles4"));
+                AppendText(_rm.GetString("CopyProjectFiles4"));
             }
 
         }
@@ -420,11 +463,11 @@ namespace Cordova_Builder
         private void AddPlugins()
         {
 
-            foreach(string pluginName in list.plugins.Items)
+            foreach(string pluginName in _list.plugins.Items)
             {
                 string command = String.Format("cordova plugin add {0}", pluginName);
-                string success = String.Format(rm.GetString("AddPlugins1"), pluginName);
-                string fail = String.Format(rm.GetString("AddPlugins2"), pluginName);
+                string success = String.Format(_rm.GetString("AddPlugins1"), pluginName);
+                string fail = String.Format(_rm.GetString("AddPlugins2"), pluginName);
                 HostData process = new HostData(command, true, "", success, fail);
 
                 Append append = AppendText;
@@ -441,10 +484,10 @@ namespace Cordova_Builder
         {
             if(System.IO.File.Exists("build.json"))
             {
-                AppendText(rm.GetString("Flush1"));
+                AppendText(_rm.GetString("Flush1"));
             }
 
-            string mode = (list.biuldMode.SelectedIndex == 0) ? "--release" : "--debug";
+            string mode = (_list.biuldMode.SelectedIndex == 0) ? "--release" : "--debug";
             string cmd = String.Format("cordova build android {0} --buildConfig=build.json", mode);
 
             // 코르도바는 빌드가 완료되면, 정상 출력 루트가 아닌 오류 쪽으로 빌드 완료 메시지를 보낸다.
@@ -454,8 +497,8 @@ namespace Cordova_Builder
             // 다만, 이 경우 빌드 실패 시에도 빌드가 성공했다고 메시지가 뜨게 된다.
             // 구분할 수 있는 방법은 아직까지 없다. 리치 텍스트 박스에서 fail 글자를 추출하지 않는한 불가능하다.
             HostData process = new HostData(cmd, true, "",
-                rm.GetString("Flush2"),
-                rm.GetString("Flush2"));
+                _rm.GetString("Flush2"),
+                _rm.GetString("Flush2"));
 
             Append append = AppendText;
 
@@ -468,9 +511,9 @@ namespace Cordova_Builder
         /// </summary>
         private void InstallCordova()
         {
-            AppendText(rm.GetString("INSTALLING_CORDOVA"));
+            AppendText(_rm.GetString("INSTALLING_CORDOVA"));
 
-            HostData process = new HostData("npm install -g cordova", true, "", rm.GetString("SUCCESS_INSTALLED_CORDOVA"), rm.GetString("FAIL_INSTALLED_CORDOVA"));
+            HostData process = new HostData("npm install -g cordova", true, "", _rm.GetString("SUCCESS_INSTALLED_CORDOVA"), _rm.GetString("FAIL_INSTALLED_CORDOVA"));
             Append append = AppendText;
             process.Run(append);
 
@@ -498,7 +541,7 @@ namespace Cordova_Builder
                 string goodJson = Regex.Replace(json, @"}}\s*,\s*$", "}}");
 
                 PluginConfigImpl impl = JsonHelper.ToClass<PluginConfigImpl>(goodJson);
-                plugins[impl.name] = impl.status;
+                _plugins[impl.name] = impl.status;
             }
 
         }
@@ -512,21 +555,75 @@ namespace Cordova_Builder
         {
             bool isValid = false;
 
-            if (plugins.ContainsKey(pluginName))
+            if (_plugins.ContainsKey(pluginName))
             {
-                isValid = plugins[pluginName];
+                isValid = _plugins[pluginName];
             }
 
             return isValid;
         }
 
+        /// <summary>
+        /// Update program after downloading from the server.
+        /// However, it doesn't have a progress bar.
+        /// </summary>
+        public void StartDownloadAndRun(Version targetVersion)
+        {
+
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.TryParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36");
+            client.DefaultRequestHeaders.Accept.TryParseAdd("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3");
+            client.DefaultRequestHeaders.AcceptEncoding.TryParseAdd("gzip, deflate, br");
+            client.DefaultRequestHeaders.AcceptLanguage.TryParseAdd("ko-KR,ko;q=0.9,en;q=0.8,ja;q=0.7");
+            client.DefaultRequestHeaders.Add("Cookie", "_octo=GH1.1.369596485.1574485901; _ga=GA1.2.1387247375.1574485903; _device_id=e0f85912713413a020767254cabf0ad9; user_session=E72K796DvdJmZ8Pnl9Ik9ZPK40udIRRZ5GRgWKg52RMPch1t; __Host-user_session_same_site=E72K796DvdJmZ8Pnl9Ik9ZPK40udIRRZ5GRgWKg52RMPch1t; logged_in=yes; dotcom_user=biud436; tz=Asia%2FSeoul; has_recent_activity=1; _gh_sess=b3BhOVdzL3YxNUJLMVptQkhiN0VlUU5QdTRnTnl4RmpLb2toTlJyLysvQWdFa0N2OW04S1R3d2FRZWprQXBXdjM2ejlYOXFKQjN5WHZ2K3ZIVGZPaUlFS0szNnlDcmkzWStKOXZ2WFNSbVJJaXJFbVArN0NnSzV1L0JCUk8yV0xBMVZDMTk5anJIUEZrVWt0Mnc0ZWNYVU9JVFhFMit0bU5TU0xIanVzZ2t3elBVOHRqR2s3dnZiNE0wUnF3c3djQWovanJ2dnNsOWcyV3R2eWJUd3BZenlJTG5PRklhMEgveW5lZHY5OTFOeXZQRWlwY0xSSkhRNC8rdkViT0hGT2swRVE0U2ZYMWd0d0xTMVBJNVFaeFE9PS0tak02azFiaWU2aE1PTWJMNW5ZNVk2Zz09--dbcccb10c9d5e1a24b322750dc512ab2a04df2d7");
+            client.DefaultRequestHeaders.Host = "github.com";
+            client.DefaultRequestHeaders.Referrer = new Uri("https://github.com/biud436/MV-App-Builder/releases");
+            client.DefaultRequestHeaders.TransferEncodingChunked = true;
+            client.DefaultRequestHeaders.Add("Upgrade-Insecure-Requests", "1");
+            client.Timeout = TimeSpan.FromMinutes(5);
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                | SecurityProtocolType.Tls11
+                | SecurityProtocolType.Tls12
+                | SecurityProtocolType.Ssl3;
+
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+            var url = String.Format("https://github.com/biud436/MV-App-Builder/releases/download/v{0}/MVAppBuilder.exe", targetVersion);
+            var bytes = client.GetByteArrayAsync(url).Result;
+
+            AppendText(_rm.GetString("SUCCESSED_SETUP_FILE"));
+
+            try
+            {
+                string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "RPG Maker MV Cordova Builder");
+                string targetPath = Path.Combine(folderPath, "MVAppBuilder.exe");
+
+                if (Directory.Exists(folderPath))
+                {
+                    if (File.Exists(targetPath))
+                    {
+                        File.Delete(targetPath);
+                    }
+
+                    File.WriteAllBytes(targetPath, bytes);
+                    System.Diagnostics.Process.Start(targetPath);
+
+                }
+
+            }
+            catch (IOException ex)
+            {
+                throw ex;
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         public void CheckVersion()
         {
-            if(version == null)
+            if(_version == null)
             {
                 return;
             }
@@ -539,28 +636,27 @@ namespace Cordova_Builder
                 if (targetObject.ContainsKey("version"))
                 {
                     var targetVersion = new Version(targetObject["version"]);
-                    var result = version.CompareTo(targetVersion);
+                    var result = _version.CompareTo(targetVersion);
 
                     if (result > 0)
                     {
                         // 알파 버전
-                        AppendText(rm.GetString("CHECK_VERSION_ALPHA"));
+                        AppendText(_rm.GetString("CHECK_VERSION_ALPHA"));
                     }
                     else if (result < 0)
                     {
                         // 구 버전을 사용하고 있습니다.
-                        MessageBox.Show(rm.GetString("CHECK_VERSION_OLD"), mainForm.Text);
+                        MessageBox.Show(_rm.GetString("CHECK_VERSION_OLD"), _mainForm.Text);
 
-                        if(MessageBox.Show(rm.GetString("CHECK_VERSION_OLD_ASK"), mainForm.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if(MessageBox.Show(_rm.GetString("CHECK_VERSION_OLD_ASK"), _mainForm.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            var uri = String.Format("https://github.com/biud436/MV-App-Builder/releases/download/v{0}/MVAppBuilder.exe", targetVersion);
-                            System.Diagnostics.Process.Start(uri);
+                            StartDownloadAndRun(targetVersion);
                         }
                     }
                     else
                     {
                         // 최신 버전을 사용하고 있습니다.
-                        AppendText(rm.GetString("CHECK_VERSION_LATEST"));
+                        AppendText(_rm.GetString("CHECK_VERSION_LATEST"));
                     }
 
                 }
@@ -573,9 +669,10 @@ namespace Cordova_Builder
         /// <returns></returns>
         public void CheckLatestCordovaVersion()
         {
+            Version cordovaVersion = new Version("0.0.0");
+
             try
             {
-                Version cordovaVersion = new Version("0.0.0");
 
                 using (WebClient wc = new WebClient())
                 {
@@ -632,10 +729,10 @@ namespace Cordova_Builder
                         if (result > 0)
                         {
                             // 오래된 버전을 사용 중인 경우, 업데이트 처리를 한다.
-                            AppendText(rm.GetString("NOT_LATEST_CORDOV_VER"));
-                            AppendText(String.Format(rm.GetString("REQUEST_NPM_INSTALL"), cordovaVersion.ToString()));
+                            AppendText(_rm.GetString("NOT_LATEST_CORDOV_VER"));
+                            AppendText(String.Format(_rm.GetString("REQUEST_NPM_INSTALL"), cordovaVersion.ToString()));
 
-                            DialogResult dialogResult = MessageBox.Show(rm.GetString("REQUEST_NPM_INSTALL_ASK"), mainForm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            DialogResult dialogResult = MessageBox.Show(_rm.GetString("REQUEST_NPM_INSTALL_ASK"), _mainForm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                             if (dialogResult == DialogResult.Yes)
                             {
@@ -650,7 +747,7 @@ namespace Cordova_Builder
                         else
                         {
                             // 이미 최신 버전을 쓰고 있는 경우
-                            AppendText(rm.GetString("LATEST_CORDOVA_READY"));
+                            AppendText(_rm.GetString("LATEST_CORDOVA_READY"));
                         }
 
                     }
@@ -660,6 +757,9 @@ namespace Cordova_Builder
             } catch(Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex);
+            } finally
+            {
+                _cordovaVersion = cordovaVersion;
             }
 
         }

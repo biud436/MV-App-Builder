@@ -14,24 +14,32 @@ namespace Cordova_Builder
 
     public class HostData
     {
-        public string name;
-        public bool isValid;
-        public string dir;
-        public string success;
-        public string fail;
+        public string _name;
+        public bool _isValid;
+        public string _dir;
+        public string _success;
+        public string _fail;
+
+        enum ExitCode : int
+        {
+            Success = 0,
+            InvalidLogin = 1,
+            InvalidFilename = 2,
+            UnknownError = 10
+        }
 
         public HostData(string name, bool isValid = true, string dir = "", string success = "", string fail = "")
         {
-            this.name = name;
-            this.isValid = isValid;
-            this.dir = dir;
-            this.success = success;
-            this.fail = fail;
+            this._name = name;
+            this._isValid = isValid;
+            this._dir = dir;
+            this._success = success;
+            this._fail = fail;
         }
 
         public bool Output(Append AppendText)
         {
-            
+
             Process process = new Process();
             ProcessStartInfo info = new ProcessStartInfo();
 
@@ -41,11 +49,11 @@ namespace Cordova_Builder
 
             info.FileName = @"cmd.exe";
             info.CreateNoWindow = true;
-            info.Arguments = "/C " + name;
+            info.Arguments = "/C " + _name;
 
-            if (!String.IsNullOrEmpty(dir))
+            if (!String.IsNullOrEmpty(_dir))
             {
-                info.WorkingDirectory = dir;
+                info.WorkingDirectory = _dir;
             }
 
             process.StartInfo = info;
@@ -76,6 +84,62 @@ namespace Cordova_Builder
             return (isNull != false);
         }
 
+        public void SafeOutput(Append AppendText, EventHandler eventHandler)
+        {
+            
+            Process process = new Process();
+            ProcessStartInfo info = new ProcessStartInfo();
+
+            info.UseShellExecute = false;
+            info.RedirectStandardOutput = true;
+            info.RedirectStandardError = true;
+
+            info.FileName = @"cmd.exe";
+            info.CreateNoWindow = true;
+            info.Arguments = "/C " + _name;
+
+            if (!String.IsNullOrEmpty(_dir))
+            {
+                info.WorkingDirectory = _dir;
+            }
+
+            process.StartInfo = info;
+
+            bool isNull = false;
+
+            var reader = process.StandardOutput;
+
+            // 이벤트 방식으로 데이터 수신
+            process.OutputDataReceived += new DataReceivedEventHandler((sender, e) => {
+                if(!String.IsNullOrEmpty(e.Data))
+                {
+                    AppendText(e.Data);
+                }
+            });
+
+            // 이벤트 방식으로 오류 수신
+            process.ErrorDataReceived += new DataReceivedEventHandler((sender, e) =>
+            {
+                if(!String.IsNullOrEmpty(e.Data))
+                {
+                    AppendText(e.Data);
+                }
+            });
+
+            process.Exited += eventHandler;
+
+            process.Start();
+
+            process.BeginOutputReadLine();
+            process.BeginErrorReadLine();
+
+            isNull = String.IsNullOrEmpty(process.StandardError.ReadToEnd() ?? "");
+
+            process.WaitForExit();
+
+            process.Close();
+        }
+
         public void outputLine(string command, Action<string> callback)
         {
             Process process = new Process();
@@ -103,18 +167,33 @@ namespace Cordova_Builder
         {
             bool isSuccessMessage = Output(Append);
 
-            //bool isSuccessMessage = true;
-
             if (isSuccessMessage)
             {
-                outputLine(success, (msg) => { Append(msg); });
+                outputLine(_success, (msg) => { Append(msg); });
                 return true;
             } else
             {
-                outputLine(fail, (msg) => { Append(msg); });
+                outputLine(_fail, (msg) => { Append(msg); });
                 return false;
             }
 
+        }
+
+        public void SafeRun(Append Append)
+        {
+            SafeOutput(Append, new EventHandler((sender, e) =>
+            {
+                Process process = (Process)sender;
+
+                if(process.ExitCode == (int)ExitCode.Success)
+                {
+                    outputLine(_success, (msg) => { Append(msg); });
+                }
+                else
+                {
+                    outputLine(_fail, (msg) => { Append(msg); });
+                }
+            }));
         }
 
     }

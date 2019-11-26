@@ -146,7 +146,7 @@
     <comment>Cordova</comment>
   </data>
   <data name="CHECK_VERSION_OLD_ASK" xml:space="preserve">
-    <value>다운로드 페이지를 여시겠습니까?</value>
+    <value>새로운 버전으로 업데이트 할까요?</value>
     <comment>Cordova</comment>
   </data>
   <data name="CLEAR_BUILD_LOG" xml:space="preserve">
@@ -336,6 +336,10 @@
   <data name="SAVE_BUILD_LOG" xml:space="preserve">
     <value>빌드 로그 저장</value>
     <comment>Form1</comment>
+  </data>
+  <data name="SUCCESSED_SETUP_FILE" xml:space="preserve">
+    <value>설치 파일을 성공적으로 내려 받았습니다. </value>
+    <comment>Cordova</comment>
   </data>
   <data name="SUCCESS_INSTALLED_CORDOVA" xml:space="preserve">
     <value>echo 코르도바 설치 및 업데이트가 완료되었습니다.</value>
