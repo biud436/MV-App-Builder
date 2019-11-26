@@ -575,7 +575,6 @@ namespace Cordova_Builder
             client.DefaultRequestHeaders.Accept.TryParseAdd("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3");
             client.DefaultRequestHeaders.AcceptEncoding.TryParseAdd("gzip, deflate, br");
             client.DefaultRequestHeaders.AcceptLanguage.TryParseAdd("ko-KR,ko;q=0.9,en;q=0.8,ja;q=0.7");
-            client.DefaultRequestHeaders.Add("Cookie", "_octo=GH1.1.369596485.1574485901; _ga=GA1.2.1387247375.1574485903; _device_id=e0f85912713413a020767254cabf0ad9; user_session=E72K796DvdJmZ8Pnl9Ik9ZPK40udIRRZ5GRgWKg52RMPch1t; __Host-user_session_same_site=E72K796DvdJmZ8Pnl9Ik9ZPK40udIRRZ5GRgWKg52RMPch1t; logged_in=yes; dotcom_user=biud436; tz=Asia%2FSeoul; has_recent_activity=1; _gh_sess=b3BhOVdzL3YxNUJLMVptQkhiN0VlUU5QdTRnTnl4RmpLb2toTlJyLysvQWdFa0N2OW04S1R3d2FRZWprQXBXdjM2ejlYOXFKQjN5WHZ2K3ZIVGZPaUlFS0szNnlDcmkzWStKOXZ2WFNSbVJJaXJFbVArN0NnSzV1L0JCUk8yV0xBMVZDMTk5anJIUEZrVWt0Mnc0ZWNYVU9JVFhFMit0bU5TU0xIanVzZ2t3elBVOHRqR2s3dnZiNE0wUnF3c3djQWovanJ2dnNsOWcyV3R2eWJUd3BZenlJTG5PRklhMEgveW5lZHY5OTFOeXZQRWlwY0xSSkhRNC8rdkViT0hGT2swRVE0U2ZYMWd0d0xTMVBJNVFaeFE9PS0tak02azFiaWU2aE1PTWJMNW5ZNVk2Zz09--dbcccb10c9d5e1a24b322750dc512ab2a04df2d7");
             client.DefaultRequestHeaders.Host = "github.com";
             client.DefaultRequestHeaders.Referrer = new Uri("https://github.com/biud436/MV-App-Builder/releases");
             client.DefaultRequestHeaders.TransferEncodingChunked = true;
