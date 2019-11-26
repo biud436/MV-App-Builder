@@ -133,8 +133,6 @@ namespace Cordova_Builder
             process.BeginOutputReadLine();
             process.BeginErrorReadLine();
 
-            isNull = String.IsNullOrEmpty(process.StandardError.ReadToEnd() ?? "");
-
             process.WaitForExit();
 
             process.Close();

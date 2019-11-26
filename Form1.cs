@@ -307,81 +307,6 @@ namespace Cordova_Builder
         }
 
         /// <summary>
-        /// 키스토어 파일을 생성합니다.
-        /// </summary>
-        public void CreateKeyStore()
-        {
-
-            string keystorePath = textBoxKeyPath.Text;
-
-            if (System.IO.File.Exists(keystorePath))
-            {
-                return;
-            }
-
-            // TODO: 이 코드는 보기 좋지 않은 듯 하다.
-            // 텍스트 목록을 한 번에 가져올 수 있는 섹시한 함수가 있을까?
-            // 있다면 그때 변경하자.
-            List<string> validData = new List<string>()
-            {
-                        keystorePath,
-                        textBoxKeyAlias.Text,
-                        textBoxPassWord.Text,
-                        textBoxPassWord.Text,
-                        textBoxPackageName.Text,
-                        textBox_keyOU.Text,
-                        textBox_keyO.Text,
-                        textBox_keyL.Text,
-                        textBox_keyS.Text,
-                        textBox_keyC.Text
-            };
-
-            bool isOK = validData.All(text => !String.IsNullOrEmpty(text));
-
-            if (isOK)
-            {
-                // TODO: 전달되는 인수가 너무 많다.
-                // 더 간단한 처리 방법이 없을까?
-                string cmd = String.Format("keytool -genkey -v -keystore {0} -alias {1} -keyalg RSA -keysize 2048 -validity 10000 -keypass {2} -storepass {3} -dname \"CN={4},OU={5},O={6},L={7},S={8},C={9}\" 2>&1",
-                        keystorePath,
-                        textBoxKeyAlias.Text,
-                        textBoxPassWord.Text,
-                        textBoxPassWord.Text,
-                        textBoxPackageName.Text,
-                        textBox_keyOU.Text,
-                        textBox_keyO.Text,
-                        textBox_keyL.Text,
-                        textBox_keyS.Text,
-                        textBox_keyC.Text
-                    );
-
-                Append append = AppendText;
-
-                HostData hostData = new HostData(cmd, false, "", _rm.GetString("CreateKeyStore1"), _rm.GetString("CreateKeyStore2"));
-
-                bool status = hostData.Run(append);
-
-                // 키스토어가 정상적으로 생성되었다면 status가 true이다.
-                if (status)
-                {
-                    AppendText(_rm.GetString("CreateKeyStore3"));
-                }
-                else
-                {
-                    AppendText(_rm.GetString("CreateKeyStore4"));
-                }
-
-            }
-            else
-            {
-                // 텍스트가 비어있을 때의 처리
-                // 정상적으로 실행하였다면 이 부분은 절대 실행될 일이 없다.
-                AppendText(_rm.GetString("CreateKeyStore5"));
-            }
-
-        }
-
-        /// <summary>
         /// Form1이 로드되었을 때의 처리
         /// </summary>
         /// <param name="sender"></param>
@@ -532,9 +457,32 @@ namespace Cordova_Builder
                 _isWorking = true;
                 buttonBuild.Enabled = false;
 
+                var config = new FormData.Config()
+                {
+                    folderName = textBoxFolderName.Text,
+                    keyPath = textBoxKeyPath.Text,
+                    gameName = textBoxGameName.Text,
+                    keyAlias = textBoxKeyAlias.Text,
+                    passWord = textBoxPassWord.Text,
+                    packageName = textBoxPackageName.Text,
+                    keyOU = textBox_keyOU.Text,
+                    keyO = textBox_keyO.Text,
+                    keyL = textBox_keyL.Text,
+                    keyS = textBox_keyS.Text,
+                    keyC = textBox_keyC.Text,
+                    orientation = comboBoxOrientation.SelectedItem.ToString(),
+                    fullscreen = comboBoxFullscreen.SelectedItem.ToString(),
+                    minSdkVersion = comboBoxMinSdkVersion.SelectedItem.ToString(),
+                    targetSdkVersion = comboBoxTargetSdkVersion.SelectedItem.ToString(),
+                    settingGameFolder = textBoxSettingGameFolder.Text,
+                    buildMode = comboBoxBuildMode.SelectedIndex,
+                    compileSdkVersion = comboBoxCompileSdkVersion.SelectedItem.ToString(),
+                    plugins = listBoxPlugins.Items.Cast<String>().ToList(),
+                 };
+
                 // 빌드 후 일부 프로세스가 정리되지 않는 경우가 있다 (JDK 등)
                 // 그때 워커가 종료되고 다시 버튼이 활성화되는 지 여부를 확인하기 위해 토글 처리를 하였다
-                _cordova.Build(() =>
+                _cordova.Build(config, () =>
                 {
 
                     Action completeBuild = () =>

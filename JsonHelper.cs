@@ -62,6 +62,7 @@ namespace Cordova_Builder
         public string alias { get; set; }
         public string password { get; set; }
         public string keystoreType { get; set; }
+        public string packageType { get; set; }
     }
 
     [JsonObject(MemberSerialization.OptOut)]

@@ -44,6 +44,8 @@ namespace Cordova_Builder
 
         private string _titleText;
 
+        private FormData.Config _config;
+
         /// <summary>
         /// 생성자
         /// </summary>
@@ -81,11 +83,12 @@ namespace Cordova_Builder
             BuildConfig config = new BuildConfig();
             ConfigData data = new ConfigData()
             {
-                keystore = _list.keyPath.Text,
-                storePassword = _list.passWord.Text,
-                alias = _list.keyAlias.Text,
-                password = _list.passWord.Text,
+                keystore = _config.keyPath,
+                storePassword = _config.passWord,
+                alias = _config.keyAlias,
+                password = _config.passWord,
                 keystoreType = "",
+                packageType = "apk", // or bundle
             };
 
             AndroidBuildConfig androidConfig = new AndroidBuildConfig()
@@ -115,7 +118,7 @@ namespace Cordova_Builder
             {
                 string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 string programName = _titleText;
-                string mkdir = System.IO.Path.Combine(myDocumentsPath, programName, _list.folderName.Text);
+                string mkdir = System.IO.Path.Combine(myDocumentsPath, programName, _config.folderName);
 
                 if (!System.IO.Directory.Exists(mkdir))
                 {
@@ -144,8 +147,10 @@ namespace Cordova_Builder
         /// 빌드를 진행합니다.
         /// </summary>
         /// <param name="successCallback"></param>
-        public void Build(Action successCallback)
+        public void Build(FormData.Config config, Action successCallback)
         {
+
+            _config = config;
 
             Thread worker = new Thread(new ThreadStart(() =>
             {
@@ -177,10 +182,10 @@ namespace Cordova_Builder
                         AddAndroidPlatform();
                         AddPlugins();
                         WriteConfig(); // config.xml 파일을 수정합니다
-                        _mainForm.CreateKeyStore();
+                        CreateKeyStore();
                         CopyProjectFiles();
                         ModifyHtmlFiles(); // HTML 파일에 cordova 바인드 용 스크립트 문을 추가합니다.
-                        ExportBuildJson(filename); 
+                        ExportBuildJson(filename);
                         Flush(); // 빌드를 시작합니다.
                         successCallback();
                     });
@@ -227,9 +232,9 @@ namespace Cordova_Builder
         /// <returns></returns>
         private bool Create()
         {
-            string folderName = _list.folderName.Text;
-            string packageName = _list.packageName.Text;
-            string gameName = _list.gameName.Text;
+            string folderName = _config.folderName;
+            string packageName = _config.packageName;
+            string gameName = _config.gameName;
 
             try
             {
@@ -287,7 +292,7 @@ namespace Cordova_Builder
         /// <summary>
         /// Adds the Android platform
         /// </summary>
-        private void AddAndroidPlatform()
+        private bool AddAndroidPlatform()
         {
             // TODO:
             // 안드로이드 플랫폼이 이미 추가되었다 => true이면 생략
@@ -300,8 +305,10 @@ namespace Cordova_Builder
 
                 Append append = AppendText;
 
-                process.Run(append);
+               return process.Run(append);
             }
+
+            return false;
 
         }
 
@@ -370,11 +377,11 @@ namespace Cordova_Builder
                     xmlDoc.Load("config.xml");
 
                     this
-                        .SetPreference(xmlDoc, "Orientation", _list.orientation.SelectedItem.ToString())
-                        .SetPreference(xmlDoc, "FullScreen", _list.fullscreen.SelectedItem.ToString())
-                        .SetPreference(xmlDoc, "android-minSdkVersion", _list.minSdkVersion.SelectedItem.ToString())
-                        .SetPreference(xmlDoc, "android-targetSdkVersion", _list.targetSdkVersion.SelectedItem.ToString())
-                        .SetPreference(xmlDoc, "android-compileSdkVersion", _list.compileSdkVersion.SelectedItem.ToString()) // it didn't exist property.
+                        .SetPreference(xmlDoc, "Orientation", _config.orientation)
+                        .SetPreference(xmlDoc, "FullScreen", _config.fullscreen)
+                        .SetPreference(xmlDoc, "android-minSdkVersion", _config.minSdkVersion)
+                        .SetPreference(xmlDoc, "android-targetSdkVersion", _config.targetSdkVersion)
+                        .SetPreference(xmlDoc, "android-compileSdkVersion", _config.compileSdkVersion) // it didn't exist property.
                         .SetPreference(xmlDoc, "BackgroundColor", "0xff000000") // black color
                         .SetPreference(xmlDoc, "ShowTitle", "false")
                         .SetIcon(xmlDoc);
@@ -390,6 +397,81 @@ namespace Cordova_Builder
                 AppendText(ex.Message);
             }
 
+
+        }
+
+        /// <summary>
+        /// 키스토어 파일을 생성합니다.
+        /// </summary>
+        public void CreateKeyStore()
+        {
+
+            string keystorePath = _config.keyPath;
+
+            if (System.IO.File.Exists(keystorePath))
+            {
+                return;
+            }
+
+            // TODO: 이 코드는 보기 좋지 않은 듯 하다.
+            // 텍스트 목록을 한 번에 가져올 수 있는 섹시한 함수가 있을까?
+            // 있다면 그때 변경하자.
+            List<string> validData = new List<string>()
+            {
+                        keystorePath,
+                        _config.keyAlias,
+                        _config.passWord,
+                        _config.passWord,
+                        _config.packageName,
+                        _config.keyOU,
+                        _config.keyO,
+                        _config.keyL,
+                        _config.keyS,
+                        _config.keyC
+            };
+
+            bool isOK = validData.All(text => !String.IsNullOrEmpty(text));
+
+            if (isOK)
+            {
+                // TODO: 전달되는 인수가 너무 많다.
+                // 더 간단한 처리 방법이 없을까?
+                string cmd = String.Format("keytool -genkey -v -keystore {0} -alias {1} -keyalg RSA -keysize 2048 -validity 10000 -keypass {2} -storepass {3} -dname \"CN={4},OU={5},O={6},L={7},S={8},C={9}\" 2>&1",
+                        keystorePath,
+                        _config.keyAlias,
+                        _config.passWord,
+                        _config.passWord,
+                        _config.packageName,
+                        _config.keyOU,
+                        _config.keyO,
+                        _config.keyL,
+                        _config.keyS,
+                        _config.keyC
+                    );
+
+                Append append = AppendText;
+
+                HostData hostData = new HostData(cmd, false, "", _rm.GetString("CreateKeyStore1"), _rm.GetString("CreateKeyStore2"));
+
+                bool status = hostData.Run(append);
+
+                // 키스토어가 정상적으로 생성되었다면 status가 true이다.
+                if (status)
+                {
+                    AppendText(_rm.GetString("CreateKeyStore3"));
+                }
+                else
+                {
+                    AppendText(_rm.GetString("CreateKeyStore4"));
+                }
+
+            }
+            else
+            {
+                // 텍스트가 비어있을 때의 처리
+                // 정상적으로 실행하였다면 이 부분은 절대 실행될 일이 없다.
+                AppendText(_rm.GetString("CreateKeyStore5"));
+            }
 
         }
 
@@ -434,7 +516,7 @@ namespace Cordova_Builder
         /// </summary>
         private void CopyProjectFiles()
         {
-            string srcPath = _list.settingGameFolder.Text.ToString();
+            string srcPath = _config.settingGameFolder;
             string dstPath = ".\\www";
 
             AppendText(_rm.GetString("CopyProjectFiles1"));
@@ -463,7 +545,7 @@ namespace Cordova_Builder
         private void AddPlugins()
         {
 
-            foreach(string pluginName in _list.plugins.Items)
+            foreach(string pluginName in _config.plugins)
             {
                 string command = String.Format("cordova plugin add {0}", pluginName);
                 string success = String.Format(_rm.GetString("AddPlugins1"), pluginName);
@@ -478,16 +560,44 @@ namespace Cordova_Builder
         }
 
         /// <summary>
+        /// 다음은 cordova-android v8.1.0 버전에서 발생하는 빌드 오류를 수정합니다.
+        /// </summary>
+        private void CreateBuildExtrasFile()
+        {
+            if (_cordovaVersion.Major >= 9)
+            {
+                // 오류 막기...
+                if (!File.Exists("platforms/android/build-extras.gradle"))
+                {
+
+                    string contents = @"
+android {
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+                ";
+
+                    File.WriteAllText("platforms/android/build-extras.gradle", contents);
+
+                }
+            }
+        }
+
+        /// <summary>
         /// Build current project after adding plugins
         /// </summary>
-        private void Flush()
+        private bool Flush()
         {
             if(System.IO.File.Exists("build.json"))
             {
                 AppendText(_rm.GetString("Flush1"));
             }
 
-            string mode = (_list.biuldMode.SelectedIndex == 0) ? "--release" : "--debug";
+            CreateBuildExtrasFile();
+
+            string mode = (_config.buildMode == 0) ? "--release" : "--debug";
             string cmd = String.Format("cordova build android {0} --buildConfig=build.json", mode);
 
             // 코르도바는 빌드가 완료되면, 정상 출력 루트가 아닌 오류 쪽으로 빌드 완료 메시지를 보낸다.
@@ -502,8 +612,7 @@ namespace Cordova_Builder
 
             Append append = AppendText;
 
-            //process.Run(append);
-            process.SafeRun(append);
+            return process.Run(append);
 
         }
 
