@@ -38,7 +38,7 @@ namespace Cordova_Builder
         private Dictionary<string, bool> _plugins = new Dictionary<string, bool>();
 
         // 버전
-        private Version _version = new Version("0.1.34");
+        private Version _version = new Version("0.1.36");
 
         private Version _cordovaVersion = new Version("0.0.0");
 
@@ -258,7 +258,7 @@ namespace Cordova_Builder
                             //Append DoAppend = AppendText;
                             //cleanProcess.Run(DoAppend);
 
-                            clearFolder(configPath);
+                            clearFolder(folderName);
                         }
                         else {
                             return true;
@@ -502,7 +502,8 @@ namespace Cordova_Builder
 
             Append append = AppendText;
 
-            process.Run(append);
+            //process.Run(append);
+            process.SafeRun(append);
 
         }
 
