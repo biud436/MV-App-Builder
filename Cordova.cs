@@ -253,21 +253,19 @@ namespace Cordova_Builder
                     if(System.IO.File.Exists(configPath))
                     {
 
-                        var uniqueVersion = new Version("9.0.0");
-                        var result = _cordovaVersion.CompareTo(uniqueVersion);
+                        return true;
 
-                        if (result >= 0)
-                        {
-                            
-                            //HostData cleanProcess = new HostData("cordova clean android", true, "", "echo Clean Android Project for rebuilding...", "echo Clean Android Project failed...");
-                            //Append DoAppend = AppendText;
-                            //cleanProcess.Run(DoAppend);
+                        //var uniqueVersion = new Version("9.0.0");
+                        //var result = _cordovaVersion.CompareTo(uniqueVersion);
 
-                            clearFolder(folderName);
-                        }
-                        else {
-                            return true;
-                        }
+                        //if (result >= 0)
+                        //{
+                        //    clearFolder(folderName);
+                        //
+                        //}
+                        //else {
+                        //    return true;
+                        //}
 
                     }
 
