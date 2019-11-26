@@ -13,7 +13,7 @@ This tool allows you to easy to build the app for RPG Maker MV using cordova.
 
 # Setup
 
-This program didn't contain auto-installer and updater, so you need to install required programs manually. 
+You need to install required programs manually. 
 
 - Dot Net Framework v4.5.4 or more.
 - Node.js (npm)
