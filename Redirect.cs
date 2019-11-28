@@ -161,6 +161,27 @@ namespace Cordova_Builder
 
         }
 
+        public void EvalScript(Action<System.IO.StreamWriter> action)
+        {
+            Process process = new Process();
+            ProcessStartInfo info = new ProcessStartInfo()
+            {
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                FileName = @"node.exe",
+                CreateNoWindow = true,
+            };
+
+            action(process.StandardInput);
+
+            process.StartInfo = info;
+            process.Start();
+
+            process.WaitForExit();
+            process.Close();
+        }
+
         public bool Run(Append Append)
         {
             bool isSuccessMessage = Output(Append);

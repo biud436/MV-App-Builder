@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Config.cs" />
     <Compile Include="Cordova.cs" />
+    <Compile Include="DataManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +101,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>locale.resx</DependentUpon>
     </Compile>
+    <Compile Include="PackageJson.cs" />
     <Compile Include="Redirect.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
