@@ -7,18 +7,19 @@ using System.Windows.Forms;
 using System.Diagnostics;
 
 
-
 namespace Cordova_Builder
 {
     public delegate void Append(string output);
 
-    public class HostData
+    public class HostData : IDisposable
     {
         public string _name;
         public bool _isValid;
         public string _dir;
         public string _success;
         public string _fail;
+
+        public bool disposed = false;
 
         enum ExitCode : int
         {
@@ -28,6 +29,14 @@ namespace Cordova_Builder
             UnknownError = 10
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="isValid"></param>
+        /// <param name="dir"></param>
+        /// <param name="success"></param>
+        /// <param name="fail"></param>
         public HostData(string name, bool isValid = true, string dir = "", string success = "", string fail = "")
         {
             this._name = name;
@@ -37,151 +46,150 @@ namespace Cordova_Builder
             this._fail = fail;
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if(disposing)
+            {
+                // Free any other managed objects here.
+
+            }
+
+            // Free any unmanaged objects here.
+            disposed = true;
+
+        }
+
+        ~HostData()
+        {
+            Dispose(false);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="AppendText"></param>
+        /// <returns></returns>
         public bool Output(Append AppendText)
         {
+            var isNull = false;
 
-            Process process = new Process();
-            ProcessStartInfo info = new ProcessStartInfo();
-
-            info.UseShellExecute = false;
-            info.RedirectStandardOutput = true;
-            info.RedirectStandardError = true;
-
-            info.FileName = @"cmd.exe";
-            info.CreateNoWindow = true;
-            info.Arguments = "/C " + _name;
-
-            if (!String.IsNullOrEmpty(_dir))
+            using (var process = new Process())
             {
-                info.WorkingDirectory = _dir;
-            }
-
-            process.StartInfo = info;
-            process.Start();
-
-            bool isNull = false;
-
-            var reader = process.StandardOutput;
-            while (!reader.EndOfStream)
-            {
-                var nextLine = reader.ReadLine();
-
-                if (nextLine == null)
+                ProcessStartInfo info = new ProcessStartInfo()
                 {
-                    break;
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    FileName = @"cmd.exe",
+                    CreateNoWindow = true,
+                    Arguments = "/C " + _name
+                };
+
+                if (!String.IsNullOrEmpty(_dir))
+                {
+                    info.WorkingDirectory = _dir;
                 }
 
-                Task.Delay(10);
-                AppendText(nextLine);
+                process.StartInfo = info;
+                process.Start();
 
+                var reader = process.StandardOutput;
+                while (!reader.EndOfStream)
+                {
+                    var nextLine = reader.ReadLine();
+
+                    if (nextLine == null)
+                    {
+                        break;
+                    }
+
+                    Task.Delay(10);
+                    AppendText(nextLine);
+
+                }
+
+                isNull = String.IsNullOrEmpty(process.StandardError.ReadToEnd() ?? "");
+
+                process.WaitForExit();
+                process.Close();
             }
-
-            isNull = String.IsNullOrEmpty(process.StandardError.ReadToEnd() ?? "");
-
-            process.WaitForExit();
-            process.Close();
 
             return (isNull != false);
         }
 
-        public void SafeOutput(Append AppendText, EventHandler eventHandler)
-        {
-            
-            Process process = new Process();
-            ProcessStartInfo info = new ProcessStartInfo();
-
-            info.UseShellExecute = false;
-            info.RedirectStandardOutput = true;
-            info.RedirectStandardError = true;
-
-            info.FileName = @"cmd.exe";
-            info.CreateNoWindow = true;
-            info.Arguments = "/C " + _name;
-
-            if (!String.IsNullOrEmpty(_dir))
-            {
-                info.WorkingDirectory = _dir;
-            }
-
-            process.StartInfo = info;
-
-            bool isNull = false;
-
-            var reader = process.StandardOutput;
-
-            // 이벤트 방식으로 데이터 수신
-            process.OutputDataReceived += new DataReceivedEventHandler((sender, e) => {
-                if(!String.IsNullOrEmpty(e.Data))
-                {
-                    AppendText(e.Data);
-                }
-            });
-
-            // 이벤트 방식으로 오류 수신
-            process.ErrorDataReceived += new DataReceivedEventHandler((sender, e) =>
-            {
-                if(!String.IsNullOrEmpty(e.Data))
-                {
-                    AppendText(e.Data);
-                }
-            });
-
-            process.Exited += eventHandler;
-
-            process.Start();
-
-            process.BeginOutputReadLine();
-            process.BeginErrorReadLine();
-
-            process.WaitForExit();
-
-            process.Close();
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="callback"></param>
         public void outputLine(string command, Action<string> callback)
         {
-            Process process = new Process();
-            ProcessStartInfo info = new ProcessStartInfo()
+            using (var process = new Process())
             {
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                FileName = @"cmd.exe",
-                CreateNoWindow = true,
-                Arguments = "/C " + command
-            };
+                ProcessStartInfo info = new ProcessStartInfo()
+                {
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    FileName = @"cmd.exe",
+                    CreateNoWindow = true,
+                    Arguments = "/C " + command
+                };
 
-            process.StartInfo = info;
-            process.Start();
+                process.StartInfo = info;
+                process.Start();
 
-            callback(process.StandardOutput.ReadToEnd());
+                callback(process.StandardOutput.ReadToEnd());
 
-            process.WaitForExit();
-            process.Close();
+                process.WaitForExit();
+                process.Close();
+            }
 
         }
 
-        public void EvalScript(Action<System.IO.StreamWriter> action)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="action"></param>
+        public void EvalScript(Action<System.IO.StreamWriter, System.IO.StreamReader, System.IO.StreamReader> action)
         {
-            Process process = new Process();
-            ProcessStartInfo info = new ProcessStartInfo()
+            using (var process = new Process())
             {
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                FileName = @"node.exe",
-                CreateNoWindow = true,
-            };
+                ProcessStartInfo info = new ProcessStartInfo()
+                {
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    FileName = @"node.exe",
+                    CreateNoWindow = true,
+                };
 
-            action(process.StandardInput);
+                action(process.StandardInput, process.StandardOutput, process.StandardError);
 
-            process.StartInfo = info;
-            process.Start();
+                process.StartInfo = info;
 
-            process.WaitForExit();
-            process.Close();
+                if (process.Start())
+                {
+                    process.WaitForExit();
+                    process.Close();
+                }
+            }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Append"></param>
+        /// <returns></returns>
         public bool Run(Append Append)
         {
             bool isSuccessMessage = Output(Append);
@@ -195,24 +203,6 @@ namespace Cordova_Builder
                 outputLine(_fail, (msg) => { Append(msg); });
                 return false;
             }
-
-        }
-
-        public void SafeRun(Append Append)
-        {
-            SafeOutput(Append, new EventHandler((sender, e) =>
-            {
-                Process process = (Process)sender;
-
-                if(process.ExitCode == (int)ExitCode.Success)
-                {
-                    outputLine(_success, (msg) => { Append(msg); });
-                }
-                else
-                {
-                    outputLine(_fail, (msg) => { Append(msg); });
-                }
-            }));
         }
 
     }

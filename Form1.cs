@@ -227,12 +227,17 @@ namespace Cordova_Builder
         public bool CheckRequirements()
         {
 
+            Append append = AppendText;
+
             for (var i = 0; i < _hostList.Count; i++)
             {
-                Append append = AppendText;
-
                 _status[i] = _hostList[i].Run(append);
             }
+
+            // 결과에 상관 없이 메모리를 명시적으로 해제합니다.
+            _hostList.ForEach((i) => {
+                i.Dispose();
+            });
 
             string ANDROID_HOME = System.Environment.GetEnvironmentVariable("ANDROID_HOME");
             string ANDROID_SDK_ROOT = System.Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
@@ -242,7 +247,7 @@ namespace Cordova_Builder
                 AppendText(String.Format(_rm.GetString("FOUND_ANDROID_HOME"), ANDROID_HOME));
                 _status[3] = true;
             }
-            else if (!String.IsNullOrEmpty(ANDROID_SDK_ROOT))
+            else if (!String.IsNullOrEmpty(ANDROID_SDK_ROOT)) // (Recommended)
             {
                 AppendText(String.Format(_rm.GetString("FOUND_ANDROID_SDK_ROOT"), ANDROID_SDK_ROOT));
                 _status[3] = true;
@@ -260,9 +265,6 @@ namespace Cordova_Builder
         /// </summary>
         public void InitWIthTextBoxList()
         {
-            // TODO : 이렇게 해야만 하는가?
-            // 더 간단한 방법은 없을까?
-            // 빌더 패턴? 
             _textBoxList.Add(textBoxFolderName);
             _textBoxList.Add(textBoxKeyPath);
             _textBoxList.Add(textBoxGameName);
@@ -317,9 +319,6 @@ namespace Cordova_Builder
             InitWIthTextBoxList();
             InitWithUIBackground();
             InitWithComboBox();
-
-            _cordova.Bind(this._textBoxList);
-
         }
 
         public void InitWithComboBox()

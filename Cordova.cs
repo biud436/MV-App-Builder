@@ -28,9 +28,6 @@ namespace Cordova_Builder
         // 현재 경로
         private string _currentDirectory;
 
-        // UI 컨트롤 목록
-        private TextBoxList _list;
-
         // 지역화를 위한 리소스 관리자
         private ResourceManager _rm;
 
@@ -45,6 +42,13 @@ namespace Cordova_Builder
         private string _titleText;
 
         private FormData.Config _config;
+
+        private DataManagerImpl DataManager = new DataManagerImpl()
+        {
+            PackageFileName = "package.json",
+            DataFolderName = "RPG Maker MV Cordova Builder",
+            Type = DataManagerImpl.DataFolderType.MY_DOCUMENTS,
+        };
 
         /// <summary>
         /// 생성자
@@ -63,15 +67,6 @@ namespace Cordova_Builder
         {
             _mainForm = form;
             _titleText = _mainForm.Text;
-        }
-
-        /// <summary>
-        /// 텍스트 박스 목록을 가져옵니다.
-        /// </summary>
-        /// <param name="list"></param>
-        public void Bind(TextBoxList list)
-        {
-            this._list = list;
         }
 
         /// <summary>
@@ -116,9 +111,8 @@ namespace Cordova_Builder
         {
             try
             {
-                string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string programName = _titleText;
-                string mkdir = System.IO.Path.Combine(myDocumentsPath, programName, _config.folderName);
+                string myDocumentsPath = DataManager.GetRootDirectory();
+                string mkdir = System.IO.Path.Combine(myDocumentsPath, _config.folderName);
 
                 if (!System.IO.Directory.Exists(mkdir))
                 {
@@ -154,17 +148,9 @@ namespace Cordova_Builder
 
             Thread worker = new Thread(new ThreadStart(() =>
             {
-
                 // 내문서에 APK 파일을 저장합니다.
-                string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string programName = _titleText;
-                string targetFolder = System.IO.Path.Combine(myDocumentsPath, programName);
+                string targetFolder = DataManager.GetRootDirectory();
                 string tempDir = System.IO.Directory.GetCurrentDirectory();
-
-                // 내문서에 프로그램 폴더를 생성합니다.
-                if(!System.IO.Directory.Exists(targetFolder)) {
-                    System.IO.Directory.CreateDirectory(targetFolder);
-                }
 
                 // 타겟 폴더를 현재 경로로 설정합니다.
                 System.IO.Directory.SetCurrentDirectory(targetFolder);
@@ -177,18 +163,29 @@ namespace Cordova_Builder
 
                 if (isValid)
                 {
+
+                    // [Start Build]
+                    //System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                    //sw.Start();
+
                     Make(filename =>
                     {
                         AddAndroidPlatform();
                         AddPlugins();
-                        WriteConfig(); // config.xml 파일을 수정합니다
+                        WriteConfig();
                         CreateKeyStore();
                         CopyProjectFiles();
                         ModifyHtmlFiles(); // HTML 파일에 cordova 바인드 용 스크립트 문을 추가합니다.
                         ExportBuildJson(filename);
                         Flush(); // 빌드를 시작합니다.
                         successCallback();
+
                     });
+
+                    // [End Build]
+                    //sw.Stop();
+                    //AppendText(sw.Elapsed.ToString());
+
                 }
             }));
 
@@ -279,12 +276,17 @@ namespace Cordova_Builder
 
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("cordova create {0} {1} {2}", folderName, packageName, gameName);
-            HostData process = new HostData(sb.ToString(), true, "",
+            var ret = false;
+
+            using (HostData process = new HostData(sb.ToString(), true, "",
                 _rm.GetString("Create1"),
-                _rm.GetString("Create2"));
-            Append append = AppendText;
-            
-            return process.Run(append);
+                _rm.GetString("Create2")))
+            {
+                Append append = AppendText;
+                ret = process.Run(append);
+            }
+
+            return ret;
         }
 
         /// <summary>
@@ -297,16 +299,18 @@ namespace Cordova_Builder
             //      - JSON 필요의 경우, folderName/package.json 파일에 cordova.platforms에 "android"가 존재할 때
             //      - JSON이 필요하지 않은 경우, folderName/platforms/android/android.json 파일이 있다
 
+            var ret = false;
+
             if(!System.IO.File.Exists(@"platforms/android/android.json"))
             {
-                HostData process = new HostData("cordova platform add android", true, "", _rm.GetString("AddAndroidPlatform1"), _rm.GetString("AddAndroidPlatform2"));
-
-                Append append = AppendText;
-
-               return process.Run(append);
+                using (HostData process = new HostData("cordova platform add android", true, "", _rm.GetString("AddAndroidPlatform1"), _rm.GetString("AddAndroidPlatform2")))
+                {
+                    Append append = AppendText;
+                    ret = process.Run(append);
+                }
             }
 
-            return false;
+            return ret;
 
         }
 
@@ -449,9 +453,12 @@ namespace Cordova_Builder
 
                 Append append = AppendText;
 
-                HostData hostData = new HostData(cmd, false, "", _rm.GetString("CreateKeyStore1"), _rm.GetString("CreateKeyStore2"));
+                bool status = false;
 
-                bool status = hostData.Run(append);
+                using (HostData hostData = new HostData(cmd, false, "", _rm.GetString("CreateKeyStore1"), _rm.GetString("CreateKeyStore2")))
+                {
+                    status = hostData.Run(append);
+                }
 
                 // 키스토어가 정상적으로 생성되었다면 status가 true이다.
                 if (status)
@@ -521,15 +528,20 @@ namespace Cordova_Builder
 
             if (System.IO.Directory.Exists(srcPath))
             {
-                string robocopy = String.Format("robocopy \"{0}\" \"{1}\" /E /R:1 /W:1", srcPath, dstPath);
+                // 다중 쓰레드 (기본값 : 8 쓰레드)
+                // 원본과 동일한 트리로 유지
+                string robocopy = String.Format("robocopy \"{0}\" \"{1}\" /MIR /E /R:1 /W:1", srcPath, dstPath);
 
-                HostData process = new HostData(robocopy, true, "",
+                using (var process = new HostData(robocopy, true, "",
                     _rm.GetString("CopyProjectFiles2"),
-                    _rm.GetString("CopyProjectFiles3"));
+                    _rm.GetString("CopyProjectFiles3")))
+                {
 
-                Append append = AppendText;
+                    Append append = AppendText;
 
-                process.Run(append);
+                    process.Run(append);
+                }
+
             } else
             {
                 AppendText(_rm.GetString("CopyProjectFiles4"));
@@ -548,11 +560,12 @@ namespace Cordova_Builder
                 string command = String.Format("cordova plugin add {0}", pluginName);
                 string success = String.Format(_rm.GetString("AddPlugins1"), pluginName);
                 string fail = String.Format(_rm.GetString("AddPlugins2"), pluginName);
-                HostData process = new HostData(command, true, "", success, fail);
 
-                Append append = AppendText;
-
-                process.Run(append);
+                using (var process = new HostData(command, true, "", success, fail))
+                {
+                    Append append = AppendText;
+                    process.Run(append);
+                }
             }
 
         }
@@ -604,13 +617,15 @@ android {
             // 따라서 빌드 실패 메시지에 빌드 성공 메시지를 넣어야 한다.
             // 다만, 이 경우 빌드 실패 시에도 빌드가 성공했다고 메시지가 뜨게 된다.
             // 구분할 수 있는 방법은 아직까지 없다. 리치 텍스트 박스에서 fail 글자를 추출하지 않는한 불가능하다.
-            HostData process = new HostData(cmd, true, "",
-                _rm.GetString("Flush2"),
-                _rm.GetString("Flush2"));
+            bool ret = false;
 
-            Append append = AppendText;
+            using(HostData process = new HostData(cmd, true, "", _rm.GetString("Flush2"), _rm.GetString("Flush3")))
+            {
+                Append append = AppendText;
+                ret = process.Run(append);
+            }
 
-            return process.Run(append);
+            return ret;
 
         }
 
@@ -619,11 +634,14 @@ android {
         /// </summary>
         private void InstallCordova()
         {
+
             AppendText(_rm.GetString("INSTALLING_CORDOVA"));
 
-            HostData process = new HostData("npm install -g cordova", true, "", _rm.GetString("SUCCESS_INSTALLED_CORDOVA"), _rm.GetString("FAIL_INSTALLED_CORDOVA"));
-            Append append = AppendText;
-            process.Run(append);
+            using (var process = new HostData("npm install -g cordova", true, "", _rm.GetString("SUCCESS_INSTALLED_CORDOVA"), _rm.GetString("FAIL_INSTALLED_CORDOVA")))
+            {
+                Append append = AppendText;
+                process.Run(append);
+            }
 
         }
 
@@ -817,48 +835,50 @@ android {
 
                 }
 
-                // 한 줄만 처리하는 경량 명령 프롬프트를 생성한다.
-                var tempCmdProcess = new HostData("", true, "", "");
-                var localCordovaVersion = new Version("0.0.0");
+                using(var tempCmdProcess = new HostData("", true, "", ""))
+                {
+                    // 한 줄만 처리하는 경량 명령 프롬프트를 생성한다.
+                    var localCordovaVersion = new Version("0.0.0");
 
-                // 로컬에 설치된 코르도바의 버전을 확인한다. 
-                tempCmdProcess.outputLine("cordova --version", (string output) => {
+                    // 로컬에 설치된 코르도바의 버전을 확인한다. 
+                    tempCmdProcess.outputLine("cordova --version", (string output) => {
 
-                    // 버전 문자열을 뽑아낸다.
-                    Regex regex = new Regex(@"(\d+\.\d+\.\d+)[ ]+", RegexOptions.IgnoreCase);
-                    Match m = regex.Match(output);
+                        // 버전 문자열을 뽑아낸다.
+                        Regex regex = new Regex(@"(\d+\.\d+\.\d+)[ ]+", RegexOptions.IgnoreCase);
+                        Match m = regex.Match(output);
 
-                    if (m.Success)
-                    {
-                        localCordovaVersion = new Version(m.Groups[1].Value);
-                        var result = cordovaVersion.CompareTo(localCordovaVersion);
-
-                        if (result > 0)
+                        if (m.Success)
                         {
-                            // 오래된 버전을 사용 중인 경우, 업데이트 처리를 한다.
-                            AppendText(_rm.GetString("NOT_LATEST_CORDOV_VER"));
-                            AppendText(String.Format(_rm.GetString("REQUEST_NPM_INSTALL"), cordovaVersion.ToString()));
+                            localCordovaVersion = new Version(m.Groups[1].Value);
+                            var result = cordovaVersion.CompareTo(localCordovaVersion);
 
-                            DialogResult dialogResult = MessageBox.Show(_rm.GetString("REQUEST_NPM_INSTALL_ASK"), _mainForm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                            if (dialogResult == DialogResult.Yes)
+                            if (result > 0)
                             {
-                                InstallCordova();
+                                // 오래된 버전을 사용 중인 경우, 업데이트 처리를 한다.
+                                AppendText(_rm.GetString("NOT_LATEST_CORDOV_VER"));
+                                AppendText(String.Format(_rm.GetString("REQUEST_NPM_INSTALL"), cordovaVersion.ToString()));
+
+                                DialogResult dialogResult = MessageBox.Show(_rm.GetString("REQUEST_NPM_INSTALL_ASK"), _mainForm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                                if (dialogResult == DialogResult.Yes)
+                                {
+                                    InstallCordova();
+                                }
+
+                            }
+                            else if (result < 0)
+                            {
+                                // Why you use dev version? I don't understand.
+                            }
+                            else
+                            {
+                                // 이미 최신 버전을 쓰고 있는 경우
+                                AppendText(_rm.GetString("LATEST_CORDOVA_READY"));
                             }
 
                         }
-                        else if (result < 0)
-                        {
-                            // Why you use dev version? I don't understand.
-                        }
-                        else
-                        {
-                            // 이미 최신 버전을 쓰고 있는 경우
-                            AppendText(_rm.GetString("LATEST_CORDOVA_READY"));
-                        }
-
-                    }
-                });
+                    });
+                }
 
 
             } catch(Exception ex)

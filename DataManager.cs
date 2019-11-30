@@ -8,9 +8,8 @@ using Newtonsoft.Json;
 
 namespace Cordova_Builder
 {
-    public class DataManager
+    public class DataManagerImpl
     {
-        public static DataManager Instance;
 
         public enum DataFolderType : int
         {
@@ -22,28 +21,9 @@ namespace Cordova_Builder
         public string DataFolderName { get; set; }
         public DataFolderType Type { get; set; }
 
-        private DataManager()
+        public DataManagerImpl()
         {
 
-        }
-
-        /// <summary>
-        /// 싱글턴 패턴을 별로 좋아하진 않지만, ... 
-        /// </summary>
-        /// <returns></returns>
-        public static DataManager GetInstance()
-        {
-            if(Instance == null)
-            {
-                Instance = new DataManager()
-                {
-                    PackageFileName = "package.json",
-                    DataFolderName = "RPG Maker MV Cordova Builder",
-                    Type = DataFolderType.MY_DOCUMENTS,
-                };
-            }
-
-            return Instance;
         }
 
         /// <summary>
