@@ -35,7 +35,7 @@ namespace Cordova_Builder
         private Dictionary<string, bool> _plugins = new Dictionary<string, bool>();
 
         // 버전
-        private Version _version = new Version("0.2.0");
+        private Version _version = new Version("0.2.15");
 
         private Version _cordovaVersion = new Version("0.0.0");
 
@@ -157,6 +157,7 @@ namespace Cordova_Builder
 
                 // 폴더를 생성합니다
                 bool isValid = Create();
+                isValid = DataManager.IsValidPath(targetFolder);
 
                 // 다시 되돌립니다.
                 System.IO.Directory.SetCurrentDirectory(tempDir);
@@ -174,7 +175,16 @@ namespace Cordova_Builder
                         AddPlugins();
                         WriteConfig();
                         CreateKeyStore();
-                        CopyProjectFiles();
+
+                        if(DataMan.Instance.Use)
+                        {
+                            ExcludeUnusedFiles();
+                        } else
+                        {
+                            CopyProjectFiles();
+                        }
+
+
                         ModifyHtmlFiles(); // HTML 파일에 cordova 바인드 용 스크립트 문을 추가합니다.
                         ExportBuildJson(filename);
                         Flush(); // 빌드를 시작합니다.
@@ -186,6 +196,9 @@ namespace Cordova_Builder
                     //sw.Stop();
                     //AppendText(sw.Elapsed.ToString());
 
+                } else
+                {
+                    throw new FileNotFoundException("There contains non-ASCII characters in the File Path!");
                 }
             }));
 
@@ -473,6 +486,8 @@ namespace Cordova_Builder
             }
             else
             {
+                // if the text is empty, try to show the error message.
+
                 // 텍스트가 비어있을 때의 처리
                 // 정상적으로 실행하였다면 이 부분은 절대 실행될 일이 없다.
                 AppendText(_rm.GetString("CreateKeyStore5"));
@@ -765,12 +780,12 @@ android {
 
                     if (result > 0)
                     {
-                        // 알파 버전
+                        // You are using the alpha version that has not been released yet.
                         AppendText(_rm.GetString("CHECK_VERSION_ALPHA"));
                     }
                     else if (result < 0)
                     {
-                        // 구 버전을 사용하고 있습니다.
+                        // You are using the older version
                         MessageBox.Show(_rm.GetString("CHECK_VERSION_OLD"), _mainForm.Text);
 
                         if(MessageBox.Show(_rm.GetString("CHECK_VERSION_OLD_ASK"), _mainForm.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -780,7 +795,7 @@ android {
                     }
                     else
                     {
-                        // 최신 버전을 사용하고 있습니다.
+                        // You are using the latest version
                         AppendText(_rm.GetString("CHECK_VERSION_LATEST"));
                     }
 
@@ -796,6 +811,9 @@ android {
         {
             Version cordovaVersion = new Version("0.0.0");
 
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+
             try
             {
 
@@ -808,8 +826,11 @@ android {
                     var matchedData = "# Cordova-cli Release Notes";
                     var findIndex = 0;
 
-                    // 타겟 인덱스 근처를 유연하게 읽도록 한다.
-                    for (var i = 19; i < 28; i++)
+                    // Try to read around the target index.
+                    int startLineNumber = 19;
+                    int endLineNumber = 28;
+
+                    for (var i = startLineNumber; i < endLineNumber; i++)
                     {
                         if (lines[i] == matchedData)
                         {
@@ -822,7 +843,7 @@ android {
                     {
                         findIndex += 1;
 
-                        // 버전 문자열을 뽑아낸다.
+                        // Try to extract the string that includes version
                         regex = new Regex(@"[#]{3}[ ]*(\d+\.\d+\.\d+)", RegexOptions.IgnoreCase);
                         Match m = regex.Match(lines[findIndex]);
 
@@ -831,19 +852,24 @@ android {
                             cordovaVersion = new Version(m.Groups[1].Value);
                         }
 
+                    } else
+                    {
+                        // Cannot find the version text in the github.
+                        return;
                     }
 
                 }
 
+                // Create the lightweight command process and check the version of installed Cordova in the local system.
                 using(var tempCmdProcess = new HostData("", true, "", ""))
                 {
-                    // 한 줄만 처리하는 경량 명령 프롬프트를 생성한다.
+                    // Create the lightweight command process
                     var localCordovaVersion = new Version("0.0.0");
 
-                    // 로컬에 설치된 코르도바의 버전을 확인한다. 
+                    // check the version of installed Cordova in the local system.
                     tempCmdProcess.outputLine("cordova --version", (string output) => {
 
-                        // 버전 문자열을 뽑아낸다.
+                        // Extract the text that contains the version using the regular expression.
                         Regex regex = new Regex(@"(\d+\.\d+\.\d+)[ ]+", RegexOptions.IgnoreCase);
                         Match m = regex.Match(output);
 
@@ -854,7 +880,7 @@ android {
 
                             if (result > 0)
                             {
-                                // 오래된 버전을 사용 중인 경우, 업데이트 처리를 한다.
+                                // it will be updated the cordova automatically if you are using older version of it.
                                 AppendText(_rm.GetString("NOT_LATEST_CORDOV_VER"));
                                 AppendText(String.Format(_rm.GetString("REQUEST_NPM_INSTALL"), cordovaVersion.ToString()));
 
@@ -872,8 +898,9 @@ android {
                             }
                             else
                             {
-                                // 이미 최신 버전을 쓰고 있는 경우
-                                AppendText(_rm.GetString("LATEST_CORDOVA_READY"));
+                                // You are using the latest version of Cordova already.
+                                sw.Stop();
+                                AppendText(_rm.GetString("LATEST_CORDOVA_READY") + "(" + sw.Elapsed.ToString() + ")");
                             }
 
                         }
@@ -887,6 +914,59 @@ android {
             } finally
             {
                 _cordovaVersion = cordovaVersion;
+            }
+
+        }
+
+
+        /// <summary>
+        /// Installing the tool for excluding unused resources.
+        /// </summary>
+        public void InstallResourceCleaner()
+        {
+            string success_installed_cleaner = "MV 미사용 리소스 제거기를 성공적으로 내려 받았습니다.";
+            string fail_installed_cleaner = "MV 미사용 리소스 제거기 설치에 실패하였습니다";
+            Append append = AppendText;
+
+            using (var process = new HostData("npm install -g mv-exclude-unused-files", true, "", success_installed_cleaner, fail_installed_cleaner))
+            {
+                process.Run(append);
+            }
+               
+        }
+
+        /// <summary>
+        /// 미사용 리소스를 제거하는 옵션입니다.
+        /// </summary>
+        public void ExcludeUnusedFiles()
+        {
+            string src = _config.settingGameFolder;
+            src = src.Replace(@"\", "/");
+
+            string myDocumentsPath = DataManager.GetRootDirectory();
+            string dst = System.IO.Path.Combine(myDocumentsPath, _config.folderName, "www");
+            dst = dst.Replace(@"\", "/");
+
+            Dictionary<string, string> option = new Dictionary<string, string>();
+
+            Append append = AppendText;
+
+            option["--audioFileFormat="] = DataMan.Instance.AudioFileFormat;
+            option["--remainTree="] = DataMan.Instance.RemainTree ? "true" : "false";
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("mv-resource-cleaner \"{0}\" \"{1}\"", src, dst);
+
+            foreach (KeyValuePair<string, string> pair in option)
+            {
+                sb.AppendFormat(" {0}{1}", pair.Key, pair.Value);
+            }
+
+            System.Diagnostics.Debug.WriteLine(sb.ToString());
+
+            using (var process = new HostData(sb.ToString(), true, "", "Unused resource removal succeeded.", "Failed to remove unused resources."))
+            {
+                process.Run(append);
             }
 
         }

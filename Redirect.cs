@@ -89,6 +89,8 @@ namespace Cordova_Builder
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
+                    StandardOutputEncoding = Encoding.UTF8,
+                    StandardErrorEncoding = Encoding.UTF8,
                     FileName = @"cmd.exe",
                     CreateNoWindow = true,
                     Arguments = "/C " + _name

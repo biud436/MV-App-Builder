@@ -119,190 +119,184 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labelFolderName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 9</value>
+    <value>59, 15</value>
   </data>
   <data name="labelFolderName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 24</value>
-  </data>
-  <data name="labelFolderName.Text" xml:space="preserve">
-    <value>ルート フォルダー</value>
-  </data>
-  <data name="labelPackageName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 57</value>
-  </data>
-  <data name="labelPackageName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 12</value>
-  </data>
-  <data name="labelPackageName.Text" xml:space="preserve">
-    <value>パッケージ名</value>
-  </data>
-  <data name="labelGameName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>49, 99</value>
-  </data>
-  <data name="labelGameName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 12</value>
-  </data>
-  <data name="labelGameName.Text" xml:space="preserve">
-    <value>ゲーム名</value>
-  </data>
-  <data name="labelKeyPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 141</value>
-  </data>
-  <data name="labelKeyPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 12</value>
-  </data>
-  <data name="labelKeyPath.Text" xml:space="preserve">
-    <value>キーストア名</value>
-  </data>
-  <data name="labelKeyAlias.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 183</value>
-  </data>
-  <data name="labelKeyAlias.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 12</value>
-  </data>
-  <data name="labelKeyAlias.Text" xml:space="preserve">
-    <value>エイリアス名</value>
-  </data>
-  <data name="labelKeyPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 219</value>
-  </data>
-  <data name="labelKeyPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 24</value>
-  </data>
-  <data name="labelKeyPassword.Text" xml:space="preserve">
-    <value>キーストアのパスワード</value>
-  </data>
-  <data name="label_keyOU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 267</value>
-  </data>
-  <data name="label_keyOU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="label_keyOU.Text" xml:space="preserve">
-    <value>組織単位</value>
-  </data>
-  <data name="label_keyO.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 309</value>
-  </data>
-  <data name="label_keyO.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 12</value>
   </data>
+  <data name="labelFolderName.Text" xml:space="preserve">
+    <value>폴더명</value>
+  </data>
+  <data name="labelPackageName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>43, 57</value>
+  </data>
+  <data name="labelPackageName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 12</value>
+  </data>
+  <data name="labelPackageName.Text" xml:space="preserve">
+    <value>패키지 명</value>
+  </data>
+  <data name="labelGameName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 99</value>
+  </data>
+  <data name="labelGameName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="labelGameName.Text" xml:space="preserve">
+    <value>게임명</value>
+  </data>
+  <data name="labelKeyPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 141</value>
+  </data>
+  <data name="labelKeyPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 12</value>
+  </data>
+  <data name="labelKeyPath.Text" xml:space="preserve">
+    <value>키스토어 파일 명</value>
+  </data>
+  <data name="labelKeyAlias.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 183</value>
+  </data>
+  <data name="labelKeyAlias.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 12</value>
+  </data>
+  <data name="labelKeyAlias.Text" xml:space="preserve">
+    <value>키스토어 별칭</value>
+  </data>
+  <data name="labelKeyPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 219</value>
+  </data>
+  <data name="labelKeyPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="labelKeyPassword.Text" xml:space="preserve">
+    <value>키스토어 비밀번호</value>
+  </data>
+  <data name="label_keyOU.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 267</value>
+  </data>
+  <data name="label_keyOU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 12</value>
+  </data>
+  <data name="label_keyOU.Text" xml:space="preserve">
+    <value>조직 단위 명</value>
+  </data>
+  <data name="label_keyO.Location" type="System.Drawing.Point, System.Drawing">
+    <value>43, 309</value>
+  </data>
+  <data name="label_keyO.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 12</value>
+  </data>
   <data name="label_keyO.Text" xml:space="preserve">
-    <value>組織名</value>
+    <value>조직 이름</value>
   </data>
   <data name="label_keyL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 351</value>
+    <value>13, 351</value>
   </data>
   <data name="label_keyL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>87, 12</value>
   </data>
   <data name="label_keyL.Text" xml:space="preserve">
-    <value>市町村名</value>
+    <value>구/군/시/ 이름</value>
   </data>
   <data name="label_keyS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 393</value>
+    <value>37, 393</value>
   </data>
   <data name="label_keyS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
-  </data>
-  <data name="label_keyS.Text" xml:space="preserve">
-    <value>都道府県名</value>
-  </data>
-  <data name="label_keyC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 435</value>
-  </data>
-  <data name="label_keyC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 12</value>
-  </data>
-  <data name="label_keyC.Text" xml:space="preserve">
-    <value>国地域コード</value>
-  </data>
-  <data name="buttonBuild.Text" xml:space="preserve">
-    <value>ビルド</value>
-  </data>
-  <data name="labelOrientation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>40, 15</value>
-  </data>
-  <data name="labelOrientation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
-  </data>
-  <data name="labelOrientation.Text" xml:space="preserve">
-    <value>画面の向き</value>
-  </data>
-  <data name="labelFullscreen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>40, 57</value>
-  </data>
-  <data name="labelFullscreen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
-  </data>
-  <data name="labelFullscreen.Text" xml:space="preserve">
-    <value>全画面表示</value>
-  </data>
-  <data name="labelMinSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 99</value>
-  </data>
-  <data name="labelMinSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 12</value>
-  </data>
-  <data name="labelMinSdkVersion.Text" xml:space="preserve">
-    <value>最小 API レベル</value>
-  </data>
-  <data name="labelTargetSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 135</value>
-  </data>
-  <data name="labelTargetSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 24</value>
-  </data>
-  <data name="labelTargetSdkVersion.Text" xml:space="preserve">
-    <value>ターゲット API レベル</value>
-  </data>
-  <data name="labelSettingGameFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 219</value>
-  </data>
-  <data name="labelSettingGameFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 24</value>
-  </data>
-  <data name="labelSettingGameFolder.Text" xml:space="preserve">
-    <value>作業フォルダの設定 (www)</value>
-  </data>
-  <data name="buttonOpenFileBrowser.Text" xml:space="preserve">
-    <value>参照</value>
-  </data>
-  <data name="labelBuildMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 267</value>
-  </data>
-  <data name="labelBuildMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 12</value>
   </data>
-  <data name="labelBuildMode.Text" xml:space="preserve">
-    <value>出力モード</value>
+  <data name="label_keyS.Text" xml:space="preserve">
+    <value>시/도 이름</value>
   </data>
-  <data name="labelPluginName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 94</value>
+  <data name="label_keyC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 435</value>
+  </data>
+  <data name="label_keyC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 12</value>
+  </data>
+  <data name="label_keyC.Text" xml:space="preserve">
+    <value>국가/지역 코드</value>
+  </data>
+  <data name="buttonBuild.Text" xml:space="preserve">
+    <value>빌드</value>
+  </data>
+  <data name="labelOrientation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 15</value>
+  </data>
+  <data name="labelOrientation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 12</value>
+  </data>
+  <data name="labelOrientation.Text" xml:space="preserve">
+    <value>화면 방향</value>
+  </data>
+  <data name="labelFullscreen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 57</value>
+  </data>
+  <data name="labelFullscreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 12</value>
+  </data>
+  <data name="labelFullscreen.Text" xml:space="preserve">
+    <value>전체 화면</value>
+  </data>
+  <data name="labelMinSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 99</value>
+  </data>
+  <data name="labelMinSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 12</value>
+  </data>
+  <data name="labelMinSdkVersion.Text" xml:space="preserve">
+    <value>최소 API 버전</value>
+  </data>
+  <data name="labelTargetSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 141</value>
+  </data>
+  <data name="labelTargetSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 12</value>
+  </data>
+  <data name="labelTargetSdkVersion.Text" xml:space="preserve">
+    <value>대상 API 버전</value>
+  </data>
+  <data name="labelSettingGameFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 225</value>
+  </data>
+  <data name="labelSettingGameFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 12</value>
+  </data>
+  <data name="labelSettingGameFolder.Text" xml:space="preserve">
+    <value>게임 폴더 설정</value>
+  </data>
+  <data name="labelBuildMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 267</value>
+  </data>
+  <data name="labelBuildMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 12</value>
+  </data>
+  <data name="labelBuildMode.Text" xml:space="preserve">
+    <value>출력 모드</value>
   </data>
   <data name="labelPluginName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
+    <value>53, 12</value>
   </data>
   <data name="labelPluginName.Text" xml:space="preserve">
-    <value>プラグイン</value>
+    <value>플러그인</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
+    <value>81, 12</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>プラグイン</value>
+    <value>플러그인 목록</value>
   </data>
   <data name="buttonSettings.Text" xml:space="preserve">
-    <value>設定</value>
+    <value>설정</value>
   </data>
   <data name="labelCompileSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 177</value>
+    <value>13, 183</value>
   </data>
   <data name="labelCompileSdkVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 24</value>
+    <value>92, 12</value>
   </data>
   <data name="labelCompileSdkVersion.Text" xml:space="preserve">
-    <value>コンパイルAPI レベル</value>
+    <value>컴파일 API 버전</value>
   </data>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

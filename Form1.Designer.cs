@@ -41,7 +41,7 @@
             this.label_keyO = new System.Windows.Forms.Label();
             this.label_keyL = new System.Windows.Forms.Label();
             this.label_keyS = new System.Windows.Forms.Label();
-            this.textBoxFolderName = new System.Windows.Forms.TextBox();
+            this.textBoxFolderName = new DarkUI.Controls.DarkTextBox();
             this.textBoxPackageName = new System.Windows.Forms.TextBox();
             this.textBoxGameName = new System.Windows.Forms.TextBox();
             this.textBoxKeyPath = new System.Windows.Forms.TextBox();
@@ -53,7 +53,7 @@
             this.textBox_keyS = new System.Windows.Forms.TextBox();
             this.textBox_keyC = new System.Windows.Forms.TextBox();
             this.label_keyC = new System.Windows.Forms.Label();
-            this.buttonBuild = new System.Windows.Forms.Button();
+            this.buttonBuild = new DarkUI.Controls.DarkButton();
             this.labelOrientation = new System.Windows.Forms.Label();
             this.labelFullscreen = new System.Windows.Forms.Label();
             this.labelMinSdkVersion = new System.Windows.Forms.Label();
@@ -68,16 +68,17 @@
             this.labelBuildMode = new System.Windows.Forms.Label();
             this.comboBoxBuildMode = new System.Windows.Forms.ComboBox();
             this.labelPluginName = new System.Windows.Forms.Label();
-            this.buttonAddPlugin = new System.Windows.Forms.Button();
+            this.buttonAddPlugin = new DarkUI.Controls.DarkButton();
             this.textBoxPluginName = new System.Windows.Forms.TextBox();
             this.listBoxPlugins = new System.Windows.Forms.ListBox();
-            this.buttonDeletePlugin = new System.Windows.Forms.Button();
+            this.buttonDeletePlugin = new DarkUI.Controls.DarkButton();
             this.timerBackground = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.panelPlugins = new System.Windows.Forms.Panel();
+            this.panelPlugins = new DarkUI.Controls.DarkSectionPanel();
+            this.buttonSettings = new DarkUI.Controls.DarkButton();
             this.labelCompileSdkVersion = new System.Windows.Forms.Label();
             this.comboBoxCompileSdkVersion = new System.Windows.Forms.ComboBox();
-            this.panelBuildLog = new System.Windows.Forms.Panel();
+            this.panelBuildLog = new DarkUI.Controls.DarkSectionPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -89,8 +90,8 @@
             // 
             // textBox1
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
@@ -168,78 +169,80 @@
             // 
             // textBoxFolderName
             // 
-            this.textBoxFolderName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBoxFolderName, "textBoxFolderName");
+            this.textBoxFolderName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.textBoxFolderName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxFolderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.textBoxFolderName.Name = "textBoxFolderName";
             this.textBoxFolderName.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxPackageName
             // 
-            this.textBoxPackageName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBoxPackageName, "textBoxPackageName");
+            this.textBoxPackageName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPackageName.Name = "textBoxPackageName";
             this.textBoxPackageName.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxGameName
             // 
-            this.textBoxGameName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBoxGameName, "textBoxGameName");
+            this.textBoxGameName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxGameName.Name = "textBoxGameName";
             this.textBoxGameName.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxKeyPath
             // 
-            this.textBoxKeyPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBoxKeyPath, "textBoxKeyPath");
+            this.textBoxKeyPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxKeyPath.Name = "textBoxKeyPath";
             this.textBoxKeyPath.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxKeyAlias
             // 
-            this.textBoxKeyAlias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBoxKeyAlias, "textBoxKeyAlias");
+            this.textBoxKeyAlias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxKeyAlias.Name = "textBoxKeyAlias";
             this.textBoxKeyAlias.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxPassWord
             // 
-            this.textBoxPassWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBoxPassWord, "textBoxPassWord");
+            this.textBoxPassWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPassWord.Name = "textBoxPassWord";
             this.textBoxPassWord.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyOU
             // 
-            this.textBox_keyOU.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBox_keyOU, "textBox_keyOU");
+            this.textBox_keyOU.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_keyOU.Name = "textBox_keyOU";
             this.textBox_keyOU.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyO
             // 
-            this.textBox_keyO.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBox_keyO, "textBox_keyO");
+            this.textBox_keyO.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_keyO.Name = "textBox_keyO";
             this.textBox_keyO.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyL
             // 
-            this.textBox_keyL.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBox_keyL, "textBox_keyL");
+            this.textBox_keyL.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_keyL.Name = "textBox_keyL";
             this.textBox_keyL.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyS
             // 
-            this.textBox_keyS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBox_keyS, "textBox_keyS");
+            this.textBox_keyS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_keyS.Name = "textBox_keyS";
             this.textBox_keyS.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyC
             // 
-            this.textBox_keyC.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.textBox_keyC, "textBox_keyC");
+            this.textBox_keyC.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_keyC.Name = "textBox_keyC";
             this.textBox_keyC.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
@@ -255,7 +258,6 @@
             resources.ApplyResources(this.buttonBuild, "buttonBuild");
             this.buttonBuild.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonBuild.Name = "buttonBuild";
-            this.buttonBuild.UseVisualStyleBackColor = true;
             this.buttonBuild.Click += new System.EventHandler(this.buttonBuild_Click);
             // 
             // labelOrientation
@@ -288,6 +290,7 @@
             // 
             // comboBoxOrientation
             // 
+            resources.ApplyResources(this.comboBoxOrientation, "comboBoxOrientation");
             this.comboBoxOrientation.DisplayMember = " ";
             this.comboBoxOrientation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOrientation.FormattingEnabled = true;
@@ -295,26 +298,26 @@
             resources.GetString("comboBoxOrientation.Items"),
             resources.GetString("comboBoxOrientation.Items1"),
             resources.GetString("comboBoxOrientation.Items2")});
-            resources.ApplyResources(this.comboBoxOrientation, "comboBoxOrientation");
             this.comboBoxOrientation.Name = "comboBoxOrientation";
             this.comboBoxOrientation.ValueMember = " ";
             this.comboBoxOrientation.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // comboBoxFullscreen
             // 
+            resources.ApplyResources(this.comboBoxFullscreen, "comboBoxFullscreen");
             this.comboBoxFullscreen.DisplayMember = " ";
             this.comboBoxFullscreen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFullscreen.FormattingEnabled = true;
             this.comboBoxFullscreen.Items.AddRange(new object[] {
             resources.GetString("comboBoxFullscreen.Items"),
             resources.GetString("comboBoxFullscreen.Items1")});
-            resources.ApplyResources(this.comboBoxFullscreen, "comboBoxFullscreen");
             this.comboBoxFullscreen.Name = "comboBoxFullscreen";
             this.comboBoxFullscreen.ValueMember = " ";
             this.comboBoxFullscreen.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // comboBoxMinSdkVersion
             // 
+            resources.ApplyResources(this.comboBoxMinSdkVersion, "comboBoxMinSdkVersion");
             this.comboBoxMinSdkVersion.DisplayMember = " ";
             this.comboBoxMinSdkVersion.FormattingEnabled = true;
             this.comboBoxMinSdkVersion.Items.AddRange(new object[] {
@@ -340,7 +343,6 @@
             resources.GetString("comboBoxMinSdkVersion.Items19"),
             resources.GetString("comboBoxMinSdkVersion.Items20"),
             resources.GetString("comboBoxMinSdkVersion.Items21")});
-            resources.ApplyResources(this.comboBoxMinSdkVersion, "comboBoxMinSdkVersion");
             this.comboBoxMinSdkVersion.Name = "comboBoxMinSdkVersion";
             this.comboBoxMinSdkVersion.ValueMember = " ";
             this.comboBoxMinSdkVersion.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
@@ -348,6 +350,7 @@
             // 
             // comboBoxTargetSdkVersion
             // 
+            resources.ApplyResources(this.comboBoxTargetSdkVersion, "comboBoxTargetSdkVersion");
             this.comboBoxTargetSdkVersion.DisplayMember = " ";
             this.comboBoxTargetSdkVersion.FormattingEnabled = true;
             this.comboBoxTargetSdkVersion.Items.AddRange(new object[] {
@@ -373,7 +376,6 @@
             resources.GetString("comboBoxTargetSdkVersion.Items19"),
             resources.GetString("comboBoxTargetSdkVersion.Items20"),
             resources.GetString("comboBoxTargetSdkVersion.Items21")});
-            resources.ApplyResources(this.comboBoxTargetSdkVersion, "comboBoxTargetSdkVersion");
             this.comboBoxTargetSdkVersion.Name = "comboBoxTargetSdkVersion";
             this.comboBoxTargetSdkVersion.ValueMember = " ";
             this.comboBoxTargetSdkVersion.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
@@ -387,8 +389,8 @@
             // 
             // textBoxSettingGameFolder
             // 
-            this.textBoxSettingGameFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.textBoxSettingGameFolder, "textBoxSettingGameFolder");
+            this.textBoxSettingGameFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxSettingGameFolder.Name = "textBoxSettingGameFolder";
             this.textBoxSettingGameFolder.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
@@ -408,13 +410,13 @@
             // 
             // comboBoxBuildMode
             // 
+            resources.ApplyResources(this.comboBoxBuildMode, "comboBoxBuildMode");
             this.comboBoxBuildMode.DisplayMember = " ";
             this.comboBoxBuildMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBuildMode.FormattingEnabled = true;
             this.comboBoxBuildMode.Items.AddRange(new object[] {
             resources.GetString("comboBoxBuildMode.Items"),
             resources.GetString("comboBoxBuildMode.Items1")});
-            resources.ApplyResources(this.comboBoxBuildMode, "comboBoxBuildMode");
             this.comboBoxBuildMode.Name = "comboBoxBuildMode";
             this.comboBoxBuildMode.ValueMember = " ";
             this.comboBoxBuildMode.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
@@ -430,20 +432,19 @@
             // 
             resources.ApplyResources(this.buttonAddPlugin, "buttonAddPlugin");
             this.buttonAddPlugin.Name = "buttonAddPlugin";
-            this.buttonAddPlugin.UseVisualStyleBackColor = true;
             this.buttonAddPlugin.Click += new System.EventHandler(this.buttonAddPlugin_Click);
             // 
             // textBoxPluginName
             // 
-            this.textBoxPluginName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.textBoxPluginName, "textBoxPluginName");
+            this.textBoxPluginName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxPluginName.Name = "textBoxPluginName";
             // 
             // listBoxPlugins
             // 
+            resources.ApplyResources(this.listBoxPlugins, "listBoxPlugins");
             this.listBoxPlugins.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBoxPlugins.FormattingEnabled = true;
-            resources.ApplyResources(this.listBoxPlugins, "listBoxPlugins");
             this.listBoxPlugins.Items.AddRange(new object[] {
             resources.GetString("listBoxPlugins.Items")});
             this.listBoxPlugins.Name = "listBoxPlugins";
@@ -453,7 +454,6 @@
             // 
             resources.ApplyResources(this.buttonDeletePlugin, "buttonDeletePlugin");
             this.buttonDeletePlugin.Name = "buttonDeletePlugin";
-            this.buttonDeletePlugin.UseVisualStyleBackColor = true;
             this.buttonDeletePlugin.Click += new System.EventHandler(this.buttonDeletePlugin_Click);
             // 
             // timerBackground
@@ -469,7 +469,9 @@
             // 
             // panelPlugins
             // 
+            resources.ApplyResources(this.panelPlugins, "panelPlugins");
             this.panelPlugins.BackColor = System.Drawing.Color.Transparent;
+            this.panelPlugins.Controls.Add(this.buttonSettings);
             this.panelPlugins.Controls.Add(this.listBoxPlugins);
             this.panelPlugins.Controls.Add(this.label1);
             this.panelPlugins.Controls.Add(this.labelPluginName);
@@ -477,8 +479,14 @@
             this.panelPlugins.Controls.Add(this.textBoxPluginName);
             this.panelPlugins.Controls.Add(this.buttonAddPlugin);
             this.panelPlugins.Controls.Add(this.buttonBuild);
-            resources.ApplyResources(this.panelPlugins, "panelPlugins");
             this.panelPlugins.Name = "panelPlugins";
+            this.panelPlugins.SectionHeader = null;
+            // 
+            // buttonSettings
+            // 
+            resources.ApplyResources(this.buttonSettings, "buttonSettings");
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
             // labelCompileSdkVersion
             // 
@@ -489,6 +497,7 @@
             // 
             // comboBoxCompileSdkVersion
             // 
+            resources.ApplyResources(this.comboBoxCompileSdkVersion, "comboBoxCompileSdkVersion");
             this.comboBoxCompileSdkVersion.DisplayMember = " ";
             this.comboBoxCompileSdkVersion.FormattingEnabled = true;
             this.comboBoxCompileSdkVersion.Items.AddRange(new object[] {
@@ -514,21 +523,21 @@
             resources.GetString("comboBoxCompileSdkVersion.Items19"),
             resources.GetString("comboBoxCompileSdkVersion.Items20"),
             resources.GetString("comboBoxCompileSdkVersion.Items21")});
-            resources.ApplyResources(this.comboBoxCompileSdkVersion, "comboBoxCompileSdkVersion");
             this.comboBoxCompileSdkVersion.Name = "comboBoxCompileSdkVersion";
             this.comboBoxCompileSdkVersion.ValueMember = " ";
             // 
             // panelBuildLog
             // 
+            resources.ApplyResources(this.panelBuildLog, "panelBuildLog");
             this.panelBuildLog.BackColor = System.Drawing.Color.Transparent;
             this.panelBuildLog.Controls.Add(this.textBox1);
-            resources.ApplyResources(this.panelBuildLog, "panelBuildLog");
             this.panelBuildLog.Name = "panelBuildLog";
+            this.panelBuildLog.SectionHeader = "Log";
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.Controls.Add(this.label_keyC, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.label_keyS, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.label_keyL, 0, 8);
@@ -544,8 +553,8 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel2.Controls.Add(this.labelBuildMode, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.labelSettingGameFolder, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.labelCompileSdkVersion, 0, 4);
@@ -557,8 +566,8 @@
             // 
             // contextMenuStrip1
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
             resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
             // 
             // Form1
             // 
@@ -590,6 +599,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panelPlugins.ResumeLayout(false);
@@ -605,7 +615,7 @@
         }
 
         #endregion
-
+        
         private System.Windows.Forms.RichTextBox textBox1;
         private System.Windows.Forms.Label labelFolderName;
         private System.Windows.Forms.Label labelPackageName;
@@ -617,7 +627,7 @@
         private System.Windows.Forms.Label label_keyO;
         private System.Windows.Forms.Label label_keyL;
         private System.Windows.Forms.Label label_keyS;
-        private System.Windows.Forms.TextBox textBoxFolderName;
+        private DarkUI.Controls.DarkTextBox textBoxFolderName;
         private System.Windows.Forms.TextBox textBoxPackageName;
         private System.Windows.Forms.TextBox textBoxGameName;
         private System.Windows.Forms.TextBox textBoxKeyPath;
@@ -629,7 +639,6 @@
         private System.Windows.Forms.TextBox textBox_keyS;
         private System.Windows.Forms.TextBox textBox_keyC;
         private System.Windows.Forms.Label label_keyC;
-        private System.Windows.Forms.Button buttonBuild;
         private System.Windows.Forms.Label labelOrientation;
         private System.Windows.Forms.Label labelFullscreen;
         private System.Windows.Forms.Label labelMinSdkVersion;
@@ -644,19 +653,21 @@
         private System.Windows.Forms.Label labelBuildMode;
         private System.Windows.Forms.ComboBox comboBoxBuildMode;
         private System.Windows.Forms.Label labelPluginName;
-        private System.Windows.Forms.Button buttonAddPlugin;
         private System.Windows.Forms.TextBox textBoxPluginName;
         private System.Windows.Forms.ListBox listBoxPlugins;
-        private System.Windows.Forms.Button buttonDeletePlugin;
         private System.Windows.Forms.Timer timerBackground;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panelPlugins;
         private System.Windows.Forms.Label labelCompileSdkVersion;
         private System.Windows.Forms.ComboBox comboBoxCompileSdkVersion;
-        private System.Windows.Forms.Panel panelBuildLog;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private DarkUI.Controls.DarkButton buttonBuild;
+        private DarkUI.Controls.DarkButton buttonSettings;
+        private DarkUI.Controls.DarkSectionPanel panelPlugins;
+        private DarkUI.Controls.DarkSectionPanel panelBuildLog;
+        private DarkUI.Controls.DarkButton buttonAddPlugin;
+        private DarkUI.Controls.DarkButton buttonDeletePlugin;
     }
 }
 

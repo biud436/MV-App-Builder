@@ -3,7 +3,7 @@ Unicode true
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "MV App Builder"
-!define PRODUCT_VERSION "0.2.0"
+!define PRODUCT_VERSION "0.2.15"
 !define PRODUCT_PUBLISHER "biud436"
 !define PRODUCT_WEB_SITE "https://github.com/biud436/MV-App-Builder/"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Cordova Builder.exe"
@@ -109,6 +109,7 @@ Section "필수설치" SEC01
   SetOutPath "$INSTDIR"
   File ".\bin\Release\Newtonsoft.Json.dll"
   File ".\bin\Release\Newtonsoft.Json.xml"
+  File ".\bin\Release\DarkUI.dll"
 SectionEnd
 
 Section -AdditionalIcons
@@ -145,6 +146,7 @@ Section Uninstall
   Delete "$INSTDIR\uninst.exe"
   Delete "$INSTDIR\Newtonsoft.Json.xml"
   Delete "$INSTDIR\Newtonsoft.Json.dll"
+  Delete "$INSTDIR\DarkUI.dll"
   Delete "$INSTDIR\ko\Cordova Builder.resources.dll"
   Delete "$INSTDIR\ja\Cordova Builder.resources.dll"
   Delete "$INSTDIR\en\Cordova Builder.resources.dll"

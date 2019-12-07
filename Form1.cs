@@ -66,9 +66,10 @@ namespace Cordova_Builder
         /// </summary>
         public void InitWithHostData()
         {
-            _hostList.Add(new HostData("where java.exe", false, "", _rm.GetString("FOUND_JAVA"), _rm.GetString("NOT_FOUND_JAVA")));
-            _hostList.Add(new HostData("where keytool.exe", false, "", _rm.GetString("FOUND_KEYTOOL"), _rm.GetString("NOT_FOUND_KEYTOOL")));
-            _hostList.Add(new HostData("where cordova", false, "", _rm.GetString("FOUND_CORDOVA"), _rm.GetString("NOT_FOUND_CORDOVA")));
+            _hostList.Add(new HostData("where java.exe > nul", false, "", _rm.GetString("FOUND_JAVA"), _rm.GetString("NOT_FOUND_JAVA")));
+            _hostList.Add(new HostData("where keytool.exe > nul", false, "", _rm.GetString("FOUND_KEYTOOL"), _rm.GetString("NOT_FOUND_KEYTOOL")));
+            _hostList.Add(new HostData("where cordova > nul", false, "", _rm.GetString("FOUND_CORDOVA"), _rm.GetString("NOT_FOUND_CORDOVA")));
+            _hostList.Add(new HostData("where mv-resource-cleaner > nul", false, "", "", ""));
         }
 
         /// <summary>
@@ -110,6 +111,15 @@ namespace Cordova_Builder
                     textBox1.AppendText(Environment.NewLine);
                 }
             }
+        }
+
+        public void DebugText(string output)
+        {
+            textBox1.SelectionColor = Color.Red;
+
+            AppendText(output);
+
+            textBox1.SelectionColor = Color.White;
         }
 
         /// <summary>
@@ -205,6 +215,11 @@ namespace Cordova_Builder
                     AppendText(_rm.GetString("NotInstalledAndroidSDK3"));
                 }
 
+                if (!_status[4])
+                {
+                    _cordova.InstallResourceCleaner();
+                }
+
 
             }
 
@@ -297,15 +312,18 @@ namespace Cordova_Builder
 
             List<Control> list = new List<Control>();
             list.AddRange(_textBoxList);
-            list.Add(listBoxPlugins);
             list.Add(textBoxSettingGameFolder);
-            list.Add(textBoxPluginName);
 
             foreach (var tb in list)
             {
                 tb.BackColor = backColor;
                 tb.ForeColor = foreColor;
             }
+
+            textBoxPluginName.BackColor = Color.FromArgb(255, 57, 60, 62);
+            textBoxPluginName.ForeColor = foreColor;
+            listBoxPlugins.BackColor = Color.FromArgb(255, 57, 60, 62);
+            listBoxPlugins.ForeColor = foreColor;
         }
 
         /// <summary>
@@ -319,6 +337,7 @@ namespace Cordova_Builder
             InitWIthTextBoxList();
             InitWithUIBackground();
             InitWithComboBox();
+            DataMan.Instance.Import();
         }
 
         public void InitWithComboBox()
@@ -424,7 +443,7 @@ namespace Cordova_Builder
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
             textBox1.ScrollToCaret();
-            textBox1.BackColor = Color.FromArgb(255, 26, 41, 62);
+            textBox1.BackColor = Color.FromArgb(255, 57, 60, 62);
             textBox1.ForeColor = Color.White;
         }
 
@@ -747,5 +766,18 @@ namespace Cordova_Builder
             }
         }
 
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            if(!this.InvokeRequired)
+            {
+                SettingsDialog settingDialog = new SettingsDialog();
+                settingDialog.Show();
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DataMan.Instance.Save();
+        }
     }
 }

@@ -59,13 +59,14 @@ namespace Cordova_Builder
         public void ExportPackageJsonFile()
         {
             var rootDirectory = GetRootDirectory();
+            var filePath = Path.Combine(rootDirectory, PackageFileName);
 
             var packageJson = new PackageJson()
             {
                 RootDirectory = rootDirectory
             };
 
-            File.WriteAllText(rootDirectory, JsonConvert.SerializeObject(packageJson));
+            File.WriteAllText(filePath, JsonConvert.SerializeObject(packageJson));
         }
 
         /// <summary>
@@ -100,7 +101,7 @@ namespace Cordova_Builder
         public bool IsValidPath(string filePath)
         {
             // 문자가 비어있으면 false
-            if (!String.IsNullOrEmpty(filePath))
+            if (String.IsNullOrEmpty(filePath))
                 return false;
 
             // 사용할 수 없는 문자가 있으면 false

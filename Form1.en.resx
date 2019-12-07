@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="labelFolderName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labelFolderName.Location" type="System.Drawing.Point, System.Drawing">
     <value>31, 15</value>
@@ -130,9 +126,6 @@
   </data>
   <data name="labelFolderName.Text" xml:space="preserve">
     <value>Root Folder</value>
-  </data>
-  <data name="labelPackageName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="labelPackageName.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 57</value>
@@ -151,9 +144,6 @@
   </data>
   <data name="labelGameName.Text" xml:space="preserve">
     <value>App Name</value>
-  </data>
-  <data name="labelKeyPath.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="labelKeyPath.Location" type="System.Drawing.Point, System.Drawing">
     <value>36, 135</value>
@@ -182,9 +172,6 @@
   <data name="labelKeyPassword.Text" xml:space="preserve">
     <value>Key Password</value>
   </data>
-  <data name="label_keyOU.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="label_keyOU.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 261</value>
   </data>
@@ -193,9 +180,6 @@
   </data>
   <data name="label_keyOU.Text" xml:space="preserve">
     <value>Organization Units</value>
-  </data>
-  <data name="label_keyO.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="label_keyO.Font" type="System.Drawing.Font, System.Drawing">
     <value>굴림, 8pt</value>
@@ -221,9 +205,6 @@
   <data name="label_keyL.Text" xml:space="preserve">
     <value>City name</value>
   </data>
-  <data name="label_keyS.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="label_keyS.Location" type="System.Drawing.Point, System.Drawing">
     <value>31, 393</value>
   </data>
@@ -232,9 +213,6 @@
   </data>
   <data name="label_keyS.Text" xml:space="preserve">
     <value>State name</value>
-  </data>
-  <data name="label_keyC.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="label_keyC.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 429</value>
@@ -337,6 +315,9 @@
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Cordova Plugins</value>
+  </data>
+  <data name="buttonSettings.Text" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="labelCompileSdkVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>30, 177</value>
