@@ -545,7 +545,7 @@ namespace Cordova_Builder
             {
                 // 다중 쓰레드 (기본값 : 8 쓰레드)
                 // 원본과 동일한 트리로 유지
-                string robocopy = String.Format("robocopy \"{0}\" \"{1}\" /MIR /E /R:1 /W:1", srcPath, dstPath);
+                string robocopy = String.Format("chcp {0} | robocopy \"{1}\" \"{2}\" /MIR /E /R:1 /W:1", Encoding.UTF8.CodePage, srcPath, dstPath);
 
                 using (var process = new HostData(robocopy, true, "",
                     _rm.GetString("CopyProjectFiles2"),
