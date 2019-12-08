@@ -451,7 +451,7 @@ namespace Cordova_Builder
             {
                 // TODO: 전달되는 인수가 너무 많다.
                 // 더 간단한 처리 방법이 없을까?
-                string cmd = String.Format("keytool -genkey -v -keystore {0} -alias {1} -keyalg RSA -keysize 2048 -validity 10000 -keypass {2} -storepass {3} -dname \"CN={4},OU={5},O={6},L={7},S={8},C={9}\" 2>&1",
+                string cmd = String.Format("chcp 65001 | keytool -genkey -v -keystore {0} -alias {1} -keyalg RSA -keysize 2048 -validity 10000 -keypass {2} -storepass {3} -dname \"CN={4},OU={5},O={6},L={7},S={8},C={9}\" 2>&1",
                         keystorePath,
                         _config.keyAlias,
                         _config.passWord,
