@@ -971,7 +971,7 @@ android {
 
         }
 
-        public int CheckTotalSize()
+        public int GetTotalSize()
         {
             string path = _config.settingGameFolder;
 
