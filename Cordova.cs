@@ -971,6 +971,21 @@ android {
 
         }
 
+        public int CheckTotalSize()
+        {
+            string path = _config.settingGameFolder;
+
+            var files = System.IO.Directory.GetFiles(path, "*.*", System.IO.SearchOption.AllDirectories);
+            var totalSizeBytes = files.Sum(file => {
+                System.IO.FileInfo fi = new System.IO.FileInfo(file);
+                return fi.Length;
+            });
+
+            var totalSize = Convert.ToInt32(totalSizeBytes / (1024.0 * 1024.0));
+
+            return totalSize;
+        }
+
     }
 
 }
