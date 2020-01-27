@@ -42,6 +42,8 @@ namespace Cordova_Builder
         // 빌드 작업 중임을 판별하는 변수, 처음에는 false
         public bool _isWorking = false;
 
+        public SortedSet<int> platformTools = new SortedSet<int>();
+
         /// <summary>
         /// Form1's constructor.
         /// </summary>
@@ -166,6 +168,42 @@ namespace Cordova_Builder
                     textBox1.SelectionColor = Color.White;
                 }
 
+            }
+        }
+
+        /// <summary>
+        /// 안드로이드 API 레벨을 구합니다.
+        /// </summary>
+        private void GetAndroidAPILevels()
+        {
+
+            using (HostData process = new HostData("sdkmanager --list | find \"platforms;\"", false, "", "echo ", "echo "))
+            {
+                Append append = (output) => 
+                {
+                    var ret = output.Split('|')[0];
+                    var regex = new System.Text.RegularExpressions.Regex("(?:platforms;android-)(\\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                    var match = regex.Match(ret);
+                    
+                    if(match.Success)
+                    {
+                        platformTools.Add(Int32.Parse(match.Groups[1].Value));
+                    }
+                };
+
+                process.Run(append);
+
+            }
+
+            comboBoxMinSdkVersion.Items.Clear();
+            comboBoxTargetSdkVersion.Items.Clear();
+            comboBoxCompileSdkVersion.Items.Clear();
+
+            foreach (var value in platformTools)
+            {
+                comboBoxMinSdkVersion.Items.Add(value);
+                comboBoxTargetSdkVersion.Items.Add(value);
+                comboBoxCompileSdkVersion.Items.Add(value);
             }
         }
 
@@ -336,6 +374,12 @@ namespace Cordova_Builder
             Prepare();
             InitWIthTextBoxList();
             InitWithUIBackground();
+
+            if (_isValid)
+            {
+                GetAndroidAPILevels();
+            }
+
             InitWithComboBox();
             DataMan.Instance.Import();
         }
@@ -344,9 +388,9 @@ namespace Cordova_Builder
         {
             comboBoxOrientation.SelectedIndex = 2;
             comboBoxFullscreen.SelectedIndex = 0;
-            comboBoxMinSdkVersion.SelectedIndex = comboBoxMinSdkVersion.Items.IndexOf("19");
-            comboBoxTargetSdkVersion.SelectedIndex = comboBoxTargetSdkVersion.Items.IndexOf("29");
-            comboBoxCompileSdkVersion.SelectedIndex = comboBoxCompileSdkVersion.Items.IndexOf("29");
+            comboBoxMinSdkVersion.SelectedIndex = comboBoxMinSdkVersion.Items.IndexOf(19);
+            comboBoxTargetSdkVersion.SelectedIndex = comboBoxTargetSdkVersion.Items.IndexOf(29);
+            comboBoxCompileSdkVersion.SelectedIndex = comboBoxCompileSdkVersion.Items.IndexOf(29);
             comboBoxBuildMode.SelectedIndex = 0;
 
             timerBackground.Start();
