@@ -154,6 +154,11 @@ namespace Cordova_Builder
                 {
                     var sdkIds = System.IO.Directory.GetDirectories(platformsPath);
 
+                    if(sdkIds.Count() == 0)
+                    {
+                        throw new Exception($"The Android SDK is not installed.");
+                    }
+
                     textBox1.SelectionColor = Color.Red;
                     AppendText("[SDK]==========================================");
 
@@ -168,6 +173,9 @@ namespace Cordova_Builder
                     textBox1.SelectionColor = Color.White;
                 }
 
+            } else
+            {
+                throw new Exception("Cannot find ANDROID_SDK_ROOT or ANDROID_HOME in the Windows Environment Variables");
             }
         }
 
@@ -177,34 +185,59 @@ namespace Cordova_Builder
         private void GetAndroidAPILevels()
         {
 
-            using (HostData process = new HostData("sdkmanager --list | find \"platforms;\"", false, "", "echo ", "echo "))
+            string ANDROID_HOME = System.Environment.GetEnvironmentVariable("ANDROID_HOME");
+            string ANDROID_SDK_ROOT = System.Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
+            string defaultPath = "";
+            bool isValid = false;
+
+            if (!String.IsNullOrEmpty(ANDROID_SDK_ROOT))
             {
-                Append append = (output) => 
+                isValid = true;
+                defaultPath = ANDROID_SDK_ROOT;
+            }
+            else if (!String.IsNullOrEmpty(ANDROID_HOME))
+            {
+                isValid = true;
+                defaultPath = ANDROID_HOME;
+            }
+
+            string sdkaMangerPath = String.Format("{0} --list | find \"platforms;\"", System.IO.Path.Combine(defaultPath, "tools", "bin", "sdkmanager.bat"));
+
+            if (System.IO.Directory.Exists(defaultPath) && isValid)
+            {
+                using (HostData process = new HostData(sdkaMangerPath, false, "", "echo ", "echo "))
                 {
-                    var ret = output.Split('|')[0];
-                    var regex = new System.Text.RegularExpressions.Regex("(?:platforms;android-)(\\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                    var match = regex.Match(ret);
-                    
-                    if(match.Success)
+                    Append append = (output) =>
                     {
-                        platformTools.Add(Int32.Parse(match.Groups[1].Value));
-                    }
-                };
+                        var ret = output.Split('|')[0];
+                        var regex = new System.Text.RegularExpressions.Regex("(?:platforms;android-)(\\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                        var match = regex.Match(ret);
 
-                process.Run(append);
+                        if (match.Success)
+                        {
+                            platformTools.Add(Int32.Parse(match.Groups[1].Value));
+                        }
+                    };
 
-            }
+                    process.Run(append);
 
-            comboBoxMinSdkVersion.Items.Clear();
-            comboBoxTargetSdkVersion.Items.Clear();
-            comboBoxCompileSdkVersion.Items.Clear();
+                }
 
-            foreach (var value in platformTools)
+                comboBoxMinSdkVersion.Items.Clear();
+                comboBoxTargetSdkVersion.Items.Clear();
+                comboBoxCompileSdkVersion.Items.Clear();
+
+                foreach (var value in platformTools)
+                {
+                    comboBoxMinSdkVersion.Items.Add(value);
+                    comboBoxTargetSdkVersion.Items.Add(value);
+                    comboBoxCompileSdkVersion.Items.Add(value);
+                }
+            } else
             {
-                comboBoxMinSdkVersion.Items.Add(value);
-                comboBoxTargetSdkVersion.Items.Add(value);
-                comboBoxCompileSdkVersion.Items.Add(value);
+                throw new Exception("Cannot find ANDROID_SDK_ROOT or ANDROID_HOME in the Windows Environment Variables");
             }
+
         }
 
         /// <summary>
