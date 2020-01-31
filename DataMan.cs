@@ -18,6 +18,10 @@ namespace Cordova_Builder
         public bool Use { get; set; }
         public string AudioFileFormat { get; set; }
         public bool RemainTree { get; set; }
+        public bool IsValidCustomOutputPath { get; set; }
+        public string OutputPath { get; set; }
+
+        private Cordova cordovaMain;
 
         private DataMan()
         {
@@ -58,14 +62,33 @@ namespace Cordova_Builder
                 string contents = File.ReadAllText(path, Encoding.UTF8);
 
                 Dictionary<string, string> option = JsonConvert.DeserializeObject<Dictionary<string, string>>(contents);
-                DataMan.Instance.AudioFileFormat = option["audioFileFormat"];
-                DataMan.Instance.RemainTree = option["remainTree"] == "True";
-                DataMan.Instance.Use = option["excludeUnusedFiles"] == "True";
+                AudioFileFormat = option["audioFileFormat"];
+                RemainTree = option["remainTree"] == "True";
+                Use = option["excludeUnusedFiles"] == "True";
+
+                if(!option.ContainsKey("IsValidCustomOutputPath"))
+                {
+                    IsValidCustomOutputPath = false;
+                } else
+                {
+                    IsValidCustomOutputPath = option["IsValidCustomOutputPath"] == "True";
+                }
+
+                if (!option.ContainsKey("OutputPath"))
+                {
+                    OutputPath = DataManager.Instance.GetRootDirectory();
+                }
+                else
+                {
+                    OutputPath = option["OutputPath"];
+                }
+
             } else
             {
-                DataMan.Instance.AudioFileFormat = "ogg";
-                DataMan.Instance.RemainTree = true;
-                DataMan.Instance.Use = false;
+                AudioFileFormat = "ogg";
+                RemainTree = true;
+                Use = false;
+                IsValidCustomOutputPath = false;
             }
             
         }
@@ -78,13 +101,26 @@ namespace Cordova_Builder
             string path = Path.Combine(Directory.GetCurrentDirectory(), "settings.json");
 
             Dictionary<string, string> option = new Dictionary<string, string>();
-            option.Add("audioFileFormat", DataMan.Instance.AudioFileFormat.ToString());
-            option.Add("remainTree", DataMan.Instance.RemainTree.ToString());
-            option.Add("excludeUnusedFiles", DataMan.Instance.Use.ToString());
+            option.Add("audioFileFormat", AudioFileFormat.ToString());
+            option.Add("remainTree", RemainTree.ToString());
+            option.Add("excludeUnusedFiles", Use.ToString());
+            option.Add("IsValidCustomOutputPath", IsValidCustomOutputPath.ToString());
+
+            // 출력 폴더를 저장합니다.
+            option.Add("OutputPath", OutputPath.ToString());
 
             string contents = JsonConvert.SerializeObject(option);
 
             File.WriteAllText(path, contents);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cordova"></param>
+        public void SetCordovaObject(Cordova cordova)
+        {
+            cordovaMain = cordova;
         }
 
     }

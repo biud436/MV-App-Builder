@@ -43,19 +43,39 @@ namespace Cordova_Builder
 
         private FormData.Config _config;
 
-        private DataManagerImpl DataManager = new DataManagerImpl()
-        {
-            PackageFileName = "package.json",
-            DataFolderName = "RPG Maker MV Cordova Builder",
-            Type = DataManagerImpl.DataFolderType.MY_DOCUMENTS,
-        };
-
         /// <summary>
         /// 생성자
         /// </summary>
         public Cordova()
         {
+            InitMembers();
+            InitWithDataMan();
+            InitWithResourceManager();
+        }
+
+        public void InitMembers()
+        {
             _currentDirectory = System.IO.Directory.GetCurrentDirectory();
+        }
+
+        public void InitWithDataMan()
+        {
+            DataMan.Instance.SetCordovaObject(this);
+            DataManager data = DataManager.Instance;
+
+            // 출력 폴더를 바꾼 적이 없다면 기본적으로는 내문서로 설정됩니다.
+            if (!DataMan.Instance.IsValidCustomOutputPath) 
+            {
+                DataMan.Instance.OutputPath = DataManager.Instance.GetRootDirectory();
+            } else
+            {
+                // 출력 폴더를 바꾼 적이 있다면 파일에서 불러오게 됩니다.
+                DataManager.Instance.Type = DataManager.DataFolderType.CUSTOM;
+            }
+        }
+
+        public void InitWithResourceManager()
+        {
             _rm = new ResourceManager("Cordova_Builder.locale", Assembly.GetExecutingAssembly());
         }
 
@@ -111,7 +131,7 @@ namespace Cordova_Builder
         {
             try
             {
-                string myDocumentsPath = DataManager.GetRootDirectory();
+                string myDocumentsPath = DataManager.Instance.GetRootDirectory();
                 string mkdir = System.IO.Path.Combine(myDocumentsPath, _config.folderName);
 
                 if (!System.IO.Directory.Exists(mkdir))
@@ -149,7 +169,7 @@ namespace Cordova_Builder
             Thread worker = new Thread(new ThreadStart(() =>
             {
                 // 내문서에 APK 파일을 저장합니다.
-                string targetFolder = DataManager.GetRootDirectory();
+                string targetFolder = DataManager.Instance.GetRootDirectory();
                 string tempDir = System.IO.Directory.GetCurrentDirectory();
 
                 // 타겟 폴더를 현재 경로로 설정합니다.
@@ -157,7 +177,7 @@ namespace Cordova_Builder
 
                 // 폴더를 생성합니다
                 bool isValid = Create();
-                isValid = DataManager.IsValidPath(targetFolder);
+                isValid = DataManager.Instance.IsValidPath(targetFolder);
 
                 // 다시 되돌립니다.
                 System.IO.Directory.SetCurrentDirectory(tempDir);
@@ -943,7 +963,7 @@ android {
             string src = _config.settingGameFolder;
             src = src.Replace(@"\", "/");
 
-            string myDocumentsPath = DataManager.GetRootDirectory();
+            string myDocumentsPath = DataManager.Instance.GetRootDirectory();
             string dst = System.IO.Path.Combine(myDocumentsPath, _config.folderName, "www");
             dst = dst.Replace(@"\", "/");
 

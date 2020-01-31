@@ -8,26 +8,56 @@ using Newtonsoft.Json;
 
 namespace Cordova_Builder
 {
-    public class DataManagerImpl
+    public class DataManager
     {
+
+        private static volatile DataManager instance;
+        private static object syncRoot = new Object();
+
+        public static DataManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    // 하나의 쓰레드만 실행할 수 있도록 해주는 키워드
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new DataManager()
+                            {
+                                PackageFileName = "package.json",
+                                DataFolderName = "RPG Maker MV Cordova Builder",
+                                Type = DataManager.DataFolderType.MY_DOCUMENTS,
+                            };
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+
 
         public enum DataFolderType : int
         {
             MY_DOCUMENTS,
             APP_DATA,
+            CUSTOM,
         }
 
         public string PackageFileName { get; set; }
         public string DataFolderName { get; set; }
         public DataFolderType Type { get; set; }
 
-        public DataManagerImpl()
+        private DataManager()
         {
 
         }
 
         /// <summary>
-        /// 
+        /// 루트 디렉토리를 반환합니다.
         /// </summary>
         /// <returns></returns>
         public string GetRootDirectory()
@@ -43,6 +73,9 @@ namespace Cordova_Builder
                 case DataFolderType.APP_DATA:
                     root = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                     break;
+                case DataFolderType.CUSTOM:
+                    root = DataMan.Instance.OutputPath;
+                    break;
             }
 
             string rootDirectory = Path.Combine(root, DataFolderName);
@@ -54,7 +87,7 @@ namespace Cordova_Builder
         }
 
         /// <summary>
-        /// 
+        /// 패키지 파일을 내보냅니다.
         /// </summary>
         public void ExportPackageJsonFile()
         {
@@ -70,7 +103,7 @@ namespace Cordova_Builder
         }
 
         /// <summary>
-        /// 
+        /// 패키지 파일을 로드합니다.
         /// </summary>
         /// <returns></returns>
         public string ImportPackageJsonFile()

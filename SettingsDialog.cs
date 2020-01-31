@@ -112,6 +112,29 @@ namespace Cordova_Builder
             darkCheckBoxM4a.Checked = DataMan.Instance.AudioFileFormat == "ogg" ? false : true;
             darkCheckBoxTrue.Checked = DataMan.Instance.RemainTree ? true : false;
             darkCheckBoxFalse.Checked = DataMan.Instance.RemainTree ? false : true;
+
+            if(DataMan.Instance.IsValidCustomOutputPath)
+            {
+                darkTextBoxOutputFolderPath.Text = DataMan.Instance.OutputPath;
+            } else
+            {
+                darkTextBoxOutputFolderPath.Text = DataManager.Instance.GetRootDirectory();
+            }
+
+
+        }
+
+        private void darkButtonSetOutputFolderPath_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                darkTextBoxOutputFolderPath.Text = folderBrowserDialog1.SelectedPath;
+                DataMan.Instance.OutputPath = folderBrowserDialog1.SelectedPath;
+                DataMan.Instance.IsValidCustomOutputPath = true;
+                DataMan.Instance.Save();
+            }
         }
     }
 }

@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsDialog));
             this.darkSectionPanelExcludeUnusedResourcesOption = new DarkUI.Controls.DarkSectionPanel();
+            this.darkButtonSetOutputFolderPath = new DarkUI.Controls.DarkButton();
+            this.darkTextBoxOutputFolderPath = new DarkUI.Controls.DarkTextBox();
+            this.darkLabelOutputFolderPath = new DarkUI.Controls.DarkLabel();
             this.darkButtonOK = new DarkUI.Controls.DarkButton();
             this.darkCheckBoxFalse = new DarkUI.Controls.DarkCheckBox();
             this.darkCheckBoxTrue = new DarkUI.Controls.DarkCheckBox();
@@ -40,12 +43,16 @@
             this.darkLabelUse = new DarkUI.Controls.DarkLabel();
             this.darkLabelRemainTree = new DarkUI.Controls.DarkLabel();
             this.darkLabelAudioFileFormat = new DarkUI.Controls.DarkLabel();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.darkSectionPanelExcludeUnusedResourcesOption.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkSectionPanelExcludeUnusedResourcesOption
             // 
             resources.ApplyResources(this.darkSectionPanelExcludeUnusedResourcesOption, "darkSectionPanelExcludeUnusedResourcesOption");
+            this.darkSectionPanelExcludeUnusedResourcesOption.Controls.Add(this.darkButtonSetOutputFolderPath);
+            this.darkSectionPanelExcludeUnusedResourcesOption.Controls.Add(this.darkTextBoxOutputFolderPath);
+            this.darkSectionPanelExcludeUnusedResourcesOption.Controls.Add(this.darkLabelOutputFolderPath);
             this.darkSectionPanelExcludeUnusedResourcesOption.Controls.Add(this.darkButtonOK);
             this.darkSectionPanelExcludeUnusedResourcesOption.Controls.Add(this.darkCheckBoxFalse);
             this.darkSectionPanelExcludeUnusedResourcesOption.Controls.Add(this.darkCheckBoxTrue);
@@ -57,7 +64,27 @@
             this.darkSectionPanelExcludeUnusedResourcesOption.Controls.Add(this.darkLabelRemainTree);
             this.darkSectionPanelExcludeUnusedResourcesOption.Controls.Add(this.darkLabelAudioFileFormat);
             this.darkSectionPanelExcludeUnusedResourcesOption.Name = "darkSectionPanelExcludeUnusedResourcesOption";
-            this.darkSectionPanelExcludeUnusedResourcesOption.SectionHeader = "미사용 리소스 제거 옵션";
+            this.darkSectionPanelExcludeUnusedResourcesOption.SectionHeader = "Unused Exclude Resources Option";
+            // 
+            // darkButtonSetOutputFolderPath
+            // 
+            resources.ApplyResources(this.darkButtonSetOutputFolderPath, "darkButtonSetOutputFolderPath");
+            this.darkButtonSetOutputFolderPath.Name = "darkButtonSetOutputFolderPath";
+            this.darkButtonSetOutputFolderPath.Click += new System.EventHandler(this.darkButtonSetOutputFolderPath_Click);
+            // 
+            // darkTextBoxOutputFolderPath
+            // 
+            resources.ApplyResources(this.darkTextBoxOutputFolderPath, "darkTextBoxOutputFolderPath");
+            this.darkTextBoxOutputFolderPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.darkTextBoxOutputFolderPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.darkTextBoxOutputFolderPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkTextBoxOutputFolderPath.Name = "darkTextBoxOutputFolderPath";
+            // 
+            // darkLabelOutputFolderPath
+            // 
+            resources.ApplyResources(this.darkLabelOutputFolderPath, "darkLabelOutputFolderPath");
+            this.darkLabelOutputFolderPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabelOutputFolderPath.Name = "darkLabelOutputFolderPath";
             // 
             // darkButtonOK
             // 
@@ -119,6 +146,10 @@
             this.darkLabelAudioFileFormat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabelAudioFileFormat.Name = "darkLabelAudioFileFormat";
             // 
+            // folderBrowserDialog1
+            // 
+            resources.ApplyResources(this.folderBrowserDialog1, "folderBrowserDialog1");
+            // 
             // SettingsDialog
             // 
             resources.ApplyResources(this, "$this");
@@ -150,5 +181,9 @@
         private DarkUI.Controls.DarkCheckBox darkCheckBoxEnabled;
         private DarkUI.Controls.DarkCheckBox darkCheckBoxM4a;
         private DarkUI.Controls.DarkCheckBox darkCheckBoxOgg;
+        private DarkUI.Controls.DarkButton darkButtonSetOutputFolderPath;
+        private DarkUI.Controls.DarkTextBox darkTextBoxOutputFolderPath;
+        private DarkUI.Controls.DarkLabel darkLabelOutputFolderPath;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
