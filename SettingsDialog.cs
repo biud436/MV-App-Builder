@@ -113,11 +113,13 @@ namespace Cordova_Builder
             darkCheckBoxTrue.Checked = DataMan.Instance.RemainTree ? true : false;
             darkCheckBoxFalse.Checked = DataMan.Instance.RemainTree ? false : true;
 
+            // 출력 폴더를 바꾼 적이 있다면
             if(DataMan.Instance.IsValidCustomOutputPath)
             {
                 darkTextBoxOutputFolderPath.Text = DataMan.Instance.OutputPath;
             } else
             {
+                // 출력 폴더를 바꾸지 않았다면
                 darkTextBoxOutputFolderPath.Text = DataManager.Instance.GetRootDirectory();
             }
 
