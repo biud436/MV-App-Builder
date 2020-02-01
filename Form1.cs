@@ -18,31 +18,23 @@ namespace Cordova_Builder
     public partial class Form1 : Form
     {
 
-        // 필요 프로그램 4개가 컴퓨터에 깔려있는 지 확인하는 bool[]형 변수
-        private bool[] _status = new bool[4];
+        
+        private bool[] _status              = new bool[4];                  // 필요 프로그램 4개가 컴퓨터에 깔려있는 지 확인하는 bool[]형 변수
+        private bool _isValid               = false;                        // 준비해야 할 프로그램이 모두 깔려있으면 true
+        private TextBoxList _textBoxList    = new TextBoxList();            // 화면 상의 모든 UI 컨트롤을 자식으로 지니는 컬렉션
+        private Cordova _cordova            = new Cordova();                // 코르도바의 CLI 명령을 처리하는 클래스
+        private delegate void AppendTextCallback(string output);            // 콜백 함수 처리를 위한 선언
 
-        // 준비해야 할 프로그램이 모두 깔려있으면 true
-        private bool _isValid = false;
+        private ResourceManager _rm;                                        // 다국어 처리를 위한 리소스 관리자
 
-        // 화면 상의 모든 UI 컨트롤을 자식으로 지니는 컬렉션
-        private TextBoxList _textBoxList = new TextBoxList();
+        public List<HostData> _hostList     = new List<HostData>();         // 호스트 데이터 목록;
 
-        // 코르도바의 CLI 명령을 처리하는 클래스
-        private Cordova _cordova = new Cordova();
+        public bool _isWorking              = false;                        // 빌드 작업 중임을 판별하는 변수, 처음에는 false
 
-        // 콜백 함수 처리를 위한 선언
-        private delegate void AppendTextCallback(string output);
+        public SortedSet<int> platformTools = new SortedSet<int>();         // 플랫폼 정렬
 
-        // 다국어 처리를 위한 리소스 관리자
-        private ResourceManager _rm;
+        public SortedSet<int> installedSDKs = new SortedSet<int>();         // 설치된 SDK 목록
 
-        // 호스트 데이터 목록;
-        public List<HostData> _hostList = new List<HostData>();
-
-        // 빌드 작업 중임을 판별하는 변수, 처음에는 false
-        public bool _isWorking = false;
-
-        public SortedSet<int> platformTools = new SortedSet<int>();
 
         /// <summary>
         /// Form1's constructor.
@@ -156,7 +148,7 @@ namespace Cordova_Builder
 
                     if(sdkIds.Count() == 0)
                     {
-                        throw new Exception($"The Android SDK is not installed.");
+                        throw new Exception(_rm.GetString("NotInstalledAndroidSDK1"));
                     }
 
                     textBox1.SelectionColor = Color.Red;
@@ -166,6 +158,12 @@ namespace Cordova_Builder
                     {
                         textBox1.SelectionColor = Color.YellowGreen;
                         AppendText(System.IO.Path.GetFileNameWithoutExtension(sdk));
+
+                        string[] pack = sdk.Split('-');
+                        int sdkLevel = Int32.Parse(pack[1]);
+
+                        installedSDKs.Add(sdkLevel);
+                        
                     }
 
                     textBox1.SelectionColor = Color.Red;
@@ -175,7 +173,12 @@ namespace Cordova_Builder
 
             } else
             {
-                throw new Exception("Cannot find ANDROID_SDK_ROOT or ANDROID_HOME in the Windows Environment Variables");
+                throw new Exception(_rm.GetString("ENVIRONMENT_VAR_NOT_FOUND"));
+            }
+
+            if(installedSDKs.Count == 0)
+            {
+                DebugText(_rm.GetString("ANDROID_API_LEVEL_NOT_FOUND"));
             }
         }
 
@@ -235,7 +238,7 @@ namespace Cordova_Builder
                 }
             } else
             {
-                throw new Exception("Cannot find ANDROID_SDK_ROOT or ANDROID_HOME in the Windows Environment Variables");
+                throw new Exception(_rm.GetString("ENVIRONMENT_VAR_NOT_FOUND"));
             }
 
         }
@@ -398,6 +401,15 @@ namespace Cordova_Builder
         }
 
         /// <summary>
+        /// 키스토어 파일이 없을 때, 키스토어 별칭을 매번 램덤하게 변경한다.
+        /// </summary>
+        public void InitWithDefaultTexts()
+        {
+            byte[] aliasText = new UTF8Encoding().GetBytes(DateTime.Now.ToString());
+            textBoxKeyAlias.Text = Convert.ToBase64String(aliasText);
+        }
+
+        /// <summary>
         /// Form1이 로드되었을 때의 처리
         /// </summary>
         /// <param name="sender"></param>
@@ -405,6 +417,7 @@ namespace Cordova_Builder
         private void Form1_Load(object sender, EventArgs e)
         {
             Prepare();
+            InitWithDefaultTexts();
             InitWIthTextBoxList();
             InitWithUIBackground();
 

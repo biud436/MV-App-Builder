@@ -133,6 +133,14 @@
     <value>echo Can’t add {0} plugin to your project.</value>
     <comment>Cordova</comment>
   </data>
+  <data name="ALREADY_EXISTED_KEYSTORE" xml:space="preserve">
+    <value>Already existed keystore file in your project folder!</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="ANDROID_API_LEVEL_NOT_FOUND" xml:space="preserve">
+    <value>The Android SDK API Levels does not exist. Please install a new Android API Level using SDK Manager.</value>
+    <comment>Form1</comment>
+  </data>
   <data name="CHECK_VERSION_ALPHA" xml:space="preserve">
     <value>You are using an alpha version of this program.</value>
     <comment>Cordova</comment>
@@ -201,6 +209,10 @@
     <value>-- All the required programs are found!</value>
     <comment>Form1</comment>
   </data>
+  <data name="ENVIRONMENT_VAR_NOT_FOUND" xml:space="preserve">
+    <value>Cannot find ANDROID_SDK_ROOT or ANDROID_HOME in the Windows Environment Variables</value>
+    <comment>Form1</comment>
+  </data>
   <data name="FAIL_INSTALLED_CORDOVA" xml:space="preserve">
     <value>echo The installation of Cordova encountered an error.</value>
     <comment>Cordova</comment>
@@ -230,7 +242,7 @@
     <comment>HostData</comment>
   </data>
   <data name="FOUND_JAVA" xml:space="preserve">
-    <value>@"java.exe -version 2&gt;&amp;1</value>
+    <value>java.exe -version 2&gt;&amp;1</value>
     <comment>HostData</comment>
   </data>
   <data name="FOUND_KEYTOOL" xml:space="preserve">

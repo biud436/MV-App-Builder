@@ -118,87 +118,123 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddAndroidPlatform1" xml:space="preserve">
-    <value>echo 안드로이드 프로젝트가 추가되었습니다</value>
+    <value>echo Android Platform has been added to your Cordova poject.</value>
     <comment>Cordova</comment>
   </data>
   <data name="AddAndroidPlatform2" xml:space="preserve">
-    <value>echo 안드로이드 프로젝트 추가에 실패하였습니다</value>
+    <value>echo Can’t add Android Platform.</value>
     <comment>Cordova</comment>
   </data>
   <data name="AddPlugins1" xml:space="preserve">
-    <value>echo {0} 플러그인이 추가되었습니다.</value>
+    <value>echo {0} plugin were added to your project.</value>
     <comment>Cordova</comment>
   </data>
   <data name="AddPlugins2" xml:space="preserve">
-    <value>echo {0} 플러그인을 추가하는 데 실패하였습니다.</value>
+    <value>echo Can’t add {0} plugin to your project.</value>
     <comment>Cordova</comment>
   </data>
+  <data name="ALREADY_EXISTED_KEYSTORE" xml:space="preserve">
+    <value>Already existed keystore file in your project folder!</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="ANDROID_API_LEVEL_NOT_FOUND" xml:space="preserve">
+    <value>The Android SDK API Levels does not exist. Please install a new Android API Level using SDK Manager.</value>
+    <comment>Form1</comment>
+  </data>
+  <data name="CHECK_VERSION_ALPHA" xml:space="preserve">
+    <value>You are using an alpha version of this program.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="CHECK_VERSION_LATEST" xml:space="preserve">
+    <value>You are using the latest version of this program.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="CHECK_VERSION_OLD" xml:space="preserve">
+    <value>Detected a new version of MV App Builder.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="CHECK_VERSION_OLD_ASK" xml:space="preserve">
+    <value>Do you want to update to a new version?</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="CLEAR_BUILD_LOG" xml:space="preserve">
+    <value>Clear...</value>
+    <comment>Form1</comment>
+  </data>
   <data name="CopyProjectFiles1" xml:space="preserve">
-    <value>게임 폴더 복사를 시작합니다 [robocopy 사용]</value>
+    <value>Start copying game files.</value>
     <comment>Cordova</comment>
   </data>
   <data name="CopyProjectFiles2" xml:space="preserve">
-    <value>echo 폴더를 www 폴더로 복사하였습니다.</value>
+    <value>echo Finished copying game files</value>
     <comment>Cordova</comment>
   </data>
   <data name="CopyProjectFiles3" xml:space="preserve">
-    <value>echo 폴더 복사에 실패하였습니다.</value>
+    <value>echo Cannot be copying game files</value>
     <comment>Cordova</comment>
   </data>
   <data name="CopyProjectFiles4" xml:space="preserve">
-    <value>복사 할 폴더가 존재하지 않아 파일을 복사할 수 없습니다.</value>
+    <value>The game source directory specified for text box does not exist. Cannot copy game files.</value>
     <comment>Cordova</comment>
   </data>
   <data name="Create1" xml:space="preserve">
-    <value>echo 프로젝트를 생성하였습니다.</value>
+    <value>echo Cordova project creation successful.</value>
     <comment>Cordova</comment>
   </data>
   <data name="Create2" xml:space="preserve">
-    <value>echo 프로젝트 생성에 실패하였습니다.</value>
+    <value>echo Cannot Create Project.</value>
     <comment>Cordova</comment>
   </data>
   <data name="CreateKeyStore1" xml:space="preserve">
-    <value>키스토어 파일이 생성되었습니다</value>
+    <value>keystore file creation successful.</value>
     <comment>Form1</comment>
   </data>
   <data name="CreateKeyStore2" xml:space="preserve">
-    <value>키스토어 파일 생성에 실패하였습니다</value>
+    <value>Cannot create the keystore file</value>
     <comment>Form1</comment>
   </data>
   <data name="CreateKeyStore3" xml:space="preserve">
-    <value>키스토어 파일이 생성되었습니다.</value>
+    <value>keystore file creation successful.</value>
     <comment>Form1</comment>
   </data>
   <data name="CreateKeyStore4" xml:space="preserve">
-    <value>이미 파일이 존재하거나. 유효하지 않은 매개변수를 입력하였습니다. 키스토어 파일 생성에 실패하였습니다.</value>
+    <value>Could not create keystore file because it contains invalid parameters.</value>
     <comment>Form1</comment>
   </data>
   <data name="CreateKeyStore5" xml:space="preserve">
-    <value>비어있는 칸이 있어서 키스토어 파일을 생성할 수 없습니다.</value>
+    <value>Could not create keystore file because it contains the empty string.</value>
     <comment>Form1</comment>
   </data>
   <data name="Done" xml:space="preserve">
-    <value>--- 필요한 모든 프로그램이 설치되어있습니다.</value>
+    <value>-- All the required programs are found!</value>
     <comment>Form1</comment>
   </data>
+  <data name="ENVIRONMENT_VAR_NOT_FOUND" xml:space="preserve">
+    <value>Cannot find ANDROID_SDK_ROOT or ANDROID_HOME in the Windows Environment Variables</value>
+    <comment>Form1</comment>
+  </data>
+  <data name="FAIL_INSTALLED_CORDOVA" xml:space="preserve">
+    <value>echo The installation of Cordova encountered an error.</value>
+    <comment>Cordova</comment>
+  </data>
   <data name="Flush1" xml:space="preserve">
-    <value>build.json 파일을 찾았습니다</value>
+    <value>Found build.json</value>
     <comment>Cordova</comment>
   </data>
   <data name="Flush2" xml:space="preserve">
-    <value>echo 빌드가 완료되었습니다.</value>
+    <value>echo build complete.</value>
     <comment>Cordova</comment>
   </data>
   <data name="Flush3" xml:space="preserve">
-    <value>echo 빌드 중에 오류가 발생하였습니다.</value>
+    <value>echo Error occurred while compiling the APK.</value>
     <comment>Cordova</comment>
   </data>
   <data name="FOUND_ANDROID_HOME" xml:space="preserve">
-    <value>안드로이드 SDK / ANDROID_HOME를 찾았습니다 : {0}</value>
+    <value>Found Android SDK from ANDROID_HOME : {0}</value>
     <comment>Form1</comment>
   </data>
   <data name="FOUND_ANDROID_SDK_ROOT" xml:space="preserve">
-    <value>안드로이드 SDK / ANDROID_SDK_ROOT를 찾았습니다 : {0}</value>
+    <value>Found Android SDK from ANDROID_SDK_ROOT : {0}</value>
     <comment>Form1</comment>
   </data>
   <data name="FOUND_CORDOVA" xml:space="preserve">
@@ -206,27 +242,35 @@
     <comment>HostData</comment>
   </data>
   <data name="FOUND_JAVA" xml:space="preserve">
-    <value>@"java.exe -version 2&gt;&amp;1</value>
+    <value>java.exe -version 2&gt;&amp;1</value>
     <comment>HostData</comment>
   </data>
   <data name="FOUND_KEYTOOL" xml:space="preserve">
-    <value>echo -- keytool을 찾았습니다.</value>
+    <value>echo Found keytool</value>
     <comment>HostData</comment>
   </data>
+  <data name="INSTALLING_CORDOVA" xml:space="preserve">
+    <value>Updating Cordova... Please wait, may take up to 1 minutes.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="LATEST_CORDOVA_READY" xml:space="preserve">
+    <value>Latest stable version is installed.</value>
+    <comment>Cordova</comment>
+  </data>
   <data name="ModifyHtmlFiles" xml:space="preserve">
-    <value>index.html 파일을 수정하였습니다.</value>
+    <value>Modified the index.html</value>
     <comment>Cordova</comment>
   </data>
   <data name="NotInstalled" xml:space="preserve">
-    <value>--- [ERROR] 필요한 프로그램이 설치되어있지 않습니다.</value>
+    <value>---The required tool Not Installed.</value>
     <comment>Form1</comment>
   </data>
   <data name="NotInstalledAndroidSDK1" xml:space="preserve">
-    <value>안드로이드 SDK가 설치되어있지 않습니다</value>
+    <value>The Android SDK Not Installed.</value>
     <comment>Form1</comment>
   </data>
   <data name="NotInstalledAndroidSDK2" xml:space="preserve">
-    <value>안드로이드 SDK를 설치해주십시오.</value>
+    <value>Please install Android Studio and Android SDK</value>
     <comment>Form1</comment>
   </data>
   <data name="NotInstalledAndroidSDK3" xml:space="preserve">
@@ -234,7 +278,7 @@
     <comment>Form1</comment>
   </data>
   <data name="NotInstalledCordova1" xml:space="preserve">
-    <value>Node.js와 cordova를 설치해야 합니다.</value>
+    <value>Please Node.js and Cordova</value>
     <comment>Form1</comment>
   </data>
   <data name="NotInstalledCordova2" xml:space="preserve">
@@ -246,28 +290,52 @@
     <comment>Form1</comment>
   </data>
   <data name="NotInstalledJava1" xml:space="preserve">
-    <value>자바를 설치해주세요.</value>
+    <value>Please install Java</value>
     <comment>Form1</comment>
   </data>
   <data name="NotInstalledJava2" xml:space="preserve">
     <value>https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</value>
     <comment>Form1</comment>
   </data>
+  <data name="NOT_CONNECTED_INTERNET" xml:space="preserve">
+    <value>Not Network Connected. Version check failed.</value>
+    <comment>Form1</comment>
+  </data>
   <data name="NOT_FOUND_CORDOVA" xml:space="preserve">
-    <value>echo -- cordova를 찾지 못했습니다</value>
+    <value>echo cordova not found</value>
     <comment>HostData</comment>
   </data>
   <data name="NOT_FOUND_JAVA" xml:space="preserve">
-    <value>echo -- 자바를 찾지 못했습니다</value>
+    <value>echo Java not found</value>
     <comment>HostData</comment>
   </data>
   <data name="NOT_FOUND_KEYTOOL" xml:space="preserve">
-    <value>echo -- keytool을 찾지 못했습니다</value>
+    <value>echo keytool not found</value>
     <comment>HostData</comment>
   </data>
-  <data name="Ready" xml:space="preserve">
-    <value>--- 준비 ---</value>
+  <data name="NOT_LATEST_CORDOV_VER" xml:space="preserve">
+    <value>Current Cordova version is out of date.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="PENDING_CHECK_CORDOVA_VER" xml:space="preserve">
+    <value>Checking if Cordova is up to date ... (May take up to 5 seconds)</value>
     <comment>Form1</comment>
+  </data>
+  <data name="PENDING_CHECK_PROGRAM_VER" xml:space="preserve">
+    <value>Checking if program is up to date ... (Please wait 1 seconds)</value>
+    <comment>Form1</comment>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>-- Ready</value>
+    <comment>Form1</comment>
+  </data>
+  <data name="REQUEST_NPM_INSTALL" xml:space="preserve">
+    <value>The latest stable version is v{0}, you need to update Cordova</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="REQUEST_NPM_INSTALL_ASK" xml:space="preserve">
+    <value>Do you want to update the Cordova?</value>
+    <comment>Cordova</comment>
   </data>
   <data name="Requirements1" xml:space="preserve">
     <value>echo ...</value>
@@ -277,8 +345,20 @@
     <value>echo ...</value>
     <comment>Cordova</comment>
   </data>
+  <data name="SAVE_BUILD_LOG" xml:space="preserve">
+    <value>Save Log</value>
+    <comment>Form1</comment>
+  </data>
+  <data name="SUCCESSED_SETUP_FILE" xml:space="preserve">
+    <value>You have successfully downloaded the installer.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="SUCCESS_INSTALLED_CORDOVA" xml:space="preserve">
+    <value>echo Job completed!</value>
+    <comment>Cordova</comment>
+  </data>
   <data name="WriteConfig" xml:space="preserve">
-    <value>config.xml 파일을 수정하였습니다</value>
+    <value>Modified the config.xml</value>
     <comment>Cordova</comment>
   </data>
 </root>

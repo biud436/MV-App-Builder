@@ -61,7 +61,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo 안드로이드 프로젝트가 추가되었습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo Android Platform has been added to your Cordova poject.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string AddAndroidPlatform1 {
             get {
@@ -70,7 +70,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo 안드로이드 프로젝트 추가에 실패하였습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo Can’t add Android Platform.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string AddAndroidPlatform2 {
             get {
@@ -79,7 +79,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo {0} 플러그인이 추가되었습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo {0} plugin were added to your project.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string AddPlugins1 {
             get {
@@ -88,7 +88,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo {0} 플러그인을 추가하는 데 실패하였습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo Can’t add {0} plugin to your project.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string AddPlugins2 {
             get {
@@ -97,7 +97,70 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   게임 폴더 복사를 시작합니다 [robocopy 사용]과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Already existed keystore file in your project folder!과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string ALREADY_EXISTED_KEYSTORE {
+            get {
+                return ResourceManager.GetString("ALREADY_EXISTED_KEYSTORE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The Android SDK API Levels does not exist. Please install a new Android API Level using SDK Manager.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string ANDROID_API_LEVEL_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("ANDROID_API_LEVEL_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   You are using an alpha version of this program.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string CHECK_VERSION_ALPHA {
+            get {
+                return ResourceManager.GetString("CHECK_VERSION_ALPHA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   You are using the latest version of this program.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string CHECK_VERSION_LATEST {
+            get {
+                return ResourceManager.GetString("CHECK_VERSION_LATEST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Detected a new version of MV App Builder.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string CHECK_VERSION_OLD {
+            get {
+                return ResourceManager.GetString("CHECK_VERSION_OLD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Do you want to update to a new version?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string CHECK_VERSION_OLD_ASK {
+            get {
+                return ResourceManager.GetString("CHECK_VERSION_OLD_ASK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Clear...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string CLEAR_BUILD_LOG {
+            get {
+                return ResourceManager.GetString("CLEAR_BUILD_LOG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Start copying game files.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CopyProjectFiles1 {
             get {
@@ -106,7 +169,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo 폴더를 www 폴더로 복사하였습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo Finished copying game files과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CopyProjectFiles2 {
             get {
@@ -115,7 +178,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo 폴더 복사에 실패하였습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo Cannot be copying game files과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CopyProjectFiles3 {
             get {
@@ -124,7 +187,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   복사 할 폴더가 존재하지 않아 파일을 복사할 수 없습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   The game source directory specified for text box does not exist. Cannot copy game files.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CopyProjectFiles4 {
             get {
@@ -133,7 +196,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo 프로젝트를 생성하였습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo Cordova project creation successful.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Create1 {
             get {
@@ -142,7 +205,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo 프로젝트 생성에 실패하였습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo Cannot Create Project.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Create2 {
             get {
@@ -151,7 +214,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   키스토어 파일이 생성되었습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   keystore file creation successful.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CreateKeyStore1 {
             get {
@@ -160,7 +223,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   키스토어 파일 생성에 실패하였습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Cannot create the keystore file과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CreateKeyStore2 {
             get {
@@ -169,7 +232,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   키스토어 파일이 생성되었습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   keystore file creation successful.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CreateKeyStore3 {
             get {
@@ -178,7 +241,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   이미 파일이 존재하거나. 유효하지 않은 매개변수를 입력하였습니다. 키스토어 파일 생성에 실패하였습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Could not create keystore file because it contains invalid parameters.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CreateKeyStore4 {
             get {
@@ -187,7 +250,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   비어있는 칸이 있어서 키스토어 파일을 생성할 수 없습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Could not create keystore file because it contains the empty string.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CreateKeyStore5 {
             get {
@@ -196,7 +259,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   --- 필요한 모든 프로그램이 설치되어있습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   -- All the required programs are found!과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Done {
             get {
@@ -205,7 +268,25 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   build.json 파일을 찾았습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Cannot find ANDROID_SDK_ROOT or ANDROID_HOME in the Windows Environment Variables과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string ENVIRONMENT_VAR_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("ENVIRONMENT_VAR_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   echo The installation of Cordova encountered an error.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string FAIL_INSTALLED_CORDOVA {
+            get {
+                return ResourceManager.GetString("FAIL_INSTALLED_CORDOVA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Found build.json과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Flush1 {
             get {
@@ -214,7 +295,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo 빌드가 완료되었습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo build complete.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Flush2 {
             get {
@@ -223,7 +304,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo 빌드 중에 오류가 발생하였습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo Error occurred while compiling the APK.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Flush3 {
             get {
@@ -232,7 +313,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   안드로이드 SDK / ANDROID_HOME를 찾았습니다 : {0}과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Found Android SDK from ANDROID_HOME : {0}과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string FOUND_ANDROID_HOME {
             get {
@@ -241,7 +322,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   안드로이드 SDK / ANDROID_SDK_ROOT를 찾았습니다 : {0}과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Found Android SDK from ANDROID_SDK_ROOT : {0}과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string FOUND_ANDROID_SDK_ROOT {
             get {
@@ -259,7 +340,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   @&quot;java.exe -version 2&gt;&amp;1과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   java.exe -version 2&gt;&amp;1과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string FOUND_JAVA {
             get {
@@ -268,7 +349,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo -- keytool을 찾았습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo Found keytool과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string FOUND_KEYTOOL {
             get {
@@ -277,7 +358,25 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   index.html 파일을 수정하였습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Updating Cordova... Please wait, may take up to 1 minutes.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string INSTALLING_CORDOVA {
+            get {
+                return ResourceManager.GetString("INSTALLING_CORDOVA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Latest stable version is installed.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string LATEST_CORDOVA_READY {
+            get {
+                return ResourceManager.GetString("LATEST_CORDOVA_READY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Modified the index.html과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string ModifyHtmlFiles {
             get {
@@ -286,7 +385,16 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo -- cordova를 찾지 못했습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Not Network Connected. Version check failed.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string NOT_CONNECTED_INTERNET {
+            get {
+                return ResourceManager.GetString("NOT_CONNECTED_INTERNET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   echo cordova not found과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string NOT_FOUND_CORDOVA {
             get {
@@ -295,7 +403,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo -- 자바를 찾지 못했습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo Java not found과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string NOT_FOUND_JAVA {
             get {
@@ -304,7 +412,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   echo -- keytool을 찾지 못했습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   echo keytool not found과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string NOT_FOUND_KEYTOOL {
             get {
@@ -313,7 +421,16 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   --- [ERROR] 필요한 프로그램이 설치되어있지 않습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Current Cordova version is out of date.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string NOT_LATEST_CORDOV_VER {
+            get {
+                return ResourceManager.GetString("NOT_LATEST_CORDOV_VER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ---The required tool Not Installed.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string NotInstalled {
             get {
@@ -322,7 +439,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   안드로이드 SDK가 설치되어있지 않습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   The Android SDK Not Installed.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string NotInstalledAndroidSDK1 {
             get {
@@ -331,7 +448,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   안드로이드 SDK를 설치해주십시오.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Please install Android Studio and Android SDK과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string NotInstalledAndroidSDK2 {
             get {
@@ -349,7 +466,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   Node.js와 cordova를 설치해야 합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Please Node.js and Cordova과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string NotInstalledCordova1 {
             get {
@@ -376,7 +493,7 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   자바를 설치해주세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Please install Java과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string NotInstalledJava1 {
             get {
@@ -394,11 +511,47 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   --- 준비 ---과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Checking if Cordova is up to date ... (May take up to 5 seconds)과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string PENDING_CHECK_CORDOVA_VER {
+            get {
+                return ResourceManager.GetString("PENDING_CHECK_CORDOVA_VER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Checking if program is up to date ... (Please wait 1 seconds)과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string PENDING_CHECK_PROGRAM_VER {
+            get {
+                return ResourceManager.GetString("PENDING_CHECK_PROGRAM_VER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   -- Ready과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Ready {
             get {
                 return ResourceManager.GetString("Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The latest stable version is v{0}, you need to update Cordova과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string REQUEST_NPM_INSTALL {
+            get {
+                return ResourceManager.GetString("REQUEST_NPM_INSTALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Do you want to update the Cordova?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string REQUEST_NPM_INSTALL_ASK {
+            get {
+                return ResourceManager.GetString("REQUEST_NPM_INSTALL_ASK", resourceCulture);
             }
         }
         
@@ -421,7 +574,34 @@ namespace Cordova_Builder {
         }
         
         /// <summary>
-        ///   config.xml 파일을 수정하였습니다과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Save Log과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SAVE_BUILD_LOG {
+            get {
+                return ResourceManager.GetString("SAVE_BUILD_LOG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   echo Job completed!과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SUCCESS_INSTALLED_CORDOVA {
+            get {
+                return ResourceManager.GetString("SUCCESS_INSTALLED_CORDOVA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   You have successfully downloaded the installer.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SUCCESSED_SETUP_FILE {
+            get {
+                return ResourceManager.GetString("SUCCESSED_SETUP_FILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Modified the config.xml과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string WriteConfig {
             get {

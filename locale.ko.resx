@@ -133,6 +133,14 @@
     <value>echo {0} 플러그인을 추가하는 데 실패하였습니다.</value>
     <comment>Cordova</comment>
   </data>
+  <data name="ALREADY_EXISTED_KEYSTORE" xml:space="preserve">
+    <value>키스토어 파일이 이미 생성되어있습니다.</value>
+    <comment>Cordova</comment>
+  </data>
+  <data name="ANDROID_API_LEVEL_NOT_FOUND" xml:space="preserve">
+    <value>안드로이드 API 레벨이 없습니다. SDK Manager를 이용하여 안드로이드 API를 설치해주십시오.</value>
+    <comment>Form1</comment>
+  </data>
   <data name="CHECK_VERSION_ALPHA" xml:space="preserve">
     <value>알파 버전을 사용하고 있습니다.</value>
     <comment>Cordova</comment>
@@ -201,6 +209,10 @@
     <value>--- 필요한 모든 프로그램이 설치되어있습니다.</value>
     <comment>Form1</comment>
   </data>
+  <data name="ENVIRONMENT_VAR_NOT_FOUND" xml:space="preserve">
+    <value>윈도우 환경 변수에서 ANDROID_SDK_ROOT 또는 ANDROID_HOME 변수를 찾지 못했습니다.</value>
+    <comment>Form1</comment>
+  </data>
   <data name="FAIL_INSTALLED_CORDOVA" xml:space="preserve">
     <value>echo 코르도바 설치 도중에 오류가 발생했습니다.</value>
     <comment>Cordova</comment>
@@ -230,7 +242,7 @@
     <comment>HostData</comment>
   </data>
   <data name="FOUND_JAVA" xml:space="preserve">
-    <value>@"java.exe -version 2&gt;&amp;1</value>
+    <value>java.exe -version 2&gt;&amp;1</value>
     <comment>HostData</comment>
   </data>
   <data name="FOUND_KEYTOOL" xml:space="preserve">
