@@ -758,7 +758,7 @@ android {
 
             try
             {
-                string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "RPG Maker MV Cordova Builder");
+                string folderPath = DataManager.Instance.GetRootDirectory();
                 string targetPath = Path.Combine(folderPath, "MVAppBuilder.exe");
 
                 if (!Directory.Exists(folderPath))
