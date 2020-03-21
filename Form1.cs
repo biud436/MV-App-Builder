@@ -599,9 +599,9 @@ namespace Cordova_Builder
                         buttonBuild.Enabled = true;
                         _isWorking = false;
 
-                        // 폴더가 있다면 탐색기로 연다.
-                        string myDocumentsPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), this.Text);
-                        string targetPath = System.IO.Path.Combine(myDocumentsPath, textBoxFolderName.Text, "platforms", "android", "app", "build", "outputs", "apk");
+                        // TODO: "RPG Maker MV Cordova Builder"/YourApplication/android/app/build/outputs/apk/release/
+                        string buildMode = (config.buildMode == 0) ? "release" : "debug";
+                        string targetPath = System.IO.Path.Combine(DataManager.Instance.GetRootDirectory(), textBoxFolderName.Text, "platforms", "android", "app", "build", "outputs", "apk", buildMode);
 
                         if(System.IO.Directory.Exists(targetPath))
                         {

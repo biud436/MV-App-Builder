@@ -35,7 +35,7 @@ namespace Cordova_Builder
         private Dictionary<string, bool> _plugins = new Dictionary<string, bool>();
 
         // 버전
-        private Version _version = new Version("0.2.20");
+        private Version _version = new Version("0.2.21");
 
         private Version _cordovaVersion = new Version("0.0.0");
 
@@ -168,7 +168,7 @@ namespace Cordova_Builder
 
             Thread worker = new Thread(new ThreadStart(() =>
             {
-                // 내문서에 APK 파일을 저장합니다.
+                // 출력 폴더에 APK 파일을 저장합니다.
                 string targetFolder = DataManager.Instance.GetRootDirectory();
                 string tempDir = System.IO.Directory.GetCurrentDirectory();
 
@@ -758,7 +758,8 @@ android {
 
             try
             {
-                string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "RPG Maker MV Cordova Builder");
+
+                string folderPath = Path.Combine(DataManager.Instance.GetRootDirectory());
                 string targetPath = Path.Combine(folderPath, "MVAppBuilder.exe");
 
                 if (Directory.Exists(folderPath))
