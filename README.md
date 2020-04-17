@@ -1,4 +1,6 @@
 # Introduction
+[![Build status](https://ci.appveyor.com/api/projects/status/w296e5145wwpn5dc/branch/master?svg=true)](https://ci.appveyor.com/project/biud436/mv-app-builder/branch/master)
+
 직접 사용하기 위해 만든 RPG Maker MV 안드로이드 앱 빌드 툴입니다.
 
 본 프로그램에서는 키스토어 파일을 JDK를 이용하여 자체적으로 생성합니다. 화면 방향 설정과 앱의 아이콘 설정, 그리고 화면 꺼짐 방지 코드를 자동으로 추가합니다. 
