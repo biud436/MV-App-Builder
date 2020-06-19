@@ -11,34 +11,20 @@ namespace Cordova_Builder
     public class DataManager
     {
 
-        private static volatile DataManager instance;
-        private static object syncRoot = new Object();
+        private static readonly Lazy<DataManager> instance = new Lazy<DataManager>(() => new DataManager()
+        {
+            PackageFileName = "package.json",
+            DataFolderName = "RPG Maker MV Cordova Builder",
+            Type = DataManager.DataFolderType.MY_DOCUMENTS,
+        });
 
         public static DataManager Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    // 하나의 쓰레드만 실행할 수 있도록 해주는 키워드
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                        {
-                            instance = new DataManager()
-                            {
-                                PackageFileName = "package.json",
-                                DataFolderName = "RPG Maker MV Cordova Builder",
-                                Type = DataManager.DataFolderType.MY_DOCUMENTS,
-                            };
-                        }
-                    }
-                }
-
-                return instance;
+                return instance.Value;
             }
         }
-
 
         public enum DataFolderType : int
         {
