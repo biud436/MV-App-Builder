@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cordova_Builder
+namespace Cordova.EntryPoint
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Cordova_Builder
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new global::Cordova.Forms.Form1());
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cordova_Builder
+namespace Cordova.Data
 {
     namespace FormData {
 

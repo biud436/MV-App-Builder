@@ -8,8 +8,10 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using System.IO;
 
-namespace Cordova_Builder
+namespace Cordova.Manage
 {
+    using Core;
+
     public sealed class DataMan
     {
         private static volatile DataMan instance;

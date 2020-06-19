@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace Cordova_Builder
+namespace Cordova.Manage
 {
     public class DataManager
     {
@@ -80,7 +80,7 @@ namespace Cordova_Builder
             var rootDirectory = GetRootDirectory();
             var filePath = Path.Combine(rootDirectory, PackageFileName);
 
-            var packageJson = new PackageJson()
+            var packageJson = new Data.PackageJson()
             {
                 RootDirectory = rootDirectory
             };
@@ -101,7 +101,7 @@ namespace Cordova_Builder
             if (File.Exists(filePath))
             {
                 var contents = File.ReadAllText(rootDirectory, Encoding.UTF8);
-                var ret = JsonConvert.DeserializeObject<PackageJson>(contents);
+                var ret = JsonConvert.DeserializeObject<Data.PackageJson>(contents);
 
                 return ret.RootDirectory;
             }

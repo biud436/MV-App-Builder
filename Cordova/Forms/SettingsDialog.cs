@@ -10,8 +10,10 @@ using System.Windows.Forms;
 using DarkUI.Forms;
 using System.Diagnostics;
 
-namespace Cordova_Builder
+namespace Cordova.Forms
 {
+    using Manage;
+
     public partial class SettingsDialog : DarkForm
     {
         public SettingsDialog()

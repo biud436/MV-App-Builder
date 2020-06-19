@@ -16,9 +16,14 @@ using System.ComponentModel;
 using System.Net;
 using System.IO;
 using System.Net.Http;
+using Cordova.Forms;
+using Cordova.Data;
+using Cordova.Data.FormData;
 
-namespace Cordova_Builder
+namespace Cordova.Core
 {
+    using Manage;
+
     public class Cordova
     {
 
@@ -41,7 +46,7 @@ namespace Cordova_Builder
 
         private string _titleText;
 
-        private FormData.Config _config;
+        private Data.FormData.Config _config;
 
         /// <summary>
         /// 생성자
@@ -161,7 +166,7 @@ namespace Cordova_Builder
         /// 빌드를 진행합니다.
         /// </summary>
         /// <param name="successCallback"></param>
-        public void Build(FormData.Config config, Action successCallback)
+        public void Build(Data.FormData.Config config, Action successCallback)
         {
 
             _config = config;

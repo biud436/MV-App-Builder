@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 
 
-namespace Cordova_Builder
+namespace Cordova.Core
 {
     public delegate void Append(string output);
 

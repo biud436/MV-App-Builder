@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Cordova_Builder {
+namespace Cordova {
     using System;
     
     

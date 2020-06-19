@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Data;
 
-namespace Cordova_Builder
+namespace Cordova.Data
 {
     /// <summary>
     /// https://www.codeproject.com/Articles/1201466/Working-with-JSON-in-Csharp-VB

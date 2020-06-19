@@ -1,4 +1,4 @@
-﻿namespace Cordova_Builder
+﻿namespace Cordova.Forms
 {
     partial class Form1
     {

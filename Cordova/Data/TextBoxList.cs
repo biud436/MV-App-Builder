@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cordova_Builder
+namespace Cordova.Data
 {
     public class TextBoxList : List<Control>
     {

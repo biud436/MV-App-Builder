@@ -12,13 +12,14 @@ using System.Globalization;
 using System.Reflection;
 using System.Resources;
 
-namespace Cordova_Builder
+namespace Cordova.Forms
 {
+    using Core;
+    using Data;
+    using Manage;
 
     public partial class Form1 : Form
     {
-
-        
         private bool[] _status              = new bool[4];                  // 필요 프로그램 4개가 컴퓨터에 깔려있는 지 확인하는 bool[]형 변수
         private bool _isValid               = false;                        // 준비해야 할 프로그램이 모두 깔려있으면 true
         private TextBoxList _textBoxList    = new TextBoxList();            // 화면 상의 모든 UI 컨트롤을 자식으로 지니는 컬렉션
@@ -565,7 +566,7 @@ namespace Cordova_Builder
                 _isWorking = true;
                 buttonBuild.Enabled = false;
 
-                var config = new FormData.Config()
+                var config = new Data.FormData.Config()
                 {
                     folderName = textBoxFolderName.Text,
                     keyPath = textBoxKeyPath.Text,

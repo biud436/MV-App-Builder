@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cordova\Commands\ICommand.cs" />
     <Compile Include="Cordova\Data\Config.cs" />
     <Compile Include="Cordova\Core\Cordova.cs" />
     <Compile Include="Cordova\Manage\DataMan.cs" />
