@@ -60,7 +60,7 @@ namespace Cordova.Core
 
         public void InitMembers()
         {
-            _currentDirectory = System.IO.Directory.GetCurrentDirectory();
+            _currentDirectory = Directory.GetCurrentDirectory();
         }
 
         public void InitWithDataMan()
@@ -124,7 +124,7 @@ namespace Cordova.Core
                 Formatting = Newtonsoft.Json.Formatting.Indented
             });
 
-            System.IO.File.WriteAllText(filename, json.ToString());
+            File.WriteAllText(filename, json.ToString());
 
         }
 
@@ -137,26 +137,26 @@ namespace Cordova.Core
             try
             {
                 string myDocumentsPath = DataManager.Instance.GetRootDirectory();
-                string mkdir = System.IO.Path.Combine(myDocumentsPath, _config.folderName);
+                string mkdir = Path.Combine(myDocumentsPath, _config.folderName);
 
-                if (!System.IO.Directory.Exists(mkdir))
+                if (!Directory.Exists(mkdir))
                 {
-                    System.IO.Directory.CreateDirectory(mkdir);
+                    Directory.CreateDirectory(mkdir);
                 }
 
-                string tempDir = System.IO.Directory.GetCurrentDirectory();
+                string tempDir = Directory.GetCurrentDirectory();
                 string filename = "build.json";
 
                 string targetPath = mkdir;
 
-                System.IO.Directory.SetCurrentDirectory(targetPath);
+                Directory.SetCurrentDirectory(targetPath);
 
                 callback(filename);
 
-                System.IO.Directory.SetCurrentDirectory(tempDir);
+                Directory.SetCurrentDirectory(tempDir);
 
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -166,7 +166,7 @@ namespace Cordova.Core
         /// 빌드를 진행합니다.
         /// </summary>
         /// <param name="successCallback"></param>
-        public void Build(Data.FormData.Config config, Action successCallback)
+        public void Build(Config config, Action successCallback)
         {
 
             _config = config;
@@ -175,17 +175,17 @@ namespace Cordova.Core
             {
                 // 출력 폴더에 APK 파일을 저장합니다.
                 string targetFolder = DataManager.Instance.GetRootDirectory();
-                string tempDir = System.IO.Directory.GetCurrentDirectory();
+                string tempDir = Directory.GetCurrentDirectory();
 
                 // 타겟 폴더를 현재 경로로 설정합니다.
-                System.IO.Directory.SetCurrentDirectory(targetFolder);
+                Directory.SetCurrentDirectory(targetFolder);
 
                 // 폴더를 생성합니다
                 bool isValid = Create();
                 isValid = DataManager.Instance.IsValidPath(targetFolder);
 
                 // 다시 되돌립니다.
-                System.IO.Directory.SetCurrentDirectory(tempDir);
+                Directory.SetCurrentDirectory(tempDir);
 
                 if (isValid)
                 {
@@ -245,14 +245,14 @@ namespace Cordova.Core
         /// <param name="FolderName"></param>
         private void clearFolder(string FolderName)
         {
-            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(FolderName);
+            DirectoryInfo dir = new DirectoryInfo(FolderName);
 
-            foreach (System.IO.FileInfo fi in dir.GetFiles())
+            foreach (FileInfo fi in dir.GetFiles())
             {
                 fi.Delete();
             }
 
-            foreach (System.IO.DirectoryInfo di in dir.GetDirectories())
+            foreach (DirectoryInfo di in dir.GetDirectories())
             {
                 clearFolder(di.FullName);
                 di.Delete();
@@ -281,11 +281,11 @@ namespace Cordova.Core
                 //
                 // 가장 간단한 처리는 폴더가 존재하면 삭제하고 재생성하는 방법
                 // 
-                if (System.IO.Directory.Exists(folderName) )
+                if (Directory.Exists(folderName) )
                 {
-                    var configPath = System.IO.Path.Combine(folderName, "config.xml");
+                    var configPath = Path.Combine(folderName, "config.xml");
 
-                    if(System.IO.File.Exists(configPath))
+                    if(File.Exists(configPath))
                     {
 
                         return true;
@@ -339,7 +339,7 @@ namespace Cordova.Core
 
             var ret = false;
 
-            if(!System.IO.File.Exists(@"platforms/android/android.json"))
+            if(!File.Exists(@"platforms/android/android.json"))
             {
                 using (HostData process = new HostData("cordova platform add android", true, "", _rm.GetString("AddAndroidPlatform1"), _rm.GetString("AddAndroidPlatform2")))
                 {
@@ -410,7 +410,7 @@ namespace Cordova.Core
         {
             try
             {
-                if (System.IO.File.Exists("config.xml"))
+                if (File.Exists("config.xml"))
                 {
                     XmlDocument xmlDoc = new XmlDocument();
 
@@ -449,7 +449,7 @@ namespace Cordova.Core
             string keystorePath = _config.keyPath;
 
             // 키스토어 파일이 이미 있다면
-            if (System.IO.File.Exists(keystorePath))
+            if (File.Exists(keystorePath))
             {
                 AppendText(_rm.GetString("ALREADY_EXISTED_KEYSTORE"));
                 return;
@@ -528,7 +528,7 @@ namespace Cordova.Core
         private void ModifyHtmlFiles()
         {
             var filename = @"www/index.html";
-            var lines = System.IO.File.ReadAllLines(filename, Encoding.UTF8).ToList();
+            var lines = File.ReadAllLines(filename, Encoding.UTF8).ToList();
             string matchLine = null;
             bool isValid = false;
 
@@ -550,7 +550,7 @@ namespace Cordova.Core
                     lines.Insert(index, "        <script type=\"text/javascript\" src=\"cordova.js\"></script>");
                     lines.Insert(index + 1, "        <script type=\"text/javascript\">(function(){document.addEventListener(\"deviceready\",function(){var mainloopid = setInterval(mainloop,1000); function mainloop(){ window.plugins.insomnia.keepAwake();} },false);})();</script>");
 
-                    System.IO.File.WriteAllLines(filename, lines);
+                    File.WriteAllLines(filename, lines);
 
                     AppendText(_rm.GetString("ModifyHtmlFiles"));
                 }
@@ -568,7 +568,7 @@ namespace Cordova.Core
 
             AppendText(_rm.GetString("CopyProjectFiles1"));
 
-            if (System.IO.Directory.Exists(srcPath))
+            if (Directory.Exists(srcPath))
             {
                 // 다중 쓰레드 (기본값 : 8 쓰레드)
                 // 원본과 동일한 트리로 유지
@@ -643,7 +643,7 @@ android {
         /// </summary>
         private bool Flush()
         {
-            if(System.IO.File.Exists("build.json"))
+            if(File.Exists("build.json"))
             {
                 AppendText(_rm.GetString("Flush1"));
             }
@@ -694,13 +694,13 @@ android {
         public void ReadProjectPluginsJson(string projectPath)
         {
 
-            if(!System.IO.File.Exists(System.IO.Path.Combine(projectPath, "index.html"))) 
+            if(!File.Exists(Path.Combine(projectPath, "index.html"))) 
             {
                 return;
             }
 
-            string realPath = System.IO.Path.Combine(projectPath, "js", "plugins.js");
-            var fakeLines = System.IO.File.ReadLines(realPath).Skip(4);
+            string realPath = Path.Combine(projectPath, "js", "plugins.js");
+            var fakeLines = File.ReadLines(realPath).Skip(4);
             var length = fakeLines.Count() - 1;
             var lines = fakeLines.Take(length);
 
@@ -974,7 +974,7 @@ android {
             src = src.Replace(@"\", "/");
 
             string myDocumentsPath = DataManager.Instance.GetRootDirectory();
-            string dst = System.IO.Path.Combine(myDocumentsPath, _config.folderName, "www");
+            string dst = Path.Combine(myDocumentsPath, _config.folderName, "www");
             dst = dst.Replace(@"\", "/");
 
             Dictionary<string, string> option = new Dictionary<string, string>();
@@ -1005,9 +1005,9 @@ android {
         {
             string path = _config.settingGameFolder;
 
-            var files = System.IO.Directory.GetFiles(path, "*.*", System.IO.SearchOption.AllDirectories);
+            var files = Directory.GetFiles(path, "*.*", System.IO.SearchOption.AllDirectories);
             var totalSizeBytes = files.Sum(file => {
-                System.IO.FileInfo fi = new System.IO.FileInfo(file);
+                FileInfo fi = new FileInfo(file);
                 return fi.Length;
             });
 
