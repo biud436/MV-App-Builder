@@ -1,21 +1,16 @@
 # Introduction
 [![Build status](https://ci.appveyor.com/api/projects/status/w296e5145wwpn5dc/branch/master?svg=true)](https://ci.appveyor.com/project/biud436/mv-app-builder/branch/master)
 
-직접 사용하기 위해 만든 RPG Maker MV 안드로이드 앱 빌드 툴입니다.
-
-본 프로그램에서는 키스토어 파일을 JDK를 이용하여 자체적으로 생성합니다. 화면 방향 설정과 앱의 아이콘 설정, 그리고 화면 꺼짐 방지 코드를 자동으로 추가합니다. 
-
-다양한 코르도바 플러그인 추가/삭제도 지원합니다.
-
-​자동으로 설치된 안드로이드 API를 초기에 감지하고, 현재까지 나와있는 안드로이드 API 목록을 가져옵니다 (JDK 12는 오류가 있으니 JDK 8을 사용해주세요)
+This tool allows you to build your own Android APK File easily.
 
 # Features
 
-- 키스토어 생성
-- 자체 빌드
-- 자동 업데이트 포함
-- 코르도바 플러그인 지원
-- 미사용 리소스 제거 기능 포함
+- Includes keystore generation features.
+- Includes Self-Build.
+- Includes automatic update system.
+- Cordoba plugins support.
+- Includes unused resource removal.
+- Support for Korean, Japanese, and English.
 
 # Screenshots
 
@@ -31,24 +26,24 @@
 
 4. 설정에서 미사용 리소스 제거 기능을 OFF로 변경합니다.
 
-5. 빌드 버튼을 누르고 빌드 완료 메시지가 뜰 때까지 기다리면 APK 파일 생성이 완료됩니다.
+5. Build 버튼을 누르고 빌드 완료 메시지가 뜰 때까지 기다리면 APK 파일 생성이 완료됩니다.
 
 6. 휴대폰이 USB 잭으로 컴퓨터와 연결되어있고, ```adb```가 역시 설치되어 있다면, ```adb install -r app-release.apk``` 등으로 휴대폰에 앱을 자동으로 설치할 수 있습니다.
 
-7. 디버그 모드로 빌드를 하면, 크롬 확장에 adb를 설치, ```chrome://inspect```의 크롬 개발자 도구에서 원격 디버깅이 가능합니다.
+7. Debug Mode로 Build를 하면, 크롬 확장에 adb를 설치, ```chrome://inspect```의 크롬 개발자 도구에서 원격 디버깅(remote-debugging)이 가능합니다.
 
 # Requirements
-이 툴은 C# 윈폼과 자바스크립트 기반으로 개발된 프로그램입니다. 몇몇 프로그램은 수동 설치를 해야 합니다. 자동 설치가 되는 건 자동 설치를 하고 있으나, 아래 프로그램들은 수동 설치를 해야 합니다.
+이 툴은 C# Winform과 Node.js 기반으로 개발된 프로그램입니다. 몇몇 프로그램은 수동 설치를 해야 합니다. 자동 설치가 되는 건 자동 설치를 하고 있으나, 아래 프로그램들은 수동 설치를 해야 합니다.
 
 ## 닷넷 프레임워크 4.5.4 버전 이상
 
-C# 윈폼으로 개발된 프로그램이 구동되려면 닷넷 프레임워크 상위 버전이 필요합니다.
+C# Winform으로 개발된 프로그램이 구동되려면 .Net Framework 상위 버전이 필요합니다.
 
 ▶ 다운로드 : https://dotnet.microsoft.com/download/dotnet-framework
 
-## 안드로이드 스튜디오 & 안드로이드 SDK
+## Android Studio & Android SDK
 
-APK 파일을 실제로 만들어내는 프로그램이므로 안드로이드 SDK가 필요합니다. 안드로이드 SDK API 수준은 ```19, 28, 29``` 버전이 설치되어야 합니다.
+APK 파일을 실제로 만들어내는 프로그램이므로 Android SDK가 필요합니다. 안드로이드 SDK API 수준은 ```19, 28, 29``` 버전이 설치되어야 합니다.
 
 ▶ 다운로드 : https://developer.android.com/studio/index.html?hl=ko
 
@@ -67,7 +62,7 @@ APK 파일을 실제로 만들어내는 프로그램이므로 안드로이드 SD
 
 코르도바와 미사용 리소스 제거기는 Node.js로 개발된 프로그램이고, 노드 패키지 관리자를 이용하여 설치 및 업데이트를 하게 됩니다. 따라서 Node.js가 필요합니다.
 
-▶ 다운로드 : https://nodejs.org/ko/download/
+▶ Download : https://nodejs.org/ko/download/
 
 ## Cordova v9.0.0
 
@@ -78,7 +73,7 @@ Node.js 설치 이후에 수행하셔야 합니다. 사실 본 프로그램 내�
 ## JDK 8
 JDK 8에서만 안드로이드 API 가져오기 명령이 정상적으로 동작하기 때문에 JDK 8 설치가 필요합니다.
 
-▶ 다운로드 : https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+▶ Download : https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
 JDK가 정상적으로 인식되려면 윈도우즈 환경 변수를 설정해야 합니다. 환경 변수는 Windows 10이라면 시작 버튼 옆에 돋보기 모양의 버튼을 눌러 환경 변수라고 치면 설정이 가능합니다.
 
@@ -132,7 +127,7 @@ JDK가 정상적으로 인식되려면 윈도우즈 환경 변수를 설정해�
 */
 ```
 
-# 버그 제보
+# Bug Report
 
 빌드 중에 오류가 발생했을 때, ```Log``` 창에서 오른쪽 버튼을 누르면 빌드 로그 저장 버튼을 사용하면 로그 저장이 가능합니다.
 
