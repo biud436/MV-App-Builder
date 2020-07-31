@@ -40,7 +40,7 @@ namespace Cordova.Core
         private Dictionary<string, bool> _plugins = new Dictionary<string, bool>();
 
         // 버전
-        private Version _version = new Version("0.2.21");
+        private Version _version = new Version("0.2.23");
 
         private Version _cordovaVersion = new Version("0.0.0");
 
@@ -847,57 +847,69 @@ android {
             try
             {
 
-                using (WebClient wc = new WebClient())
+                #region 코르도바 버전 체크 (웹 이용)
+                //using (WebClient wc = new WebClient())
+                //{
+                //    string releaseNote = wc.DownloadString(new Uri("https://raw.githubusercontent.com/apache/cordova-cli/master/RELEASENOTES.md"));
+
+                //    var regex = new Regex("[\r\n]+", RegexOptions.IgnoreCase);
+                //    var lines = regex.Split(releaseNote);
+                //    var matchedData = "# Cordova-cli Release Notes";
+                //    var findIndex = 0;
+
+                //    // Try to read around the target index.
+                //    int startLineNumber = 19;
+                //    int endLineNumber = 28;
+
+                //    for (var i = startLineNumber; i < endLineNumber; i++)
+                //    {
+                //        if (lines[i] == matchedData)
+                //        {
+                //            findIndex = i;
+                //            break;
+                //        }
+                //    }
+
+                //    if (findIndex > 0)
+                //    {
+                //        findIndex += 1;
+
+                //        // Try to extract the string that includes version
+                //        regex = new Regex(@"[#]{3}[ ]*(\d+\.\d+\.\d+)", RegexOptions.IgnoreCase);
+                //        Match m = regex.Match(lines[findIndex]);
+
+                //        if (m.Success)
+                //        {
+                //            cordovaVersion = new Version(m.Groups[1].Value);
+                //        }
+
+                //    } else
+                //    {
+                //        // Cannot find the version text in the github.
+                //        return;
+                //    }
+
+                //}
+                #endregion
+
+                // npm을 이용한 버전 체크
+                using (var tempCmdProcess = new HostData("", true, "", ""))
                 {
-                    string releaseNote = wc.DownloadString(new Uri("https://raw.githubusercontent.com/apache/cordova-cli/master/RELEASENOTES.md"));
-
-                    var regex = new Regex("[\r\n]+", RegexOptions.IgnoreCase);
-                    var lines = regex.Split(releaseNote);
-                    var matchedData = "# Cordova-cli Release Notes";
-                    var findIndex = 0;
-
-                    // Try to read around the target index.
-                    int startLineNumber = 19;
-                    int endLineNumber = 28;
-
-                    for (var i = startLineNumber; i < endLineNumber; i++)
+                    tempCmdProcess.outputLine("npm show cordova version", (string output) =>
                     {
-                        if (lines[i] == matchedData)
-                        {
-                            findIndex = i;
-                            break;
-                        }
-                    }
-
-                    if (findIndex > 0)
-                    {
-                        findIndex += 1;
-
-                        // Try to extract the string that includes version
-                        regex = new Regex(@"[#]{3}[ ]*(\d+\.\d+\.\d+)", RegexOptions.IgnoreCase);
-                        Match m = regex.Match(lines[findIndex]);
-
-                        if (m.Success)
-                        {
-                            cordovaVersion = new Version(m.Groups[1].Value);
-                        }
-
-                    } else
-                    {
-                        // Cannot find the version text in the github.
-                        return;
-                    }
-
+                        cordovaVersion = new Version(output);
+                    });
                 }
 
                 // Create the lightweight command process and check the version of installed Cordova in the local system.
-                using(var tempCmdProcess = new HostData("", true, "", ""))
+                using (var tempCmdProcess = new HostData("", true, "", ""))
                 {
                     // Create the lightweight command process
                     var localCordovaVersion = new Version("0.0.0");
 
                     // check the version of installed Cordova in the local system.
-                    tempCmdProcess.outputLine("cordova --version", (string output) => {
+                    tempCmdProcess.outputLine("cordova --version", (string output) =>
+                    {
 
                         // Extract the text that contains the version using the regular expression.
                         Regex regex = new Regex(@"(\d+\.\d+\.\d+)[ ]+", RegexOptions.IgnoreCase);

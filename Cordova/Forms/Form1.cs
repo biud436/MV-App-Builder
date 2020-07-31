@@ -559,6 +559,12 @@ namespace Cordova.Forms
         /// <param name="e"></param>
         private void buttonBuild_Click(object sender, EventArgs e)
         {
+            if (buttonBuild.Enabled && textBoxPassWord.Text.Length < 6 && !_isWorking)
+            {
+                MessageBox.Show("The password value must enter at least 6 digits.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             // 빌드 중이 아닐 때에만 빌드가 가능함
             if (buttonBuild.Enabled && !_isWorking)
             {

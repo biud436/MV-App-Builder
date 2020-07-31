@@ -3,7 +3,7 @@ Unicode true
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "MV App Builder"
-!define PRODUCT_VERSION "0.2.21"
+!define PRODUCT_VERSION "0.2.23"
 !define PRODUCT_PUBLISHER "biud436"
 !define PRODUCT_WEB_SITE "https://github.com/biud436/MV-App-Builder/"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Cordova Builder.exe"
