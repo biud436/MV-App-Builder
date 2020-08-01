@@ -941,7 +941,6 @@ namespace Cordova.Forms
         {
             string[] items = { "영", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구" };
             int target = value.ToString().ToCharArray().Last();
-            AppendText(target.ToString());
 
             int range = target - 48;
             if(range > items.Count())
