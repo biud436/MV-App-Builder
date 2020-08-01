@@ -17,6 +17,8 @@ namespace Cordova.Forms
     using Core;
     using Data;
     using Manage;
+    using System.IO;
+    using System.Threading;
 
     public partial class Form1 : Form
     {
@@ -641,6 +643,7 @@ namespace Cordova.Forms
             if(!int.TryParse(comboBoxMinSdkVersion.Text, out n) && !String.IsNullOrEmpty(comboBoxMinSdkVersion.Text))
             {
                 comboBoxMinSdkVersion.SelectedIndex = comboBoxMinSdkVersion.Items.IndexOf("19");
+
             }
         }
 
@@ -652,11 +655,46 @@ namespace Cordova.Forms
         private void buttonFolderBrowser_Click(object sender, EventArgs e)
         {
             var folderBrowserDialog = new FolderBrowserDialog();
+            bool isValid = false;
 
             if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxSettingGameFolder.Text = folderBrowserDialog.SelectedPath;
-                ReadCordovaPlugins(folderBrowserDialog.SelectedPath);
+                string targetFolder = folderBrowserDialog.SelectedPath;
+
+                // 대상 폴더에 HTML 파일이 있는지 확인합니다.
+                if (File.Exists(Path.Combine(targetFolder, "index.html")))
+                {
+                    isValid = true;
+                }
+
+                // www 폴더에 HTML 파일이 있는지 확인합니다.
+                string wwwFolder = Path.Combine(targetFolder, "www", "index.html");    
+                if(File.Exists(wwwFolder))
+                {
+                    targetFolder = Path.Combine(targetFolder, "www");
+                    isValid = true;
+                }
+
+                if(!isValid)
+                {
+                    StringBuilder message = new StringBuilder();
+
+                    if(Thread.CurrentThread.CurrentUICulture.Name == "ko-KR")
+                    {
+                        message.Append("선택된 게임 폴더에 index.html 파일이 없습니다.");
+                    } 
+                    else
+                    {
+                        message.Append("index.html File Not Found");
+                    }
+                        
+                    MessageBox.Show(message.ToString(), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                textBoxSettingGameFolder.Text = targetFolder;
+
+                ReadCordovaPlugins(targetFolder);
             }
 
         }
@@ -818,7 +856,7 @@ namespace Cordova.Forms
         }
 
         /// <summary>
-        /// 빌드 로드를 초기화합니다.
+        /// 빌드 로그를 초기화합니다.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -828,7 +866,7 @@ namespace Cordova.Forms
         }
 
         /// <summary>
-        /// 빌드 로드를 저장합니다.
+        /// 빌드 로그를 저장합니다.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -875,6 +913,63 @@ namespace Cordova.Forms
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             DataMan.Instance.Save();
+        }
+
+        private void comboBoxMinSdkVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckWithAndroidSDK(comboBoxMinSdkVersion.Text);
+        }
+
+        private void CheckWithAndroidSDK(string text)
+        {
+            int value = Int32.Parse(text);
+            if (!installedSDKs.Contains(value))
+            {
+                if (Thread.CurrentThread.CurrentUICulture.Name == "ko-KR")
+                    AppendText($"안드로이드 SDK {value}{GetHangulPost(value)} 설치되어있지 않습니다.");
+                else
+                    AppendText($"Android SDK {value} is not installed.");
+            }
+        }
+
+        /// <summary>
+        /// 한국어 조사를 처리합니다.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private string GetHangulPost(int value)
+        {
+            string[] items = { "영", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구" };
+            int target = value.ToString().ToCharArray().Last();
+            AppendText(target.ToString());
+
+            int range = target - 48;
+            if(range > items.Count())
+            {
+                return "이";
+            }
+
+            string targetStr = items[target - 48];
+
+            int code = targetStr.ToCharArray().First();
+            int offset = code - 44032;
+
+            int first = offset / 588;
+            int middle = (offset % 588) / 28;
+            int final = offset % 28;
+
+            return (final == 0) ? "가" : "이";
+
+        }
+
+        private void comboBoxTargetSdkVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckWithAndroidSDK(comboBoxTargetSdkVersion.Text);
+        }
+
+        private void comboBoxCompileSdkVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckWithAndroidSDK(comboBoxCompileSdkVersion.Text);
         }
     }
 }

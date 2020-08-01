@@ -90,8 +90,8 @@
             // 
             // textBox1
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
@@ -169,80 +169,80 @@
             // 
             // textBoxFolderName
             // 
-            resources.ApplyResources(this.textBoxFolderName, "textBoxFolderName");
             this.textBoxFolderName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
             this.textBoxFolderName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxFolderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            resources.ApplyResources(this.textBoxFolderName, "textBoxFolderName");
             this.textBoxFolderName.Name = "textBoxFolderName";
             this.textBoxFolderName.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxPackageName
             // 
-            resources.ApplyResources(this.textBoxPackageName, "textBoxPackageName");
             this.textBoxPackageName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBoxPackageName, "textBoxPackageName");
             this.textBoxPackageName.Name = "textBoxPackageName";
             this.textBoxPackageName.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxGameName
             // 
-            resources.ApplyResources(this.textBoxGameName, "textBoxGameName");
             this.textBoxGameName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBoxGameName, "textBoxGameName");
             this.textBoxGameName.Name = "textBoxGameName";
             this.textBoxGameName.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxKeyPath
             // 
-            resources.ApplyResources(this.textBoxKeyPath, "textBoxKeyPath");
             this.textBoxKeyPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBoxKeyPath, "textBoxKeyPath");
             this.textBoxKeyPath.Name = "textBoxKeyPath";
             this.textBoxKeyPath.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxKeyAlias
             // 
-            resources.ApplyResources(this.textBoxKeyAlias, "textBoxKeyAlias");
             this.textBoxKeyAlias.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBoxKeyAlias, "textBoxKeyAlias");
             this.textBoxKeyAlias.Name = "textBoxKeyAlias";
             this.textBoxKeyAlias.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBoxPassWord
             // 
-            resources.ApplyResources(this.textBoxPassWord, "textBoxPassWord");
             this.textBoxPassWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBoxPassWord, "textBoxPassWord");
             this.textBoxPassWord.Name = "textBoxPassWord";
             this.textBoxPassWord.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyOU
             // 
-            resources.ApplyResources(this.textBox_keyOU, "textBox_keyOU");
             this.textBox_keyOU.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBox_keyOU, "textBox_keyOU");
             this.textBox_keyOU.Name = "textBox_keyOU";
             this.textBox_keyOU.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyO
             // 
-            resources.ApplyResources(this.textBox_keyO, "textBox_keyO");
             this.textBox_keyO.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBox_keyO, "textBox_keyO");
             this.textBox_keyO.Name = "textBox_keyO";
             this.textBox_keyO.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyL
             // 
-            resources.ApplyResources(this.textBox_keyL, "textBox_keyL");
             this.textBox_keyL.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBox_keyL, "textBox_keyL");
             this.textBox_keyL.Name = "textBox_keyL";
             this.textBox_keyL.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyS
             // 
-            resources.ApplyResources(this.textBox_keyS, "textBox_keyS");
             this.textBox_keyS.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBox_keyS, "textBox_keyS");
             this.textBox_keyS.Name = "textBox_keyS";
             this.textBox_keyS.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // textBox_keyC
             // 
-            resources.ApplyResources(this.textBox_keyC, "textBox_keyC");
             this.textBox_keyC.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBox_keyC, "textBox_keyC");
             this.textBox_keyC.Name = "textBox_keyC";
             this.textBox_keyC.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
@@ -290,7 +290,6 @@
             // 
             // comboBoxOrientation
             // 
-            resources.ApplyResources(this.comboBoxOrientation, "comboBoxOrientation");
             this.comboBoxOrientation.DisplayMember = " ";
             this.comboBoxOrientation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOrientation.FormattingEnabled = true;
@@ -298,26 +297,26 @@
             resources.GetString("comboBoxOrientation.Items"),
             resources.GetString("comboBoxOrientation.Items1"),
             resources.GetString("comboBoxOrientation.Items2")});
+            resources.ApplyResources(this.comboBoxOrientation, "comboBoxOrientation");
             this.comboBoxOrientation.Name = "comboBoxOrientation";
             this.comboBoxOrientation.ValueMember = " ";
             this.comboBoxOrientation.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // comboBoxFullscreen
             // 
-            resources.ApplyResources(this.comboBoxFullscreen, "comboBoxFullscreen");
             this.comboBoxFullscreen.DisplayMember = " ";
             this.comboBoxFullscreen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFullscreen.FormattingEnabled = true;
             this.comboBoxFullscreen.Items.AddRange(new object[] {
             resources.GetString("comboBoxFullscreen.Items"),
             resources.GetString("comboBoxFullscreen.Items1")});
+            resources.ApplyResources(this.comboBoxFullscreen, "comboBoxFullscreen");
             this.comboBoxFullscreen.Name = "comboBoxFullscreen";
             this.comboBoxFullscreen.ValueMember = " ";
             this.comboBoxFullscreen.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
             // comboBoxMinSdkVersion
             // 
-            resources.ApplyResources(this.comboBoxMinSdkVersion, "comboBoxMinSdkVersion");
             this.comboBoxMinSdkVersion.DisplayMember = " ";
             this.comboBoxMinSdkVersion.FormattingEnabled = true;
             this.comboBoxMinSdkVersion.Items.AddRange(new object[] {
@@ -343,14 +342,14 @@
             resources.GetString("comboBoxMinSdkVersion.Items19"),
             resources.GetString("comboBoxMinSdkVersion.Items20"),
             resources.GetString("comboBoxMinSdkVersion.Items21")});
+            resources.ApplyResources(this.comboBoxMinSdkVersion, "comboBoxMinSdkVersion");
             this.comboBoxMinSdkVersion.Name = "comboBoxMinSdkVersion";
             this.comboBoxMinSdkVersion.ValueMember = " ";
-            this.comboBoxMinSdkVersion.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
+            this.comboBoxMinSdkVersion.SelectedIndexChanged += new System.EventHandler(this.comboBoxMinSdkVersion_SelectedIndexChanged);
             this.comboBoxMinSdkVersion.TextChanged += new System.EventHandler(this.comboBoxMinSdkVersion_TextChanged);
             // 
             // comboBoxTargetSdkVersion
             // 
-            resources.ApplyResources(this.comboBoxTargetSdkVersion, "comboBoxTargetSdkVersion");
             this.comboBoxTargetSdkVersion.DisplayMember = " ";
             this.comboBoxTargetSdkVersion.FormattingEnabled = true;
             this.comboBoxTargetSdkVersion.Items.AddRange(new object[] {
@@ -376,9 +375,10 @@
             resources.GetString("comboBoxTargetSdkVersion.Items19"),
             resources.GetString("comboBoxTargetSdkVersion.Items20"),
             resources.GetString("comboBoxTargetSdkVersion.Items21")});
+            resources.ApplyResources(this.comboBoxTargetSdkVersion, "comboBoxTargetSdkVersion");
             this.comboBoxTargetSdkVersion.Name = "comboBoxTargetSdkVersion";
             this.comboBoxTargetSdkVersion.ValueMember = " ";
-            this.comboBoxTargetSdkVersion.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
+            this.comboBoxTargetSdkVersion.SelectedIndexChanged += new System.EventHandler(this.comboBoxTargetSdkVersion_SelectedIndexChanged);
             // 
             // labelSettingGameFolder
             // 
@@ -389,8 +389,8 @@
             // 
             // textBoxSettingGameFolder
             // 
-            resources.ApplyResources(this.textBoxSettingGameFolder, "textBoxSettingGameFolder");
             this.textBoxSettingGameFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxSettingGameFolder, "textBoxSettingGameFolder");
             this.textBoxSettingGameFolder.Name = "textBoxSettingGameFolder";
             this.textBoxSettingGameFolder.TextChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
             // 
@@ -410,13 +410,13 @@
             // 
             // comboBoxBuildMode
             // 
-            resources.ApplyResources(this.comboBoxBuildMode, "comboBoxBuildMode");
             this.comboBoxBuildMode.DisplayMember = " ";
             this.comboBoxBuildMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBuildMode.FormattingEnabled = true;
             this.comboBoxBuildMode.Items.AddRange(new object[] {
             resources.GetString("comboBoxBuildMode.Items"),
             resources.GetString("comboBoxBuildMode.Items1")});
+            resources.ApplyResources(this.comboBoxBuildMode, "comboBoxBuildMode");
             this.comboBoxBuildMode.Name = "comboBoxBuildMode";
             this.comboBoxBuildMode.ValueMember = " ";
             this.comboBoxBuildMode.SelectedIndexChanged += new System.EventHandler(this.textBoxPassWord_TextChanged);
@@ -436,15 +436,15 @@
             // 
             // textBoxPluginName
             // 
-            resources.ApplyResources(this.textBoxPluginName, "textBoxPluginName");
             this.textBoxPluginName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxPluginName, "textBoxPluginName");
             this.textBoxPluginName.Name = "textBoxPluginName";
             // 
             // listBoxPlugins
             // 
-            resources.ApplyResources(this.listBoxPlugins, "listBoxPlugins");
             this.listBoxPlugins.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBoxPlugins.FormattingEnabled = true;
+            resources.ApplyResources(this.listBoxPlugins, "listBoxPlugins");
             this.listBoxPlugins.Items.AddRange(new object[] {
             resources.GetString("listBoxPlugins.Items")});
             this.listBoxPlugins.Name = "listBoxPlugins";
@@ -469,7 +469,6 @@
             // 
             // panelPlugins
             // 
-            resources.ApplyResources(this.panelPlugins, "panelPlugins");
             this.panelPlugins.BackColor = System.Drawing.Color.Transparent;
             this.panelPlugins.Controls.Add(this.buttonSettings);
             this.panelPlugins.Controls.Add(this.listBoxPlugins);
@@ -479,6 +478,7 @@
             this.panelPlugins.Controls.Add(this.textBoxPluginName);
             this.panelPlugins.Controls.Add(this.buttonAddPlugin);
             this.panelPlugins.Controls.Add(this.buttonBuild);
+            resources.ApplyResources(this.panelPlugins, "panelPlugins");
             this.panelPlugins.Name = "panelPlugins";
             this.panelPlugins.SectionHeader = null;
             // 
@@ -497,7 +497,6 @@
             // 
             // comboBoxCompileSdkVersion
             // 
-            resources.ApplyResources(this.comboBoxCompileSdkVersion, "comboBoxCompileSdkVersion");
             this.comboBoxCompileSdkVersion.DisplayMember = " ";
             this.comboBoxCompileSdkVersion.FormattingEnabled = true;
             this.comboBoxCompileSdkVersion.Items.AddRange(new object[] {
@@ -523,21 +522,23 @@
             resources.GetString("comboBoxCompileSdkVersion.Items19"),
             resources.GetString("comboBoxCompileSdkVersion.Items20"),
             resources.GetString("comboBoxCompileSdkVersion.Items21")});
+            resources.ApplyResources(this.comboBoxCompileSdkVersion, "comboBoxCompileSdkVersion");
             this.comboBoxCompileSdkVersion.Name = "comboBoxCompileSdkVersion";
             this.comboBoxCompileSdkVersion.ValueMember = " ";
+            this.comboBoxCompileSdkVersion.SelectedIndexChanged += new System.EventHandler(this.comboBoxCompileSdkVersion_SelectedIndexChanged);
             // 
             // panelBuildLog
             // 
-            resources.ApplyResources(this.panelBuildLog, "panelBuildLog");
             this.panelBuildLog.BackColor = System.Drawing.Color.Transparent;
             this.panelBuildLog.Controls.Add(this.textBox1);
+            resources.ApplyResources(this.panelBuildLog, "panelBuildLog");
             this.panelBuildLog.Name = "panelBuildLog";
             this.panelBuildLog.SectionHeader = "Log";
             // 
             // tableLayoutPanel1
             // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.label_keyC, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.label_keyS, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.label_keyL, 0, 8);
@@ -553,8 +554,8 @@
             // 
             // tableLayoutPanel2
             // 
-            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
             this.tableLayoutPanel2.Controls.Add(this.labelBuildMode, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.labelSettingGameFolder, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.labelCompileSdkVersion, 0, 4);
@@ -566,8 +567,8 @@
             // 
             // contextMenuStrip1
             // 
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
             // Form1
             // 

@@ -33,11 +33,11 @@ This tool allows you to build your own Android APK File easily.
 7. Debug Mode로 Build를 하면, 크롬 확장에 adb를 설치, ```chrome://inspect```의 크롬 개발자 도구에서 원격 디버깅(remote-debugging)이 가능합니다.
 
 # Requirements
-이 툴은 C# Winform과 Node.js 기반으로 개발된 프로그램입니다. 몇몇 프로그램은 수동 설치를 해야 합니다. 자동 설치가 되는 건 자동 설치를 하고 있으나, 아래 프로그램들은 수동 설치를 해야 합니다.
+This tool is based on C# Winform and Node.js and it has used a many of third-party tools. Some of them must be installed manually due to complexity of implementation. List that you must download is belows.
 
 ## 닷넷 프레임워크 4.5.4 버전 이상
 
-C# Winform으로 개발된 프로그램이 구동되려면 .Net Framework 상위 버전이 필요합니다.
+A higher version of the .Net Framework is required for a program developed with C# Winform to run.
 
 ▶ 다운로드 : https://dotnet.microsoft.com/download/dotnet-framework
 
