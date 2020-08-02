@@ -117,263 +117,419 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;darkSectionPanelExcludeUnusedResourcesOption.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkSectionPanel, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="darkPathTree.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 182</value>
+  </data>
+  <data name="darkPathTree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 76</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="darkCheckBoxTrue.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="darkPathTree.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
-  <data name="darkCheckBoxTrue.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="darkPathTree.Text" xml:space="preserve">
+    <value>darkTreeView1</value>
   </data>
-  <data name="&gt;&gt;darkCheckBoxTrue.Parent" xml:space="preserve">
+  <data name="&gt;&gt;darkPathTree.Name" xml:space="preserve">
+    <value>darkPathTree</value>
+  </data>
+  <data name="&gt;&gt;darkPathTree.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkTreeView, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkPathTree.Parent" xml:space="preserve">
     <value>darkSectionPanelExcludeUnusedResourcesOption</value>
   </data>
-  <data name="&gt;&gt;darkCheckBoxM4a.Name" xml:space="preserve">
-    <value>darkCheckBoxM4a</value>
+  <data name="&gt;&gt;darkPathTree.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;darkLabelAudioFileFormat.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxM4a.Parent" xml:space="preserve">
-    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
-  </data>
-  <data name="&gt;&gt;darkLabelAudioFileFormat.Parent" xml:space="preserve">
-    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="darkLabelRemainTree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 12</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxM4a.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxDisabled.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;darkLabelAudioFileFormat.Name" xml:space="preserve">
-    <value>darkLabelAudioFileFormat</value>
-  </data>
-  <data name="darkLabelUse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 12</value>
-  </data>
-  <data name="darkCheckBoxDisabled.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="darkCheckBoxFalse.Text" xml:space="preserve">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxTrue.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxFalse.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>SettingsDialog</value>
-  </data>
-  <data name="darkLabelUse.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="darkCheckBoxTrue.Text" xml:space="preserve">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxDisabled.Parent" xml:space="preserve">
-    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
-  </data>
-  <data name="darkLabelOutputFolderPath.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="darkButtonOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>348, 23</value>
-  </data>
-  <data name="darkButtonSetOutputFolderPath.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="darkButtonOK.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;darkSectionPanelExcludeUnusedResourcesOption.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxTrue.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 12</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxEnabled.Name" xml:space="preserve">
-    <value>darkCheckBoxEnabled</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxM4a.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="darkButtonSetOutputFolderPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>294, 149</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="darkButtonSetOutputFolderPath.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
   </data>
-  <data name="darkCheckBoxEnabled.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="darkButtonSetOutputFolderPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 23</value>
   </data>
-  <data name="darkLabelAudioFileFormat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 85</value>
+  <data name="darkButtonSetOutputFolderPath.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
   </data>
-  <data name="darkCheckBoxM4a.Text" xml:space="preserve">
-    <value>.m4a</value>
+  <data name="darkButtonSetOutputFolderPath.Text" xml:space="preserve">
+    <value>...</value>
   </data>
-  <data name="&gt;&gt;darkCheckBoxFalse.Parent" xml:space="preserve">
-    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  <data name="&gt;&gt;darkButtonSetOutputFolderPath.Name" xml:space="preserve">
+    <value>darkButtonSetOutputFolderPath</value>
   </data>
-  <data name="darkCheckBoxM4a.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 82</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
+  <data name="&gt;&gt;darkButtonSetOutputFolderPath.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkButton, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;darkButtonSetOutputFolderPath.Parent" xml:space="preserve">
     <value>darkSectionPanelExcludeUnusedResourcesOption</value>
   </data>
   <data name="&gt;&gt;darkButtonSetOutputFolderPath.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="darkLabelAudioFileFormat.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxEnabled.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;darkLabelOutputFolderPath.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkLabel, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="darkCheckBoxFalse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 16</value>
-  </data>
-  <data name="darkButtonSetOutputFolderPath.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="darkButtonSetOutputFolderPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 149</value>
-  </data>
-  <data name="darkLabelRemainTree.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;darkLabelRemainTree.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;darkButtonOK.Name" xml:space="preserve">
-    <value>darkButtonOK</value>
-  </data>
-  <data name="darkLabelOutputFolderPath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="darkButtonOK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="&gt;&gt;darkTextBoxOutputFolderPath.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="darkLabelUse.Text" xml:space="preserve">
-    <value>Use</value>
+  <data name="darkTextBoxOutputFolderPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 150</value>
   </data>
-  <data name="darkCheckBoxDisabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 16</value>
-  </data>
-  <data name="darkCheckBoxM4a.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 16</value>
-  </data>
-  <data name="&gt;&gt;darkButtonOK.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkButton, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="darkLabelOutputFolderPath.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="darkButtonSetOutputFolderPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 23</value>
-  </data>
-  <data name="darkCheckBoxEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>129, 50</value>
+  <data name="darkTextBoxOutputFolderPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 21</value>
   </data>
   <data name="darkTextBoxOutputFolderPath.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="darkCheckBoxM4a.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;darkTextBoxOutputFolderPath.Name" xml:space="preserve">
+    <value>darkTextBoxOutputFolderPath</value>
   </data>
-  <data name="darkLabelOutputFolderPath.Text" xml:space="preserve">
-    <value>Output Path</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxOgg.Parent" xml:space="preserve">
-    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
-  </data>
-  <data name="darkCheckBoxFalse.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="darkButtonOK.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="darkCheckBoxM4a.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;darkTextBoxOutputFolderPath.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkTextBox, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;darkTextBoxOutputFolderPath.Parent" xml:space="preserve">
     <value>darkSectionPanelExcludeUnusedResourcesOption</value>
   </data>
-  <data name="darkCheckBoxEnabled.Text" xml:space="preserve">
-    <value>Enabled</value>
+  <data name="&gt;&gt;darkTextBoxOutputFolderPath.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;darkCheckBoxOgg.Name" xml:space="preserve">
-    <value>darkCheckBoxOgg</value>
+  <data name="darkLabelOutputFolderPath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;darkLabelUse.Parent" xml:space="preserve">
-    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
-  </data>
-  <data name="&gt;&gt;darkLabelAudioFileFormat.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkLabel, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="darkCheckBoxTrue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>129, 117</value>
+  <data name="darkLabelOutputFolderPath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="darkLabelOutputFolderPath.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 155</value>
   </data>
-  <data name="darkCheckBoxFalse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 117</value>
+  <data name="darkLabelOutputFolderPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 12</value>
   </data>
-  <data name="&gt;&gt;darkButtonSetOutputFolderPath.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkButton, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="darkLabelOutputFolderPath.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
-  <data name="darkCheckBoxOgg.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxDisabled.Name" xml:space="preserve">
-    <value>darkCheckBoxDisabled</value>
+  <data name="darkLabelOutputFolderPath.Text" xml:space="preserve">
+    <value>Output Path</value>
   </data>
   <data name="&gt;&gt;darkLabelOutputFolderPath.Name" xml:space="preserve">
     <value>darkLabelOutputFolderPath</value>
   </data>
+  <data name="&gt;&gt;darkLabelOutputFolderPath.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkLabel, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;darkLabelOutputFolderPath.Parent" xml:space="preserve">
     <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkLabelOutputFolderPath.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="darkButtonOK.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="darkButtonOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 266</value>
+  </data>
+  <data name="darkButtonOK.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="darkButtonOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>348, 23</value>
+  </data>
+  <data name="darkButtonOK.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="darkButtonOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;darkButtonOK.Name" xml:space="preserve">
+    <value>darkButtonOK</value>
+  </data>
+  <data name="&gt;&gt;darkButtonOK.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkButton, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkButtonOK.Parent" xml:space="preserve">
+    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkButtonOK.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="darkCheckBoxFalse.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="darkCheckBoxFalse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 117</value>
+  </data>
+  <data name="darkCheckBoxFalse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 16</value>
+  </data>
+  <data name="darkCheckBoxFalse.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="darkCheckBoxFalse.Text" xml:space="preserve">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxFalse.Name" xml:space="preserve">
+    <value>darkCheckBoxFalse</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxFalse.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxFalse.Parent" xml:space="preserve">
+    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxFalse.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="darkCheckBoxTrue.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="darkCheckBoxTrue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>129, 117</value>
+  </data>
+  <data name="darkCheckBoxTrue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 16</value>
+  </data>
+  <data name="darkCheckBoxTrue.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="darkCheckBoxTrue.Text" xml:space="preserve">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxTrue.Name" xml:space="preserve">
+    <value>darkCheckBoxTrue</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxTrue.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxTrue.Parent" xml:space="preserve">
+    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxTrue.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="darkCheckBoxDisabled.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="darkCheckBoxDisabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 50</value>
+  </data>
+  <data name="darkCheckBoxDisabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 16</value>
   </data>
   <data name="darkCheckBoxDisabled.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;darkLabelUse.ZOrder" xml:space="preserve">
+  <data name="darkCheckBoxDisabled.Text" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxDisabled.Name" xml:space="preserve">
+    <value>darkCheckBoxDisabled</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxDisabled.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxDisabled.Parent" xml:space="preserve">
+    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxDisabled.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="darkCheckBoxEnabled.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="darkCheckBoxEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>129, 50</value>
+  </data>
+  <data name="darkCheckBoxEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 16</value>
+  </data>
+  <data name="darkCheckBoxEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="darkCheckBoxEnabled.Text" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxEnabled.Name" xml:space="preserve">
+    <value>darkCheckBoxEnabled</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxEnabled.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxEnabled.Parent" xml:space="preserve">
+    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxEnabled.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="darkCheckBoxM4a.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="darkCheckBoxM4a.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 82</value>
+  </data>
+  <data name="darkCheckBoxM4a.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 16</value>
+  </data>
+  <data name="darkCheckBoxM4a.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="darkCheckBoxM4a.Text" xml:space="preserve">
+    <value>.m4a</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxM4a.Name" xml:space="preserve">
+    <value>darkCheckBoxM4a</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxM4a.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxM4a.Parent" xml:space="preserve">
+    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxM4a.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="darkCheckBoxOgg.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="darkCheckBoxOgg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>129, 82</value>
+  </data>
+  <data name="darkCheckBoxOgg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 16</value>
+  </data>
+  <data name="darkCheckBoxOgg.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="darkCheckBoxOgg.Text" xml:space="preserve">
+    <value>.ogg</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxOgg.Name" xml:space="preserve">
+    <value>darkCheckBoxOgg</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxOgg.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxOgg.Parent" xml:space="preserve">
+    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkCheckBoxOgg.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="&gt;&gt;folderBrowserDialog1.Name" xml:space="preserve">
-    <value>folderBrowserDialog1</value>
+  <data name="darkLabelUse.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="darkLabelUse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 51</value>
+  </data>
+  <data name="darkLabelUse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 12</value>
+  </data>
+  <data name="darkLabelUse.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="darkLabelUse.Text" xml:space="preserve">
+    <value>Use</value>
+  </data>
+  <data name="&gt;&gt;darkLabelUse.Name" xml:space="preserve">
+    <value>darkLabelUse</value>
+  </data>
+  <data name="&gt;&gt;darkLabelUse.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkLabel, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkLabelUse.Parent" xml:space="preserve">
+    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkLabelUse.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="darkLabelRemainTree.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="darkLabelRemainTree.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 119</value>
+  </data>
+  <data name="darkLabelRemainTree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 12</value>
+  </data>
+  <data name="darkLabelRemainTree.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="darkLabelRemainTree.Text" xml:space="preserve">
+    <value>Remain Tree</value>
+  </data>
+  <data name="&gt;&gt;darkLabelRemainTree.Name" xml:space="preserve">
+    <value>darkLabelRemainTree</value>
+  </data>
+  <data name="&gt;&gt;darkLabelRemainTree.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkLabel, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkLabelRemainTree.Parent" xml:space="preserve">
+    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkLabelRemainTree.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="darkLabelAudioFileFormat.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="darkLabelAudioFileFormat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 85</value>
+  </data>
+  <data name="darkLabelAudioFileFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 12</value>
   </data>
   <data name="darkLabelAudioFileFormat.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="darkLabelOutputFolderPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 12</value>
+  <data name="darkLabelAudioFileFormat.Text" xml:space="preserve">
+    <value>Audio File Format</value>
   </data>
-  <data name="&gt;&gt;darkButtonSetOutputFolderPath.Name" xml:space="preserve">
-    <value>darkButtonSetOutputFolderPath</value>
+  <data name="&gt;&gt;darkLabelAudioFileFormat.Name" xml:space="preserve">
+    <value>darkLabelAudioFileFormat</value>
   </data>
-  <data name="darkCheckBoxOgg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 16</value>
+  <data name="&gt;&gt;darkLabelAudioFileFormat.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkLabel, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkLabelAudioFileFormat.Parent" xml:space="preserve">
+    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkLabelAudioFileFormat.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="darkSectionPanelExcludeUnusedResourcesOption.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="darkSectionPanelExcludeUnusedResourcesOption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="darkSectionPanelExcludeUnusedResourcesOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 290</value>
+  </data>
+  <data name="darkSectionPanelExcludeUnusedResourcesOption.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;darkSectionPanelExcludeUnusedResourcesOption.Name" xml:space="preserve">
+    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
+  </data>
+  <data name="&gt;&gt;darkSectionPanelExcludeUnusedResourcesOption.Type" xml:space="preserve">
+    <value>DarkUI.Controls.DarkSectionPanel, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;darkSectionPanelExcludeUnusedResourcesOption.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;darkSectionPanelExcludeUnusedResourcesOption.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 12</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>350, 290</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2915,154 +3071,22 @@
         //////////////////////////////////8=
 </value>
   </data>
-  <data name="&gt;&gt;darkButtonOK.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="darkTextBoxOutputFolderPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 150</value>
-  </data>
-  <data name="darkSectionPanelExcludeUnusedResourcesOption.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="darkTextBoxOutputFolderPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 21</value>
-  </data>
-  <data name="darkCheckBoxOgg.Text" xml:space="preserve">
-    <value>.ogg</value>
-  </data>
-  <data name="darkSectionPanelExcludeUnusedResourcesOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;darkButtonOK.Parent" xml:space="preserve">
-    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
-  </data>
-  <data name="darkCheckBoxFalse.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;darkLabelOutputFolderPath.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxDisabled.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="darkCheckBoxEnabled.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxFalse.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;darkSectionPanelExcludeUnusedResourcesOption.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;darkSectionPanelExcludeUnusedResourcesOption.Name" xml:space="preserve">
-    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
-  </data>
-  <data name="&gt;&gt;darkLabelUse.Name" xml:space="preserve">
-    <value>darkLabelUse</value>
-  </data>
-  <data name="&gt;&gt;darkTextBoxOutputFolderPath.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkTextBox, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxOgg.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="darkLabelRemainTree.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="darkLabelRemainTree.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 119</value>
-  </data>
-  <data name="darkSectionPanelExcludeUnusedResourcesOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 216</value>
-  </data>
-  <data name="darkCheckBoxDisabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 50</value>
-  </data>
-  <data name="darkLabelUse.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxFalse.Name" xml:space="preserve">
-    <value>darkCheckBoxFalse</value>
-  </data>
-  <data name="&gt;&gt;darkLabelRemainTree.Parent" xml:space="preserve">
-    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
-  </data>
-  <data name="darkCheckBoxDisabled.Text" xml:space="preserve">
-    <value>Disabled</value>
-  </data>
-  <data name="&gt;&gt;darkLabelRemainTree.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkLabel, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>SettingsDialog</value>
   </data>
-  <data name="&gt;&gt;darkLabelRemainTree.Name" xml:space="preserve">
-    <value>darkLabelRemainTree</value>
-  </data>
-  <data name="darkCheckBoxOgg.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="darkLabelAudioFileFormat.Text" xml:space="preserve">
-    <value>Audio File Format</value>
-  </data>
-  <data name="darkCheckBoxOgg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>129, 82</value>
-  </data>
-  <data name="&gt;&gt;darkTextBoxOutputFolderPath.Name" xml:space="preserve">
-    <value>darkTextBoxOutputFolderPath</value>
-  </data>
-  <data name="darkLabelUse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 51</value>
-  </data>
-  <data name="darkButtonOK.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>350, 216</value>
-  </data>
-  <data name="darkCheckBoxTrue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 16</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DarkUI.Forms.DarkForm, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxEnabled.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="darkLabelAudioFileFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 12</value>
-  </data>
-  <data name="darkLabelRemainTree.Text" xml:space="preserve">
-    <value>Remain Tree</value>
+  <data name="&gt;&gt;folderBrowserDialog1.Name" xml:space="preserve">
+    <value>folderBrowserDialog1</value>
   </data>
   <data name="&gt;&gt;folderBrowserDialog1.Type" xml:space="preserve">
     <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="darkSectionPanelExcludeUnusedResourcesOption.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>SettingsDialog</value>
   </data>
-  <data name="darkCheckBoxEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 16</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>DarkUI.Forms.DarkForm, DarkUI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;darkLabelUse.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkLabel, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxOgg.Type" xml:space="preserve">
-    <value>DarkUI.Controls.DarkCheckBox, DarkUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxEnabled.Parent" xml:space="preserve">
-    <value>darkSectionPanelExcludeUnusedResourcesOption</value>
-  </data>
-  <data name="darkButtonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 192</value>
-  </data>
-  <data name="&gt;&gt;darkCheckBoxTrue.Name" xml:space="preserve">
-    <value>darkCheckBoxTrue</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

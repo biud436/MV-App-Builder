@@ -140,14 +140,18 @@ namespace Cordova.Forms
                 defaultPath = ANDROID_HOME;
             }
 
-            // sdkmanager "platform-tools" "platforms;android-29"
-            if (System.IO.Directory.Exists(defaultPath) && isValid )
-            {
-                var platformsPath = System.IO.Path.Combine(defaultPath, "platforms");
+            DataManager.Instance.AndroidSDKPath = defaultPath;
 
-                if(System.IO.Directory.Exists(platformsPath))
+            // 안드로이드 SDK가 설치되어있는지 확인합니다.
+            // sdkmanager "platform-tools" "platforms;android-29"
+            if (Directory.Exists(defaultPath) && isValid )
+            {
+                var platformsPath = Path.Combine(defaultPath, "platforms");
+
+                // 안드로이드 SDK 폴더에 어떤 API가 설치되어있는지 확인합니다.
+                if(Directory.Exists(platformsPath))
                 {
-                    var sdkIds = System.IO.Directory.GetDirectories(platformsPath);
+                    var sdkIds = Directory.GetDirectories(platformsPath);
 
                     if(sdkIds.Count() == 0)
                     {
@@ -191,8 +195,8 @@ namespace Cordova.Forms
         private void GetAndroidAPILevels()
         {
 
-            string ANDROID_HOME = System.Environment.GetEnvironmentVariable("ANDROID_HOME");
-            string ANDROID_SDK_ROOT = System.Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
+            string ANDROID_HOME = Environment.GetEnvironmentVariable("ANDROID_HOME");
+            string ANDROID_SDK_ROOT = Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
             string defaultPath = "";
             bool isValid = false;
 
@@ -331,8 +335,14 @@ namespace Cordova.Forms
                 i.Dispose();
             });
 
-            string ANDROID_HOME = System.Environment.GetEnvironmentVariable("ANDROID_HOME");
-            string ANDROID_SDK_ROOT = System.Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
+            string JAVA_HOME = Environment.GetEnvironmentVariable("JAVA_HOME");
+            string ANDROID_HOME = Environment.GetEnvironmentVariable("ANDROID_HOME");
+            string ANDROID_SDK_ROOT = Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
+
+            if(!String.IsNullOrEmpty(JAVA_HOME))
+            {
+                DataManager.Instance.JDKPath = JAVA_HOME;
+            }
 
             if (!String.IsNullOrEmpty(ANDROID_HOME))
             {

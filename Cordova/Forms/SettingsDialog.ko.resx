@@ -118,8 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="darkPathTree.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 187</value>
+  </data>
+  <data name="darkPathTree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>319, 83</value>
+  </data>
   <data name="darkButtonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 190</value>
+    <value>1, 276</value>
   </data>
   <data name="darkButtonOK.Size" type="System.Drawing.Size, System.Drawing">
     <value>341, 23</value>
@@ -167,10 +173,10 @@
     <value>오디오 파일 포맷</value>
   </data>
   <data name="darkSectionPanelExcludeUnusedResourcesOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>343, 214</value>
+    <value>343, 300</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>343, 214</value>
+    <value>343, 300</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

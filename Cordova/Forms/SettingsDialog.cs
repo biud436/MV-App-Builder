@@ -115,8 +115,16 @@ namespace Cordova.Forms
             darkCheckBoxTrue.Checked = DataMan.Instance.RemainTree ? true : false;
             darkCheckBoxFalse.Checked = DataMan.Instance.RemainTree ? false : true;
 
+            var parentNode = new DarkUI.Controls.DarkTreeNode("ANDROID_SDK");
+            parentNode.Nodes.Add(new DarkUI.Controls.DarkTreeNode(DataManager.Instance.AndroidSDKPath));
+            darkPathTree.Nodes.Add(parentNode);
+
+            parentNode = new DarkUI.Controls.DarkTreeNode("JAVA_HOME");
+            parentNode.Nodes.Add(new DarkUI.Controls.DarkTreeNode(DataManager.Instance.JDKPath));
+            darkPathTree.Nodes.Add(parentNode);
+
             // 출력 폴더를 바꾼 적이 있다면
-            if(DataMan.Instance.IsValidCustomOutputPath)
+            if (DataMan.Instance.IsValidCustomOutputPath)
             {
                 darkTextBoxOutputFolderPath.Text = DataMan.Instance.OutputPath;
             } else

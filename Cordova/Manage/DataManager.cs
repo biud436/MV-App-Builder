@@ -36,6 +36,8 @@ namespace Cordova.Manage
         public string PackageFileName { get; set; }
         public string DataFolderName { get; set; }
         public DataFolderType Type { get; set; }
+        public string AndroidSDKPath { get; set; }
+        public string JDKPath { get; set; }
 
         private DataManager()
         {
