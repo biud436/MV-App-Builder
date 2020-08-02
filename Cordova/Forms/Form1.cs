@@ -339,10 +339,7 @@ namespace Cordova.Forms
             string ANDROID_HOME = Environment.GetEnvironmentVariable("ANDROID_HOME");
             string ANDROID_SDK_ROOT = Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
 
-            if(!String.IsNullOrEmpty(JAVA_HOME))
-            {
-                DataManager.Instance.JDKPath = JAVA_HOME;
-            }
+            DataManager.Instance.JDKPath = String.IsNullOrEmpty(JAVA_HOME) ? "" : JAVA_HOME;
 
             if (!String.IsNullOrEmpty(ANDROID_HOME))
             {
