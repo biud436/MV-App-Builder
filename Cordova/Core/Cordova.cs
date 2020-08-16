@@ -48,6 +48,8 @@ namespace Cordova.Core
 
         private Data.FormData.Config _config;
 
+        public const long LIMIT_TIME = 1000 * 20;
+
         /// <summary>
         /// 생성자
         /// </summary>
@@ -834,7 +836,7 @@ android {
         }
 
         /// <summary>
-        /// Checks the latest cordova version from cordova-android.git
+        /// Checks the latest cordova version using npm
         /// </summary>
         /// <returns></returns>
         public void CheckLatestCordovaVersion()
@@ -883,7 +885,8 @@ android {
                 //            cordovaVersion = new Version(m.Groups[1].Value);
                 //        }
 
-                //    } else
+                //    }
+                //    else
                 //    {
                 //        // Cannot find the version text in the github.
                 //        return;
@@ -898,6 +901,7 @@ android {
                     tempCmdProcess.outputLine("npm show cordova version", (string output) =>
                     {
                         cordovaVersion = new Version(output);
+                        //AppendText($"최신 코르도바 버전은 {cordovaVersion.ToString()}입니다.");
                     });
                 }
 
@@ -910,6 +914,128 @@ android {
                     // check the version of installed Cordova in the local system.
                     tempCmdProcess.outputLine("cordova --version", (string output) =>
                     {
+                        //AppendText("로컬에 설치된 코르도바 버전을 확인하였습니다.");
+
+                        // Extract the text that contains the version using the regular expression.
+                        Regex regex = new Regex(@"(\d+\.\d+\.\d+)", RegexOptions.IgnoreCase);
+                        Match m = regex.Match(output);
+
+                        if (m.Success)
+                        {
+                            localCordovaVersion = new Version(m.Groups[1].Value);
+                            //AppendText($"매칭되는 버전 텍스트 {localCordovaVersion.ToString()}를 확인하였습니다.");
+                            var result = cordovaVersion.CompareTo(localCordovaVersion);
+
+                            if (result > 0)
+                            {
+                                // it will be updated the cordova automatically if you are using older version of it.
+                                AppendText(_rm.GetString("NOT_LATEST_CORDOV_VER"));
+                                AppendText(String.Format(_rm.GetString("REQUEST_NPM_INSTALL"), cordovaVersion.ToString()));
+
+                                DialogResult dialogResult = MessageBox.Show(_rm.GetString("REQUEST_NPM_INSTALL_ASK"), _mainForm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                                if (dialogResult == DialogResult.Yes)
+                                {
+                                    InstallCordova();
+                                }
+
+                            }
+                            else if (result < 0)
+                            {
+                                // Why you use dev version? I don't understand.
+                            }
+                            else
+                            {
+                                // You are using the latest version of Cordova already.
+                                sw.Stop();
+                                AppendText(_rm.GetString("LATEST_CORDOVA_READY") + "(" + sw.Elapsed.ToString() + ")");
+                            }
+
+                        }
+                        else
+                        {
+                            sw.Stop();
+                            AppendText($"정규표현식에 매칭되는 버전 텍스트가 없습니다. 출력 텍스트 : {output}");
+                        }
+                    });
+                }
+
+            } catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+            } finally
+            {
+                _cordovaVersion = cordovaVersion;
+            }
+
+        }
+
+        /// <summary>
+        /// Checks the latest cordova version from cordova-android.git
+        /// </summary>
+        /// <returns></returns>
+        public void CheckLastestCordovaVersionFromGit()
+        {
+            Version cordovaVersion = new Version("0.0.0");
+
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+
+            try
+            {
+
+                using (WebClient wc = new WebClient())
+                {
+                    string releaseNote = wc.DownloadString(new Uri("https://raw.githubusercontent.com/apache/cordova-cli/master/RELEASENOTES.md"));
+
+                    var regex = new Regex("[\r\n]+", RegexOptions.IgnoreCase);
+                    var lines = regex.Split(releaseNote);
+                    var matchedData = "# Cordova-cli Release Notes";
+                    var findIndex = 0;
+
+                    // Try to read around the target index.
+                    int startLineNumber = 19;
+                    int endLineNumber = 28;
+
+                    for (var i = startLineNumber; i < endLineNumber; i++)
+                    {
+                        if (lines[i] == matchedData)
+                        {
+                            findIndex = i;
+                            break;
+                        }
+                    }
+
+                    if (findIndex > 0)
+                    {
+                        findIndex += 1;
+
+                        // Try to extract the string that includes version
+                        regex = new Regex(@"[#]{3}[ ]*(\d+\.\d+\.\d+)", RegexOptions.IgnoreCase);
+                        Match m = regex.Match(lines[findIndex]);
+
+                        if (m.Success)
+                        {
+                            cordovaVersion = new Version(m.Groups[1].Value);
+                        }
+
+                    }
+                    else
+                    {
+                        // Cannot find the version text in the github.
+                        return;
+                    }
+
+                }
+
+                // Create the lightweight command process and check the version of installed Cordova in the local system.
+                using (var tempCmdProcess = new HostData("", true, "", ""))
+                {
+                    // Create the lightweight command process
+                    var localCordovaVersion = new Version("0.0.0");
+
+                    // check the version of installed Cordova in the local system.
+                    tempCmdProcess.outputLine("cordova --version", (string output) => {
 
                         // Extract the text that contains the version using the regular expression.
                         Regex regex = new Regex(@"(\d+\.\d+\.\d+)[ ]+", RegexOptions.IgnoreCase);
@@ -950,14 +1076,15 @@ android {
                 }
 
 
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex);
-            } finally
+            }
+            finally
             {
                 _cordovaVersion = cordovaVersion;
             }
-
         }
 
 

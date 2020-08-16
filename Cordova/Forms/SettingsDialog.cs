@@ -115,6 +115,8 @@ namespace Cordova.Forms
             darkCheckBoxTrue.Checked = DataMan.Instance.RemainTree ? true : false;
             darkCheckBoxFalse.Checked = DataMan.Instance.RemainTree ? false : true;
 
+            // TODO: 안드로이드 SDK 경로를 출력하는 다크 트리 기능
+            // 자동으로 찾아서 설정하지만 찾지 못했을 경우에는 오류가 날 수 있음.
             var parentNode = new DarkUI.Controls.DarkTreeNode("ANDROID_SDK");
             parentNode.Nodes.Add(new DarkUI.Controls.DarkTreeNode(DataManager.Instance.AndroidSDKPath));
             darkPathTree.Nodes.Add(parentNode);
