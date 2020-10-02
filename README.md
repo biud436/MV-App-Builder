@@ -18,38 +18,39 @@ This tool allows you to build your own Android APK File easily.
 
 # Usage
 
-1. ```RPG Maker MV```를 켜고, 미사용 리소스 제거를 한 후 게임을 바탕 화면 등으로 배포합니다.
+1. Export as your desired folder such as desktop after removing unused resource in RPG Maker MV.
 
-2. 빌더를 켜고, ```index.html``` 파일이 있는 ```<Game 폴더>/www```폴더를 선택합니다.
+2. Open the this builder and then select the folder called ```<YOUR GAME FOLDER>/www``` there exists an ```index.html``` file.
 
-3. 프로그램 내에 미리 작성된 패키지 명, 게임명, 폴더명, 조직 단위 명 등을 수정합니다.
+3. In this tool, there is pre-written contents, but you have to modify as your own settings.
 
-4. 설정에서 미사용 리소스 제거 기능을 OFF로 변경합니다.
+4. Change an ```unused remove resources``` as false after open up option window.
 
-5. Build 버튼을 누르고 빌드 완료 메시지가 뜰 때까지 기다리면 APK 파일 생성이 완료됩니다.
+5. Click the build button and hold on until done.
 
-6. 휴대폰이 USB 잭으로 컴퓨터와 연결되어있고, ```adb```가 역시 설치되어 있다면, ```adb install -r app-release.apk``` 등으로 휴대폰에 앱을 자동으로 설치할 수 있습니다.
+6. if your cellphone is connected with personal computer using USB driver and others, you can install the apk file using google's adb tool automatically in your own devices.
 
-7. Debug Mode로 Build를 하면, 크롬 확장에 adb를 설치, ```chrome://inspect```의 크롬 개발자 도구에서 원격 디버깅(remote-debugging)이 가능합니다.
+```adb install -r app-release.apk```
+
+7. if you build as on debug mode. it is possible to use remote debug in chrome://inspect of your chrome browser on Windows (supposed to be installed the adb tool on your computer)
 
 # Requirements
 This tool is based on C# Winform and Node.js and it has used a many of third-party tools. Some of them must be installed manually due to complexity of implementation. List that you must download is belows.
 
-## 닷넷 프레임워크 4.5.4 버전 이상
+## .Net Framework v4.5.4 or above.
 
 A higher version of the .Net Framework is required for a program developed with C# Winform to run.
 
-▶ 다운로드 : https://dotnet.microsoft.com/download/dotnet-framework
+▶ Download : https://dotnet.microsoft.com/download/dotnet-framework
 
 ## Android Studio & Android SDK
 
-APK 파일을 실제로 만들어내는 프로그램이므로 Android SDK가 필요합니다. 안드로이드 SDK API 수준은 ```19, 28, 29``` 버전이 설치되어야 합니다.
+This tool must be needed the Android SDK(Android Software Development Kit) and JDK and more. 
+There are needed 19, 28, 29 (latest) API specifically for building apk so you have to install using the ```Android Sdk Manager``` beforehand.
 
-▶ 다운로드 : https://developer.android.com/studio/index.html?hl=ko
+▶ Download : https://developer.android.com/studio/index.html?hl=ko
 
-설치를 끝냈으면 시작 버튼 옆에 검색 버튼에서 시스템 환경 변수 편집을 검색합니다.
-
-시스템 변수 란에서 Path를 찾아서 다음과 같이 새로 추가합니다.
+if you done installed them, you have to edit Environment Variables called ```path``` on Windows.
 
 ```cmd
 %ANDROID_SDK_ROOT%
