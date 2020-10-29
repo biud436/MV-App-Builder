@@ -63,6 +63,7 @@ namespace Cordova.Forms
         /// </summary>
         public void InitWithHostData()
         {
+            // JDK 버전이 15이상이면 sdkmanager를 사용할 수 없다.
             _hostList.Add(new HostData("where java.exe > nul", false, "", _rm.GetString("FOUND_JAVA"), _rm.GetString("NOT_FOUND_JAVA")));
             _hostList.Add(new HostData("where keytool.exe > nul", false, "", _rm.GetString("FOUND_KEYTOOL"), _rm.GetString("NOT_FOUND_KEYTOOL")));
             _hostList.Add(new HostData("where cordova > nul", false, "", _rm.GetString("FOUND_CORDOVA"), _rm.GetString("NOT_FOUND_CORDOVA")));
@@ -124,8 +125,19 @@ namespace Cordova.Forms
         /// </summary>
         public void GetPlatformsFolders()
         {
-            string ANDROID_HOME = System.Environment.GetEnvironmentVariable("ANDROID_HOME");
-            string ANDROID_SDK_ROOT = System.Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
+            string ANDROID_HOME = null;
+            string ANDROID_SDK_ROOT = null;
+
+            try
+            {
+                ANDROID_HOME = System.Environment.GetEnvironmentVariable("ANDROID_HOME");
+                ANDROID_SDK_ROOT = System.Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
+
+            } catch(ArgumentNullException ex)
+            {
+                AppendText("ANDROID_HOME or ANDROID_SDK_ROOT can't find in your system environment");
+            }
+
             string defaultPath = "";
             bool isValid = false;
 
@@ -195,8 +207,19 @@ namespace Cordova.Forms
         private void GetAndroidAPILevels()
         {
 
-            string ANDROID_HOME = Environment.GetEnvironmentVariable("ANDROID_HOME");
-            string ANDROID_SDK_ROOT = Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
+            string ANDROID_HOME = null;
+            string ANDROID_SDK_ROOT = null;
+
+            try
+            {
+                ANDROID_HOME = System.Environment.GetEnvironmentVariable("ANDROID_HOME");
+                ANDROID_SDK_ROOT = System.Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
+
+            }
+            catch (ArgumentNullException ex)
+            {
+                AppendText("ANDROID_HOME or ANDROID_SDK_ROOT can't find in your system environment");
+            }
             string defaultPath = "";
             bool isValid = false;
 
@@ -213,12 +236,30 @@ namespace Cordova.Forms
 
             string sdkaMangerPath = String.Format("{0} --list | find \"platforms;\"", System.IO.Path.Combine(defaultPath, "tools", "bin", "sdkmanager.bat"));
 
-            if (System.IO.Directory.Exists(defaultPath) && isValid)
+            if (Directory.Exists(defaultPath) && isValid)
             {
-                using (HostData process = new HostData(sdkaMangerPath, false, "", "echo ", "echo "))
+
+                using (HostData process = new HostData(sdkaMangerPath, false, "", "echo ", ""))
                 {
                     Append append = (output) =>
                     {
+                        //if(String.IsNullOrEmpty(output))
+                        //{
+                        //    string sdkaMangerPath2 = String.Format("{0} --verbose --list", System.IO.Path.Combine(defaultPath, "tools", "bin", "sdkmanager.bat"));
+
+                        //    using (HostData subProcess = new HostData(sdkaMangerPath2 + " >result.txt 2>&1", false, "", "echo ", ""))
+                        //    {
+                        //        subProcess.Run((str) => {
+                        //            if (File.Exists("result.txt"))
+                        //            {
+                        //                output = File.ReadAllText("result.txt");
+                        //                AppendText(output);
+                        //                // File.Delete("redirect.txt");
+                        //            }
+                        //        });
+                        //    }
+                        //}
+
                         var ret = output.Split('|')[0];
                         var regex = new System.Text.RegularExpressions.Regex("(?:platforms;android-)(\\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                         var match = regex.Match(ret);
