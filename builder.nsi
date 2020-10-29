@@ -99,7 +99,7 @@ Section "필수설치" SEC01
   CreateShortCut "$SMPROGRAMS\MV App Builder\MV App Builder.lnk" "$INSTDIR\Cordova Builder.exe"
   CreateShortCut "$DESKTOP\MV App Builder.lnk" "$INSTDIR\Cordova Builder.exe"
   File ".\bin\Release\Cordova Builder.exe.config"
-  File ".\bin\Release\Cordova Builder.vshost.exe.config"
+  # File ".\bin\Release\Cordova Builder.vshost.exe.config"
   SetOutPath "$INSTDIR\en"
   File ".\bin\Release\en\Cordova Builder.resources.dll"
   SetOutPath "$INSTDIR\ja"
