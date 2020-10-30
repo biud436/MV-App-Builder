@@ -485,9 +485,9 @@ namespace Cordova.Forms
         {
             comboBoxOrientation.SelectedIndex = 2;
             comboBoxFullscreen.SelectedIndex = 0;
-            comboBoxMinSdkVersion.SelectedIndex = comboBoxMinSdkVersion.Items.IndexOf(19);
+            comboBoxMinSdkVersion.SelectedIndex = comboBoxMinSdkVersion.Items.IndexOf(22); // Android 5.1
             comboBoxTargetSdkVersion.SelectedIndex = comboBoxTargetSdkVersion.Items.IndexOf(29);
-            comboBoxCompileSdkVersion.SelectedIndex = comboBoxCompileSdkVersion.Items.IndexOf(29);
+            comboBoxCompileSdkVersion.SelectedIndex = comboBoxCompileSdkVersion.Items.IndexOf(29); // Android 11
             comboBoxBuildMode.SelectedIndex = 0;
 
             timerBackground.Start();
@@ -503,23 +503,29 @@ namespace Cordova.Forms
             _cordova.ReadProjectPluginsJson(mainPath);
 
             // UI 컨트롤이 멈추지 않도록 새로운 쓰레드에서 작업 수행
-            System.Threading.Thread worker = new System.Threading.Thread(() =>
+            Thread worker = new Thread(() =>
             {
-                string path = System.IO.Path.Combine(mainPath, "js", "plugins");
+                if (File.Exists(Path.Combine(Path.Combine(mainPath, "js", "plugins"))))
+                {
+                    AppendText("Cannot find a file from js/plugins.js");
+                    return;
+                }
+
+                string path = Path.Combine(mainPath, "js", "plugins");
 
                 // plugins.json 파일에 플러그인이 ON이라면 해당 플러그인에서 특정 코멘트를 찾는다 (50줄까지만 읽음)
                 if (System.IO.Directory.Exists(path))
                 {
-                    System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(path);
+                    System.IO.DirectoryInfo dir = new DirectoryInfo(path);
 
-                    foreach (System.IO.FileInfo fi in dir.GetFiles())
+                    foreach (FileInfo fi in dir.GetFiles())
                     {
-                        string filename = System.IO.Path.GetFileNameWithoutExtension(fi.FullName);
+                        string filename = Path.GetFileNameWithoutExtension(fi.FullName);
 
                         if (_cordova.IsValidPlugin(filename))
                         {
                             #region 플러그인명 추출
-                            using (System.IO.StreamReader sr = fi.OpenText())
+                            using (StreamReader sr = fi.OpenText())
                             {
                                 var s = "";
                                 int lineCount = 0;
