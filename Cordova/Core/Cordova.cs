@@ -212,7 +212,6 @@ namespace Cordova.Core
                             CopyProjectFiles();
                         }
 
-
                         ModifyHtmlFiles(); // HTML 파일에 cordova 바인드 용 스크립트 문을 추가합니다.
                         ExportBuildJson(filename);
                         Flush(); // 빌드를 시작합니다.
@@ -531,6 +530,13 @@ namespace Cordova.Core
         private void ModifyHtmlFiles()
         {
             var filename = @"www/index.html";
+
+            if(!File.Exists(filename))
+            {
+                AppendText("Cannot find www/index.html. Note that this tool require an index.html file. Please check that");
+                return;
+            }
+
             var lines = File.ReadAllLines(filename, Encoding.UTF8).ToList();
             string matchLine = null;
             bool isValid = false;
@@ -620,7 +626,7 @@ namespace Cordova.Core
         /// </summary>
         private void CreateBuildExtrasFile()
         {
-            if (_cordovaVersion.Major >= 9)
+            if (_cordovaVersion.Major >= 9 && _cordovaVersion.Major < 10)
             {
                 // 오류 막기...
                 if (!File.Exists("platforms/android/build-extras.gradle"))
@@ -649,6 +655,9 @@ android {
             if(File.Exists("build.json"))
             {
                 AppendText(_rm.GetString("Flush1"));
+            } else
+            {
+                AppendText("Cannot find the build.json file to your project folder");
             }
 
             CreateBuildExtrasFile();
@@ -668,6 +677,11 @@ android {
             {
                 Append append = AppendText;
                 ret = process.Run(append);
+
+                if(!ret)
+                {
+                    AppendText("Unknown error. Please run a command called 'cordova build android' manually in your command line.");
+                }
             }
 
             return ret;
@@ -699,6 +713,11 @@ android {
 
             if(!File.Exists(Path.Combine(projectPath, "index.html"))) 
             {
+                return;
+            }
+
+            if(File.Exists(Path.Combine(projectPath, "js", "plugins.js"))) {
+                AppendText("Cannot find a file from js/plugins.js");
                 return;
             }
 

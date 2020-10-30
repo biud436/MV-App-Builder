@@ -21,6 +21,10 @@ namespace Cordova.Core
 
         public bool disposed = false;
 
+        private bool isOK = false;
+
+        public bool IsOK { get => isOK; set => isOK = value; }
+
         enum ExitCode : int
         {
             Success = 0,
@@ -119,7 +123,14 @@ namespace Cordova.Core
 
                 }
 
-                isNull = String.IsNullOrEmpty(process.StandardError.ReadToEnd() ?? "");
+                string errorMessage = process.StandardError.ReadToEnd();
+
+                if (process.ExitCode != 0)
+                {
+                    AppendText(errorMessage);
+                }
+
+                isNull = String.IsNullOrEmpty(errorMessage ?? "");
 
                 process.WaitForExit();
                 process.Close();
@@ -195,6 +206,7 @@ namespace Cordova.Core
         public bool Run(Append Append)
         {
             bool isSuccessMessage = Output(Append);
+            IsOK = isSuccessMessage;
 
             if (isSuccessMessage)
             {
