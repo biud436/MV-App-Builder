@@ -392,9 +392,15 @@ namespace Cordova.Core
         /// <returns></returns>
         private Cordova SetIcon(XmlDocument xmlDoc)
         {
+            if (!File.Exists(Path.Combine(DataManager.Instance.GetRootDirectory(), "www", "icon", "icon.png"))) {
+                AppendText("The www/icon/icon.png file could not found.");
+                return this;
+            }
+
             var element = xmlDoc.CreateNode(XmlNodeType.Element, "icon", null);
 
             var srcAttr = xmlDoc.CreateAttribute("src");
+
             srcAttr.Value = "www/icon/icon.png";
 
             element.Attributes.Append(srcAttr);
@@ -626,7 +632,7 @@ namespace Cordova.Core
         /// </summary>
         private void CreateBuildExtrasFile()
         {
-            if (_cordovaVersion.Major >= 9 && _cordovaVersion.Major < 10)
+            if (_cordovaVersion.Major >= 9)
             {
                 // 오류 막기...
                 if (!File.Exists("platforms/android/build-extras.gradle"))
