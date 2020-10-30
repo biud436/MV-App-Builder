@@ -22,7 +22,7 @@ namespace Cordova.Forms
 
     public partial class Form1 : Form
     {
-        private bool[] _status              = new bool[4];                  // 필요 프로그램 4개가 컴퓨터에 깔려있는 지 확인하는 bool[]형 변수
+        private bool[] _status              = new bool[5];                  // 필요 프로그램 4개가 컴퓨터에 깔려있는 지 확인하는 bool[]형 변수
         private bool _isValid               = false;                        // 준비해야 할 프로그램이 모두 깔려있으면 true
         private TextBoxList _textBoxList    = new TextBoxList();            // 화면 상의 모든 UI 컨트롤을 자식으로 지니는 컬렉션
         private Cordova _cordova            = new Cordova();                // 코르도바의 CLI 명령을 처리하는 클래스
@@ -38,6 +38,15 @@ namespace Cordova.Forms
 
         public SortedSet<int> installedSDKs = new SortedSet<int>();         // 설치된 SDK 목록
 
+        sealed class SDK
+        {
+            public static int JDK = 0;
+            public static int KEYTOOL = 1;
+            public static int CORDOVA = 2;
+            public static int ANDROID_SDK = 3;
+            public static int CLEANER = 4;
+            public static int GRADLE = 5;
+        };
 
         /// <summary>
         /// Form1's constructor.
@@ -314,14 +323,14 @@ namespace Cordova.Forms
             {
                 AppendText(_rm.GetString("NotInstalled"));
 
-                if(!_status[0] || !_status[1])
+                if(!_status[SDK.JDK] || !_status[SDK.KEYTOOL])
                 {
                     // 자바 미설치
                     AppendText(_rm.GetString("NotInstalledJava1"));
                     AppendText(_rm.GetString("NotInstalledJava2"));
                 }
 
-                if (!_status[2])
+                if (!_status[SDK.CORDOVA])
                 {
                     // 코르도바 미설치
                     AppendText(_rm.GetString("NotInstalledCordova1"));
@@ -329,7 +338,7 @@ namespace Cordova.Forms
                     AppendText(_rm.GetString("NotInstalledCordova3"));
                 }
 
-                if (!_status[3])
+                if (!_status[SDK.ANDROID_SDK])
                 {
                     // 안드로이드 SDK
                     AppendText(_rm.GetString("NotInstalledAndroidSDK1"));
@@ -337,7 +346,7 @@ namespace Cordova.Forms
                     AppendText(_rm.GetString("NotInstalledAndroidSDK3"));
                 }
 
-                if (!_status[4])
+                if (!_status[SDK.CLEANER])
                 {
                     _cordova.InstallResourceCleaner();
                 }
@@ -385,12 +394,12 @@ namespace Cordova.Forms
             if (!String.IsNullOrEmpty(ANDROID_HOME))
             {
                 AppendText(String.Format(_rm.GetString("FOUND_ANDROID_HOME"), ANDROID_HOME));
-                _status[3] = true;
+                _status[SDK.ANDROID_SDK] = true;
             }
             else if (!String.IsNullOrEmpty(ANDROID_SDK_ROOT)) // (Recommended)
             {
                 AppendText(String.Format(_rm.GetString("FOUND_ANDROID_SDK_ROOT"), ANDROID_SDK_ROOT));
-                _status[3] = true;
+                _status[SDK.ANDROID_SDK] = true;
             }
 
             GetPlatformsFolders();
