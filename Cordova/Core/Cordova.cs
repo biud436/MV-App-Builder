@@ -40,7 +40,7 @@ namespace Cordova.Core
         private Dictionary<string, bool> _plugins = new Dictionary<string, bool>();
 
         // 버전
-        private Version _version = new Version("0.2.26");
+        private Version _version = new Version("0.2.27");
 
         private Version _cordovaVersion = new Version("0.0.0");
 
@@ -828,6 +828,10 @@ android {
 
             using (WebClient wc = new WebClient())
             {
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
                 string targetJson = wc.DownloadString("https://raw.githubusercontent.com/biud436/MV-App-Builder/master/version.json");
                 var targetObject = JsonHelper.ToClass<Dictionary<string, string>>(targetJson);
 
@@ -981,7 +985,7 @@ android {
                         else
                         {
                             sw.Stop();
-                            AppendText($"정규표현식에 매칭되는 버전 텍스트가 없습니다. 출력 텍스트 : {output}");
+                            AppendText($"코르도바를 설치해주세요. 정규표현식에 매칭되는 버전 텍스트가 없습니다. 출력 텍스트 : {output}");
                         }
                     });
                 }
