@@ -38,6 +38,10 @@ namespace Cordova.Forms
 
         public SortedSet<int> installedSDKs = new SortedSet<int>();         // 설치된 SDK 목록
 
+        public const int DEFAULT_MINIMUM_SDK_VERSION = 22;
+        public const int DEFAULT_TARGET_SDK_VERSION = 29;
+        public const int DEFAULT_COMPILE_SDK_VERSION = 29;
+
         sealed class SDK
         {
             public static int JDK = 0;
@@ -494,9 +498,9 @@ namespace Cordova.Forms
         {
             comboBoxOrientation.SelectedIndex = 2;
             comboBoxFullscreen.SelectedIndex = 0;
-            comboBoxMinSdkVersion.SelectedIndex = comboBoxMinSdkVersion.Items.IndexOf(22); // Android 5.1
-            comboBoxTargetSdkVersion.SelectedIndex = comboBoxTargetSdkVersion.Items.IndexOf(29);
-            comboBoxCompileSdkVersion.SelectedIndex = comboBoxCompileSdkVersion.Items.IndexOf(29); // Android 11
+            comboBoxMinSdkVersion.SelectedIndex = comboBoxMinSdkVersion.Items.IndexOf(DEFAULT_MINIMUM_SDK_VERSION); // Android 5.1
+            comboBoxTargetSdkVersion.SelectedIndex = comboBoxTargetSdkVersion.Items.IndexOf(DEFAULT_TARGET_SDK_VERSION);
+            comboBoxCompileSdkVersion.SelectedIndex = comboBoxCompileSdkVersion.Items.IndexOf(DEFAULT_COMPILE_SDK_VERSION); // Android 11
             comboBoxBuildMode.SelectedIndex = 0;
 
             timerBackground.Start();
