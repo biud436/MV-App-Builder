@@ -15,7 +15,7 @@ jobs:
             - name: Restore Nuget Packages using msbuild
               run: msbuild -t:restore
             - name: Build
-              run: msbuild Editor.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+              run: msbuild "Cordova Builder.csproj" -t:rebuild -verbosity:diag -property:Configuration=Release
             - name: Upload Artifacts
               uses: actions/upload-artifact@v2
               with:
