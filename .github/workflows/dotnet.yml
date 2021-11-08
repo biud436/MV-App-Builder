@@ -24,8 +24,9 @@ jobs:
         run: |
           choco install zip
       - name: NSIS 프로세스 종료 플러그인 압축 해제
+        shell: powershell
         run: |
-          unzip NsProcess.zip -d NSIS_Plugins
+          Expand-Archive -Path NsProcess.zip -DestinationPath ./NSIS_Plugins/
       - name: 설치 파일 빌드
         uses: joncloud/makensis-action@v3.6
         with:
