@@ -19,7 +19,7 @@ jobs:
       - name: NSIS NsProcess 플러그인 다운로드
         uses: carlosperate/download-file-action@v1.0.3
         with:
-          file-url: https://github.com/biud436/MV-App-Builder/raw/master/NSISPlugins/NsProcess.zip
+          file-url: https://nsis.sourceforge.io/mediawiki/images/1/18/NsProcess.zip
           file-name: NsProcess.zip
           location: ${{ github.workspace }}
       - name: Setup Python
@@ -31,7 +31,7 @@ jobs:
           choco install zip
       - name: NSIS 프로세스 종료 플러그인 압축 해제
         run: |
-          unzip "${{ github.workspace }}/NsProcess.zip" -d "${{ github.workspace }}/NSIS_Plugins"
+          unzip ${{ github.workspace }}/NsProcess.zip -d ${{ github.workspace }}/NSIS_Plugins
       - name: 설치 파일 빌드
         uses: joncloud/makensis-action@v3.6
         with:
