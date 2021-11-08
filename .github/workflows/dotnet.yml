@@ -19,7 +19,7 @@ jobs:
       - name: WGET
         shell: powershell
         run: |
-          wget https://nsis.sourceforge.io/mediawiki/images/1/18/NsProcess.zip -OutFile NsProcess.zip
+          wget https://github.com/biud436/MV-App-Builder/raw/master/NSISPlugins/NsProcess.zip -OutFile NsProcess.zip
       - name: 압축 라이브러리 설치
         run: |
           choco install zip
