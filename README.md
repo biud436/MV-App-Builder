@@ -1,5 +1,6 @@
 # Introduction
-[![Build status](https://ci.appveyor.com/api/projects/status/w296e5145wwpn5dc/branch/master?svg=true)](https://ci.appveyor.com/project/biud436/mv-app-builder/branch/master)
+![Build Status](https://github.com/biud436/MV-App-Builder/actions/workflows/dotnet.yml/badge.svg)
+
 
 This tool allows you to build your own Android APK File easily.
 
