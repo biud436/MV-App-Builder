@@ -86,7 +86,7 @@ LangString FORCE_ASK_EXIT_MESSAGE ${LANG_KOREAN} "설치를 진행하려면 RPG Maker MV
 !macroEnd
 
 Function .onInit
-  !insertmacro IsRunning
+;   !insertmacro IsRunning
   !insertmacro MUI_LANGDLL_DISPLAY
 FunctionEnd
 
