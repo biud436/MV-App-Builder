@@ -22,8 +22,16 @@ jobs:
           file-url: https://nsis.sourceforge.io/mediawiki/images/7/7f/EnVar_plugin.zip
           file-name: envar_plugin.zip
           location: ${{ github.workspace }}
+      - name: Download NsProcess plugin for NSIS
+        uses: carlosperate/download-file-action@v1.0.3
+        with:
+          file-url: https://nsis.sourceforge.io/mediawiki/images/1/18/NsProcess.zip
+          file-name: NsProcess.zip
+          location: ${{ github.workspace }}
       - name: Extract EnVar plugin
         run: 7z x -o"${{ github.workspace }}/NSIS_Plugins" "${{ github.workspace }}/envar_plugin.zip"
+      - name: Extract NsProcess plugin
+        run: 7z x -o"${{ github.workspace }}/NSIS_Plugins" "${{ github.workspace }}/NsProcess.zip"
       - name: Create nsis installer
         uses: joncloud/makensis-action@v3.6
         with:
