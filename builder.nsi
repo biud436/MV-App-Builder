@@ -109,7 +109,7 @@ Section "필수설치" SEC01
   File ".\bin\Release\ko\Cordova Builder.resources.dll"
   SetOutPath "$INSTDIR"
   File ".\bin\Release\Newtonsoft.Json.dll"
-  File ".\bin\Release\Newtonsoft.Json.xml"
+  # File ".\bin\Release\Newtonsoft.Json.xml"
   File ".\bin\Release\DarkUI.dll"
 SectionEnd
 
