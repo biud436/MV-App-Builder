@@ -21,22 +21,18 @@ jobs:
         with:
           file-url: https://nsis.sourceforge.io/mediawiki/images/1/18/NsProcess.zip
           file-name: NsProcess.zip
-          location: ${{ github.workspace }}
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 2.x
+          location: ./
       - name: 압축 라이브러리 설치
         run: |
           choco install zip
       - name: NSIS 프로세스 종료 플러그인 압축 해제
         run: |
-          unzip ${{ github.workspace }}/NsProcess.zip -d ${{ github.workspace }}/NSIS_Plugins
+          unzip NsProcess.zip -d ./NSIS_Plugins
       - name: 설치 파일 빌드
         uses: joncloud/makensis-action@v3.6
         with:
           script-file: ./builder.nsi
-          additional-plugin-paths: ${{ github.workspace }}/NSIS_Plugins/Plugins
+          additional-plugin-paths: ./NSIS_Plugins/Plugins
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
