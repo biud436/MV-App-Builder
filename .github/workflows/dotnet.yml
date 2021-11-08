@@ -6,7 +6,18 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+     strategy:
+      matrix:
+        python-version: ['2.x', '3.x']
+        os: [windows-2019]
+        log: [yes, no]
+        include:
+          - nightly: nightly
+            os: windows-2019
+            log: no
+            python-version: 3.x
+    
+    runs-on: ${{ matrix.os }} 
 
     steps:
       - uses: actions/checkout@v2
@@ -22,8 +33,18 @@ jobs:
           file-url: https://github.com/biud436/MV-App-Builder/raw/master/NSISPlugins/NsProcess.zip
           file-name: NsProcess.zip
           location: ${{ github.workspace }}
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+        if: startsWith(matrix.os, 'windows')
+      - name: 압축 라이브러리 설치
+        run: |
+          choco install zip
+        if: startsWith(matrix.os, 'windows')        
       - name: NSIS 프로세스 종료 플러그인 압축 해제
-        run: 7z x -o"${{ github.workspace }}/NSIS_Plugins" "${{ github.workspace }}/NsProcess.zip"
+        run: |
+          unzip "${{ github.workspace }}/NsProcess.zip" -d "${{ github.workspace }}/NSIS_Plugins"
       - name: 설치 파일 빌드
         uses: joncloud/makensis-action@v3.6
         with:
