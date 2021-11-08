@@ -11,9 +11,10 @@ Unicode true
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
 ; MUI 1.67 compatible ------
+!addincludedir "C:\Program Files (x86)\NSIS\Plugins\Include\"
 !include "MUI.nsh"
 !include "LogicLib.nsh"
-!include ".\Include\nsProcess.nsh"
+!include "nsProcess.nsh"
 
 !define	EUL_RUL				"를"					; 을/를 문제 해결을 위한 define. $PRODUCT 에 따라 바뀐다.
 !define I_KA				"이"					; 이/가 문제 해결을 위한 define. $PRODUCT 에 따라 바뀐다.
