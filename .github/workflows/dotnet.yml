@@ -12,9 +12,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
-      - name: Restore Nuget Packages using msbuild
+      - name: Nuget 패키지 복구
         run: msbuild -t:restore
-      - name: Build
+      - name: 빌드
         run: msbuild "Cordova Builder.csproj" -t:rebuild -verbosity:diag -property:Configuration=Release
       - name: NSIS NsProcess 플러그인 다운로드
         uses: carlosperate/download-file-action@v1.0.3
@@ -22,13 +22,9 @@ jobs:
           file-url: https://github.com/biud436/MV-App-Builder/raw/master/NSISPlugins/NsProcess.zip
           file-name: NsProcess.zip
           location: ${{ github.workspace }}
-      - name: 압축 해제
-        shell: powershell
-        run: |
-          [Reflection.Assembly]::LoadWithPartialName("System.IO.Compression.FileSystem")
-          Expand-Archive "${{ github.workspace }}/NsProcess.zip" -DestinationPath "${{ github.workspace }}/NSIS_Plugins"
-          dir /r /b
-      - name: NSIS 인스톨러 빌드
+      - name: NSIS 프로세스 종료 플러그인 압축 해제
+        run: 7z x -o"${{ github.workspace }}/NSIS_Plugins" "${{ github.workspace }}/NsProcess.zip"
+      - name: 설치 파일 빌드
         uses: joncloud/makensis-action@v3.6
         with:
           script-file: ./builder.nsi
