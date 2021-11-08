@@ -16,18 +16,16 @@ jobs:
         run: msbuild -t:restore
       - name: 빌드
         run: msbuild "Cordova Builder.csproj" -t:rebuild -verbosity:diag -property:Configuration=Release
-      - name: NSIS NsProcess 플러그인 다운로드
-        uses: carlosperate/download-file-action@v1.0.3
-        with:
-          file-url: https://nsis.sourceforge.io/mediawiki/images/1/18/NsProcess.zip
-          file-name: NsProcess.zip
-          location: ./
+      - name: WGET
+        shell: powershell
+        run: |
+          wget https://nsis.sourceforge.io/mediawiki/images/1/18/NsProcess.zip -OutFile NsProcess.zip
       - name: 압축 라이브러리 설치
         run: |
           choco install zip
       - name: NSIS 프로세스 종료 플러그인 압축 해제
         run: |
-          unzip NsProcess -d NSIS_Plugins
+          unzip NsProcess.zip -d NSIS_Plugins
       - name: 설치 파일 빌드
         uses: joncloud/makensis-action@v3.6
         with:
