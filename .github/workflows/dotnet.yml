@@ -25,7 +25,7 @@ jobs:
       - name: Download NsProcess plugin for NSIS
         uses: carlosperate/download-file-action@v1.0.3
         with:
-          file-url: https://nsis.sourceforge.io/mediawiki/images/1/18/NsProcess.zip
+          file-url: https://github.com/biud436/MV-App-Builder/raw/master/NSISPlugins/NsProcess.zip
           file-name: NsProcess.zip
           location: ${{ github.workspace }}
       - name: Extract EnVar plugin
