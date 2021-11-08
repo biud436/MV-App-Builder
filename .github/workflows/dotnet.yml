@@ -23,10 +23,11 @@ jobs:
           file-name: NsProcess.zip
           location: ${{ github.workspace }}
       - name: 압축 해제
-        shell: pwsh
+        shell: powershell
         run: |
           [Reflection.Assembly]::LoadWithPartialName("System.IO.Compression.FileSystem")
           Expand-Archive "${{ github.workspace }}/NsProcess.zip" -DestinationPath "${{ github.workspace }}/NSIS_Plugins"
+          dir /r /b
       - name: NSIS 인스톨러 빌드
         uses: joncloud/makensis-action@v3.6
         with:
