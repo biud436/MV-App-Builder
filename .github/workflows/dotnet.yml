@@ -16,23 +16,18 @@ jobs:
         run: msbuild -t:restore
       - name: Build
         run: msbuild "Cordova Builder.csproj" -t:rebuild -verbosity:diag -property:Configuration=Release
-      # - name: Download EnVar plugin for NSIS
-      #   uses: carlosperate/download-file-action@v1.0.3
-      #   with:
-      #     file-url: https://nsis.sourceforge.io/mediawiki/images/7/7f/EnVar_plugin.zip
-      #     file-name: envar_plugin.zip
-      #     location: ${{ github.workspace }}
-      - name: Download NsProcess plugin for NSIS
+      - name: NSIS NsProcess 플러그인 다운로드
         uses: carlosperate/download-file-action@v1.0.3
         with:
           file-url: https://github.com/biud436/MV-App-Builder/raw/master/NSISPlugins/NsProcess.zip
           file-name: NsProcess.zip
           location: ${{ github.workspace }}
-      # - name: Extract EnVar plugin
-      #   run: 7z x -o"${{ github.workspace }}/NSIS_Plugins" "${{ github.workspace }}/envar_plugin.zip"
-      - name: Extract NsProcess plugin
-        run: 7z x -o"${{ github.workspace }}/NSIS_Plugins" "${{ github.workspace }}/NsProcess.zip"
-      - name: Create nsis installer
+      - name: 압축 해제
+        shell: pwsh
+        run: |
+          [Reflection.Assembly]::LoadWithPartialName("System.IO.Compression.FileSystem")
+          Expand-Archive "${{ github.workspace }}/NsProcess.zip" -DestinationPath "${{ github.workspace }}/NSIS_Plugins"
+      - name: NSIS 인스톨러 빌드
         uses: joncloud/makensis-action@v3.6
         with:
           script-file: ./builder.nsi
