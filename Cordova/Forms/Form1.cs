@@ -470,7 +470,9 @@ namespace Cordova.Forms
         public void InitWithDefaultTexts()
         {
             byte[] aliasText = new UTF8Encoding().GetBytes(DateTime.Now.ToString());
-            textBoxKeyAlias.Text = Convert.ToBase64String(aliasText);
+
+            // Base64로 뽑아낸 key alias을 8자만 남긴다.
+            textBoxKeyAlias.Text = String.Join("", Convert.ToBase64String(aliasText).Take(8));
         }
 
         /// <summary>
