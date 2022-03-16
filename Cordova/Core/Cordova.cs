@@ -31,7 +31,7 @@ namespace Cordova.Core
         private Form1 _mainForm;
 
         // 현재 경로
-        private string _currentDirectory;
+        //private string _currentDirectory;
 
         // 지역화를 위한 리소스 관리자
         private ResourceManager _rm;
@@ -62,7 +62,7 @@ namespace Cordova.Core
 
         public void InitMembers()
         {
-            _currentDirectory = Directory.GetCurrentDirectory();
+            // _currentDirectory = Directory.GetCurrentDirectory();
         }
 
         public void InitWithDataMan()

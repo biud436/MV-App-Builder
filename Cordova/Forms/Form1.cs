@@ -39,8 +39,8 @@ namespace Cordova.Forms
         public SortedSet<int> installedSDKs = new SortedSet<int>();         // 설치된 SDK 목록
 
         public const int DEFAULT_MINIMUM_SDK_VERSION = 22;
-        public const int DEFAULT_TARGET_SDK_VERSION = 29;
-        public const int DEFAULT_COMPILE_SDK_VERSION = 29;
+        public const int DEFAULT_TARGET_SDK_VERSION = 31;
+        public const int DEFAULT_COMPILE_SDK_VERSION = 31;
 
         sealed class SDK
         {
@@ -146,7 +146,7 @@ namespace Cordova.Forms
                 ANDROID_HOME = System.Environment.GetEnvironmentVariable("ANDROID_HOME");
                 ANDROID_SDK_ROOT = System.Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
 
-            } catch(ArgumentNullException ex)
+            } catch
             {
                 AppendText("ANDROID_HOME or ANDROID_SDK_ROOT can't find in your system environment");
             }
@@ -229,7 +229,7 @@ namespace Cordova.Forms
                 ANDROID_SDK_ROOT = System.Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
 
             }
-            catch (ArgumentNullException ex)
+            catch
             {
                 AppendText("ANDROID_HOME or ANDROID_SDK_ROOT can't find in your system environment");
             }
