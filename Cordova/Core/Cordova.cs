@@ -40,7 +40,7 @@ namespace Cordova.Core
         private Dictionary<string, bool> _plugins = new Dictionary<string, bool>();
 
         // 버전
-        private Version _version = new Version("0.2.27");
+        private Version _version = new Version("0.2.28");
 
         private Version _cordovaVersion = new Version("0.0.0");
 
