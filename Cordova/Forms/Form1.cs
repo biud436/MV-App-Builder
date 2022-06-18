@@ -39,8 +39,8 @@ namespace Cordova.Forms
         public SortedSet<int> installedSDKs = new SortedSet<int>();         // 설치된 SDK 목록
 
         public const int DEFAULT_MINIMUM_SDK_VERSION = 22;
-        public const int DEFAULT_TARGET_SDK_VERSION = 31;
-        public const int DEFAULT_COMPILE_SDK_VERSION = 31;
+        public const int DEFAULT_TARGET_SDK_VERSION = 32;
+        public const int DEFAULT_COMPILE_SDK_VERSION = 32;
 
         sealed class SDK
         {
@@ -762,7 +762,7 @@ namespace Cordova.Forms
                 }
 
                 textBoxSettingGameFolder.Text = targetFolder;
-
+                   
                 ReadCordovaPlugins(targetFolder);
             }
 

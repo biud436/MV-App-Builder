@@ -716,23 +716,26 @@ android {
         /// <param name="projectPath">The project path that contains the www folder.</param>
         public void ReadProjectPluginsJson(string projectPath)
         {
+            string rootPluginFile = Path.Combine(projectPath, "js", "plugins.js");
+            bool isEmptyHTMLFile = !File.Exists(Path.Combine(projectPath, "index.html"));
+            bool isEmptyPluginFile = !File.Exists(rootPluginFile);
 
-            if(!File.Exists(Path.Combine(projectPath, "index.html"))) 
+            if (isEmptyHTMLFile) 
             {
                 return;
             }
 
-            if(File.Exists(Path.Combine(projectPath, "js", "plugins.js"))) {
+            if(isEmptyPluginFile) {
                 AppendText("Cannot find a file from js/plugins.js");
                 return;
             }
 
-            string realPath = Path.Combine(projectPath, "js", "plugins.js");
-            var fakeLines = File.ReadLines(realPath).Skip(4);
-            var length = fakeLines.Count() - 1;
-            var lines = fakeLines.Take(length);
+            string realPath = rootPluginFile;
+            IEnumerable<string> fakeLines = File.ReadLines(realPath).Skip(4);
+            int length = fakeLines.Count() - 1;
+            IEnumerable<string> lines = fakeLines.Take(length);
 
-            foreach (var json in lines)
+            foreach (string json in lines)
             {
                 string goodJson = Regex.Replace(json, @"}}\s*,\s*$", "}}");
 
