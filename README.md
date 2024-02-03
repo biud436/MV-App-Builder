@@ -38,7 +38,7 @@ This tool allows you to build your own Android APK File easily.
 # Requirements
 This tool is based on C# Winform and Node.js and it has used a many of third-party tools. Some of them must be installed manually due to complexity of implementation. List that you must download is belows.
 
-## .Net Framework v4.5.4 or above.
+## .Net Framework v4.8 or above.
 
 A higher version of the .Net Framework is required for a program developed with C# Winform to run.
 
@@ -47,7 +47,7 @@ A higher version of the .Net Framework is required for a program developed with 
 ## Android Studio & Android SDK
 
 This tool must be needed the Android SDK(Android Software Development Kit) and JDK and more. 
-There are needed 19, 28, 29 (latest) API specifically for building apk so you have to install using the ```Android Sdk Manager``` beforehand.
+There are needed 28, 34 (latest) API specifically for building apk so you have to install using the ```Android Sdk Manager``` beforehand.
 
 ▶ Download : https://developer.android.com/studio/index.html?hl=ko
 
@@ -55,10 +55,30 @@ if you done installed them, you have to edit Environment Variables called ```pat
 
 ```cmd
 %ANDROID_SDK_ROOT%
-%ANDROID_SDK_ROOT%tools\
-%ANDROID_SDK_ROOT%tools\bin\
 %ANDROID_SDK_ROOT%platform-tools\
 ```
+
+# 2024년 기준
+
+아무래도 안드로이드가 꾸준히 업데이트 되고 있기 때문에, 안드로이드가 버전이 올라갈 때마다 프로그램들이 동작하지 않는 문제가 발생하고 있습니다.
+
+프로그램 사용자가 아직도 있을거라고 생각되진 않긴 한데, 유지 보수를 위해서 추후에 아래와 같은 내용을 확인해서 패치할 생각입니다.
+
+## OpenJDK 11
+
+기존에는 cordova를 비롯한 핵심이 되는 툴들이 기존에는 JDK8만을 지원하였습니다.
+
+▶ 설치 방법 : https://learn.microsoft.com/en-us/java/openjdk/download
+
+하지만 현재 cordova 12.0.0 기준으로 JDK11 이상이 필요합니다.
+
+## Android SDK Command-line Tools 8.0 설치
+
+2024년 2월(현재 기준 최신)에 안드로이드 스튜디오를 설치하신 분은 sdkmanager가 별도로 설치되지 않기 때문에 아래와 같이 별도로 설치를 하셔야 합니다.
+
+<img width="731" alt="image" src="https://github.com/biud436/MV-App-Builder/assets/13586185/8b449d4e-08e8-4d86-b189-08dd111d6736">
+
+---
 
 ## Node.js
 

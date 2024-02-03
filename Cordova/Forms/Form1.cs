@@ -38,9 +38,9 @@ namespace Cordova.Forms
 
         public SortedSet<int> installedSDKs = new SortedSet<int>();         // 설치된 SDK 목록
 
-        public const int DEFAULT_MINIMUM_SDK_VERSION = 22;
-        public const int DEFAULT_TARGET_SDK_VERSION = 30;
-        public const int DEFAULT_COMPILE_SDK_VERSION = 30;
+        public const int DEFAULT_MINIMUM_SDK_VERSION = 28;
+        public const int DEFAULT_TARGET_SDK_VERSION = 34;
+        public const int DEFAULT_COMPILE_SDK_VERSION = 34;
 
         sealed class SDK
         {
@@ -248,6 +248,12 @@ namespace Cordova.Forms
             }
 
             string sdkaMangerPath = String.Format("{0} --list | find \"platforms;\"", System.IO.Path.Combine(defaultPath, "tools", "bin", "sdkmanager.bat"));
+
+            // 2024.02.03 기준으로는 아래와 같이 해야 한다.
+            if (!File.Exists(sdkaMangerPath))
+            {
+                sdkaMangerPath = String.Format("{0} --list | find \"platforms;\"", System.IO.Path.Combine(defaultPath, "cmdline-tools", "8.0", "bin", "sdkmanager.bat"));
+            }
 
             if (Directory.Exists(defaultPath) && isValid)
             {

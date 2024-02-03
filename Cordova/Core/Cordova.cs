@@ -30,9 +30,6 @@ namespace Cordova.Core
         // 메인 폼
         private Form1 _mainForm;
 
-        // 현재 경로
-        //private string _currentDirectory;
-
         // 지역화를 위한 리소스 관리자
         private ResourceManager _rm;
 
