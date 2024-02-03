@@ -15,7 +15,7 @@ namespace Cordova.Manage
         {
             PackageFileName = "package.json",
             DataFolderName = "RPG Maker MV Cordova Builder",
-            Type = DataManager.DataFolderType.MY_DOCUMENTS,
+            Type = DataManager.DataFolderType.APP_DATA,
         });
 
         public static DataManager Instance
@@ -133,5 +133,12 @@ namespace Cordova.Manage
             return filePath.Any(c => c <= 127);
         }
 
+    }
+
+    class Kernel32
+    {
+        // Windows API 함수 선언
+        [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true, CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        public static extern uint GetShortPathName(string lpszLongPath, [System.Runtime.InteropServices.Out] char[] lpszShortPath, uint cchBuffer);
     }
 }

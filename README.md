@@ -15,7 +15,7 @@ This tool allows you to build your own Android APK File easily.
 
 # Screenshots
 
-![IMG](./screenshot.png)
+<img width="722" alt="image" src="https://github.com/biud436/MV-App-Builder/assets/13586185/66fc905f-7cac-4794-a9e2-a56b6f18d892">
 
 # Usage
 
@@ -58,7 +58,7 @@ if you done installed them, you have to edit Environment Variables called ```pat
 %ANDROID_SDK_ROOT%platform-tools\
 ```
 
-# 2024년 기준
+# 2024년 2월 기준
 
 아무래도 안드로이드가 꾸준히 업데이트 되고 있기 때문에, 안드로이드가 버전이 올라갈 때마다 프로그램들이 동작하지 않는 문제가 발생하고 있습니다.
 
@@ -78,7 +78,33 @@ if you done installed them, you have to edit Environment Variables called ```pat
 
 <img width="731" alt="image" src="https://github.com/biud436/MV-App-Builder/assets/13586185/8b449d4e-08e8-4d86-b189-08dd111d6736">
 
+## Cordova v12.0.0 이상 설치 및 SDK Level 33 필요
+
+<img width="738" alt="image" src="https://github.com/biud436/MV-App-Builder/assets/13586185/2e770d8c-ed76-4abb-82f4-3cf91ef192f8">
+
+## Gradle 설치
+
+▶ 설치 방법 : https://gradle.org/install/
+
+C: 에 압축을 풀고, C:\gradle-버전명\bin 을 PATH에 추가해줘야 합니다 (gradle 7.6에서 정상 동작 확인)
+
+## 프로젝트 경로에 한글이 있을 경우.
+
+최근 윈도우 11 설치 시, '문서'와 같은 폴더가 한글로 되어있어서 문제가 생기고 있습니다.
+
+```
+A problem occurred evaluating project ':app'.
+> Failed to apply plugin 'com.android.internal.application'.
+   > Your project path contains non-ASCII characters. This will most likely cause the build to fail on Windows. Please move your project to a different directory. See http://b.android.com/95744 for details. This warning can be disabled by adding the line 'android.overridePathCheck=true' to gradle.properties file in the project directory.
+```
+
+현재 프로그램에서는 `문서` 폴더에 자동으로 폴더를 만들고 있어 문제가 되고 있습니다.
+
+따라서 경로를 `C:\Users\<사용자명>\AppData\Local\RPG Maker MV Cordova Builder` 폴더로 변경하였습니다. 
+
 ---
+
+# 기존 설명
 
 ## Node.js
 
