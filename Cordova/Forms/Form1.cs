@@ -884,7 +884,7 @@ namespace Cordova.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Form1_Shown(object sender, EventArgs e)
+        private async void Form1_Shown(object sender, EventArgs e)
         {
             bool connected = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
 
@@ -892,15 +892,12 @@ namespace Cordova.Forms
             {
                 textBox1.SelectionColor = Color.Yellow;
                 AppendText(_rm.GetString("PENDING_CHECK_PROGRAM_VER"));
-
                 textBox1.SelectionColor = Color.White;
 
-                _cordova.CheckVersion();
+                await _cordova.CheckVersionAsync();
 
                 textBox1.SelectionColor = Color.Yellow;
-
                 AppendText(_rm.GetString("PENDING_CHECK_CORDOVA_VER"));
-
                 textBox1.SelectionColor = Color.White;
 
                 System.Threading.Thread worker = new System.Threading.Thread(() =>

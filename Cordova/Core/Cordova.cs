@@ -22,6 +22,8 @@ using Cordova.Data.FormData;
 
 namespace Cordova.Core
 {
+    using Common.Http;
+    using Common.IO;
     using Manage;
 
     public class Cordova
@@ -763,55 +765,22 @@ android {
         /// Update program after downloading from the server.
         /// However, it doesn't have a progress bar.
         /// </summary>
-        public void StartDownloadAndRun(Version targetVersion)
+        public async Task StartDownloadAndRunAsync(Version targetVersion)
         {
-
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.UserAgent.TryParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36");
-            client.DefaultRequestHeaders.Accept.TryParseAdd("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3");
-            client.DefaultRequestHeaders.AcceptEncoding.TryParseAdd("gzip, deflate, br");
-            client.DefaultRequestHeaders.AcceptLanguage.TryParseAdd("ko-KR,ko;q=0.9,en;q=0.8,ja;q=0.7");
-            client.DefaultRequestHeaders.Host = "github.com";
-            client.DefaultRequestHeaders.Referrer = new Uri("https://github.com/biud436/MV-App-Builder/releases");
-            client.DefaultRequestHeaders.TransferEncodingChunked = true;
-            client.DefaultRequestHeaders.Add("Upgrade-Insecure-Requests", "1");
-            client.Timeout = TimeSpan.FromMinutes(5);
-
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
-                | SecurityProtocolType.Tls11
-                | SecurityProtocolType.Tls12
-                | SecurityProtocolType.Ssl3;
-
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-
-            var url = String.Format("https://github.com/biud436/MV-App-Builder/releases/download/v{0}/MVAppBuilder.exe", targetVersion);
-            var bytes = client.GetByteArrayAsync(url).Result;
-
-            AppendText(_rm.GetString("SUCCESSED_SETUP_FILE"));
-
             try
             {
+                var downloadClient = new AppDownloadClient();
+                var fileManager = new FileManager();
+
+                byte[] bytes = await downloadClient.DownloadAppAsync(targetVersion);
+                AppendText(_rm.GetString("SUCCESSED_SETUP_FILE"));
+
                 string folderPath = DataManager.Instance.GetRootDirectory();
-                string targetPath = Path.Combine(folderPath, "MVAppBuilder.exe");
+                string fileName = "MVAppBuilder.exe";
+                string savedFilePath = fileManager.SaveFile(folderPath, fileName, bytes);
 
-                if (!Directory.Exists(folderPath))
-                    Directory.CreateDirectory(folderPath);
-
-                if (Directory.Exists(folderPath))
-                {
-                    if (File.Exists(targetPath))
-                    {
-                        File.Delete(targetPath);
-                    }
-
-                    File.WriteAllBytes(targetPath, bytes);
-                    System.Diagnostics.Process.Start(targetPath);
-
-                }
-
-            }
-            catch (IOException ex)
-            {
+                fileManager.RunApplication(savedFilePath);
+            } catch (Exception ex) {
                 throw ex;
             }
         }
@@ -819,7 +788,7 @@ android {
         /// <summary>
         /// 
         /// </summary>
-        public void CheckVersion()
+        public async Task CheckVersionAsync()
         {
             if(_version == null)
             {
@@ -852,7 +821,7 @@ android {
 
                         if(MessageBox.Show(_rm.GetString("CHECK_VERSION_OLD_ASK"), _mainForm.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            StartDownloadAndRun(targetVersion);
+                            await StartDownloadAndRunAsync(targetVersion);
                         }
                     }
                     else

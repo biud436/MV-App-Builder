@@ -79,6 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cordova\Commands\ICommand.cs" />
+    <Compile Include="Cordova\Common\Http\AppDownloadClient.cs" />
+    <Compile Include="Cordova\Common\IO\FileManager.cs" />
     <Compile Include="Cordova\Data\Config.cs" />
     <Compile Include="Cordova\Core\Cordova.cs" />
     <Compile Include="Cordova\Manage\DataMan.cs" />
