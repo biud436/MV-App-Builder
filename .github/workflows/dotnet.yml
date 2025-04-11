@@ -34,7 +34,7 @@ jobs:
           script-file: ./builder.nsi
           additional-plugin-paths: ./NSIS_Plugins
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: MVAppBuilder.exe
           path: MVAppBuilder.exe
