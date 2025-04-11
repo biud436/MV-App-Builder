@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cordova.EntryPoint
+namespace Cordova
 {
     static class Program
     {

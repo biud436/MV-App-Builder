@@ -15,8 +15,8 @@ using System.Resources;
 namespace Cordova.Forms
 {
     using Core;
-    using Data;
-    using Manage;
+    using Models;
+    using Entities;
     using System.IO;
     using System.Threading;
 
@@ -649,7 +649,7 @@ namespace Cordova.Forms
                 _isWorking = true;
                 buttonBuild.Enabled = false;
 
-                var config = new Data.FormData.Config()
+                var config = new Models.FormData.Config()
                 {
                     folderName = textBoxFolderName.Text,
                     keyPath = textBoxKeyPath.Text,
@@ -894,7 +894,7 @@ namespace Cordova.Forms
                 AppendText(_rm.GetString("PENDING_CHECK_PROGRAM_VER"));
                 textBox1.SelectionColor = Color.White;
 
-               await _cordova.CheckVersion();
+               await _cordova.CheckVersionAsync();
 
                 textBox1.SelectionColor = Color.Yellow;
                 AppendText(_rm.GetString("PENDING_CHECK_CORDOVA_VER"));

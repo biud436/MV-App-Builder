@@ -81,17 +81,21 @@
     <Compile Include="Cordova\Common\Commands\ICommand.cs" />
     <Compile Include="Cordova\Common\Http\AppDownloadClient.cs" />
     <Compile Include="Cordova\Common\IO\FileManager.cs" />
+    <Compile Include="Cordova\Common\Json\JsonHelper.cs" />
+    <Compile Include="Cordova\Models\AndroidBuildConfig.cs" />
+    <Compile Include="Cordova\Models\BuildConfig.cs" />
     <Compile Include="Cordova\Models\Config.cs" />
     <Compile Include="Cordova\Core\Cordova.cs" />
-    <Compile Include="Cordova\Entities\Data\DataRepository.cs" />
-    <Compile Include="Cordova\Entities\Data\DataService.cs" />
+    <Compile Include="Cordova\Entities\DataRepository.cs" />
+    <Compile Include="Cordova\Entities\DataService.cs" />
     <Compile Include="Cordova\Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cordova\Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cordova\Models\JsonHelper.cs" />
+    <Compile Include="Cordova\Models\KeystoreConfig.cs" />
+    <Compile Include="Cordova\Models\PluginConfig.cs" />
     <Compile Include="locale.ja.Designer.cs">
       <DependentUpon>locale.ja.resx</DependentUpon>
       <AutoGen>True</AutoGen>

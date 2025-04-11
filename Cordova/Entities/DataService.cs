@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace Cordova.Manage
+namespace Cordova.Entities
 {
     public class DataService
     {
@@ -82,7 +82,7 @@ namespace Cordova.Manage
             var rootDirectory = GetRootDirectory();
             var filePath = Path.Combine(rootDirectory, PackageFileName);
 
-            var packageJson = new Data.PackageJson()
+            var packageJson = new Models.PackageJson()
             {
                 RootDirectory = rootDirectory
             };
@@ -103,7 +103,7 @@ namespace Cordova.Manage
             if (File.Exists(filePath))
             {
                 var contents = File.ReadAllText(rootDirectory, Encoding.UTF8);
-                var ret = JsonConvert.DeserializeObject<Data.PackageJson>(contents);
+                var ret = JsonConvert.DeserializeObject<Models.PackageJson>(contents);
 
                 return ret.RootDirectory;
             }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Cordova.Data
+namespace Cordova.Models
 {
     public class PackageJson
     {

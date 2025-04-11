@@ -12,7 +12,7 @@ using System.Diagnostics;
 
 namespace Cordova.Forms
 {
-    using Manage;
+    using Entities;
 
     public partial class SettingsDialog : DarkForm
     {

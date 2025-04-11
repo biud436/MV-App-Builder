@@ -5,26 +5,24 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
 using System.Reflection;
 using System.Resources;
 using System.Xml;
 using Newtonsoft.Json;
-using System.Data;
 using System.Text.RegularExpressions;
-using System.ComponentModel;
 using System.Net;
 using System.IO;
 using System.Net.Http;
 using Cordova.Forms;
-using Cordova.Data;
-using Cordova.Data.FormData;
+using Cordova.Models.FormData;
 
 namespace Cordova.Core
 {
     using Common.Http;
     using Common.IO;
-    using Manage;
+    using Common.Json;
+    using Models;
+    using Entities;
 
     public class Cordova
     {
@@ -45,7 +43,7 @@ namespace Cordova.Core
 
         private string _titleText;
 
-        private Data.FormData.Config _config;
+        private Config _config;
 
         public const long LIMIT_TIME = 1000 * 20;
 
@@ -102,7 +100,7 @@ namespace Cordova.Core
         public void ExportBuildJson(string filename)
         {
             BuildConfig config = new BuildConfig();
-            ConfigData data = new ConfigData()
+            KeystoreConfig data = new KeystoreConfig()
             {
                 keystore = _config.keyPath,
                 storePassword = _config.passWord,
@@ -717,8 +715,8 @@ android {
             {
                 string goodJson = Regex.Replace(json, @"}}\s*,\s*$", "}}");
 
-                PluginConfigImpl impl = JsonHelper.ToClass<PluginConfigImpl>(goodJson);
-                _plugins[impl.name] = impl.status;
+                PluginConfig pluginConfig = JsonHelper.ToClass<PluginConfig>(goodJson);
+                _plugins[pluginConfig.name] = pluginConfig.status;
             }
 
         }
@@ -764,101 +762,10 @@ android {
             }
         }
 
-        public void StartDownloadAndRun(Version targetVersion)
-        {
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.UserAgent.TryParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36");
-            client.DefaultRequestHeaders.Accept.TryParseAdd("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,/;q=0.8,application/signed-exchange;v=b3");
-            client.DefaultRequestHeaders.AcceptEncoding.TryParseAdd("gzip, deflate, br");
-            client.DefaultRequestHeaders.AcceptLanguage.TryParseAdd("ko-KR,ko;q=0.9,en;q=0.8,ja;q=0.7");
-            client.DefaultRequestHeaders.Host = "github.com";
-            client.DefaultRequestHeaders.Referrer = new Uri("https://github.com/biud436/MV-App-Builder/releases");
-            client.DefaultRequestHeaders.TransferEncodingChunked = true;
-            client.DefaultRequestHeaders.Add("Upgrade-Insecure-Requests", "1");
-            client.Timeout = TimeSpan.FromMinutes(5);
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
-                | SecurityProtocolType.Tls11
-                | SecurityProtocolType.Tls12
-                | SecurityProtocolType.Ssl3;
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            var url = String.Format("https://github.com/biud436/MV-App-Builder/releases/download/v{0}/MVAppBuilder.exe", targetVersion);
-            var bytes = client.GetByteArrayAsync(url).Result;
-            AppendText(_rm.GetString("SUCCESSED_SETUP_FILE"));
-            try
-            {
-                string folderPath = DataService.Instance.GetRootDirectory();
-                string targetPath = Path.Combine(folderPath, "MVAppBuilder.exe");
-                if (!Directory.Exists(folderPath))
-                    Directory.CreateDirectory(folderPath);
-                if (Directory.Exists(folderPath))
-                {
-                    if (File.Exists(targetPath))
-                    {
-                        File.Delete(targetPath);
-                    }
-                    File.WriteAllBytes(targetPath, bytes);
-                    System.Diagnostics.Process.Start(targetPath);
-                }
-            }
-            catch (IOException ex)
-            {
-                throw ex;
-            }
-        }
-
         /// <summary>
         /// 
         /// </summary>
         public async Task CheckVersionAsync()
-        {
-            if(_version == null)
-            {
-                return;
-            }
-
-            using (WebClient wc = new WebClient())
-            {
-                ServicePointManager.Expect100Continue = true;
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-
-                string targetJson = wc.DownloadString("https://raw.githubusercontent.com/biud436/MV-App-Builder/master/version.json");
-                var targetObject = JsonHelper.ToClass<Dictionary<string, string>>(targetJson);
-
-                if (targetObject.ContainsKey("version"))
-                {
-                    var targetVersion = new Version(targetObject["version"]);
-                    var result = _version.CompareTo(targetVersion);
-
-                    if (result > 0)
-                    {
-                        // You are using the alpha version that has not been released yet.
-                        AppendText(_rm.GetString("CHECK_VERSION_ALPHA"));
-                    }
-                    else if (result < 0)
-                    {
-                        // You are using the older version
-                        MessageBox.Show(_rm.GetString("CHECK_VERSION_OLD"), _mainForm.Text);
-
-                        if(MessageBox.Show(_rm.GetString("CHECK_VERSION_OLD_ASK"), _mainForm.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            await StartDownloadAndRunAsync(targetVersion);
-                        }
-                    }
-                    else
-                    {
-                        // You are using the latest version
-                        AppendText(_rm.GetString("CHECK_VERSION_LATEST"));
-                    }
-
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task CheckVersion()
         {
             if (_version == null)
             {
@@ -917,53 +824,6 @@ android {
 
             try
             {
-
-                #region 코르도바 버전 체크 (웹 이용)
-                //using (WebClient wc = new WebClient())
-                //{
-                //    string releaseNote = wc.DownloadString(new Uri("https://raw.githubusercontent.com/apache/cordova-cli/master/RELEASENOTES.md"));
-
-                //    var regex = new Regex("[\r\n]+", RegexOptions.IgnoreCase);
-                //    var lines = regex.Split(releaseNote);
-                //    var matchedData = "# Cordova-cli Release Notes";
-                //    var findIndex = 0;
-
-                //    // Try to read around the target index.
-                //    int startLineNumber = 19;
-                //    int endLineNumber = 28;
-
-                //    for (var i = startLineNumber; i < endLineNumber; i++)
-                //    {
-                //        if (lines[i] == matchedData)
-                //        {
-                //            findIndex = i;
-                //            break;
-                //        }
-                //    }
-
-                //    if (findIndex > 0)
-                //    {
-                //        findIndex += 1;
-
-                //        // Try to extract the string that includes version
-                //        regex = new Regex(@"[#]{3}[ ]*(\d+\.\d+\.\d+)", RegexOptions.IgnoreCase);
-                //        Match m = regex.Match(lines[findIndex]);
-
-                //        if (m.Success)
-                //        {
-                //            cordovaVersion = new Version(m.Groups[1].Value);
-                //        }
-
-                //    }
-                //    else
-                //    {
-                //        // Cannot find the version text in the github.
-                //        return;
-                //    }
-
-                //}
-                #endregion
-
                 // npm을 이용한 버전 체크
                 using (var tempCmdProcess = new HostProcessRunner("", true, "", ""))
                 {

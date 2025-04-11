@@ -8,7 +8,7 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using System.IO;
 
-namespace Cordova.Manage
+namespace Cordova.Entities
 {
     using Core;
 
