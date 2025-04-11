@@ -8,17 +8,17 @@ using Newtonsoft.Json;
 
 namespace Cordova.Manage
 {
-    public class DataManager
+    public class DataService
     {
 
-        private static readonly Lazy<DataManager> instance = new Lazy<DataManager>(() => new DataManager()
+        private static readonly Lazy<DataService> instance = new Lazy<DataService>(() => new DataService()
         {
             PackageFileName = "package.json",
             DataFolderName = "RPG Maker MV Cordova Builder",
-            Type = DataManager.DataFolderType.APP_DATA,
+            Type = DataService.DataFolderType.APP_DATA,
         });
 
-        public static DataManager Instance
+        public static DataService Instance
         {
             get
             {
@@ -39,7 +39,7 @@ namespace Cordova.Manage
         public string AndroidSDKPath { get; set; }
         public string JDKPath { get; set; }
 
-        private DataManager()
+        private DataService()
         {
 
         }
@@ -62,7 +62,7 @@ namespace Cordova.Manage
                     root = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                     break;
                 case DataFolderType.CUSTOM:
-                    root = DataMan.Instance.OutputPath;
+                    root = DataRepository.Instance.OutputPath;
                     break;
             }
 

@@ -30,7 +30,7 @@ namespace Cordova.Forms
 
         private ResourceManager _rm;                                        // 다국어 처리를 위한 리소스 관리자
 
-        public List<HostData> _hostList     = new List<HostData>();         // 호스트 데이터 목록;
+        public List<HostProcessRunner> _hostList     = new List<HostProcessRunner>();         // 호스트 데이터 목록;
 
         public bool _isWorking              = false;                        // 빌드 작업 중임을 판별하는 변수, 처음에는 false
 
@@ -77,10 +77,10 @@ namespace Cordova.Forms
         public void InitWithHostData()
         {
             // JDK 버전이 15이상이면 sdkmanager를 사용할 수 없다.
-            _hostList.Add(new HostData("where java.exe > nul", false, "", _rm.GetString("FOUND_JAVA"), _rm.GetString("NOT_FOUND_JAVA")));
-            _hostList.Add(new HostData("where keytool.exe > nul", false, "", _rm.GetString("FOUND_KEYTOOL"), _rm.GetString("NOT_FOUND_KEYTOOL")));
-            _hostList.Add(new HostData("where cordova > nul", false, "", _rm.GetString("FOUND_CORDOVA"), _rm.GetString("NOT_FOUND_CORDOVA")));
-            _hostList.Add(new HostData("where mv-resource-cleaner > nul", false, "", "", ""));
+            _hostList.Add(new HostProcessRunner("where java.exe > nul", false, "", _rm.GetString("FOUND_JAVA"), _rm.GetString("NOT_FOUND_JAVA")));
+            _hostList.Add(new HostProcessRunner("where keytool.exe > nul", false, "", _rm.GetString("FOUND_KEYTOOL"), _rm.GetString("NOT_FOUND_KEYTOOL")));
+            _hostList.Add(new HostProcessRunner("where cordova > nul", false, "", _rm.GetString("FOUND_CORDOVA"), _rm.GetString("NOT_FOUND_CORDOVA")));
+            _hostList.Add(new HostProcessRunner("where mv-resource-cleaner > nul", false, "", "", ""));
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Cordova.Forms
                 defaultPath = ANDROID_HOME;
             }
 
-            DataManager.Instance.AndroidSDKPath = defaultPath;
+            DataService.Instance.AndroidSDKPath = defaultPath;
 
             // 안드로이드 SDK가 설치되어있는지 확인합니다.
             // sdkmanager "platform-tools" "platforms;android-29"
@@ -258,7 +258,7 @@ namespace Cordova.Forms
             if (Directory.Exists(defaultPath) && isValid)
             {
 
-                using (HostData process = new HostData(sdkaMangerPath, false, "", "echo ", ""))
+                using (HostProcessRunner process = new HostProcessRunner(sdkaMangerPath, false, "", "echo ", ""))
                 {
                     Append append = (output) =>
                     {
@@ -399,7 +399,7 @@ namespace Cordova.Forms
             string ANDROID_HOME = Environment.GetEnvironmentVariable("ANDROID_HOME");
             string ANDROID_SDK_ROOT = Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT");
 
-            DataManager.Instance.JDKPath = String.IsNullOrEmpty(JAVA_HOME) ? "" : JAVA_HOME;
+            DataService.Instance.JDKPath = String.IsNullOrEmpty(JAVA_HOME) ? "" : JAVA_HOME;
 
             if (!String.IsNullOrEmpty(ANDROID_HOME))
             {
@@ -499,7 +499,7 @@ namespace Cordova.Forms
             }
 
             InitWithComboBox();
-            DataMan.Instance.Import();
+            DataRepository.Instance.Import();
         }
 
         public void InitWithComboBox()
@@ -685,7 +685,7 @@ namespace Cordova.Forms
 
                         // TODO: "RPG Maker MV Cordova Builder"/YourApplication/android/app/build/outputs/apk/release/
                         string buildMode = (config.buildMode == 0) ? "release" : "debug";
-                        string targetPath = System.IO.Path.Combine(DataManager.Instance.GetRootDirectory(), textBoxFolderName.Text, "platforms", "android", "app", "build", "outputs", "apk", buildMode);
+                        string targetPath = System.IO.Path.Combine(DataService.Instance.GetRootDirectory(), textBoxFolderName.Text, "platforms", "android", "app", "build", "outputs", "apk", buildMode);
 
                         if(System.IO.Directory.Exists(targetPath))
                         {
@@ -884,7 +884,7 @@ namespace Cordova.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Form1_Shown(object sender, EventArgs e)
+        private async void Form1_Shown(object sender, EventArgs e)
         {
             bool connected = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
 
@@ -894,13 +894,13 @@ namespace Cordova.Forms
                 AppendText(_rm.GetString("PENDING_CHECK_PROGRAM_VER"));
                 textBox1.SelectionColor = Color.White;
 
-               _cordova.CheckVersion();
+               await _cordova.CheckVersion();
 
                 textBox1.SelectionColor = Color.Yellow;
                 AppendText(_rm.GetString("PENDING_CHECK_CORDOVA_VER"));
                 textBox1.SelectionColor = Color.White;
 
-                System.Threading.Thread worker = new System.Threading.Thread(() =>
+                Thread worker = new Thread(() =>
                 {
                     Action action = () =>
                     {
@@ -984,7 +984,7 @@ namespace Cordova.Forms
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            DataMan.Instance.Save();
+            DataRepository.Instance.Save();
         }
 
         private void comboBoxMinSdkVersion_SelectedIndexChanged(object sender, EventArgs e)

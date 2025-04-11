@@ -23,10 +23,10 @@ namespace Cordova.Forms
 
         private void SettingsDialog_FormClosed(object sender, FormClosedEventArgs e)
         {
-            DataMan.Instance.Use = darkCheckBoxEnabled.Checked;
-            DataMan.Instance.AudioFileFormat = darkCheckBoxOgg.Checked ? "ogg" : "m4a";
-            DataMan.Instance.RemainTree = darkCheckBoxTrue.Checked;
-            DataMan.Instance.Save();
+            DataRepository.Instance.Use = darkCheckBoxEnabled.Checked;
+            DataRepository.Instance.AudioFileFormat = darkCheckBoxOgg.Checked ? "ogg" : "m4a";
+            DataRepository.Instance.RemainTree = darkCheckBoxTrue.Checked;
+            DataRepository.Instance.Save();
         }
 
         private void darkCheckBoxEnabled_CheckedChanged(object sender, EventArgs e)
@@ -108,31 +108,31 @@ namespace Cordova.Forms
 
         private void SettingsDialog_Load(object sender, EventArgs e)
         {
-            darkCheckBoxEnabled.Checked = DataMan.Instance.Use ? true : false;
-            darkCheckBoxDisabled.Checked = DataMan.Instance.Use ? false : true;
-            darkCheckBoxOgg.Checked = DataMan.Instance.AudioFileFormat == "ogg" ? true : false;
-            darkCheckBoxM4a.Checked = DataMan.Instance.AudioFileFormat == "ogg" ? false : true;
-            darkCheckBoxTrue.Checked = DataMan.Instance.RemainTree ? true : false;
-            darkCheckBoxFalse.Checked = DataMan.Instance.RemainTree ? false : true;
+            darkCheckBoxEnabled.Checked = DataRepository.Instance.Use ? true : false;
+            darkCheckBoxDisabled.Checked = DataRepository.Instance.Use ? false : true;
+            darkCheckBoxOgg.Checked = DataRepository.Instance.AudioFileFormat == "ogg" ? true : false;
+            darkCheckBoxM4a.Checked = DataRepository.Instance.AudioFileFormat == "ogg" ? false : true;
+            darkCheckBoxTrue.Checked = DataRepository.Instance.RemainTree ? true : false;
+            darkCheckBoxFalse.Checked = DataRepository.Instance.RemainTree ? false : true;
 
             // TODO: 안드로이드 SDK 경로를 출력하는 다크 트리 기능
             // 자동으로 찾아서 설정하지만 찾지 못했을 경우에는 오류가 날 수 있음.
             var parentNode = new DarkUI.Controls.DarkTreeNode("ANDROID_SDK");
-            parentNode.Nodes.Add(new DarkUI.Controls.DarkTreeNode(DataManager.Instance.AndroidSDKPath));
+            parentNode.Nodes.Add(new DarkUI.Controls.DarkTreeNode(DataService.Instance.AndroidSDKPath));
             darkPathTree.Nodes.Add(parentNode);
 
             parentNode = new DarkUI.Controls.DarkTreeNode("JAVA_HOME");
-            parentNode.Nodes.Add(new DarkUI.Controls.DarkTreeNode(DataManager.Instance.JDKPath));
+            parentNode.Nodes.Add(new DarkUI.Controls.DarkTreeNode(DataService.Instance.JDKPath));
             darkPathTree.Nodes.Add(parentNode);
 
             // 출력 폴더를 바꾼 적이 있다면
-            if (DataMan.Instance.IsValidCustomOutputPath)
+            if (DataRepository.Instance.IsValidCustomOutputPath)
             {
-                darkTextBoxOutputFolderPath.Text = DataMan.Instance.OutputPath;
+                darkTextBoxOutputFolderPath.Text = DataRepository.Instance.OutputPath;
             } else
             {
                 // 출력 폴더를 바꾸지 않았다면
-                darkTextBoxOutputFolderPath.Text = DataManager.Instance.GetRootDirectory();
+                darkTextBoxOutputFolderPath.Text = DataService.Instance.GetRootDirectory();
             }
 
 
@@ -145,9 +145,9 @@ namespace Cordova.Forms
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 darkTextBoxOutputFolderPath.Text = folderBrowserDialog1.SelectedPath;
-                DataMan.Instance.OutputPath = folderBrowserDialog1.SelectedPath;
-                DataMan.Instance.IsValidCustomOutputPath = true;
-                DataMan.Instance.Save();
+                DataRepository.Instance.OutputPath = folderBrowserDialog1.SelectedPath;
+                DataRepository.Instance.IsValidCustomOutputPath = true;
+                DataRepository.Instance.Save();
             }
         }
     }

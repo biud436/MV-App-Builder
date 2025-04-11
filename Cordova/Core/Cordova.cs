@@ -66,17 +66,17 @@ namespace Cordova.Core
 
         public void InitWithDataMan()
         {
-            DataMan.Instance.SetCordovaObject(this);
-            DataManager data = DataManager.Instance;
+            DataRepository.Instance.SetCordovaObject(this);
+            DataService data = DataService.Instance;
 
             // 출력 폴더를 바꾼 적이 없다면 기본적으로는 내문서로 설정됩니다.
-            if (!DataMan.Instance.IsValidCustomOutputPath) 
+            if (!DataRepository.Instance.IsValidCustomOutputPath) 
             {
-                DataMan.Instance.OutputPath = DataManager.Instance.GetRootDirectory();
+                DataRepository.Instance.OutputPath = DataService.Instance.GetRootDirectory();
             } else
             {
                 // 출력 폴더를 바꾼 적이 있다면 파일에서 불러오게 됩니다.
-                DataManager.Instance.Type = DataManager.DataFolderType.CUSTOM;
+                DataService.Instance.Type = DataService.DataFolderType.CUSTOM;
             }
         }
 
@@ -137,7 +137,7 @@ namespace Cordova.Core
         {
             try
             {
-                string myDocumentsPath = DataManager.Instance.GetRootDirectory();
+                string myDocumentsPath = DataService.Instance.GetRootDirectory();
                 string mkdir = Path.Combine(myDocumentsPath, _config.folderName);
 
                 if (!Directory.Exists(mkdir))
@@ -175,7 +175,7 @@ namespace Cordova.Core
             Thread worker = new Thread(new ThreadStart(() =>
             {
                 // 출력 폴더에 APK 파일을 저장합니다.
-                string targetFolder = DataManager.Instance.GetRootDirectory();
+                string targetFolder = DataService.Instance.GetRootDirectory();
                 string tempDir = Directory.GetCurrentDirectory();
 
                 // 타겟 폴더를 현재 경로로 설정합니다.
@@ -183,17 +183,13 @@ namespace Cordova.Core
 
                 // 폴더를 생성합니다
                 bool isValid = Create();
-                isValid = DataManager.Instance.IsValidPath(targetFolder);
+                isValid = DataService.Instance.IsValidPath(targetFolder);
 
                 // 다시 되돌립니다.
                 Directory.SetCurrentDirectory(tempDir);
 
                 if (isValid)
                 {
-
-                    // [Start Build]
-                    //System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-                    //sw.Start();
 
                     Make(filename =>
                     {
@@ -203,7 +199,7 @@ namespace Cordova.Core
                         CreateKeyStore();
                         Requirements();
 
-                        if (DataMan.Instance.Use)
+                        if (DataRepository.Instance.Use)
                         {
                             ExcludeUnusedFiles();
                         } else
@@ -217,10 +213,6 @@ namespace Cordova.Core
                         successCallback();
 
                     });
-
-                    // [End Build]
-                    //sw.Stop();
-                    //AppendText(sw.Elapsed.ToString());
 
                 } else
                 {
@@ -290,19 +282,6 @@ namespace Cordova.Core
                     {
 
                         return true;
-
-                        //var uniqueVersion = new Version("9.0.0");
-                        //var result = _cordovaVersion.CompareTo(uniqueVersion);
-
-                        //if (result >= 0)
-                        //{
-                        //    clearFolder(folderName);
-                        //
-                        //}
-                        //else {
-                        //    return true;
-                        //}
-
                     }
 
                 }
@@ -317,7 +296,7 @@ namespace Cordova.Core
             sb.AppendFormat("cordova create {0} {1} {2}", folderName, packageName, gameName);
             var ret = false;
 
-            using (HostData process = new HostData(sb.ToString(), true, "",
+            using (HostProcessRunner process = new HostProcessRunner(sb.ToString(), true, "",
                 _rm.GetString("Create1"),
                 _rm.GetString("Create2")))
             {
@@ -342,7 +321,7 @@ namespace Cordova.Core
 
             if(!File.Exists(@"platforms/android/android.json"))
             {
-                using (HostData process = new HostData("cordova platform add android", true, "", _rm.GetString("AddAndroidPlatform1"), _rm.GetString("AddAndroidPlatform2")))
+                using (HostProcessRunner process = new HostProcessRunner("cordova platform add android", true, "", _rm.GetString("AddAndroidPlatform1"), _rm.GetString("AddAndroidPlatform2")))
                 {
                     Append append = AppendText;
                     ret = process.Run(append);
@@ -359,7 +338,7 @@ namespace Cordova.Core
         /// <returns></returns>
         private bool Requirements()
         {
-            var process = new HostData("cordova requirements", true, "", _rm.GetString("Requirements1"), _rm.GetString("Requirements2"));
+            var process = new HostProcessRunner("cordova requirements", true, "", _rm.GetString("Requirements1"), _rm.GetString("Requirements2"));
 
             Append append = AppendText;
 
@@ -391,7 +370,7 @@ namespace Cordova.Core
         /// <returns></returns>
         private Cordova SetIcon(XmlDocument xmlDoc)
         {
-            if (!File.Exists(Path.Combine(DataManager.Instance.GetRootDirectory(), "www", "icon", "icon.png"))) {
+            if (!File.Exists(Path.Combine(DataService.Instance.GetRootDirectory(), "www", "icon", "icon.png"))) {
                 AppendText("The www/icon/icon.png file could not found.");
                 return this;
             }
@@ -502,7 +481,7 @@ namespace Cordova.Core
 
                 bool status = false;
 
-                using (HostData hostData = new HostData(cmd, false, "", _rm.GetString("CreateKeyStore1"), _rm.GetString("CreateKeyStore2")))
+                using (HostProcessRunner hostData = new HostProcessRunner(cmd, false, "", _rm.GetString("CreateKeyStore1"), _rm.GetString("CreateKeyStore2")))
                 {
                     status = hostData.Run(append);
                 }
@@ -588,7 +567,7 @@ namespace Cordova.Core
                 // 원본과 동일한 트리로 유지
                 string robocopy = String.Format("chcp {0} | robocopy \"{1}\" \"{2}\" /MIR /E /R:1 /W:1", Encoding.UTF8.CodePage, srcPath, dstPath);
 
-                using (var process = new HostData(robocopy, true, "",
+                using (var process = new HostProcessRunner(robocopy, true, "",
                     _rm.GetString("CopyProjectFiles2"),
                     _rm.GetString("CopyProjectFiles3")))
                 {
@@ -617,7 +596,7 @@ namespace Cordova.Core
                 string success = String.Format(_rm.GetString("AddPlugins1"), pluginName);
                 string fail = String.Format(_rm.GetString("AddPlugins2"), pluginName);
 
-                using (var process = new HostData(command, true, "", success, fail))
+                using (var process = new HostProcessRunner(command, true, "", success, fail))
                 {
                     Append append = AppendText;
                     process.Run(append);
@@ -636,7 +615,7 @@ namespace Cordova.Core
                 // 오류 막기...
                 if (!File.Exists("platforms/android/build-extras.gradle"))
                 {
-
+                    
                     string contents = @"
 android {
     lintOptions {
@@ -678,7 +657,7 @@ android {
             // 구분할 수 있는 방법은 아직까지 없다. 리치 텍스트 박스에서 fail 글자를 추출하지 않는한 불가능하다.
             bool ret = false;
 
-            using(HostData process = new HostData(cmd, true, "", _rm.GetString("Flush2"), _rm.GetString("Flush3")))
+            using(HostProcessRunner process = new HostProcessRunner(cmd, true, "", _rm.GetString("Flush2"), _rm.GetString("Flush3")))
             {
                 Append append = AppendText;
                 ret = process.Run(append);
@@ -701,7 +680,7 @@ android {
 
             AppendText(_rm.GetString("INSTALLING_CORDOVA"));
 
-            using (var process = new HostData("npm install -g cordova", true, "", _rm.GetString("SUCCESS_INSTALLED_CORDOVA"), _rm.GetString("FAIL_INSTALLED_CORDOVA")))
+            using (var process = new HostProcessRunner("npm install -g cordova", true, "", _rm.GetString("SUCCESS_INSTALLED_CORDOVA"), _rm.GetString("FAIL_INSTALLED_CORDOVA")))
             {
                 Append append = AppendText;
                 process.Run(append);
@@ -775,7 +754,7 @@ android {
                 byte[] bytes = await downloadClient.DownloadAppAsync(targetVersion);
                 AppendText(_rm.GetString("SUCCESSED_SETUP_FILE"));
 
-                string folderPath = DataManager.Instance.GetRootDirectory();
+                string folderPath = DataService.Instance.GetRootDirectory();
                 string fileName = "MVAppBuilder.exe";
                 string savedFilePath = fileManager.SaveFile(folderPath, fileName, bytes);
 
@@ -807,7 +786,7 @@ android {
             AppendText(_rm.GetString("SUCCESSED_SETUP_FILE"));
             try
             {
-                string folderPath = DataManager.Instance.GetRootDirectory();
+                string folderPath = DataService.Instance.GetRootDirectory();
                 string targetPath = Path.Combine(folderPath, "MVAppBuilder.exe");
                 if (!Directory.Exists(folderPath))
                     Directory.CreateDirectory(folderPath);
@@ -879,7 +858,7 @@ android {
         /// <summary>
         /// 
         /// </summary>
-        public void CheckVersion()
+        public async Task CheckVersion()
         {
             if (_version == null)
             {
@@ -912,7 +891,7 @@ android {
 
                         if (MessageBox.Show(_rm.GetString("CHECK_VERSION_OLD_ASK"), _mainForm.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            StartDownloadAndRun(targetVersion);
+                            await StartDownloadAndRunAsync(targetVersion);
                         }
                     }
                     else
@@ -986,7 +965,7 @@ android {
                 #endregion
 
                 // npm을 이용한 버전 체크
-                using (var tempCmdProcess = new HostData("", true, "", ""))
+                using (var tempCmdProcess = new HostProcessRunner("", true, "", ""))
                 {
                     tempCmdProcess.outputLine("npm show cordova version", (string output) =>
                     {
@@ -996,7 +975,7 @@ android {
                 }
 
                 // Create the lightweight command process and check the version of installed Cordova in the local system.
-                using (var tempCmdProcess = new HostData("", true, "", ""))
+                using (var tempCmdProcess = new HostProcessRunner("", true, "", ""))
                 {
                     // Create the lightweight command process
                     var localCordovaVersion = new Version("0.0.0");
@@ -1119,7 +1098,7 @@ android {
                 }
 
                 // Create the lightweight command process and check the version of installed Cordova in the local system.
-                using (var tempCmdProcess = new HostData("", true, "", ""))
+                using (var tempCmdProcess = new HostProcessRunner("", true, "", ""))
                 {
                     // Create the lightweight command process
                     var localCordovaVersion = new Version("0.0.0");
@@ -1187,7 +1166,7 @@ android {
             string fail_installed_cleaner = "MV 미사용 리소스 제거기 설치에 실패하였습니다";
             Append append = AppendText;
 
-            using (var process = new HostData("npm install -g mv-exclude-unused-files", true, "", success_installed_cleaner, fail_installed_cleaner))
+            using (var process = new HostProcessRunner("npm install -g mv-exclude-unused-files", true, "", success_installed_cleaner, fail_installed_cleaner))
             {
                 process.Run(append);
             }
@@ -1202,7 +1181,7 @@ android {
             string src = _config.settingGameFolder;
             src = src.Replace(@"\", "/");
 
-            string myDocumentsPath = DataManager.Instance.GetRootDirectory();
+            string myDocumentsPath = DataService.Instance.GetRootDirectory();
             string dst = Path.Combine(myDocumentsPath, _config.folderName, "www");
             dst = dst.Replace(@"\", "/");
 
@@ -1210,8 +1189,8 @@ android {
 
             Append append = AppendText;
 
-            option["--audioFileFormat="] = DataMan.Instance.AudioFileFormat;
-            option["--remainTree="] = DataMan.Instance.RemainTree ? "true" : "false";
+            option["--audioFileFormat="] = DataRepository.Instance.AudioFileFormat;
+            option["--remainTree="] = DataRepository.Instance.RemainTree ? "true" : "false";
 
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("mv-resource-cleaner \"{0}\" \"{1}\"", src, dst);
@@ -1223,7 +1202,7 @@ android {
 
             System.Diagnostics.Debug.WriteLine(sb.ToString());
 
-            using (var process = new HostData(sb.ToString(), true, "", "Unused resource removal succeeded.", "Failed to remove unused resources."))
+            using (var process = new HostProcessRunner(sb.ToString(), true, "", "Unused resource removal succeeded.", "Failed to remove unused resources."))
             {
                 process.Run(append);
             }

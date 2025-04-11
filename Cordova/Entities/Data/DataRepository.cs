@@ -12,9 +12,9 @@ namespace Cordova.Manage
 {
     using Core;
 
-    public sealed class DataMan
+    public sealed class DataRepository
     {
-        private static volatile DataMan instance;
+        private static volatile DataRepository instance;
         private static object syncRoot = new Object();
 
         public bool Use { get; set; }
@@ -25,11 +25,11 @@ namespace Cordova.Manage
 
         private Cordova cordovaMain;
 
-        private DataMan()
+        private DataRepository()
         {
         }
 
-        public static DataMan Instance
+        public static DataRepository Instance
         {
             get
             {
@@ -40,7 +40,7 @@ namespace Cordova.Manage
                     {
                         if (instance == null)
                         {
-                            instance = new DataMan()
+                            instance = new DataRepository()
                             {
                                 AudioFileFormat = "ogg"
                             };
@@ -78,7 +78,7 @@ namespace Cordova.Manage
 
                 if (!option.ContainsKey("OutputPath"))
                 {
-                    OutputPath = DataManager.Instance.GetRootDirectory();
+                    OutputPath = DataService.Instance.GetRootDirectory();
                 }
                 else
                 {

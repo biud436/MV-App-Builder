@@ -78,20 +78,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cordova\Commands\ICommand.cs" />
+    <Compile Include="Cordova\Common\Commands\ICommand.cs" />
     <Compile Include="Cordova\Common\Http\AppDownloadClient.cs" />
     <Compile Include="Cordova\Common\IO\FileManager.cs" />
-    <Compile Include="Cordova\Data\Config.cs" />
+    <Compile Include="Cordova\Models\Config.cs" />
     <Compile Include="Cordova\Core\Cordova.cs" />
-    <Compile Include="Cordova\Manage\DataMan.cs" />
-    <Compile Include="Cordova\Manage\DataManager.cs" />
+    <Compile Include="Cordova\Entities\Data\DataRepository.cs" />
+    <Compile Include="Cordova\Entities\Data\DataService.cs" />
     <Compile Include="Cordova\Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cordova\Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cordova\Data\JsonHelper.cs" />
+    <Compile Include="Cordova\Models\JsonHelper.cs" />
     <Compile Include="locale.ja.Designer.cs">
       <DependentUpon>locale.ja.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -112,9 +112,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>locale.resx</DependentUpon>
     </Compile>
-    <Compile Include="Cordova\Data\PackageJson.cs" />
-    <Compile Include="Cordova\Core\Redirect.cs" />
-    <Compile Include="Cordova\EntryPoint\Program.cs" />
+    <Compile Include="Cordova\Models\PackageJson.cs" />
+    <Compile Include="Cordova\Core\HostProcessRunner.cs" />
+    <Compile Include="Cordova\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cordova\Forms\SettingsDialog.cs">
       <SubType>Form</SubType>
@@ -122,7 +122,7 @@
     <Compile Include="Cordova\Forms\SettingsDialog.Designer.cs">
       <DependentUpon>SettingsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cordova\Data\TextBoxList.cs" />
+    <Compile Include="Cordova\Models\TextBoxList.cs" />
     <EmbeddedResource Include="Cordova\Forms\Form1.en.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -11,7 +11,7 @@ namespace Cordova.Core
 {
     public delegate void Append(string output);
 
-    public class HostData : IDisposable
+    public class HostProcessRunner : IDisposable
     {
         public string _name;
         public bool _isValid;
@@ -41,7 +41,7 @@ namespace Cordova.Core
         /// <param name="dir"></param>
         /// <param name="success"></param>
         /// <param name="fail"></param>
-        public HostData(string name, bool isValid = true, string dir = "", string success = "", string fail = "")
+        public HostProcessRunner(string name, bool isValid = true, string dir = "", string success = "", string fail = "")
         {
             this._name = name;
             this._isValid = isValid;
@@ -72,7 +72,7 @@ namespace Cordova.Core
 
         }
 
-        ~HostData()
+        ~HostProcessRunner()
         {
             Dispose(false);
         }
