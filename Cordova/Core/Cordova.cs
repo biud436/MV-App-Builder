@@ -21,6 +21,7 @@ namespace Cordova.Core
     using Common.Http;
     using Common.IO;
     using Common.Json;
+    using Common.Localization;
     using Models;
     using Entities;
 
@@ -31,7 +32,7 @@ namespace Cordova.Core
         private Form1 _mainForm;
 
         // 지역화를 위한 리소스 관리자
-        private ResourceManager _rm;
+        private ResourceManagerAdapter _rm = ResourceManagerFactory.Create();
 
         // 플러그인 목록
         private Dictionary<string, bool> _plugins = new Dictionary<string, bool>();
@@ -45,24 +46,15 @@ namespace Cordova.Core
 
         private Config _config;
 
-        public const long LIMIT_TIME = 1000 * 20;
-
         /// <summary>
         /// 생성자
         /// </summary>
         public Cordova()
         {
-            InitMembers();
-            InitWithDataMan();
-            InitWithResourceManager();
+            InitializeDataRepository();
         }
 
-        public void InitMembers()
-        {
-            // _currentDirectory = Directory.GetCurrentDirectory();
-        }
-
-        public void InitWithDataMan()
+        public void InitializeDataRepository()
         {
             DataRepository.Instance.SetCordovaObject(this);
             DataService data = DataService.Instance;
@@ -76,11 +68,6 @@ namespace Cordova.Core
                 // 출력 폴더를 바꾼 적이 있다면 파일에서 불러오게 됩니다.
                 DataService.Instance.Type = DataService.DataFolderType.CUSTOM;
             }
-        }
-
-        public void InitWithResourceManager()
-        {
-            _rm = new ResourceManager("Cordova_Builder.locale", Assembly.GetExecutingAssembly());
         }
 
         /// <summary>
@@ -295,8 +282,8 @@ namespace Cordova.Core
             var ret = false;
 
             using (HostProcessRunner process = new HostProcessRunner(sb.ToString(), true, "",
-                _rm.GetString("Create1"),
-                _rm.GetString("Create2")))
+                _rm.GetString(ResourceTokens.Create1),
+                _rm.GetString(ResourceTokens.Create2)))
             {
                 Append append = AppendText;
                 ret = process.Run(append);
@@ -319,7 +306,14 @@ namespace Cordova.Core
 
             if(!File.Exists(@"platforms/android/android.json"))
             {
-                using (HostProcessRunner process = new HostProcessRunner("cordova platform add android", true, "", _rm.GetString("AddAndroidPlatform1"), _rm.GetString("AddAndroidPlatform2")))
+                using (HostProcessRunner process = new HostProcessRunner
+                    (
+                        "cordova platform add android", 
+                        true, 
+                        "", 
+                        _rm.GetString(ResourceTokens.AddAndroidPlatform1), 
+                        _rm.GetString(ResourceTokens.AddAndroidPlatform2))
+                    )
                 {
                     Append append = AppendText;
                     ret = process.Run(append);
@@ -336,7 +330,7 @@ namespace Cordova.Core
         /// <returns></returns>
         private bool Requirements()
         {
-            var process = new HostProcessRunner("cordova requirements", true, "", _rm.GetString("Requirements1"), _rm.GetString("Requirements2"));
+            var process = new HostProcessRunner("cordova requirements", true, "", _rm.GetString(ResourceTokens.Requirements1), _rm.GetString(ResourceTokens.Requirements2));
 
             Append append = AppendText;
 
@@ -412,7 +406,7 @@ namespace Cordova.Core
 
                     xmlDoc.Save("config.xml");
 
-                    AppendText(_rm.GetString("WriteConfig"));
+                    AppendText(_rm.GetString(ResourceTokens.WriteConfig));
                 }
 
             }
@@ -435,7 +429,7 @@ namespace Cordova.Core
             // 키스토어 파일이 이미 있다면
             if (File.Exists(keystorePath))
             {
-                AppendText(_rm.GetString("ALREADY_EXISTED_KEYSTORE"));
+                AppendText(_rm.GetString(ResourceTokens.ALREADY_EXISTED_KEYSTORE));
                 return;
             }
 
@@ -479,7 +473,14 @@ namespace Cordova.Core
 
                 bool status = false;
 
-                using (HostProcessRunner hostData = new HostProcessRunner(cmd, false, "", _rm.GetString("CreateKeyStore1"), _rm.GetString("CreateKeyStore2")))
+                using (HostProcessRunner hostData = new HostProcessRunner
+                    (
+                        cmd, 
+                        false, 
+                        "", 
+                        _rm.GetString(ResourceTokens.CreateKeyStore1), 
+                        _rm.GetString(ResourceTokens.CreateKeyStore2))
+                    )
                 {
                     status = hostData.Run(append);
                 }
@@ -487,11 +488,11 @@ namespace Cordova.Core
                 // 키스토어가 정상적으로 생성되었다면 status가 true이다.
                 if (status)
                 {
-                    AppendText(_rm.GetString("CreateKeyStore3"));
+                    AppendText(_rm.GetString(ResourceTokens.CreateKeyStore3));
                 }
                 else
                 {
-                    AppendText(_rm.GetString("CreateKeyStore4"));
+                    AppendText(_rm.GetString(ResourceTokens.CreateKeyStore4));
                 }
 
             }
@@ -501,7 +502,7 @@ namespace Cordova.Core
 
                 // 텍스트가 비어있을 때의 처리
                 // 정상적으로 실행하였다면 이 부분은 절대 실행될 일이 없다.
-                AppendText(_rm.GetString("CreateKeyStore5"));
+                AppendText(_rm.GetString(ResourceTokens.CreateKeyStore5));
             }
 
         }
@@ -543,7 +544,7 @@ namespace Cordova.Core
 
                     File.WriteAllLines(filename, lines);
 
-                    AppendText(_rm.GetString("ModifyHtmlFiles"));
+                    AppendText(_rm.GetString(ResourceTokens.ModifyHtmlFiles));
                 }
             }
 
@@ -557,7 +558,7 @@ namespace Cordova.Core
             string srcPath = _config.settingGameFolder;
             string dstPath = ".\\www";
 
-            AppendText(_rm.GetString("CopyProjectFiles1"));
+            AppendText(_rm.GetString(ResourceTokens.CopyProjectFiles1));
 
             if (Directory.Exists(srcPath))
             {
@@ -566,8 +567,8 @@ namespace Cordova.Core
                 string robocopy = String.Format("chcp {0} | robocopy \"{1}\" \"{2}\" /MIR /E /R:1 /W:1", Encoding.UTF8.CodePage, srcPath, dstPath);
 
                 using (var process = new HostProcessRunner(robocopy, true, "",
-                    _rm.GetString("CopyProjectFiles2"),
-                    _rm.GetString("CopyProjectFiles3")))
+                    _rm.GetString(ResourceTokens.CopyProjectFiles2),
+                    _rm.GetString(ResourceTokens.CopyProjectFiles3)))
                 {
 
                     Append append = AppendText;
@@ -577,7 +578,7 @@ namespace Cordova.Core
 
             } else
             {
-                AppendText(_rm.GetString("CopyProjectFiles4"));
+                AppendText(_rm.GetString(ResourceTokens.CopyProjectFiles4));
             }
 
         }
@@ -591,8 +592,8 @@ namespace Cordova.Core
             foreach(string pluginName in _config.plugins)
             {
                 string command = String.Format("cordova plugin add {0}", pluginName);
-                string success = String.Format(_rm.GetString("AddPlugins1"), pluginName);
-                string fail = String.Format(_rm.GetString("AddPlugins2"), pluginName);
+                string success = String.Format(_rm.GetString(ResourceTokens.AddPlugins1), pluginName);
+                string fail = String.Format(_rm.GetString(ResourceTokens.AddPlugins2), pluginName);
 
                 using (var process = new HostProcessRunner(command, true, "", success, fail))
                 {
@@ -636,7 +637,7 @@ android {
         {
             if(File.Exists("build.json"))
             {
-                AppendText(_rm.GetString("Flush1"));
+                AppendText(_rm.GetString(ResourceTokens.Flush1));
             } else
             {
                 AppendText("Cannot find the build.json file to your project folder");
@@ -655,7 +656,7 @@ android {
             // 구분할 수 있는 방법은 아직까지 없다. 리치 텍스트 박스에서 fail 글자를 추출하지 않는한 불가능하다.
             bool ret = false;
 
-            using(HostProcessRunner process = new HostProcessRunner(cmd, true, "", _rm.GetString("Flush2"), _rm.GetString("Flush3")))
+            using(HostProcessRunner process = new HostProcessRunner(cmd, true, "", _rm.GetString(ResourceTokens.Flush2), _rm.GetString(ResourceTokens.Flush3)))
             {
                 Append append = AppendText;
                 ret = process.Run(append);
@@ -676,9 +677,9 @@ android {
         private void InstallCordova()
         {
 
-            AppendText(_rm.GetString("INSTALLING_CORDOVA"));
+            AppendText(_rm.GetString(ResourceTokens.INSTALLING_CORDOVA));
 
-            using (var process = new HostProcessRunner("npm install -g cordova", true, "", _rm.GetString("SUCCESS_INSTALLED_CORDOVA"), _rm.GetString("FAIL_INSTALLED_CORDOVA")))
+            using (var process = new HostProcessRunner("npm install -g cordova", true, "", _rm.GetString(ResourceTokens.SUCCESS_INSTALLED_CORDOVA), _rm.GetString(ResourceTokens.FAIL_INSTALLED_CORDOVA)))
             {
                 Append append = AppendText;
                 process.Run(append);
@@ -750,7 +751,7 @@ android {
                 var fileManager = new FileManager();
 
                 byte[] bytes = await downloadClient.DownloadAppAsync(targetVersion);
-                AppendText(_rm.GetString("SUCCESSED_SETUP_FILE"));
+                AppendText(_rm.GetString(ResourceTokens.SUCCESSED_SETUP_FILE));
 
                 string folderPath = DataService.Instance.GetRootDirectory();
                 string fileName = "MVAppBuilder.exe";
@@ -789,14 +790,14 @@ android {
                     if (result > 0)
                     {
                         // You are using the alpha version that has not been released yet.
-                        AppendText(_rm.GetString("CHECK_VERSION_ALPHA"));
+                        AppendText(_rm.GetString(ResourceTokens.CHECK_VERSION_ALPHA));
                     }
                     else if (result < 0)
                     {
                         // You are using the older version
-                        MessageBox.Show(_rm.GetString("CHECK_VERSION_OLD"), _mainForm.Text);
+                        MessageBox.Show(_rm.GetString(ResourceTokens.CHECK_VERSION_OLD), _mainForm.Text);
 
-                        if (MessageBox.Show(_rm.GetString("CHECK_VERSION_OLD_ASK"), _mainForm.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show(_rm.GetString(ResourceTokens.CHECK_VERSION_OLD_ASK), _mainForm.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             await StartDownloadAndRunAsync(targetVersion);
                         }
@@ -804,7 +805,7 @@ android {
                     else
                     {
                         // You are using the latest version
-                        AppendText(_rm.GetString("CHECK_VERSION_LATEST"));
+                        AppendText(_rm.GetString(ResourceTokens.CHECK_VERSION_LATEST));
                     }
 
                 }
@@ -858,10 +859,10 @@ android {
                             if (result > 0)
                             {
                                 // it will be updated the cordova automatically if you are using older version of it.
-                                AppendText(_rm.GetString("NOT_LATEST_CORDOV_VER"));
-                                AppendText(String.Format(_rm.GetString("REQUEST_NPM_INSTALL"), cordovaVersion.ToString()));
+                                AppendText(_rm.GetString(ResourceTokens.NOT_LATEST_CORDOV_VER));
+                                AppendText(String.Format(_rm.GetString(ResourceTokens.REQUEST_NPM_INSTALL), cordovaVersion.ToString()));
 
-                                DialogResult dialogResult = MessageBox.Show(_rm.GetString("REQUEST_NPM_INSTALL_ASK"), _mainForm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                DialogResult dialogResult = MessageBox.Show(_rm.GetString(ResourceTokens.REQUEST_NPM_INSTALL_ASK), _mainForm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                                 if (dialogResult == DialogResult.Yes)
                                 {
@@ -877,7 +878,7 @@ android {
                             {
                                 // You are using the latest version of Cordova already.
                                 sw.Stop();
-                                AppendText(_rm.GetString("LATEST_CORDOVA_READY") + "(" + sw.Elapsed.ToString() + ")");
+                                AppendText(_rm.GetString(ResourceTokens.LATEST_CORDOVA_READY) + "(" + sw.Elapsed.ToString() + ")");
                             }
 
                         }
@@ -978,10 +979,16 @@ android {
                             if (result > 0)
                             {
                                 // it will be updated the cordova automatically if you are using older version of it.
-                                AppendText(_rm.GetString("NOT_LATEST_CORDOV_VER"));
-                                AppendText(String.Format(_rm.GetString("REQUEST_NPM_INSTALL"), cordovaVersion.ToString()));
+                                AppendText(_rm.GetString(ResourceTokens.NOT_LATEST_CORDOV_VER));
+                                AppendText(String.Format(_rm.GetString(ResourceTokens.REQUEST_NPM_INSTALL), cordovaVersion.ToString()));
 
-                                DialogResult dialogResult = MessageBox.Show(_rm.GetString("REQUEST_NPM_INSTALL_ASK"), _mainForm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                DialogResult dialogResult = MessageBox
+                                    .Show(
+                                        _rm.GetString(ResourceTokens.REQUEST_NPM_INSTALL_ASK), 
+                                        _mainForm.Text, 
+                                        MessageBoxButtons.YesNo, 
+                                        MessageBoxIcon.Information
+                                    );
 
                                 if (dialogResult == DialogResult.Yes)
                                 {
@@ -997,7 +1004,7 @@ android {
                             {
                                 // You are using the latest version of Cordova already.
                                 sw.Stop();
-                                AppendText(_rm.GetString("LATEST_CORDOVA_READY") + "(" + sw.Elapsed.ToString() + ")");
+                                AppendText(_rm.GetString(ResourceTokens.LATEST_CORDOVA_READY) + "(" + sw.Elapsed.ToString() + ")");
                             }
 
                         }

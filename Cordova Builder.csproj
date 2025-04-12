@@ -82,6 +82,10 @@
     <Compile Include="Cordova\Common\Http\AppDownloadClient.cs" />
     <Compile Include="Cordova\Common\IO\FileManager.cs" />
     <Compile Include="Cordova\Common\Json\JsonHelper.cs" />
+    <Compile Include="Cordova\Common\Localization\ResourceManagerAdapter.cs" />
+    <Compile Include="Cordova\Common\Localization\ResourceManagerFactory.cs" />
+    <Compile Include="Cordova\Common\Localization\ResourceToken.cs" />
+    <Compile Include="Cordova\Common\Localization\ResourceTokens.cs" />
     <Compile Include="Cordova\Models\AndroidBuildConfig.cs" />
     <Compile Include="Cordova\Models\BuildConfig.cs" />
     <Compile Include="Cordova\Models\Config.cs" />
