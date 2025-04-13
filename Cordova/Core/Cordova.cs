@@ -24,6 +24,7 @@ namespace Cordova.Core
     using Common.Localization;
     using Models;
     using Entities;
+    using Common.Versions;
 
     public class Cordova
     {
@@ -46,12 +47,20 @@ namespace Cordova.Core
 
         private Config _config;
 
+        private VersionManager _versionManager;
+
         /// <summary>
         /// 생성자
         /// </summary>
         public Cordova()
         {
             InitializeDataRepository();
+            InitializeVersionManager();
+        }
+
+        private void InitializeVersionManager()
+        {
+            _versionManager = new VersionManager(this);
         }
 
         public void InitializeDataRepository()
@@ -68,6 +77,11 @@ namespace Cordova.Core
                 // 출력 폴더를 바꾼 적이 있다면 파일에서 불러오게 됩니다.
                 DataService.Instance.Type = DataService.DataFolderType.CUSTOM;
             }
+        }
+
+        public ResourceManagerAdapter GetResourceManager()
+        {
+            return _rm;
         }
 
         /// <summary>
@@ -674,7 +688,7 @@ android {
         /// <summary>
         /// Install cordova to user computer on Windows
         /// </summary>
-        private void InstallCordova()
+        public void InstallCordova()
         {
 
             AppendText(_rm.GetString(ResourceTokens.INSTALLING_CORDOVA));
@@ -812,92 +826,23 @@ android {
             }
         }
 
+        public string GetMainFormText()
+        {
+            return _mainForm.Text;
+        }
+
         /// <summary>
         /// Checks the latest cordova version using npm
         /// </summary>
         /// <returns></returns>
         public void CheckLatestCordovaVersion()
         {
-            Version cordovaVersion = new Version("0.0.0");
+            _versionManager.CheckLatestCordovaVersion();
+        }
 
-            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
-
-            try
-            {
-                // npm을 이용한 버전 체크
-                using (var tempCmdProcess = new HostProcessRunner("", true, "", ""))
-                {
-                    tempCmdProcess.outputLine("npm show cordova version", (string output) =>
-                    {
-                        cordovaVersion = new Version(output);
-                        //AppendText($"최신 코르도바 버전은 {cordovaVersion.ToString()}입니다.");
-                    });
-                }
-
-                // Create the lightweight command process and check the version of installed Cordova in the local system.
-                using (var tempCmdProcess = new HostProcessRunner("", true, "", ""))
-                {
-                    // Create the lightweight command process
-                    var localCordovaVersion = new Version("0.0.0");
-
-                    // check the version of installed Cordova in the local system.
-                    tempCmdProcess.outputLine("cordova --version", (string output) =>
-                    {
-                        //AppendText("로컬에 설치된 코르도바 버전을 확인하였습니다.");
-
-                        // Extract the text that contains the version using the regular expression.
-                        Regex regex = new Regex(@"(\d+\.\d+\.\d+)", RegexOptions.IgnoreCase);
-                        Match m = regex.Match(output);
-
-                        if (m.Success)
-                        {
-                            localCordovaVersion = new Version(m.Groups[1].Value);
-                            //AppendText($"매칭되는 버전 텍스트 {localCordovaVersion.ToString()}를 확인하였습니다.");
-                            var result = cordovaVersion.CompareTo(localCordovaVersion);
-
-                            if (result > 0)
-                            {
-                                // it will be updated the cordova automatically if you are using older version of it.
-                                AppendText(_rm.GetString(ResourceTokens.NOT_LATEST_CORDOV_VER));
-                                AppendText(String.Format(_rm.GetString(ResourceTokens.REQUEST_NPM_INSTALL), cordovaVersion.ToString()));
-
-                                DialogResult dialogResult = MessageBox.Show(_rm.GetString(ResourceTokens.REQUEST_NPM_INSTALL_ASK), _mainForm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                                if (dialogResult == DialogResult.Yes)
-                                {
-                                    InstallCordova();
-                                }
-
-                            }
-                            else if (result < 0)
-                            {
-                                // Why you use dev version? I don't understand.
-                            }
-                            else
-                            {
-                                // You are using the latest version of Cordova already.
-                                sw.Stop();
-                                AppendText(_rm.GetString(ResourceTokens.LATEST_CORDOVA_READY) + "(" + sw.Elapsed.ToString() + ")");
-                            }
-
-                        }
-                        else
-                        {
-                            sw.Stop();
-                            AppendText($"코르도바를 설치해주세요. 정규표현식에 매칭되는 버전 텍스트가 없습니다. 출력 텍스트 : {output}");
-                        }
-                    });
-                }
-
-            } catch(Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex);
-            } finally
-            {
-                _cordovaVersion = cordovaVersion;
-            }
-
+        public void SetCordovaVersion(Version version)
+        {
+            _cordovaVersion = version;
         }
 
         /// <summary>
