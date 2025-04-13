@@ -750,7 +750,7 @@ android {
                 var downloadClient = new AppDownloadClient();
                 var fileManager = new FileManager();
 
-                byte[] bytes = await downloadClient.DownloadAppAsync(targetVersion);
+                byte[] bytes = await downloadClient.DownloadAppAsync(targetVersion.ToString());
                 AppendText(_rm.GetString(ResourceTokens.SUCCESSED_SETUP_FILE));
 
                 string folderPath = DataService.Instance.GetRootDirectory();

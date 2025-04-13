@@ -57,7 +57,7 @@ namespace Cordova.Common.Http
         /// </summary>
         /// <param name="targetVersion">다운로드할 앱 버전</param>
         /// <returns>다운로드된 파일의 바이트 배열</returns>
-        public async Task<byte[]> DownloadAppAsync(Version targetVersion)
+        public async Task<byte[]> DownloadAppAsync(string targetVersion)
         {
             var url = $"{_baseUrl}/biud436/MV-App-Builder/releases/download/v{targetVersion}/MVAppBuilder.exe";
             return await _client.GetByteArrayAsync(url);
