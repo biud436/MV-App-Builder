@@ -10,34 +10,42 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
+
       - name: Nuget 패키지 복구
         run: msbuild -t:restore
+
       - name: 빌드
         run: msbuild "Cordova Builder.csproj" -t:rebuild -verbosity:diag -property:Configuration=Release
+
       - name: Install NSIS
-        uses: repolevedavaj/install-nsis@v1.0.1
-        with:
-          nsis-version: "3.10"
+        shell: pwsh
+        run: choco install nsis -y --no-progress
+
       - name: WGET
         shell: powershell
         run: |
           wget https://github.com/biud436/MV-App-Builder/raw/master/NSISPlugins/NsProcess.zip -OutFile NsProcess.zip
+
       - name: 압축 라이브러리 설치
-        run: |
-          choco install zip
+        shell: pwsh
+        run: choco install zip -y --no-progress
+
       - name: NSIS 프로세스 종료 플러그인 압축 해제
         shell: powershell
         run: |
           mkdir ./NSIS_Plugins/Plugins
           Expand-Archive -Path NsProcess.zip -DestinationPath ./NSIS_Plugins/
+
       - name: 설치 파일 빌드
         uses: joncloud/makensis-action@v5.0
         with:
           arguments: "/V3"
           script-file: ./builder.nsi
           additional-plugin-paths: ./NSIS_Plugins
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
