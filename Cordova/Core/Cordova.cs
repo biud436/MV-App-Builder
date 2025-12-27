@@ -5,14 +5,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Reflection;
-using System.Resources;
 using System.Xml;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using System.Net;
 using System.IO;
-using System.Net.Http;
 using Cordova.Forms;
 using Cordova.Models.FormData;
 
@@ -26,7 +23,7 @@ namespace Cordova.Core
     using Entities;
     using Common.Versions;
 
-    public class Cordova
+    public class Cordova: BaseBuilder
     {
 
         // 메인 폼
@@ -235,7 +232,7 @@ namespace Cordova.Core
         /// <see cref="https://stackoverflow.com/a/2766718"/>
         /// </summary>
         /// <param name="FolderName"></param>
-        private void clearFolder(string FolderName)
+        private void ClearFolder(string FolderName)
         {
             DirectoryInfo dir = new DirectoryInfo(FolderName);
 
@@ -246,7 +243,7 @@ namespace Cordova.Core
 
             foreach (DirectoryInfo di in dir.GetDirectories())
             {
-                clearFolder(di.FullName);
+                ClearFolder(di.FullName);
                 di.Delete();
             }
         }
