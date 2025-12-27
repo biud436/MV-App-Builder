@@ -19,7 +19,19 @@ jobs:
       - name: Install NSIS
         uses: repolevedavaj/install-nsis@v1.0.1
         with:
-          nsis-version: '3.10'      
+          nsis-version: "3.10"
+      - name: Add makensis to PATH
+        shell: pwsh
+        run: |
+          $nsisBin = "${env:ProgramFiles(x86)}\NSIS\Bin"
+          if (Test-Path "$nsisBin\makensis.exe") {
+            echo "$nsisBin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+            Write-Host "makensis added to PATH: $nsisBin"
+            where.exe makensis
+            makensis /VERSION
+          } else {
+            throw "makensis.exe not found in $nsisBin"
+          }
       - name: WGET
         shell: powershell
         run: |
