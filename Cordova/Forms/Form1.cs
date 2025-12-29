@@ -39,8 +39,8 @@ namespace Cordova.Forms
         public SortedSet<int> installedSDKs = new SortedSet<int>();         // 설치된 SDK 목록
 
         public const int DEFAULT_MINIMUM_SDK_VERSION = 28;
-        public const int DEFAULT_TARGET_SDK_VERSION = 33;
-        public const int DEFAULT_COMPILE_SDK_VERSION = 33;
+        public const int DEFAULT_TARGET_SDK_VERSION = 35;
+        public const int DEFAULT_COMPILE_SDK_VERSION = 35;
 
         sealed class SDK
         {
