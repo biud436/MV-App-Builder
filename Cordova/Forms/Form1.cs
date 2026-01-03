@@ -188,14 +188,29 @@ namespace Cordova.Forms
 
                     foreach (var sdk in sdkIds)
                     {
-                        textBox1.SelectionColor = Color.YellowGreen;
-                        AppendText(System.IO.Path.GetFileNameWithoutExtension(sdk));
+                        try
+                        {
+                            string folderName = System.IO.Path.GetFileNameWithoutExtension(sdk);
+                            
+                            textBox1.SelectionColor = Color.YellowGreen;
+                            AppendText(folderName);
 
-                        string[] pack = sdk.Split('-');
-                        int sdkLevel = Int32.Parse(pack[1]);
-
-                        installedSDKs.Add(sdkLevel);
-                        
+                            // "android-XX" 형식인지 확인
+                            string[] pack = folderName.Split('-');
+                            if (pack.Length >= 2 && pack[0] == "android")
+                            {
+                                int sdkLevel;
+                                if (int.TryParse(pack[1], out sdkLevel))
+                                {
+                                    installedSDKs.Add(sdkLevel);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            // 파싱 실패 시 해당 폴더는 건너뜁니다
+                            AppendText($"Skipping invalid SDK folder: {sdk} - {ex.Message}");
+                        }
                     }
 
                     textBox1.SelectionColor = Color.Red;
@@ -217,7 +232,7 @@ namespace Cordova.Forms
         /// <summary>
         /// 안드로이드 API 레벨을 구합니다.
         /// </summary>
-        private void GetAndroidAPILevels()
+        private async Task GetAndroidAPILevelsAsync()
         {
 
             string ANDROID_HOME = null;
@@ -258,50 +273,55 @@ namespace Cordova.Forms
             if (Directory.Exists(defaultPath) && isValid)
             {
 
-                using (HostProcessRunner process = new HostProcessRunner(sdkaMangerPath, false, "", "echo ", ""))
+                await Task.Run(() =>
                 {
-                    Append append = (output) =>
+                    using (HostProcessRunner process = new HostProcessRunner(sdkaMangerPath, false, "", "echo ", ""))
                     {
-                        //if(String.IsNullOrEmpty(output))
-                        //{
-                        //    string sdkaMangerPath2 = String.Format("{0} --verbose --list", System.IO.Path.Combine(defaultPath, "tools", "bin", "sdkmanager.bat"));
-
-                        //    using (HostData subProcess = new HostData(sdkaMangerPath2 + " >result.txt 2>&1", false, "", "echo ", ""))
-                        //    {
-                        //        subProcess.Run((str) => {
-                        //            if (File.Exists("result.txt"))
-                        //            {
-                        //                output = File.ReadAllText("result.txt");
-                        //                AppendText(output);
-                        //                // File.Delete("redirect.txt");
-                        //            }
-                        //        });
-                        //    }
-                        //}
-
-                        var ret = output.Split('|')[0];
-                        var regex = new System.Text.RegularExpressions.Regex("(?:platforms;android-)(\\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                        var match = regex.Match(ret);
-
-                        if (match.Success)
+                        Append append = (output) =>
                         {
-                            platformTools.Add(Int32.Parse(match.Groups[1].Value));
-                        }
-                    };
+                            var ret = output.Split('|')[0];
+                            var regex = new System.Text.RegularExpressions.Regex("(?:platforms;android-)(\\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                            var match = regex.Match(ret);
 
-                    process.Run(append);
+                            if (match.Success)
+                            {
+                                platformTools.Add(Int32.Parse(match.Groups[1].Value));
+                            }
+                        };
 
-                }
+                        process.Run(append);
 
-                comboBoxMinSdkVersion.Items.Clear();
-                comboBoxTargetSdkVersion.Items.Clear();
-                comboBoxCompileSdkVersion.Items.Clear();
+                    }
+                });
 
-                foreach (var value in platformTools)
+                if (InvokeRequired)
                 {
-                    comboBoxMinSdkVersion.Items.Add(value);
-                    comboBoxTargetSdkVersion.Items.Add(value);
-                    comboBoxCompileSdkVersion.Items.Add(value);
+                    Invoke(new Action(() =>
+                    {
+                        comboBoxMinSdkVersion.Items.Clear();
+                        comboBoxTargetSdkVersion.Items.Clear();
+                        comboBoxCompileSdkVersion.Items.Clear();
+
+                        foreach (var value in platformTools)
+                        {
+                            comboBoxMinSdkVersion.Items.Add(value);
+                            comboBoxTargetSdkVersion.Items.Add(value);
+                            comboBoxCompileSdkVersion.Items.Add(value);
+                        }
+                    }));
+                }
+                else
+                {
+                    comboBoxMinSdkVersion.Items.Clear();
+                    comboBoxTargetSdkVersion.Items.Clear();
+                    comboBoxCompileSdkVersion.Items.Clear();
+
+                    foreach (var value in platformTools)
+                    {
+                        comboBoxMinSdkVersion.Items.Add(value);
+                        comboBoxTargetSdkVersion.Items.Add(value);
+                        comboBoxCompileSdkVersion.Items.Add(value);
+                    }
                 }
             } else
             {
@@ -313,7 +333,7 @@ namespace Cordova.Forms
         /// <summary>
         /// 프로그램 초기화 함수입니다.
         /// </summary>
-        private void Prepare()
+        private async Task PrepareAsync()
         {
             CenterToScreen();
             _cordova.SetMainForm(this);
@@ -321,7 +341,9 @@ namespace Cordova.Forms
             // 준비 메시지
             AppendText(_rm.GetString("Ready"));
 
-            if(CheckRequirements())
+            bool checkResult = await Task.Run(() => CheckRequirements());
+
+            if(checkResult)
             {
                 textBox1.SelectionColor = Color.LightSteelBlue;
 
@@ -486,20 +508,74 @@ namespace Cordova.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
-            Prepare();
             InitWithDefaultTexts();
             InitWIthTextBoxList();
             InitWithUIBackground();
 
+            // 기본 콤보박스 설정 (Orientation, Fullscreen, BuildMode만)
+            comboBoxOrientation.SelectedIndex = 2;
+            comboBoxFullscreen.SelectedIndex = 0;
+            comboBoxBuildMode.SelectedIndex = 0;
+            timerBackground.Start();
+
+            await PrepareAsync();
+
             if (_isValid)
             {
-                GetAndroidAPILevels();
+                await GetAndroidAPILevelsAsync();
+                
+                // SDK 버전 ComboBox 항목이 로드된 후 기본값 설정
+                SetDefaultSDKVersions();
             }
 
-            InitWithComboBox();
             DataRepository.Instance.Import();
+        }
+
+        /// <summary>
+        /// SDK 버전 ComboBox의 기본값을 설정합니다.
+        /// </summary>
+        private void SetDefaultSDKVersions()
+        {
+            if (comboBoxMinSdkVersion.Items.Count > 0)
+            {
+                int minIndex = comboBoxMinSdkVersion.Items.IndexOf(DEFAULT_MINIMUM_SDK_VERSION);
+                if (minIndex != -1)
+                {
+                    comboBoxMinSdkVersion.SelectedIndex = minIndex;
+                }
+                else if (comboBoxMinSdkVersion.Items.Count > 0)
+                {
+                    comboBoxMinSdkVersion.SelectedIndex = 0;
+                }
+            }
+
+            if (comboBoxTargetSdkVersion.Items.Count > 0)
+            {
+                int targetIndex = comboBoxTargetSdkVersion.Items.IndexOf(DEFAULT_TARGET_SDK_VERSION);
+                if (targetIndex != -1)
+                {
+                    comboBoxTargetSdkVersion.SelectedIndex = targetIndex;
+                }
+                else if (comboBoxTargetSdkVersion.Items.Count > 0)
+                {
+                    comboBoxTargetSdkVersion.SelectedIndex = comboBoxTargetSdkVersion.Items.Count - 1;
+                }
+            }
+
+            if (comboBoxCompileSdkVersion.Items.Count > 0)
+            {
+                int compileIndex = comboBoxCompileSdkVersion.Items.IndexOf(DEFAULT_COMPILE_SDK_VERSION);
+                if (compileIndex != -1)
+                {
+                    comboBoxCompileSdkVersion.SelectedIndex = compileIndex;
+                }
+                else if (comboBoxCompileSdkVersion.Items.Count > 0)
+                {
+                    comboBoxCompileSdkVersion.SelectedIndex = comboBoxCompileSdkVersion.Items.Count - 1;
+                }
+            }
         }
 
         public void InitWithComboBox()
@@ -513,7 +589,7 @@ namespace Cordova.Forms
 
             timerBackground.Start();
         }
-
+        
         /// <summary>
         /// 코르도바 플러그인을 자동으로 취득합니다.
         /// </summary>
