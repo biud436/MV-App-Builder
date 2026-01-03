@@ -87,6 +87,9 @@
     <Compile Include="Cordova\Common\Localization\ResourceToken.cs" />
     <Compile Include="Cordova\Common\Localization\ResourceTokens.cs" />
     <Compile Include="Cordova\Common\Version\VersionManager.cs" />
+    <Compile Include="Cordova\Control\ModernGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Cordova\Core\BaseBuilder.cs" />
     <Compile Include="Cordova\Models\AndroidBuildConfig.cs" />
     <Compile Include="Cordova\Models\BuildConfig.cs" />
