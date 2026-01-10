@@ -90,6 +90,7 @@
     <Compile Include="Cordova\Common\UI\PaddedTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Cordova\Common\UI\VirtualTree.cs" />
     <Compile Include="Cordova\Common\Version\VersionManager.cs" />
     <Compile Include="Cordova\Control\ModernGroupBox.cs">
       <SubType>Component</SubType>
@@ -188,6 +189,7 @@
       <DependentUpon>SettingsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="builder.nsi" />
+    <None Include="Cordova\Common\UI\VirtualTree.README.md" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

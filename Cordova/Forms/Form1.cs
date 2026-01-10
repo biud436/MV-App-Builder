@@ -19,6 +19,7 @@ namespace Cordova.Forms
     using Entities;
     using System.IO;
     using System.Threading;
+    using Cordova_Builder.Cordova.Common.UI;
 
     public partial class Form1 : Form
     {
@@ -37,6 +38,8 @@ namespace Cordova.Forms
         public SortedSet<int> platformTools = new SortedSet<int>();         // 플랫폼 정렬
 
         public SortedSet<int> installedSDKs = new SortedSet<int>();         // 설치된 SDK 목록
+
+        private VirtualTree _virtualTree    = new VirtualTree();            // 가상 트리
 
         public const int DEFAULT_MINIMUM_SDK_VERSION = 28;
         public const int DEFAULT_TARGET_SDK_VERSION = 35;
@@ -62,7 +65,79 @@ namespace Cordova.Forms
             InitWithResourceManager();
             InitWithHostData();
             InitWithContextMenu();
+            InitWithVirtualTree();
 
+        }
+
+        /// <summary>
+        /// 가상 트리를 초기화합니다.
+        /// </summary>
+        public void InitWithVirtualTree()
+        {
+            // 첫 번째 행 - 테이블 레이아웃 1
+            var row1 = _virtualTree.AddNode("Row1", tableLayoutPanel1);
+            var col1_1 = row1.AddChild("Column1", null);
+            
+            col1_1.AddChild("LabelFolderName", labelFolderName);
+            col1_1.AddChild("LabelPackageName", labelPackageName);
+            col1_1.AddChild("LabelGameName", labelGameName);
+            col1_1.AddChild("LabelKeyPath", labelKeyPath);
+            col1_1.AddChild("LabelKeyAlias", labelKeyAlias);
+            col1_1.AddChild("LabelKeyPassword", labelKeyPassword);
+            col1_1.AddChild("Label_keyOU", label_keyOU);
+            col1_1.AddChild("Label_keyO", label_keyO);
+            col1_1.AddChild("Label_keyL", label_keyL);
+            col1_1.AddChild("Label_keyS", label_keyS);
+            col1_1.AddChild("Label_keyC", label_keyC);
+
+            var col1_2 = row1.AddChild("Column2", null);
+            col1_2.AddChild("TextBoxFolderName", textBoxFolderName);
+            col1_2.AddChild("TextBoxPackageName", textBoxPackageName);
+            col1_2.AddChild("TextBoxGameName", textBoxGameName);
+            col1_2.AddChild("TextBoxKeyPath", textBoxKeyPath);
+            col1_2.AddChild("TextBoxKeyAlias", textBoxKeyAlias);
+            col1_2.AddChild("TextBoxPassWord", textBoxPassWord);
+            col1_2.AddChild("TextBox_keyOU", textBox_keyOU);
+            col1_2.AddChild("TextBox_keyO", textBox_keyO);
+            col1_2.AddChild("TextBox_keyL", textBox_keyL);
+            col1_2.AddChild("TextBox_keyS", textBox_keyS);
+            col1_2.AddChild("TextBox_keyC", textBox_keyC);
+
+            // 두 번째 행 - 테이블 레이아웃 2
+            var row2 = _virtualTree.AddNode("Row2", tableLayoutPanel2);
+            var col2_1 = row2.AddChild("Column1", null);
+            
+            col2_1.AddChild("LabelOrientation", labelOrientation);
+            col2_1.AddChild("LabelFullscreen", labelFullscreen);
+            col2_1.AddChild("LabelMinSdkVersion", labelMinSdkVersion);
+            col2_1.AddChild("LabelTargetSdkVersion", labelTargetSdkVersion);
+            col2_1.AddChild("LabelCompileSdkVersion", labelCompileSdkVersion);
+            col2_1.AddChild("LabelSettingGameFolder", labelSettingGameFolder);
+            col2_1.AddChild("LabelBuildMode", labelBuildMode);
+
+            var col2_2 = row2.AddChild("Column2", null);
+            col2_2.AddChild("ComboBoxOrientation", comboBoxOrientation);
+            col2_2.AddChild("ComboBoxFullscreen", comboBoxFullscreen);
+            col2_2.AddChild("ComboBoxMinSdkVersion", comboBoxMinSdkVersion);
+            col2_2.AddChild("ComboBoxTargetSdkVersion", comboBoxTargetSdkVersion);
+            col2_2.AddChild("ComboBoxCompileSdkVersion", comboBoxCompileSdkVersion);
+            col2_2.AddChild("TextBoxSettingGameFolder", textBoxSettingGameFolder);
+            col2_2.AddChild("ButtonOpenFileBrowser", buttonOpenFileBrowser);
+            col2_2.AddChild("ComboBoxBuildMode", comboBoxBuildMode);
+
+            // 세 번째 행 - 플러그인 패널
+            var row3 = _virtualTree.AddNode("Row3", panelPlugins);
+            row3.AddChild("LabelPluginName", labelPluginName);
+            row3.AddChild("TextBoxPluginName", textBoxPluginName);
+            row3.AddChild("ListBoxPlugins", listBoxPlugins);
+            row3.AddChild("ButtonAddPlugin", buttonAddPlugin);
+            row3.AddChild("ButtonDeletePlugin", buttonDeletePlugin);
+            row3.AddChild("ButtonBuild", buttonBuild);
+            row3.AddChild("ButtonSettings", buttonSettings);
+
+            // 네 번째 행 - 빌드 로그
+            var row4 = _virtualTree.AddNode("Row4", panelBuildLog);
+            row4.AddChild("TextBox1", textBox1);
         }
 
         public void InitWithResourceManager()
@@ -1117,6 +1192,104 @@ namespace Cordova.Forms
         private void comboBoxCompileSdkVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             CheckWithAndroidSDK(comboBoxCompileSdkVersion.Text);
+        }
+
+        /// <summary>
+        /// 가상 트리를 사용하여 빌드 로직을 처리합니다.
+        /// </summary>
+        public void BuildWithVirtualTree()
+        {
+            // 예제 1: 경로를 사용하여 노드에 접근
+            var folderNameNode = _virtualTree.FindNode("Row1/Column2/TextBoxFolderName");
+            if (folderNameNode != null)
+            {
+                var textBox = folderNameNode.GetControl<DarkUI.Controls.DarkTextBox>();
+                AppendText($"폴더명: {textBox?.Text}");
+            }
+
+            // 예제 2: Root부터 인덱스로 접근
+            var row1 = _virtualTree.Root[0]; // Row1
+            if (row1 != null)
+            {
+                var col2 = row1["Column2"];
+                col2?.ForEach(node =>
+                {
+                    if (node.Control is TextBox tb)
+                    {
+                        AppendText($"{node.Name}: {tb.Text}");
+                    }
+                });
+            }
+
+            // 예제 3: 특정 행의 모든 컨트롤 순회
+            var row2 = _virtualTree.FindNode("Row2");
+            row2?.ForEach(column =>
+            {
+                column.ForEach(control =>
+                {
+                    if (control.Control is ComboBox cb)
+                    {
+                        AppendText($"{control.Name}: {cb.SelectedItem}");
+                    }
+                });
+            });
+
+            // 예제 4: Build 메서드를 사용한 트리 구조 탐색
+            _virtualTree.Build(root =>
+            {
+                var pluginRow = root.GetChild("Row3");
+                if (pluginRow != null)
+                {
+                    var listBoxNode = pluginRow.GetChild("ListBoxPlugins");
+                    if (listBoxNode != null)
+                    {
+                        var listBox = listBoxNode.GetControl<ListBox>();
+                        AppendText($"플러그인 목록: {listBox?.Items.Count}개");
+                    }
+                }
+            });
+
+            // 예제 5: 전체 트리 순회
+            _virtualTree.Traverse(node =>
+            {
+                if (node.Control != null)
+                {
+                    AppendText($"경로: {node.GetPath()}, 타입: {node.Control.GetType().Name}");
+                }
+            });
+        }
+
+        /// <summary>
+        /// 가상 트리를 통해 특정 컨트롤 값을 가져옵니다.
+        /// </summary>
+        public string GetValueFromVirtualTree(string path)
+        {
+            var node = _virtualTree.FindNode(path);
+            if (node?.Control is TextBox tb)
+            {
+                return tb.Text;
+            }
+            else if (node?.Control is ComboBox cb)
+            {
+                return cb.SelectedItem?.ToString();
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 가상 트리를 통해 특정 컨트롤 값을 설정합니다.
+        /// </summary>
+        public void SetValueToVirtualTree(string path, string value)
+        {
+            var node = _virtualTree.FindNode(path);
+            if (node?.Control is TextBox tb)
+            {
+                tb.Text = value;
+            }
+            else if (node?.Control is ComboBox cb)
+            {
+                cb.SelectedItem = value;
+            }
         }
     }
 }
