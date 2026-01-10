@@ -86,6 +86,10 @@
     <Compile Include="Cordova\Common\Localization\ResourceManagerFactory.cs" />
     <Compile Include="Cordova\Common\Localization\ResourceToken.cs" />
     <Compile Include="Cordova\Common\Localization\ResourceTokens.cs" />
+    <Compile Include="Cordova\Common\Theme\Theme.cs" />
+    <Compile Include="Cordova\Common\UI\PaddedTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Cordova\Common\Version\VersionManager.cs" />
     <Compile Include="Cordova\Control\ModernGroupBox.cs">
       <SubType>Component</SubType>
@@ -223,6 +227,7 @@
       <Version>13.0.1</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
