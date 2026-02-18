@@ -6,19 +6,6 @@
 
 A comprehensive tool that allows you to build Android APK files from RPG Maker MV projects easily.
 
-## 📋 Table of Contents
-
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Compatible Plugins](#compatible-plugins)
-- [Plugin Developer Tips](#plugin-developer-tips)
-- [Bug Report](#bug-report)
-- [Changelog](#changelog)
-- [Download](#download)
-
 ## ✨ Features
 
 - **Keystore Generation**: Built-in keystore generation for Android app signing
