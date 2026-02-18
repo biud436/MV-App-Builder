@@ -1,219 +1,313 @@
-# Introduction
+# RPG Maker MV App Builder
+
 ![Build Status](https://github.com/biud436/MV-App-Builder/actions/workflows/dotnet.yml/badge.svg)
+[![Release](https://img.shields.io/github/v/release/biud436/MV-App-Builder)](https://github.com/biud436/MV-App-Builder/releases)
+[![License](https://img.shields.io/github/license/biud436/MV-App-Builder)](LICENSE)
 
+A comprehensive tool that allows you to build Android APK files from RPG Maker MV projects easily.
 
-This tool allows you to build your own Android APK File easily.
+## 📋 Table of Contents
 
-# Features
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Compatible Plugins](#compatible-plugins)
+- [Plugin Developer Tips](#plugin-developer-tips)
+- [Bug Report](#bug-report)
+- [Changelog](#changelog)
+- [Download](#download)
 
-- Includes keystore generation features.
-- Includes Self-Build.
-- Includes automatic update system.
-- Cordoba plugins support.
-- Includes unused resource removal.
-- Support for Korean, Japanese, and English.
+## ✨ Features
 
-# Screenshots
+- **Keystore Generation**: Built-in keystore generation for Android app signing
+- **Self-Build System**: Complete build automation from project to APK
+- **Automatic Updates**: Self-updating system to keep the tool current
+- **Cordova Plugin Support**: Easy integration of Cordova plugins
+- **Resource Optimization**: Removes unused resources to reduce APK size
+- **Multi-language Support**: Korean, Japanese, and English interfaces
+- **Dark Theme**: Modern UI with dark theme support
+- **Version Management**: Integrated version checking and management
 
-<img width="722" alt="image" src="https://github.com/biud436/MV-App-Builder/assets/13586185/66fc905f-7cac-4794-a9e2-a56b6f18d892">
+## 📸 Screenshots
 
-# Usage
+<img width="722" alt="Main Interface" src="https://github.com/biud436/MV-App-Builder/assets/13586185/66fc905f-7cac-4794-a9e2-a56b6f18d892">
 
-1. Export as your desired folder such as desktop after removing unused resource in RPG Maker MV.
+## 🔧 Requirements
 
-2. Open the this builder and then select the folder called ```<YOUR GAME FOLDER>/www``` there exists an ```index.html``` file.
+This tool requires several third-party programs to be installed manually. Below is the complete list:
 
-3. In this tool, there is pre-written contents, but you have to modify as your own settings.
+### System Requirements
 
-4. Change an ```unused remove resources``` as false after open up option window.
+- **Operating System**: Windows 10 or higher (Windows 11 recommended)
+- **RAM**: 4GB minimum (8GB recommended)
+- **Storage**: At least 10GB free space for Android SDK
 
-5. Click the build button and hold on until done.
+### Required Software
 
-6. if your cellphone is connected with personal computer using USB driver and others, you can install the apk file using google's adb tool automatically in your own devices.
+#### 1. .NET Framework v4.8 or Higher
 
-```adb install -r app-release.apk```
+The application is built with C# WinForms and requires .NET Framework 4.8 or higher.
 
-7. if you build as on debug mode. it is possible to use remote debug in chrome://inspect of your chrome browser on Windows (supposed to be installed the adb tool on your computer)
+📥 Download: [https://dotnet.microsoft.com/download/dotnet-framework](https://dotnet.microsoft.com/download/dotnet-framework)
 
-# Requirements
-This tool is based on C# Winform and Node.js and it has used a many of third-party tools. Some of them must be installed manually due to complexity of implementation. List that you must download is belows.
+#### 2. Node.js (Latest LTS Version)
 
-## .Net Framework v4.8 or above.
+Required for Cordova and npm package management.
 
-A higher version of the .Net Framework is required for a program developed with C# Winform to run.
+📥 Download: [https://nodejs.org/](https://nodejs.org/)
 
-▶ Download : https://dotnet.microsoft.com/download/dotnet-framework
+**Installation Note**: After installing Node.js, you can install Cordova using npm:
+```bash
+npm install -g cordova@13.0.0
+```
 
-## Android Studio & Android SDK
+#### 3. Cordova v13.0.0 or Higher
 
-This tool must be needed the Android SDK(Android Software Development Kit) and JDK and more. 
-There are needed 28, 34 (latest) API specifically for building apk so you have to install using the ```Android Sdk Manager``` beforehand.
+The tool uses Cordova CLI for building Android applications.
 
-▶ Download : https://developer.android.com/studio/index.html?hl=ko
+📥 Installation:
+```bash
+npm install -g cordova
+```
 
-if you done installed them, you have to edit Environment Variables called ```path``` on Windows.
+📖 Documentation: [https://cordova.apache.org/docs/en/latest/guide/cli/](https://cordova.apache.org/docs/en/latest/guide/cli/)
 
+#### 4. JDK 17 or Higher
+
+Cordova v13.0.0 requires JDK 17 or higher to build Android applications.
+
+📥 Download: [https://learn.microsoft.com/en-us/java/openjdk/download](https://learn.microsoft.com/en-us/java/openjdk/download)
+
+**Environment Variable Setup**:
+- Set `JAVA_HOME` to your JDK installation directory
+- Add `%JAVA_HOME%\bin` to your `PATH`
+
+#### 5. Android Studio & Android SDK
+
+Required for building Android applications. You need API Level 35 (latest).
+
+📥 Download: [https://developer.android.com/studio](https://developer.android.com/studio)
+
+**Required Components**:
+- Android SDK Platform 35
+- Android SDK Build-Tools (latest)
+- Android SDK Platform-Tools
+- Android SDK Command-line Tools
+
+**Environment Variable Setup**:
 ```cmd
-%ANDROID_SDK_ROOT%
-%ANDROID_SDK_ROOT%platform-tools\
+ANDROID_SDK_ROOT=<Your Android SDK Path>
+PATH=%ANDROID_SDK_ROOT%\platform-tools\
+PATH=%ANDROID_SDK_ROOT%\cmdline-tools\latest\bin\
 ```
 
-# 2024년 2월 기준
+### Important Notes
 
-아무래도 안드로이드가 꾸준히 업데이트 되고 있기 때문에, 안드로이드가 버전이 올라갈 때마다 프로그램들이 동작하지 않는 문제가 발생하고 있습니다.
+⚠️ **Project Path Requirements**: 
+- Your project path must not contain non-ASCII characters (e.g., Korean, Japanese, Chinese)
+- Due to Gradle limitations, all paths must use English characters only
+- The tool automatically creates projects in `%LOCALAPPDATA%\RPG Maker MV Cordova Builder` to avoid this issue
 
-프로그램 사용자가 아직도 있을거라고 생각되진 않긴 한데, 유지 보수를 위해서 추후에 아래와 같은 내용을 확인해서 패치할 생각입니다.
+⚠️ **Windows User Account**: 
+- Your Windows user account name should be in English
+- If your account name contains non-ASCII characters, you may encounter build errors
 
-## OpenJDK 11
+## 📦 Installation
 
-기존에는 cordova를 비롯한 핵심이 되는 툴들이 기존에는 JDK8만을 지원하였습니다.
+### Method 1: Download Release (Recommended)
 
-▶ 설치 방법 : https://learn.microsoft.com/en-us/java/openjdk/download
+1. Visit the [Releases page](https://github.com/biud436/MV-App-Builder/releases)
+2. Download the latest version (v0.8.0 or higher)
+3. Extract the ZIP file to your desired location
+4. Run `MVAppBuilder.exe`
 
-하지만 현재 cordova 12.0.0 기준으로 JDK11 이상이 필요합니다.
+## 🚀 Usage
 
-## Android SDK Command-line Tools 8.0 설치
+### Basic Build Process
 
-2024년 2월(현재 기준 최신)에 안드로이드 스튜디오를 설치하신 분은 sdkmanager가 별도로 설치되지 않기 때문에 아래와 같이 별도로 설치를 하셔야 합니다.
+1. **Export Your Game**
+   - Open RPG Maker MV
+   - Export your game project to a folder (e.g., Desktop)
+   - Ensure the `www` folder contains `index.html`
 
-<img width="731" alt="image" src="https://github.com/biud436/MV-App-Builder/assets/13586185/8b449d4e-08e8-4d86-b189-08dd111d6736">
+2. **Launch the Builder**
+   - Run `MVAppBuilder.exe`
+   - The tool will automatically check for required programs
 
-## Cordova v12.0.0 이상 설치 및 SDK Level 33 필요
+3. **Configure Your Project**
+   - Click "Select Game Folder" and choose your `<YOUR_GAME_FOLDER>/www` folder
+   - Fill in the required fields:
+     - **Package Name**: Reverse domain format (e.g., `com.example.mygame`)
+     - **Game Name**: Your game's display name
+     - **Keystore Information**: For app signing (or use auto-generate)
 
-<img width="738" alt="image" src="https://github.com/biud436/MV-App-Builder/assets/13586185/2e770d8c-ed76-4abb-82f4-3cf91ef192f8">
+4. **Configure Build Options**
+   - Open the Options dialog
+   - Configure:
+     - **Unused Resource Removal**: Enable to reduce APK size
+     - **Audio Format**: Choose between OGG/M4A
+     - **SDK Versions**: Minimum, Target, and Compile SDK versions
+     - **Orientation**: Portrait, Landscape, or Auto
+     - **Plugins**: Select required Cordova plugins
 
-## Gradle 설치
+5. **Start Building**
+   - Click the "Build" button
+   - Monitor progress in the Log window
+   - Wait for "Build completed successfully" message
 
-▶ 설치 방법 : https://gradle.org/install/
+6. **Install on Device (Optional)**
+   - Connect your Android device via USB
+   - Enable USB Debugging on your device
+   - Run the following command:
+   ```bash
+   adb install -r app-release.apk
+   ```
 
-C: 에 압축을 풀고, C:\gradle-버전명\bin 을 PATH에 추가해줘야 합니다 (gradle 7.6에서 정상 동작 확인)
+### Advanced Features
 
-## 프로젝트 경로에 한글이 있을 경우.
+#### Remote Debug (Debug Mode)
 
-최근 윈도우 11 설치 시, '문서'와 같은 폴더가 한글로 되어있어서 문제가 생기고 있습니다.
+If you build in debug mode, you can debug your app remotely:
 
-```
-A problem occurred evaluating project ':app'.
-> Failed to apply plugin 'com.android.internal.application'.
-   > Your project path contains non-ASCII characters. This will most likely cause the build to fail on Windows. Please move your project to a different directory. See http://b.android.com/95744 for details. This warning can be disabled by adding the line 'android.overridePathCheck=true' to gradle.properties file in the project directory.
-```
+1. Build your app in debug mode
+2. Install the APK on your device
+3. Open Chrome browser on your PC
+4. Navigate to `chrome://inspect`
+5. Your device will appear in the list
+6. Click "Inspect" to start debugging
 
-현재 프로그램에서는 `문서` 폴더에 자동으로 폴더를 만들고 있어 문제가 되고 있습니다.
+#### Unused Resource Removal
 
-따라서 경로를 `C:\Users\<사용자명>\AppData\Local\RPG Maker MV Cordova Builder` 폴더로 변경하였습니다. 
+The tool includes a feature to remove unused resources from your game:
 
----
+1. Open the Options dialog
+2. Enable "Remove Unused Resources"
+3. The builder will analyze your project and remove:
+   - Unused images
+   - Unused audio files
+   - Unused data files
 
-# 기존 설명
+This significantly reduces the APK size.
 
-## Node.js
+## 🔌 Compatible Plugins
 
-코르도바와 미사용 리소스 제거기는 Node.js로 개발된 프로그램이고, 노드 패키지 관리자를 이용하여 설치 및 업데이트를 하게 됩니다. 따라서 Node.js가 필요합니다.
+### Exit Dialog Plugin
 
-▶ Download : https://nodejs.org/ko/download/
+Shows a confirmation dialog when the back button is pressed.
 
-## Cordova v9.0.0
+📥 Download: [RS_ExitDialog.js](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/biud436/MV/blob/master/Android/RS_ExitDialog.js)
 
-Node.js 설치 이후에 수행하셔야 합니다. 사실 본 프로그램 내에는 코르도바 설치를 직접 수행하는 기능이 따로 있지만, 아직까진 특정 상황에서만 수행됩니다. 따라서 직접 설치를 해주셔야 합니다. 과정은 ctrl + r를 누른 후, 실행에서 cmd(명령 프롬프트)를 여신 후, ```npm install -g cordova```를 입력하면 설치됩니다.
+**Installation**: Place in `js/plugins/` folder
 
-▶ 설치 방법 : https://www.npmjs.com/package/cordova#installation
+### Insomnia Plugin
 
-## JDK 8
-JDK 8에서만 안드로이드 API 가져오기 명령이 정상적으로 동작하기 때문에 JDK 8 설치가 필요합니다.
+Prevents screen from dimming during gameplay (automatically included).
 
-▶ Download : https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+## 🛠️ Plugin Developer Tips
 
-JDK가 정상적으로 인식되려면 윈도우즈 환경 변수를 설정해야 합니다. 환경 변수는 Windows 10이라면 시작 버튼 옆에 돋보기 모양의 버튼을 눌러 환경 변수라고 치면 설정이 가능합니다.
+### Auto-Detection Format
 
-▶ 환경 변수 JAVA_HOME 설정 : https://zetawiki.com/wiki/%EC%9C%88%EB%8F%84%EC%9A%B0_JAVA_HOME_%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98_%EC%84%A4%EC%A0%95
+Plugins are automatically detected during project loading. Use the following comment format at the top of your plugin file:
 
-## Windows 10 이상 (Windows 7은 구동 확인되지 않았음)
-
-본 프로그램이 구동 되려면 ```robocopy``` 명령이 제대로 실행되는 시스템을 사용해야 합니다. ```robocopy``` 명령은 ```xcopy```와는 달리 최소 8 쓰레드로 동시에 파일을 고속 복사할 수 있는 ```Windows``` 파일 복사 프로그램입니다. 본 프로그램은 파일을 목적 폴더에 고속으로 파일을 복사 하게 됩니다. 이 기능은 미사용 리소스 제거 기능을 사용하지 않을 때에만 동작합니다. 미사용 리소스 제거 기능을 사용할 땐 파일을 선별적으로 복사 합니다.
-
-# 호환 플러그인
-
-앱 빌드 시 추가 기능을 원하시는 분들이 있으시면 다음 파일들을 내려 받은 후, 압축을 해제하고 ```js/plugins``` 폴더에 넣어주시기 바랍니다.
-
-종료 대화 상자는 기본적으로 포함되어있지 않습니다. 강제로 포함할 시 빌드 시간이 좀 추가되기 때문입니다.
-
-백스페이스 버튼 터치 시 종료 대화 상자 띄우기 - <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/biud436/MV/blob/master/Android/RS_ExitDialog.js">다운로드[ZIP]</a>
-
-애드몹의 경우, 플러그인 추가 과정에서 특정 인자를 넘겨야 합니다. 해당 세팅은 프로그램에서 자동으로 지원하는데요.
-
-애드몹 광고 모듈 (배너, 동영상 광고, 보상형 광고) - <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/biud436/MV/blob/master/Android/RS_Admob.js">다운로드[ZIP]</a>
-
-자동으로 세팅을 하려면 다음 플러그인을 추가로 넣어야 합니다.
-
-​AdmobSettings.js - <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/biud436/MV/blob/master/Android/AdmobSettings.js">다운로드[ZIP]</a>
-
-​플러그인의 주석 부분(/*: ~ */ 사이 부분)에 ```@cordova_plugin cordova-plugin-admob-free```로 시작하는 라인이 있습니다. 
-
-```js
+```javascript
 /*:
- * @cordova_plugin cordova-plugin-admob-free --save --variable ADMOB_APP_ID="ca-app-pub~생략
+ * @cordova_plugin cordova-plugin-dialogs
  */
 ```
 
-텍스트 에디터를 이용하여 ```ADMOB_APP_ID``` 부분의 테스트 기기 용 ```APP ID```를 애드몹 사이트에 있는 앱 ID로 수정을 해주시기 바랍니다.
+This will automatically add `cordova-plugin-dialogs` to the build process.
 
-화면 꺼짐 방지 플러그인은 필수 기능이므로 강제로 추가 됩니다.
+## 🐛 Bug Report
 
-# 플러그인 개발자 팁
+### Reporting Issues
 
-게임 폴더를 설정할 때 플러그인이 자동 인식되는 원리는 플러그인 관리자의 원리와 동일하게 코멘트를 파싱하는 방식입니다.
+If you encounter errors during the build process:
 
-따라서 다음과 같은 양식을 주석에 삽입해야 합니다.
+1. Right-click in the **Log Window**
+2. Select **Save Build Log**
+3. Visit [Issues Page](https://github.com/biud436/MV-App-Builder/issues)
+4. Create a new issue with:
+   - Build log file
+   - Your system information
+   - Steps to reproduce the error
 
-이렇게 하면 프로젝트를 불러올 때 ```cordova-plugin-dialogs``` 라는 플러그인이 자동으로 빌드 과정에 추가됩니다.
-
-최적화를 위해 라인을 최소한으로 읽으니 최상단 부분에 넣어주세요.
-
-```js
-/*:
-* @cordova_plugin cordova-plugin-dialogs
-*/
-```
-
-# Bug Report
-
-빌드 중에 오류가 발생했을 때, ```Log``` 창에서 오른쪽 버튼을 누르면 빌드 로그 저장 버튼을 사용하면 로그 저장이 가능합니다.
-
-아래 사이트에 버그를 제보할 때 빌드 로그도 같이 올려주시기 바랍니다.
-
-정상적인 빌드 로그 :
+### Successful Build Log Example
 
 ```powershell
---- 준비 ---
-java version "1.8.0_121"
-Java(TM) SE Runtime Environment (build 1.8.0_121-b13)
-Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
--- keytool을 찾았습니다.
-9.0.0 (cordova-lib@9.0.1)
+--- Preparation ---
+java version "17.0.1"
+Java(TM) SE Runtime Environment (build 17.0.1+12-LTS-39)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.1+12-LTS-39, mixed mode, sharing)
+-- Found keytool
+13.0.0 (cordova-lib@13.0.0)
 
-안드로이드 SDK / ANDROID_SDK_ROOT를 찾았습니다 : E:\Android\sdk\
+Found Android SDK / ANDROID_SDK_ROOT: E:\Android\sdk\
 [SDK]==========================================
-android-19
-android-23
-android-26
-android-27
-android-28
-android-29
+android-33
+android-34
+android-35
 ==============================================
---- 필요한 모든 프로그램이 설치되어있습니다.
-프로그램이 최신 버전인지 확인 중입니다... (1초 미만)
-최신 버전을 사용하고 있습니다.
-코르도바가 최신 버전인지 확인 중입니다... (5초 미만)
-현재 최신 버전의 코르도바를 사용하고 있습니다.(00:00:04.7386189)
+--- All required programs are installed.
+Checking for program updates... (less than 1 second)
+You are using the latest version.
+Checking for latest Cordova version... (less than 5 seconds)
+You are using the latest version of Cordova. (00:00:04.7386189)
 ```
 
-한글로 된 파일명은 아직 구글 안드로이드 앱 빌드에서 지원하지 않으니 파일명은 반드시 영어여야 합니다. 
+### Common Issues
 
-윈도우 사용자 계정 명과 그 부속 폴더들도 영어로 되어있어야 합니다.
+#### Issue 1: Non-ASCII Characters in Path
 
-https://github.com/biud436/MV-App-Builder/issues
+**Error Message**:
+```
+Failed to apply plugin 'com.android.internal.application'.
+Your project path contains non-ASCII characters.
+```
 
-# Download
-다음 링크에서 최신 버전을 내려 받으시기 바랍니다 (자동 업데이트 기능 있음)
+**Solution**: 
+- The tool now automatically uses `%LOCALAPPDATA%\RPG Maker MV Cordova Builder`
+- Avoid Korean/Japanese/Chinese characters in file paths
+- Change Windows user account name to English if needed
 
-링크 : https://github.com/biud436/MV-App-Builder/releases
+#### Issue 2: SDK Not Found
+
+**Error Message**:
+```
+Failed to find 'ANDROID_SDK_ROOT' environment variable.
+```
+
+**Solution**:
+- Install Android Studio
+- Set `ANDROID_SDK_ROOT` environment variable
+- Add SDK paths to `PATH` variable
+
+## 📥 Download
+
+Download the latest version from the [Releases page](https://github.com/biud436/MV-App-Builder/releases).
+
+The tool includes an automatic update feature that will notify you when new versions are available.
+
+**Latest Version**: v0.8.0  
+**Release Date**: February 18, 2026
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 👨‍💻 Author
+
+- **biud436** - [GitHub Profile](https://github.com/biud436)
+
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/biud436/MV-App-Builder/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/biud436/MV-App-Builder/discussions)
